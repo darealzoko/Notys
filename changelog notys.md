@@ -1,3 +1,6 @@
+## Changelog v0.3
+- Le drag n drop a été officiellement réglée (windows). À tester (linux et macOS).
+
 ## Changelog v0.2
 - Ajout du soulignage
 - Ajout de mode de texte barré
@@ -38,3 +41,4 @@
 - Ajout du gras
 - Ajout de la coloration syntaxique en fonction de la mise en page
 - Ajout de la sauvegarde de fichier
+

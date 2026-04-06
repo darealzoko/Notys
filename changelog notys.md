@@ -28,6 +28,7 @@
 - Ajout de créer des fichiers (non utilisable proprement, car il n'ouvrait pas une nouvelle fenêtre mais supprimait complètement l'ancien document s'il n'était pas sauvegardé)
 - Ajout de la sauvegarde "sous" de fichiers
 - Changement de la police d'écriture en Andale Mono
+- Ajout de undo/redo.
 
 &^gray *Au lieu de rafraîchir tout le document à chaque mise en page, il rafraîchit un bloc.^&
 

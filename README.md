@@ -9,7 +9,7 @@ Voici les features (à utiliser comme du markdown) :
 - *Italique*
 - ```code```
 - Coloration de texte
-- ==surlignage==
+- surlignage
 ## Ce qui est nécessaire pour installer :
 - Un ordinateur
 - Une interface graphique en tout genre

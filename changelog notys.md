@@ -1,5 +1,5 @@
 ## Changelog v0.3
-- Le drag n drop a été officiellement réglée (windows). À tester (linux et macOS).
+- Le drag n drop a été officiellement réglée (windows). À noter : je n'ai personnellement pas réussi à faire fonctionner le drag n drop.
 
 ## Changelog v0.2
 - Ajout du soulignage

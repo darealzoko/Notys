@@ -22,7 +22,7 @@
 ## Changelog beta v0.1
 - Ajout de la coloration de texte (avec les symboles $@ et @$)
 - Optimisation de performance*
-- Réglage d'un bug où quand une mise en page a été crée, impossible de l'enlever si ce n'est de réécrire la phrase
+- Réglage d'un bug où quand une mise en page a été créée, impossible de l'enlever si ce n'est de réécrire la phrase
 - Ajout de la possibilité d'ouvrir des fichiers déjà créés
 - Ajout de créer des fichiers (non utilisable proprement, car il n'ouvrait pas une nouvelle fenêtre mais supprimait complètement l'ancien document s'il n'était pas sauvegardé)
 - Ajout de la sauvegarde "sous" de fichiers

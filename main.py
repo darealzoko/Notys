@@ -1,11 +1,17 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import os
 import re
 import platform
 from PIL import Image, ImageTk
-from svglib.svglib import svg2rlg
-from reportlab.graphics import renderPM
+
+try:
+    from tkinterdnd2 import Tk as DnDTk, DND_FILES
+    DND_AVAILABLE = True
+except Exception:
+    DnDTk = None
+    DND_FILES = None
+    DND_AVAILABLE = False
 
 
 # ── Couleurs ──────────────────────────────────────────────────────────────────
@@ -112,7 +118,8 @@ def get_contrast_color(bg_hex):
 # ── Fenêtre principale ────────────────────────────────────────────────────────
 if __name__ == '__main__':
     # ── Fenêtre principale ────────────────────────────────────────────────────────
-    win = tk.Tk()
+    TkClass = DnDTk if DND_AVAILABLE else tk.Tk
+    win = TkClass()
     win.title("Notys")
     win.configure(bg=BG)
     win.geometry("900x650")
@@ -201,7 +208,7 @@ if __name__ == '__main__':
             self.sb.config(command=self.text.yview)
 
             # Tag pour masquer les symboles &^..^& (couleur = fond = invisible)
-            self.text.tag_configure('hidden', foreground=BG, font=('Andale Mono', 1))
+            self.text.tag_configure('hidden', foreground=BG, font=('Andale Mono', 1), elide=True)
 
             self._configure_tags()
             self.text.bind('<KeyRelease>', self._on_key)
@@ -568,17 +575,40 @@ if __name__ == '__main__':
             self.active = None
             self._btns  = {}
 
-            # Load icons
-            dark_drawing = svg2rlg('dark.svg')
-            dark_img = renderPM.drawToPIL(dark_drawing)
-            dark_img = dark_img.resize((20, 20))  # Resize to desired icon size (modify here)
-            self.dark_icon = ImageTk.PhotoImage(dark_img, master=parent)
+            # Load icons: create simple placeholders without external dependencies
+            def _load_icon(path, color):
+                # Convert hex color to RGB tuple
+                hex_color = color.lstrip('#')
+                r = int(hex_color[0:2], 16)
+                g = int(hex_color[2:4], 16)
+                b = int(hex_color[4:6], 16)
+                
+                # Create a simple icon image
+                img = Image.new('RGBA', (20, 20), (0, 0, 0, 0))
+                from PIL import ImageDraw
+                draw = ImageDraw.Draw(img)
+                
+                # Draw based on filename
+                if 'dark' in path.lower():  # Sun icon for dark mode
+                    # Simple circle with rays
+                    draw.ellipse([8, 8, 12, 12], fill=(r, g, b))
+                    for angle in range(0, 360, 45):
+                        import math
+                        rad = math.radians(angle)
+                        x1 = 10 + 4 * math.cos(rad)
+                        y1 = 10 + 4 * math.sin(rad)
+                        x2 = 10 + 6 * math.cos(rad)
+                        y2 = 10 + 6 * math.sin(rad)
+                        draw.line([(x1, y1), (x2, y2)], fill=(r, g, b), width=1)
+                else:  # Moon icon for light mode
+                    # Simple crescent
+                    draw.ellipse([7, 7, 13, 13], fill=(r, g, b))
+                    draw.ellipse([9, 7, 15, 13], fill=(255, 255, 255, 0))
+                
+                return ImageTk.PhotoImage(img, master=parent)
 
-            light_drawing = svg2rlg('light.svg')
-            light_img = renderPM.drawToPIL(light_drawing)
-            light_img = light_img.resize((20, 20))  # Resize to desired icon size (modify here)
-            self.light_icon = ImageTk.PhotoImage(light_img, master=parent)
-
+            self.dark_icon  = _load_icon('dark.svg',  '#ffffff')  # soleil blanc sur fond sombre
+            self.light_icon = _load_icon('light.svg', '#000000')  # lune noire sur fond clair
             self.btn_new = tk.Label(
                 self.frame, text=" + ", bg=TAB_BG, fg=TAB_FG,
                 font=FONT_TAB, cursor='hand2', padx=6
@@ -640,6 +670,17 @@ if __name__ == '__main__':
             # Update button icon
             self.theme_button.config(image=self.dark_icon if current_theme == 'dark' else self.light_icon)
 
+            # Mise à jour de la barre de recherche
+            entry_bg     = THEMES[current_theme]['TAB_BG'] if current_theme == 'dark' else THEMES[current_theme]['STATUS_BG']
+            entry_border = "#555555" if current_theme == 'dark' else "#aaaaaa"
+            search_bar.config(bg=STATUS_BG)
+            search_entry.config(bg=entry_bg, fg=FG, insertbackground=FG,
+                                highlightbackground=entry_border, highlightcolor=SELECT_BG)
+            search_count.config(bg=STATUS_BG, fg=STATUS_FG)
+            btn_prev.config(bg=STATUS_BG, fg=FG)
+            btn_next.config(bg=STATUS_BG, fg=FG)
+            btn_close_search.config(bg=STATUS_BG, fg=STATUS_FG)
+
         def update_theme(self):
             self.frame.config(bg=TAB_BG)
             self.btn_new.config(bg=TAB_BG, fg=TAB_FG)
@@ -668,6 +709,10 @@ if __name__ == '__main__':
 
             lbl.bind('<Button-1>',   lambda e, t=tab: self.select(t))
             close.bind('<Button-1>', lambda e, t=tab: close_tab(t))
+
+            _register_dnd_widget(f)
+            _register_dnd_widget(lbl)
+            _register_dnd_widget(close)
 
             self._btns[tab.id] = (f, lbl, close, border)
 
@@ -719,6 +764,8 @@ if __name__ == '__main__':
     status_words.pack(side='right')
 
     # ── Drag & Drop ───────────────────────────────────────────────────────────────
+    dnd_enabled = False
+
     def _parse_dnd_paths(data):
         """Parse la chaîne brute renvoyée par tkdnd (gère espaces et accolades)."""
         paths = []
@@ -755,74 +802,53 @@ if __name__ == '__main__':
                 else:
                     new_tab(file_path=path, content=content)
 
-    def _find_tkdnd_path():
-        """Cherche le dossier tkdnd compatible (tkinterdnd2-universal en priorité)."""
-        import sys, sysconfig
-        machine = platform.machine()
-        system  = platform.system()
-        if system == 'Darwin':
-            plat = 'osx-arm64' if machine == 'arm64' else 'osx-x64'
-        elif system == 'Linux':
-            plat = 'linux-arm64' if machine == 'aarch64' else 'linux-x64'
-        elif system == 'Windows':
-            plat = 'win-arm64' if machine == 'ARM64' else 'win-x64'
-        else:
-            return None
+    def _on_drop(event):
+        print(f"[DND] <<Drop>> reçu, event.data = {repr(event.data)}")
+        editor_area.config(bg=BG)
+        tab_bar.frame.config(bg=TAB_BG)
+        _open_paths(_parse_dnd_paths(event.data))
 
-        # Chercher dans tous les site-packages connus
-        candidates = []
-        for base in sys.path:
-            p = os.path.join(base, 'tkinterdnd2', 'tkdnd', plat)
-            if os.path.isdir(p):
-                candidates.append(p)
+    def _on_enter(event):
+        print(f"[DND] <<DragEnter>> reçu")
+        editor_area.config(bg=SELECT_BG)
+        tab_bar.frame.config(bg=SELECT_BG)
 
-        # Préférer tkinterdnd2-universal (contient libtkdnd2.9.x pour Tcl 9)
-        for p in candidates:
-            files = os.listdir(p)
-            if any('2.9' in f for f in files):
-                return p
-        return candidates[0] if candidates else None
+    def _on_leave(event):
+        print(f"[DND] <<DragLeave>> reçu")
+        editor_area.config(bg=BG)
+        tab_bar.frame.config(bg=TAB_BG)
+
+    def _register_dnd_widget(widget):
+        if not dnd_enabled:
+            return
+        try:
+            widget.drop_target_register(DND_FILES)
+            widget.dnd_bind('<<Drop>>', _on_drop)
+            widget.dnd_bind('<<DragEnter>>', _on_enter)
+            widget.dnd_bind('<<DragLeave>>', _on_leave)
+            print(f"[DND] drop target enregistré sur {widget}")
+        except Exception as e:
+            print(f"[DND] Erreur enregistrement drop_target sur {widget} : {e}")
 
     def _setup_dnd():
-        tkdnd_path = _find_tkdnd_path()
-        print(f"[DND] tkdnd_path = {tkdnd_path}")
-        if not tkdnd_path:
-            print("[DND] Aucun dossier tkdnd trouvé, abandon.")
+        global dnd_enabled
+        if not DND_AVAILABLE:
+            print("[DND] tkinterdnd2 non disponible, drag & drop désactivé.")
+            messagebox.showwarning(
+                "Drag & Drop indisponible",
+                "Le support de glisser-déposer n'est pas disponible :\n"
+                "tkinterdnd2 n'a pas été trouvé.\n\n"
+                "Installez-le avec :\n"
+                "  python -m pip install tkinterdnd2\n\n"
+                "Puis relancez Notys.")
             return
 
+        dnd_enabled = True
         try:
-            win.tk.call('lappend', 'auto_path', tkdnd_path)
-            version = win.tk.call('package', 'require', 'tkdnd')
-            print(f"[DND] tkdnd chargé, version = {version}")
+            for widget in (editor_area, tab_bar.frame):
+                _register_dnd_widget(widget)
         except Exception as e:
-            print(f"[DND] Échec chargement tkdnd : {e}")
-            return
-
-        def _on_drop(event):
-            print(f"[DND] <<Drop>> reçu, event.data = {repr(event.data)}")
-            editor_area.config(bg=BG)
-            tab_bar.frame.config(bg=TAB_BG)
-            _open_paths(_parse_dnd_paths(event.data))
-
-        def _on_enter(event):
-            print(f"[DND] <<DragEnter>> reçu")
-            editor_area.config(bg=SELECT_BG)
-            tab_bar.frame.config(bg=SELECT_BG)
-
-        def _on_leave(event):
-            print(f"[DND] <<DragLeave>> reçu")
-            editor_area.config(bg=BG)
-            tab_bar.frame.config(bg=TAB_BG)
-
-        for widget in (editor_area, tab_bar.frame):
-            try:
-                win.tk.call('tkdnd::drop_target', 'register', widget, 'DND_Files')
-                print(f"[DND] drop_target enregistré sur {widget}")
-            except Exception as e:
-                print(f"[DND] Erreur enregistrement drop_target : {e}")
-            widget.bind('<<Drop>>', _on_drop)
-            widget.bind('<<DragEnter>>', _on_enter)
-            widget.bind('<<DragLeave>>', _on_leave)
+            print(f"[DND] Erreur lors de l'enregistrement des widgets DnD : {e}")
 
     _setup_dnd()
 
@@ -903,8 +929,13 @@ if __name__ == '__main__':
         btn_frame.pack(fill='x')
 
         def _btn(parent, text, cmd, primary=False):
-            bg  = SELECT_BG if primary else TAB_BG
-            fg  = '#ffffff'
+            if primary:
+                bg      = SELECT_BG if current_theme == 'dark' else '#1a6bbf'
+                bg_hover = '#3a6090' if current_theme == 'dark' else '#145299'
+            else:
+                bg      = '#3a3a3a' if current_theme == 'dark' else '#9e9e9e'
+                bg_hover = '#4a4a4a' if current_theme == 'dark' else '#7a7a7a'
+            fg = '#ffffff'
             b = tk.Label(
                 parent, text=text,
                 bg=bg, fg=fg,
@@ -914,7 +945,7 @@ if __name__ == '__main__':
                 relief='flat',
             )
             b.bind('<Button-1>', lambda e: cmd())
-            b.bind('<Enter>',    lambda e: b.config(bg='#3a3a3a' if not primary else '#3a6090'))
+            b.bind('<Enter>',    lambda e: b.config(bg=bg_hover))
             b.bind('<Leave>',    lambda e: b.config(bg=bg))
             return b
 
@@ -1062,14 +1093,16 @@ if __name__ == '__main__':
     search_bar = tk.Frame(win, bg=STATUS_BG, height=36)
     search_bar._visible = False
 
+    search_entry_bg = get_color('TAB_BG') if current_theme == 'dark' else get_color('STATUS_BG')
+    search_entry_border = "#555555" if current_theme == 'dark' else "#aaaaaa"
     search_entry = tk.Entry(
         search_bar,
-        bg=TAB_BG, fg=FG,
+        bg=search_entry_bg, fg=FG,
         insertbackground=FG,
         relief='flat', bd=0,
         font=('Consolas', 12),
         highlightthickness=1,
-        highlightbackground="#555555",
+        highlightbackground=search_entry_border,
         highlightcolor=SELECT_BG,
         width=30,
     )
@@ -1088,8 +1121,9 @@ if __name__ == '__main__':
 
     _search_matches  = []
     _search_index    = [0]   # liste pour mutabilité dans les closures
+    _search_last_query = [""]  # tracker du dernier texte de recherche
 
-    def _search_do(query=None):
+    def _search_do(query=None, reset_index=True):
         t = current_tab()
         if not t:
             return
@@ -1098,12 +1132,13 @@ if __name__ == '__main__':
 
         t.text.tag_remove('search_match',    '1.0', 'end')
         t.text.tag_remove('search_current',  '1.0', 'end')
-        t.text.tag_configure('search_match',   background='#00f7ff', foreground='#000000')
-        t.text.tag_configure('search_current', background='#ffffff', foreground='#000000')
+        t.text.tag_configure('search_match',   background="#b6c511", foreground='#000000')
+        t.text.tag_configure('search_current', background="#00e8f4", foreground='#000000')
 
         _search_matches.clear()
         if not query:
             search_count.config(text="")
+            _search_last_query[0] = ""
             return
 
         content = t.text.get('1.0', 'end-1c')
@@ -1114,10 +1149,13 @@ if __name__ == '__main__':
             _search_matches.append((start, end))
 
         if _search_matches:
-            _search_index[0] = 0
+            if reset_index or query != _search_last_query[0]:
+                _search_index[0] = 0
             _search_highlight_current()
         else:
             search_count.config(text="Aucun résultat")
+        
+        _search_last_query[0] = query
 
     def _search_highlight_current():
         t = current_tab()
@@ -1167,8 +1205,17 @@ if __name__ == '__main__':
             t.text.focus_set()
         return 'break'
 
-    search_entry.bind('<KeyRelease>', lambda e: _search_do())
-    search_entry.bind('<Return>',     lambda e: _search_next())
+    def _handle_search_tab(event=None):
+        _search_next()
+        return 'break'
+    
+    def _handle_search_shift_tab(event=None):
+        _search_prev()
+        return 'break'
+
+    search_entry.bind('<KeyRelease>', lambda e: _search_do(reset_index=False))
+    search_entry.bind('<Tab>',        _handle_search_tab)
+    search_entry.bind('<Shift-Tab>',  _handle_search_shift_tab)
     search_entry.bind('<Escape>',     close_search)
     btn_next.bind('<Button-1>',       lambda e: _search_next())
     btn_prev.bind('<Button-1>',       lambda e: _search_prev())

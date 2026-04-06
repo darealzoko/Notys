@@ -10,6 +10,7 @@ Voici les features (à utiliser comme du markdown) :
 - ```code```
 - Coloration de texte
 - surlignage
+- Drag n Drop des fichiers pour les ouvrir
 ## Ce qui est nécessaire pour installer :
 - Un ordinateur
 - Une interface graphique en tout genre

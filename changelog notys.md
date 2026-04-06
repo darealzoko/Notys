@@ -3,10 +3,11 @@
 - Ajout de mode de texte barré
 - Modification : les symboles pour la mise en page disparaîssent lorsque le curseur n'est pas dessus
 - Correction d'un bug où le point qui montre que le fichier n'a pas été sauvegardé restait tout le temps. Maintenant il s'en va quand le fichier a été sauvegardé.
-- Modification : les symboles pour les couleurs (anciennement ```$@ @$```) a été modifié en &^^& car les dollars de l'ancien trigger interferait avec les autres éditeurs qui disposaient des LaTeX.
+- Modification : les symboles pour les couleurs (anciennement $@ @$) a été modifié en &^^& car les dollars de l'ancien trigger interferait avec les autres éditeurs qui disposaient des LaTeX.
 - Tentative d'ajout de drag n drop pour ouvrir les fichiers (ne fonctionne pas).
 - Ajout d'une fonctionnalitée de recherche dans le document.
 - Ajout d'un menu en cas de fermeture de l'app / d'un onglet qui n'est pas sauvegardé qui demande si on veut tout sauvegarder.
+- Correction des icônes pour changer de thème.
 
 ## Changelog v0.1
 - Ajout d'un thème clair et sombre
@@ -22,7 +23,7 @@
 ## Changelog beta v0.1
 - Ajout de la coloration de texte (avec les symboles $@ et @$)
 - Optimisation de performance*
-- Réglage d'un bug où quand une mise en page a été créée, impossible de l'enlever si ce n'est de réécrire la phrase
+- Réglage d'un bug où quand une mise en page a été crée, impossible de l'enlever si ce n'est de réécrire la phrase
 - Ajout de la possibilité d'ouvrir des fichiers déjà créés
 - Ajout de créer des fichiers (non utilisable proprement, car il n'ouvrait pas une nouvelle fenêtre mais supprimait complètement l'ancien document s'il n'était pas sauvegardé)
 - Ajout de la sauvegarde "sous" de fichiers

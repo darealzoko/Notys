@@ -1,5 +1,9 @@
+## Changelog v0.3.1
+- Réglage du drag n drop sur MacOS.
+
 ## Changelog v0.3
-- Le drag n drop a été officiellement réglée (windows). À noter : je n'ai personnellement pas réussi à faire fonctionner le drag n drop.
+- Le drag n drop a été officiellement réglée (windows).  Ne fonctionne pas encore sur MacOS.
+- Suppression d'un espace avant le mot coloré lorsqu'on utilise les couleurs (avant: "test &^red  test^&", maintenant: "test &^red test^&")
 
 ## Changelog v0.2
 - Ajout du soulignage
@@ -40,5 +44,5 @@
 - Ajout de l'italique
 - Ajout du gras
 - Ajout de la coloration syntaxique en fonction de la mise en page
+- Ajout du code
 - Ajout de la sauvegarde de fichier
-

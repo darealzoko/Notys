@@ -14,9 +14,12 @@ Voici les features (à utiliser comme du markdown) :
 ## Ce qui est nécessaire pour installer :
 - Un ordinateur
 - Une interface graphique en tout genre
-- Python 3.9 ou plus
-- Tkinter
-- PIL
+- Python 3.12.10 (pas plus pour l'instant) téléchargé de préférence sur le site officiel (python.org)
+- tkinter
+- tkinterdnd2
+- pillow
+(Pour macos après avoir installé python 3.12.10 sur leur site officiel) :
+`echo "alias pyr='/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12'" >> ~/.zshrc && source ~/.zshrc` puis faites `pyr main.py`.
 ## Installation :
 - Télécharger python si pas installé
 - Télécharger le fichier main.py ainsi que les fichiers .svg

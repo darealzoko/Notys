@@ -185,6 +185,7 @@ if __name__ == '__main__':
             self.highlight_job = None
             # Liste des matches &^color text^& : (match_start, match_end, color_hex)
             self._color_matches = []
+            self.font_scale = 1.0
 
             self.frame = tk.Frame(editor_area, bg=BG)
 
@@ -197,7 +198,7 @@ if __name__ == '__main__':
                 insertbackground=CURSOR_CLR,
                 selectbackground=SELECT_BG,
                 bd=0, highlightthickness=0, relief='flat',
-                font=FONT_BODY,
+                font=self._scaled_font(FONT_BODY),
                 padx=40, pady=30,
                 spacing1=2, spacing3=4,
                 wrap='word',
@@ -208,7 +209,7 @@ if __name__ == '__main__':
             self.sb.config(command=self.text.yview)
 
             # Tag pour masquer les symboles &^..^& (couleur = fond = invisible)
-            self.text.tag_configure('hidden', foreground=BG, font=('Andale Mono', 1), elide=True)
+            self.text.tag_configure('hidden', foreground=BG, font=self._scaled_font(('Andale Mono', 1)), elide=True)
 
             self._configure_tags()
             self.text.bind('<KeyRelease>', self._on_key)
@@ -240,17 +241,17 @@ if __name__ == '__main__':
 
         def _configure_tags(self):
             t = self.text
-            t.tag_configure('h1',     foreground=C_H1,    font=FONT_H1)
-            t.tag_configure('h2',     foreground=C_H2,    font=FONT_H2)
-            t.tag_configure('h3',     foreground=C_H3,    font=FONT_H3)
-            t.tag_configure('h4',     foreground=C_H4,    font=FONT_H4)
-            t.tag_configure('code',   foreground=C_CODE,  font=FONT_CODE)
-            t.tag_configure('bold',   foreground=C_BOLD,  font=FONT_BOLD)
-            t.tag_configure('italic', foreground=C_ITALIC,font=FONT_ITALIC)
+            t.tag_configure('h1',     foreground=C_H1,    font=self._scaled_font(FONT_H1))
+            t.tag_configure('h2',     foreground=C_H2,    font=self._scaled_font(FONT_H2))
+            t.tag_configure('h3',     foreground=C_H3,    font=self._scaled_font(FONT_H3))
+            t.tag_configure('h4',     foreground=C_H4,    font=self._scaled_font(FONT_H4))
+            t.tag_configure('code',   foreground=C_CODE,  font=self._scaled_font(FONT_CODE))
+            t.tag_configure('bold',   foreground=C_BOLD,  font=self._scaled_font(FONT_BOLD))
+            t.tag_configure('italic', foreground=C_ITALIC, font=self._scaled_font(FONT_ITALIC))
             t.tag_configure('underline', foreground=C_UNDERLINE, underline=True)
             t.tag_configure('strike', foreground=C_STRIKE, overstrike=True)
             t.tag_configure('list',   foreground=C_LIST)
-            t.tag_configure('quote',  foreground=C_QUOTE, font=('Andale Mono', 12, 'italic'))
+            t.tag_configure('quote',  foreground=C_QUOTE, font=self._scaled_font(('Andale Mono', 12, 'italic')))
             t.tag_configure('link',   foreground=C_LINK,  underline=True)
             t.tag_configure('hr',     foreground=C_HR)
             # t.tag_configure('highlight', ...) déplacé dans highlight_markdown
@@ -258,6 +259,21 @@ if __name__ == '__main__':
         def _handle_tab(self, event):
             self.text.insert('insert', '    ')
             return 'break'
+
+        def _scaled_font(self, font_tuple):
+            if not isinstance(font_tuple, tuple) or len(font_tuple) < 2:
+                return font_tuple
+            name = font_tuple[0]
+            size = font_tuple[1]
+            rest = font_tuple[2:]
+            scaled_size = max(2, int(round(size * self.font_scale)))
+            return (name, scaled_size, *rest)
+
+        def set_zoom(self, zoom):
+            self.font_scale = max(0.5, min(3.0, zoom))
+            self.text.config(font=self._scaled_font(FONT_BODY))
+            self._configure_tags()
+            self.highlight_markdown()
 
         def _delete_line(self, event=None):
             insert = self.text.index('insert')
@@ -392,7 +408,7 @@ if __name__ == '__main__':
                         continue
 
                 tag_name = f'clr_{color_name}_{self.id}'
-                t.tag_configure(tag_name, foreground=color_hex, font=FONT_BODY)
+                t.tag_configure(tag_name, foreground=color_hex, font=self._scaled_font(FONT_BODY))
 
                 # Positions des différentes parties
                 full_start  = m.start()        # position de "$@"
@@ -1232,6 +1248,8 @@ if __name__ == '__main__':
         (f'<{mod_key}-Z>', lambda e: current_tab() and current_tab().text.edit_redo()),
         (f'<{mod_key}-f>', open_search),
         (f'<{mod_key}-F>', open_search),
+        (f'<{mod_key}-=>', zoom_in),
+        (f'<{mod_key}-)>', zoom_out),
         ('<Command-q>',    lambda e: on_quit()),   # Cmd+Q  (macOS)
         ('<Command-Q>',    lambda e: on_quit()),
         ('<Alt-F4>',       lambda e: on_quit()),   # Alt+F4 (Windows/Linux)

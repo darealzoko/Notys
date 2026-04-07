@@ -71,15 +71,15 @@ C_CODE  = get_color('C_CODE'); C_BOLD = get_color('C_BOLD'); C_ITALIC = get_colo
 C_LIST  = get_color('C_LIST'); C_QUOTE = get_color('C_QUOTE'); C_LINK = get_color('C_LINK'); C_HR = get_color('C_HR')
 C_UNDERLINE = get_color('C_UNDERLINE'); C_STRIKE = get_color('C_STRIKE')
 
-FONT_BODY   = ('Consolas', 12)
-FONT_H1     = ('Consolas', 28, 'bold')
-FONT_H2     = ('Consolas', 22, 'bold')
-FONT_H3     = ('Consolas', 18, 'bold')
-FONT_H4     = ('Consolas', 14, 'bold')
-FONT_CODE   = ('Courier', 11)
-FONT_BOLD   = ('Consolas', 12, 'bold')
-FONT_ITALIC = ('Consolas', 12, 'italic')
-FONT_TAB    = ('Arial', 11)
+FONT_BODY   = ('Consolas', 18)
+FONT_H1     = ('Consolas', 34, 'bold')
+FONT_H2     = ('Consolas', 28, 'bold')
+FONT_H3     = ('Consolas', 24, 'bold')
+FONT_H4     = ('Consolas', 20, 'bold')
+FONT_CODE   = ('Courier', 17)
+FONT_BOLD   = ('Consolas', 18, 'bold')
+FONT_ITALIC = ('Consolas', 18, 'italic')
+FONT_TAB    = ('Arial', 14)
 
 # Couleurs nommées pour &^couleur texte^&
 COLOR_NAMES = {
@@ -143,15 +143,15 @@ if __name__ == '__main__':
     C_LIST  = get_color('C_LIST'); C_QUOTE = get_color('C_QUOTE'); C_LINK = get_color('C_LINK'); C_HR = get_color('C_HR')
     C_UNDERLINE = get_color('C_UNDERLINE'); C_STRIKE = get_color('C_STRIKE')
 
-    FONT_BODY   = ('Consolas', 12)
-    FONT_H1     = ('Consolas', 28, 'bold')
-    FONT_H2     = ('Consolas', 22, 'bold')
-    FONT_H3     = ('Consolas', 18, 'bold')
-    FONT_H4     = ('Consolas', 14, 'bold')
-    FONT_CODE   = ('Courier', 11)
-    FONT_BOLD   = ('Consolas', 12, 'bold')
-    FONT_ITALIC = ('Consolas', 12, 'italic')
-    FONT_TAB    = ('Arial', 11)
+    FONT_BODY   = ('Consolas', 18)
+    FONT_H1     = ('Consolas', 34, 'bold')
+    FONT_H2     = ('Consolas', 28, 'bold')
+    FONT_H3     = ('Consolas', 24, 'bold')
+    FONT_H4     = ('Consolas', 20, 'bold')
+    FONT_CODE   = ('Courier', 17)
+    FONT_BOLD   = ('Consolas', 18, 'bold')
+    FONT_ITALIC = ('Consolas', 18, 'italic')
+    FONT_TAB    = ('Arial', 14)
 
     # Couleurs nommées pour $@couleur texte@$
     COLOR_NAMES = {

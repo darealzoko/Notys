@@ -1,5 +1,6 @@
 ## Changelog v0.3.1
 - Réglage du drag n drop sur MacOS.
+- Ajout du zoom/dézoom
 
 ## Changelog v0.3
 - Le drag n drop a été officiellement réglée (windows).  Ne fonctionne pas encore sur MacOS.

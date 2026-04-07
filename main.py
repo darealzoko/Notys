@@ -1092,6 +1092,18 @@ if __name__ == '__main__':
     def minimise_win(event=None):
         win.wm_state('iconic')
 
+    def zoom_in(event=None):
+        t = current_tab()
+        if t:
+            t.set_zoom(t.font_scale + 0.1)
+        return 'break'
+
+    def zoom_out(event=None):
+        t = current_tab()
+        if t:
+            t.set_zoom(t.font_scale - 0.1)
+        return 'break'
+
 
     # ── Raccourcis ────────────────────────────────────────────────────────────────
     # Détecter l'OS pour utiliser les bonnes touches de modification

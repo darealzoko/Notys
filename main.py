@@ -571,7 +571,7 @@ if __name__ == '__main__':
 
         @property
         def name(self):
-            return os.path.basename(self.file_path) if self.file_path else "Sans titre"
+            return os.path.basename(self.file_path) if self.file_path else "Untitled"
 
         @property
         def is_modified(self):
@@ -782,11 +782,11 @@ if __name__ == '__main__':
     status_bar.pack(fill='x', side='bottom')
     status_bar.pack_propagate(False)
 
-    status_file  = tk.Label(status_bar, text="Sans titre", bg=STATUS_BG, fg=STATUS_FG, font=('Andale Mono', 10), padx=10)
+    status_file  = tk.Label(status_bar, text="Untitled", bg=STATUS_BG, fg=STATUS_FG, font=('Andale Mono', 10), padx=10)
     status_file.pack(side='left')
     status_pos   = tk.Label(status_bar, text="Ln 1, Col 1", bg=STATUS_BG, fg=STATUS_FG, font=('Andale Mono', 10), padx=10)
     status_pos.pack(side='right')
-    status_words = tk.Label(status_bar, text="0 mots", bg=STATUS_BG, fg=STATUS_FG, font=('Andale Mono', 10), padx=10)
+    status_words = tk.Label(status_bar, text="0 words", bg=STATUS_BG, fg=STATUS_FG, font=('Andale Mono', 10), padx=10)
     status_words.pack(side='right')
 
     # ── Drag & Drop ───────────────────────────────────────────────────────────────
@@ -861,12 +861,12 @@ if __name__ == '__main__':
         if not DND_AVAILABLE:
             print("[DND] tkinterdnd2 non disponible, drag & drop désactivé.")
             messagebox.showwarning(
-                "Drag & Drop indisponible",
-                "Le support de glisser-déposer n'est pas disponible :\n"
-                "tkinterdnd2 n'a pas été trouvé.\n\n"
-                "Installez-le avec :\n"
+                "Drag & Drop Unavailable",
+                "Drag & drop support is not available:\n"
+                "tkinterdnd2 was not found.\n\n"
+                "Install it with:\n"
                 "  python -m pip install tkinterdnd2\n\n"
-                "Puis relancez Notys.")
+                "Then restart Notys.")
             return
 
         dnd_enabled = True
@@ -902,7 +902,7 @@ if __name__ == '__main__':
         status_pos.config(text=f"Ln {line}, Col {int(col)+1}")
         content = t.get_content()
         words   = len(content.split()) if content.strip() else 0
-        status_words.config(text=f"{words} mot{'s' if words != 1 else ''}")
+        status_words.config(text=f"{words} word{'s' if words != 1 else ''}")
 
 
     def new_tab(event=None, file_path=None, content=None):
@@ -933,10 +933,10 @@ if __name__ == '__main__':
         icon_lbl = tk.Label(frame, text="⚠", font=('Arial', 32), bg=STATUS_BG, fg='#e5c07b')
         icon_lbl.grid(row=0, column=0, rowspan=2, padx=(0, 18), sticky='n', pady=(2, 0))
 
-        name = tab.name if tab.name != "Sans titre" else "ce document"
+        name = tab.name if tab.name != "Untitled" else "this document"
         tk.Label(
             frame,
-            text=f"Voulez-vous enregistrer les modifications\napportées à « {name} » ?",
+            text=f"Do you want to save the changes\nmade to \"{name}\"?",
             font=('Consolas', 12, 'bold'),
             bg=STATUS_BG, fg=FG,
             justify='left',
@@ -944,7 +944,7 @@ if __name__ == '__main__':
 
         tk.Label(
             frame,
-            text="Vos modifications seront perdues si vous ne les enregistrez pas.",
+            text="Your changes will be lost if you don't save them.",
             font=('Consolas', 10),
             bg=STATUS_BG, fg=STATUS_FG,
             justify='left',
@@ -987,9 +987,9 @@ if __name__ == '__main__':
             result[0] = 'save'
             dlg.destroy()
 
-        _btn(btn_frame, "Ne pas enregistrer", do_discard).pack(side='left')
-        _btn(btn_frame, "Annuler",             do_cancel).pack(side='left', padx=(10, 0))
-        _btn(btn_frame, "Enregistrer…",        do_save, primary=True).pack(side='right')
+        _btn(btn_frame, "Don't Save", do_discard).pack(side='left')
+        _btn(btn_frame, "Cancel",     do_cancel).pack(side='left', padx=(10, 0))
+        _btn(btn_frame, "Save…",      do_save, primary=True).pack(side='right')
 
         # ── Centrage ──────────────────────────────────────────────────────────────
         dlg.update_idletasks()
@@ -1009,7 +1009,7 @@ if __name__ == '__main__':
         if tab.file_path is None:
             path = filedialog.asksaveasfilename(
                 defaultextension='.md',
-                filetypes=[('Markdown', '*.md'), ('Texte', '*.txt'), ('Tous', '*.*')]
+                filetypes=[('Markdown', '*.md'), ('Text', '*.txt'), ('All files', '*.*')]
             )
             if not path:
                 return False
@@ -1078,7 +1078,7 @@ if __name__ == '__main__':
             return
         path = filedialog.asksaveasfilename(
             defaultextension='.md',
-            filetypes=[('Markdown', '*.md'), ('Texte', '*.txt'), ('Tous', '*.*')]
+            filetypes=[('Markdown', '*.md'), ('Text', '*.txt'), ('All files', '*.*')]
         )
         if not path:
             return
@@ -1089,7 +1089,7 @@ if __name__ == '__main__':
 
     def open_file(event=None):
         path = filedialog.askopenfilename(
-            filetypes=[('Markdown', '*.md'), ('Texte', '*.txt'), ('Tous', '*.*')]
+            filetypes=[('Markdown', '*.md'), ('Text', '*.txt'), ('All files', '*.*')]
         )
         if not path:
             return
@@ -1215,7 +1215,7 @@ if __name__ == '__main__':
                 _search_index[0] = 0
             _search_highlight_current()
         else:
-            search_count.config(text="Aucun résultat")
+            search_count.config(text="No results")
         
         _search_last_query[0] = query
 
@@ -1336,27 +1336,27 @@ if __name__ == '__main__':
     menubar = tk.Menu(win, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG, bd=0)
 
     mf = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    mf.add_command(label="Nouvelle fenêtre",   accelerator=f"{mod_display}N",          command=new_window)
-    mf.add_command(label="Nouvel onglet",      accelerator=f"{mod_display}T",          command=new_tab)
-    mf.add_command(label="Rouvrir l'onglet fermé", accelerator=f"{mod_display}Shift+T", command=reopen_last_closed_tab)
-    mf.add_command(label="Ouvrir…",            accelerator=f"{mod_display}O",          command=open_file)
-    mf.add_command(label="Fermer l'onglet",    accelerator=f"{mod_display}W",          command=close_tab)
+    mf.add_command(label="New Window",        accelerator=f"{mod_display}N",          command=new_window)
+    mf.add_command(label="New Tab",           accelerator=f"{mod_display}T",          command=new_tab)
+    mf.add_command(label="Reopen Closed Tab", accelerator=f"{mod_display}Shift+T",    command=reopen_last_closed_tab)
+    mf.add_command(label="Open…",             accelerator=f"{mod_display}O",          command=open_file)
+    mf.add_command(label="Close Tab",         accelerator=f"{mod_display}W",          command=close_tab)
     mf.add_separator()
-    mf.add_command(label="Enregistrer",        accelerator=f"{mod_display}S",          command=save_text)
-    mf.add_command(label="Tout enregistrer",   accelerator=f"{mod_display}Alt+S",      command=save_all)
-    mf.add_command(label="Enregistrer sous…",  accelerator=f"{mod_display}Shift+S",    command=save_as)
-    menubar.add_cascade(label="Fichier", menu=mf)
+    mf.add_command(label="Save",              accelerator=f"{mod_display}S",          command=save_text)
+    mf.add_command(label="Save All",          accelerator=f"{mod_display}Alt+S",      command=save_all)
+    mf.add_command(label="Save As…",          accelerator=f"{mod_display}Shift+S",    command=save_as)
+    menubar.add_cascade(label="File", menu=mf)
 
     me = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    me.add_command(label="Annuler",      accelerator=f"{mod_display}Z",       command=lambda: current_tab() and current_tab().text.edit_undo())
-    me.add_command(label="Rétablir",     accelerator=f"{mod_display}Shift+Z", command=lambda: current_tab() and current_tab().text.edit_redo())
+    me.add_command(label="Undo",      accelerator=f"{mod_display}Z",       command=lambda: current_tab() and current_tab().text.edit_undo())
+    me.add_command(label="Redo",      accelerator=f"{mod_display}Shift+Z", command=lambda: current_tab() and current_tab().text.edit_redo())
     me.add_separator()
-    me.add_command(label="Rechercher…",  accelerator=f"{mod_display}F",       command=open_search)
-    menubar.add_cascade(label="Édition", menu=me)
+    me.add_command(label="Find…",     accelerator=f"{mod_display}F",       command=open_search)
+    menubar.add_cascade(label="Edit", menu=me)
 
     mg = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    mg.add_command(label="Minimiser", accelerator=f"{mod_display}M", command=lambda: minimise_win())
-    menubar.add_cascade(label="Fenêtre", menu=mg)
+    mg.add_command(label="Minimize", accelerator=f"{mod_display}M", command=lambda: minimise_win())
+    menubar.add_cascade(label="Window", menu=mg)
 
     win.config(menu=menubar)
 

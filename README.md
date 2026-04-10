@@ -13,6 +13,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 - **Code Blocks:** ` ```code``` `
 - **Text Coloration:** Using the `&^color text^&` syntax.
 - **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ~~this for strikethrough~~.
+- **Underline**: -:using:- ```-: and :-```
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
 
 ---

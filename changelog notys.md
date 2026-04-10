@@ -1,3 +1,8 @@
+## Changelog v1
+- L'application a été compilé en .app pour MacOS avec toutes les dépendences nécessaires
+- Ajout d'un logo
+- Modification des icônes pour changer le thème en .png ce qui offre une meilleur qualité.
+
 ## Changelog v0.4.1
 - Ajout du raccourcis clavier Ctrl + Tab et Ctrl + Shift + Tab pour circuler entre les onglets plus facilement.
 

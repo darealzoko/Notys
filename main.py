@@ -1,9 +1,25 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
+import sys
 import re
 import platform
 from PIL import Image, ImageTk
+
+def resource_path(relative_path):
+    """
+    Transforme un chemin relatif en chemin absolu pour PyInstaller.
+    Fonctionne pour les fichiers individuels et les dossiers.
+    """
+    try:
+        # PyInstaller crée un dossier temporaire et stocke le chemin dans _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        # Si on n'est pas compilé, on utilise le chemin normal du projet
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 try:
     from tkinterdnd2 import Tk as DnDTk, DND_FILES
@@ -601,40 +617,24 @@ if __name__ == '__main__':
             self.active = None
             self._btns  = {}
 
-            # Load icons: create simple placeholders without external dependencies
-            def _load_icon(path, color):
-                # Convert hex color to RGB tuple
-                hex_color = color.lstrip('#')
-                r = int(hex_color[0:2], 16)
-                g = int(hex_color[2:4], 16)
-                b = int(hex_color[4:6], 16)
-                
-                # Create a simple icon image
-                img = Image.new('RGBA', (20, 20), (0, 0, 0, 0))
-                from PIL import ImageDraw
-                draw = ImageDraw.Draw(img)
-                
-                # Draw based on filename
-                if 'dark' in path.lower():  # Sun icon for dark mode
-                    # Simple circle with rays
-                    draw.ellipse([8, 8, 12, 12], fill=(r, g, b))
-                    for angle in range(0, 360, 45):
-                        import math
-                        rad = math.radians(angle)
-                        x1 = 10 + 4 * math.cos(rad)
-                        y1 = 10 + 4 * math.sin(rad)
-                        x2 = 10 + 6 * math.cos(rad)
-                        y2 = 10 + 6 * math.sin(rad)
-                        draw.line([(x1, y1), (x2, y2)], fill=(r, g, b), width=1)
-                else:  # Moon icon for light mode
-                    # Simple crescent
-                    draw.ellipse([7, 7, 13, 13], fill=(r, g, b))
-                    draw.ellipse([9, 7, 15, 13], fill=(255, 255, 255, 0))
-                
-                return ImageTk.PhotoImage(img, master=parent)
+            # --- CHARGEMENT DE VOS IMAGES ---
+            # On utilise resource_path pour que PyInstaller les trouve
+            try:
+                # Charger et redimensionner l'icône Dark Mode (ex: un soleil)
+                img_dark = Image.open(resource_path("assets/icons/dark.png"))
+                img_dark = img_dark.resize((20, 20), Image.Resampling.LANCZOS)
+                self.dark_icon = ImageTk.PhotoImage(img_dark, master=parent)
 
-            self.dark_icon  = _load_icon('dark.svg',  '#ffffff')  # soleil blanc sur fond sombre
-            self.light_icon = _load_icon('light.svg', '#000000')  # lune noire sur fond clair
+                # Charger et redimensionner l'icône Light Mode (ex: une lune)
+                img_light = Image.open(resource_path("assets/icons/light.png"))
+                img_light = img_light.resize((20, 20), Image.Resampling.LANCZOS)
+                self.light_icon = ImageTk.PhotoImage(img_light, master=parent)
+            except Exception as e:
+                print(f"Erreur chargement icônes : {e}")
+                # Fallback simple si image manquante pour éviter le crash
+                self.dark_icon = None
+                self.light_icon = None
+
             self.btn_new = tk.Label(
                 self.frame, text=" + ", bg=TAB_BG, fg=TAB_FG,
                 font=FONT_TAB, cursor='hand2', padx=6

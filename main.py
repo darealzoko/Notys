@@ -30,6 +30,185 @@ except Exception:
     DND_AVAILABLE = False
 
 
+# ── Langues ───────────────────────────────────────────────────────────────────
+TRANSLATIONS = {
+    'fr': {
+        # Menu Fichier
+        'menu_file':              "Fichier",
+        'menu_new_window':        "Nouvelle fenêtre",
+        'menu_new_tab':           "Nouvel onglet",
+        'menu_reopen_tab':        "Rouvrir l'onglet fermé",
+        'menu_open':              "Ouvrir…",
+        'menu_close_tab':         "Fermer l'onglet",
+        'menu_save':              "Enregistrer",
+        'menu_save_all':          "Tout enregistrer",
+        'menu_save_as':           "Enregistrer sous…",
+        # Menu Édition
+        'menu_edit':              "Édition",
+        'menu_undo':              "Annuler",
+        'menu_redo':              "Rétablir",
+        'menu_find':              "Rechercher…",
+        # Menu Fenêtre
+        'menu_window':            "Fenêtre",
+        'menu_minimize':          "Réduire",
+        # Menu Paramètres
+        'menu_settings':          "Paramètres",
+        'menu_open_settings':     "Ouvrir les paramètres…",
+        # Fenêtre paramètres
+        'settings_title':         "Paramètres",
+        'settings_apply':         "Appliquer",
+        'settings_cancel':        "Annuler",
+        # Sections paramètres
+        'section_language':       "🌐  Langue",
+        'section_appearance':     "🎨  Apparence",
+        'section_editor':         "✏️  Éditeur",
+        'section_interface':      "🖥️  Interface",
+        # Langue
+        'settings_language':      "Langue de l'interface",
+        # Apparence
+        'settings_theme':         "Thème",
+        'theme_dark':             "Sombre",
+        'theme_light':            "Clair",
+        # Éditeur
+        'settings_font_family':   "Police",
+        'settings_font_size':     "Taille de police",
+        'settings_line_height':   "Hauteur de ligne",
+        'settings_line_wrap':     "Retour à la ligne",
+        'wrap_word':              "Par mot",
+        'wrap_char':              "Par caractère",
+        'wrap_none':              "Aucun",
+        'settings_padding':       "Marges latérales",
+        # Interface
+        'settings_show_status':   "Barre de statut",
+        'settings_show_wordcount':"Compteur de mots",
+        'settings_win_size':      "Taille de fenêtre par défaut",
+        'on':                     "Activé",
+        'off':                    "Désactivé",
+        # Dialogue non sauvegardé
+        'dlg_save_title':         "",
+        'dlg_save_msg':           "Voulez-vous enregistrer les modifications\napportées à \"{name}\" ?",
+        'dlg_save_sub':           "Vos modifications seront perdues si vous ne les enregistrez pas.",
+        'dlg_dont_save':          "Ne pas enregistrer",
+        'dlg_cancel':             "Annuler",
+        'dlg_save':               "Enregistrer…",
+        # Barre de statut
+        'status_words_one':       "mot",
+        'status_words_many':      "mots",
+        'status_untitled':        "Sans titre",
+        # Barre de recherche
+        'search_no_results':      "Aucun résultat",
+        # DnD warning
+        'dnd_title':              "Drag & Drop indisponible",
+        'dnd_msg': (
+            "Le glisser-déposer n'est pas disponible :\n"
+            "tkinterdnd2 est introuvable.\n\n"
+            "Installez-le avec :\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Redémarrez ensuite Notys."
+        ),
+        # Onglet sans titre
+        'untitled':               "Sans titre",
+    },
+    'en': {
+        # File menu
+        'menu_file':              "File",
+        'menu_new_window':        "New Window",
+        'menu_new_tab':           "New Tab",
+        'menu_reopen_tab':        "Reopen Closed Tab",
+        'menu_open':              "Open…",
+        'menu_close_tab':         "Close Tab",
+        'menu_save':              "Save",
+        'menu_save_all':          "Save All",
+        'menu_save_as':           "Save As…",
+        # Edit menu
+        'menu_edit':              "Edit",
+        'menu_undo':              "Undo",
+        'menu_redo':              "Redo",
+        'menu_find':              "Find…",
+        # Window menu
+        'menu_window':            "Window",
+        'menu_minimize':          "Minimize",
+        # Settings menu
+        'menu_settings':          "Settings",
+        'menu_open_settings':     "Open Settings…",
+        # Settings window
+        'settings_title':         "Settings",
+        'settings_apply':         "Apply",
+        'settings_cancel':        "Cancel",
+        # Settings sections
+        'section_language':       "🌐  Language",
+        'section_appearance':     "🎨  Appearance",
+        'section_editor':         "✏️  Editor",
+        'section_interface':      "🖥️  Interface",
+        # Language
+        'settings_language':      "Interface language",
+        # Appearance
+        'settings_theme':         "Theme",
+        'theme_dark':             "Dark",
+        'theme_light':            "Light",
+        # Editor
+        'settings_font_family':   "Font",
+        'settings_font_size':     "Font size",
+        'settings_line_height':   "Line height",
+        'settings_line_wrap':     "Line wrap",
+        'wrap_word':              "By word",
+        'wrap_char':              "By character",
+        'wrap_none':              "None",
+        'settings_padding':       "Side margins",
+        # Interface
+        'settings_show_status':   "Status bar",
+        'settings_show_wordcount':"Word counter",
+        'settings_win_size':      "Default window size",
+        'on':                     "On",
+        'off':                    "Off",
+        # Unsaved dialog
+        'dlg_save_title':         "",
+        'dlg_save_msg':           "Do you want to save the changes\nmade to \"{name}\"?",
+        'dlg_save_sub':           "Your changes will be lost if you don't save them.",
+        'dlg_dont_save':          "Don't Save",
+        'dlg_cancel':             "Cancel",
+        'dlg_save':               "Save…",
+        # Status bar
+        'status_words_one':       "word",
+        'status_words_many':      "words",
+        'status_untitled':        "Untitled",
+        # Search bar
+        'search_no_results':      "No results",
+        # DnD warning
+        'dnd_title':              "Drag & Drop Unavailable",
+        'dnd_msg': (
+            "Drag & drop support is not available:\n"
+            "tkinterdnd2 was not found.\n\n"
+            "Install it with:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Then restart Notys."
+        ),
+        # Untitled tab
+        'untitled':               "Untitled",
+    },
+}
+
+current_language = 'en'
+
+# ── Paramètres utilisateur ────────────────────────────────────────────────────
+SETTINGS = {
+    'font_family':    'Consolas',
+    'font_size':      18,
+    'line_wrap':      'word',    # 'word', 'char', 'none'
+    'padding':        40,        # padx de l'éditeur
+    'show_status':    True,
+    'show_wordcount': True,
+    'win_width':      900,
+    'win_height':     650,
+}
+
+def tr(key, **kwargs):
+    """Retourne la chaîne traduite pour la langue courante."""
+    text = TRANSLATIONS[current_language].get(key, TRANSLATIONS['en'].get(key, key))
+    if kwargs:
+        text = text.format(**kwargs)
+    return text
+
 # ── Couleurs ──────────────────────────────────────────────────────────────────
 THEMES = {
     'dark': {
@@ -571,7 +750,7 @@ if __name__ == '__main__':
 
         @property
         def name(self):
-            return os.path.basename(self.file_path) if self.file_path else "Untitled"
+            return os.path.basename(self.file_path) if self.file_path else tr('untitled')
 
         @property
         def is_modified(self):
@@ -861,12 +1040,9 @@ if __name__ == '__main__':
         if not DND_AVAILABLE:
             print("[DND] tkinterdnd2 non disponible, drag & drop désactivé.")
             messagebox.showwarning(
-                "Drag & Drop Unavailable",
-                "Drag & drop support is not available:\n"
-                "tkinterdnd2 was not found.\n\n"
-                "Install it with:\n"
-                "  python -m pip install tkinterdnd2\n\n"
-                "Then restart Notys.")
+                tr('dnd_title'),
+                tr('dnd_msg')
+            )
             return
 
         dnd_enabled = True
@@ -902,7 +1078,7 @@ if __name__ == '__main__':
         status_pos.config(text=f"Ln {line}, Col {int(col)+1}")
         content = t.get_content()
         words   = len(content.split()) if content.strip() else 0
-        status_words.config(text=f"{words} word{'s' if words != 1 else ''}")
+        status_words.config(text=f"{words} {tr('status_words_one') if words == 1 else tr('status_words_many')}")
 
 
     def new_tab(event=None, file_path=None, content=None):
@@ -933,10 +1109,10 @@ if __name__ == '__main__':
         icon_lbl = tk.Label(frame, text="⚠", font=('Arial', 32), bg=STATUS_BG, fg='#e5c07b')
         icon_lbl.grid(row=0, column=0, rowspan=2, padx=(0, 18), sticky='n', pady=(2, 0))
 
-        name = tab.name if tab.name != "Untitled" else "this document"
+        name = tab.name if tab.name != tr('untitled') else "this document"
         tk.Label(
             frame,
-            text=f"Do you want to save the changes\nmade to \"{name}\"?",
+            text=tr('dlg_save_msg', name=name),
             font=('Consolas', 12, 'bold'),
             bg=STATUS_BG, fg=FG,
             justify='left',
@@ -944,7 +1120,7 @@ if __name__ == '__main__':
 
         tk.Label(
             frame,
-            text="Your changes will be lost if you don't save them.",
+            text=tr('dlg_save_sub'),
             font=('Consolas', 10),
             bg=STATUS_BG, fg=STATUS_FG,
             justify='left',
@@ -987,9 +1163,9 @@ if __name__ == '__main__':
             result[0] = 'save'
             dlg.destroy()
 
-        _btn(btn_frame, "Don't Save", do_discard).pack(side='left')
-        _btn(btn_frame, "Cancel",     do_cancel).pack(side='left', padx=(10, 0))
-        _btn(btn_frame, "Save…",      do_save, primary=True).pack(side='right')
+        _btn(btn_frame, tr('dlg_dont_save'), do_discard).pack(side='left')
+        _btn(btn_frame, tr('dlg_cancel'),    do_cancel).pack(side='left', padx=(10, 0))
+        _btn(btn_frame, tr('dlg_save'),      do_save, primary=True).pack(side='right')
 
         # ── Centrage ──────────────────────────────────────────────────────────────
         dlg.update_idletasks()
@@ -1139,6 +1315,392 @@ if __name__ == '__main__':
         new_tab(file_path=info['file_path'], content=info['content'])
         return 'break'
 
+    def rebuild_menu():
+        """Reconstruit la barre de menus après un changement de langue."""
+        menubar.delete(0, 'end')
+
+        mf2 = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+        mf2.add_command(label=tr('menu_new_window'),  accelerator=f"{mod_display}N",       command=new_window)
+        mf2.add_command(label=tr('menu_new_tab'),     accelerator=f"{mod_display}T",       command=new_tab)
+        mf2.add_command(label=tr('menu_reopen_tab'),  accelerator=f"{mod_display}Shift+T", command=reopen_last_closed_tab)
+        mf2.add_command(label=tr('menu_open'),        accelerator=f"{mod_display}O",       command=open_file)
+        mf2.add_command(label=tr('menu_close_tab'),   accelerator=f"{mod_display}W",       command=close_tab)
+        mf2.add_separator()
+        mf2.add_command(label=tr('menu_save'),        accelerator=f"{mod_display}S",       command=save_text)
+        mf2.add_command(label=tr('menu_save_all'),    accelerator=f"{mod_display}Alt+S",   command=save_all)
+        mf2.add_command(label=tr('menu_save_as'),     accelerator=f"{mod_display}Shift+S", command=save_as)
+        menubar.add_cascade(label=tr('menu_file'), menu=mf2)
+
+        me2 = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+        me2.add_command(label=tr('menu_undo'), accelerator=f"{mod_display}Z",       command=lambda: current_tab() and current_tab().text.edit_undo())
+        me2.add_command(label=tr('menu_redo'), accelerator=f"{mod_display}Shift+Z", command=lambda: current_tab() and current_tab().text.edit_redo())
+        me2.add_separator()
+        me2.add_command(label=tr('menu_find'), accelerator=f"{mod_display}F",       command=open_search)
+        menubar.add_cascade(label=tr('menu_edit'), menu=me2)
+
+        mg2 = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+        mg2.add_command(label=tr('menu_minimize'), accelerator=f"{mod_display}M", command=lambda: minimise_win())
+        menubar.add_cascade(label=tr('menu_window'), menu=mg2)
+
+        ms2 = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+        ms2.add_command(label=tr('menu_open_settings'), command=open_settings)
+        menubar.add_cascade(label=tr('menu_settings'), menu=ms2)
+
+        win.config(menu=menubar)
+        # Rafraîchir les onglets (le nom "Sans titre" / "Untitled" peut changer)
+        tab_bar.refresh()
+        update_title()
+        update_status()
+
+    def open_settings(event=None):
+        """Ouvre la fenêtre de paramètres avec plusieurs sections."""
+        global current_language, SETTINGS
+
+        dlg = tk.Toplevel(win)
+        dlg.title(tr('settings_title'))
+        dlg.geometry("600x500")
+        dlg.resizable(False, False)
+        dlg.configure(bg=STATUS_BG)
+        dlg.transient(win)
+        dlg.grab_set()
+
+        # ── Variables locales (copie des settings courants) ───────────────────────
+        lang_var      = tk.StringVar(value=current_language)
+        theme_var     = tk.StringVar(value=current_theme)
+        font_fam_var  = tk.StringVar(value=SETTINGS['font_family'])
+        font_size_var = tk.IntVar(value=SETTINGS['font_size'])
+        wrap_var      = tk.StringVar(value=SETTINGS['line_wrap'])
+        padding_var   = tk.IntVar(value=SETTINGS['padding'])
+        status_var    = tk.BooleanVar(value=SETTINGS['show_status'])
+        wcount_var    = tk.BooleanVar(value=SETTINGS['show_wordcount'])
+        win_w_var     = tk.IntVar(value=SETTINGS['win_width'])
+        win_h_var     = tk.IntVar(value=SETTINGS['win_height'])
+
+        # ── Helpers UI ────────────────────────────────────────────────────────────
+        H_BG   = STATUS_BG
+        SEP_FG = "#3c3c3c" if current_theme == 'dark' else "#cccccc"
+        ACCENT = SELECT_BG if current_theme == 'dark' else '#1a6bbf'
+
+        def section_label(parent, text, row):
+            tk.Label(
+                parent, text=text,
+                font=('Consolas', 11, 'bold'),
+                bg=H_BG, fg=ACCENT, anchor='w',
+            ).grid(row=row, column=0, columnspan=3, sticky='w', pady=(18, 4))
+            tk.Frame(parent, bg=SEP_FG, height=1).grid(
+                row=row+1, column=0, columnspan=3, sticky='ew', pady=(0, 10))
+
+        def row_label(parent, text, row):
+            tk.Label(
+                parent, text=text,
+                font=('Consolas', 11),
+                bg=H_BG, fg=FG, anchor='w',
+            ).grid(row=row, column=0, sticky='w', pady=4, padx=(0, 20))
+
+        def make_radiogroup(parent, var, options, row, col=1):
+            f = tk.Frame(parent, bg=H_BG)
+            f.grid(row=row, column=col, sticky='w')
+            for label, val in options:
+                tk.Radiobutton(
+                    f, text=label, variable=var, value=val,
+                    bg=H_BG, fg=FG, selectcolor=TAB_BG,
+                    activebackground=H_BG, activeforeground=FG,
+                    font=('Consolas', 11), cursor='hand2',
+                ).pack(side='left', padx=(0, 12))
+
+        def make_toggle(parent, var, row, col=1):
+            f = tk.Frame(parent, bg=H_BG)
+            f.grid(row=row, column=col, sticky='w')
+            for label, val in [(tr('on'), True), (tr('off'), False)]:
+                tk.Radiobutton(
+                    f, text=label, variable=var, value=val,
+                    bg=H_BG, fg=FG, selectcolor=TAB_BG,
+                    activebackground=H_BG, activeforeground=FG,
+                    font=('Consolas', 11), cursor='hand2',
+                ).pack(side='left', padx=(0, 12))
+
+        def make_spinbox(parent, var, from_, to, row, col=1, width=6):
+            sb = tk.Spinbox(
+                parent, from_=from_, to=to, textvariable=var,
+                width=width, font=('Consolas', 11),
+                bg=TAB_BG, fg=FG, buttonbackground=TAB_BG,
+                insertbackground=FG, relief='flat',
+                highlightthickness=1,
+                highlightbackground=SEP_FG,
+                highlightcolor=ACCENT,
+            )
+            sb.grid(row=row, column=col, sticky='w', pady=4)
+
+        def make_optionmenu(parent, var, options, row, col=1):
+            om = tk.OptionMenu(parent, var, *options)
+            om.config(
+                bg=TAB_BG, fg=FG, activebackground=SELECT_BG,
+                activeforeground=FG, font=('Consolas', 11),
+                relief='flat', bd=0, highlightthickness=1,
+                highlightbackground=SEP_FG, cursor='hand2',
+            )
+            om['menu'].config(bg=TAB_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+            om.grid(row=row, column=col, sticky='w', pady=4)
+
+        # ── Layout principal : nav gauche + contenu droite ────────────────────────
+        outer = tk.Frame(dlg, bg=H_BG)
+        outer.pack(fill='both', expand=True)
+
+        # Panneau de navigation (gauche)
+        nav_bg = TAB_BG
+        nav = tk.Frame(outer, bg=nav_bg, width=160)
+        nav.pack(side='left', fill='y')
+        nav.pack_propagate(False)
+
+        # Zone de contenu (droite)
+        content_area = tk.Frame(outer, bg=H_BG)
+        content_area.pack(side='left', fill='both', expand=True)
+
+        # Frame courante affichée
+        _current_page = [None]
+        _nav_btns = []
+
+        sections = [
+            ('section_language',   '🌐'),
+            ('section_appearance', '🎨'),
+            ('section_editor',     '✏️'),
+            ('section_interface',  '🖥️'),
+        ]
+
+        def show_page(idx):
+            if _current_page[0] is not None:
+                _current_page[0].pack_forget()
+            pages[idx].pack(fill='both', expand=True, padx=28, pady=10)
+            _current_page[0] = pages[idx]
+            for i, b in enumerate(_nav_btns):
+                b.config(
+                    bg=TAB_ACTIVE if i == idx else nav_bg,
+                    fg=TAB_FG_ACT if i == idx else TAB_FG,
+                )
+
+        # Créer les boutons de navigation
+        tk.Frame(nav, bg=nav_bg, height=12).pack()  # spacer
+        for i, (key, icon) in enumerate(sections):
+            label = tr(key).replace(icon, '').strip()
+            btn = tk.Label(
+                nav, text=f"  {icon}  {label}",
+                font=('Consolas', 11),
+                bg=nav_bg, fg=TAB_FG,
+                anchor='w', cursor='hand2',
+                padx=8, pady=10,
+            )
+            btn.pack(fill='x')
+            idx = i
+            btn.bind('<Button-1>', lambda e, i=idx: show_page(i))
+            btn.bind('<Enter>', lambda e, b=btn, i=idx: b.config(bg=TAB_ACTIVE) if i != _nav_btns.index(b) or _current_page[0] != pages[i] else None)
+            btn.bind('<Leave>', lambda e, b=btn, i=idx: b.config(bg=TAB_ACTIVE if _current_page[0] == pages[i] else nav_bg))
+            _nav_btns.append(btn)
+
+        # ── Page 0 : Langue ───────────────────────────────────────────────────────
+        p0 = tk.Frame(content_area, bg=H_BG)
+        row_label(p0, tr('settings_language'), 2)
+        make_radiogroup(p0, lang_var, [("Français", 'fr'), ("English", 'en')], row=2)
+
+        # ── Page 1 : Apparence ────────────────────────────────────────────────────
+        p1 = tk.Frame(content_area, bg=H_BG)
+        row_label(p1, tr('settings_theme'), 2)
+        make_radiogroup(p1, theme_var, [
+            (tr('theme_dark'),  'dark'),
+            (tr('theme_light'), 'light'),
+        ], row=2)
+
+        # ── Page 2 : Éditeur ──────────────────────────────────────────────────────
+        p2 = tk.Frame(content_area, bg=H_BG)
+
+        row_label(p2, tr('settings_font_family'), 2)
+        font_options = ['Consolas', 'Courier', 'Monaco', 'Menlo', 'DejaVu Sans Mono', 'Arial', 'Helvetica']
+        make_optionmenu(p2, font_fam_var, font_options, row=2)
+
+        row_label(p2, tr('settings_font_size'), 4)
+        make_spinbox(p2, font_size_var, 8, 48, row=4)
+
+        row_label(p2, tr('settings_line_wrap'), 6)
+        make_radiogroup(p2, wrap_var, [
+            (tr('wrap_word'), 'word'),
+            (tr('wrap_char'), 'char'),
+            (tr('wrap_none'), 'none'),
+        ], row=6)
+
+        row_label(p2, tr('settings_padding'), 8)
+        make_spinbox(p2, padding_var, 0, 200, row=8)
+
+        # ── Page 3 : Interface ────────────────────────────────────────────────────
+        p3 = tk.Frame(content_area, bg=H_BG)
+
+        row_label(p3, tr('settings_show_status'), 2)
+        make_toggle(p3, status_var, row=2)
+
+        row_label(p3, tr('settings_show_wordcount'), 4)
+        make_toggle(p3, wcount_var, row=4)
+
+        row_label(p3, tr('settings_win_size'), 6)
+        size_f = tk.Frame(p3, bg=H_BG)
+        size_f.grid(row=6, column=1, sticky='w', pady=4)
+        tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
+                   width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
+                   buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
+                   highlightthickness=1, highlightbackground=SEP_FG,
+                   highlightcolor=ACCENT).pack(side='left')
+        tk.Label(size_f, text=" × ", bg=H_BG, fg=STATUS_FG, font=('Consolas', 11)).pack(side='left')
+        tk.Spinbox(size_f, from_=300, to=2160, textvariable=win_h_var,
+                   width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
+                   buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
+                   highlightthickness=1, highlightbackground=SEP_FG,
+                   highlightcolor=ACCENT).pack(side='left')
+
+        pages = [p0, p1, p2, p3]
+        show_page(0)
+
+        # ── Séparateur + boutons ──────────────────────────────────────────────────
+        tk.Frame(dlg, bg=SEP_FG, height=1).pack(fill='x')
+        btn_frame = tk.Frame(dlg, bg=H_BG, padx=20, pady=14)
+        btn_frame.pack(fill='x')
+
+        def _sbtn(parent, text, cmd, primary=False):
+            if primary:
+                bg   = ACCENT
+                bg_h = '#3a6090' if current_theme == 'dark' else '#145299'
+            else:
+                bg   = '#3a3a3a' if current_theme == 'dark' else '#9e9e9e'
+                bg_h = '#4a4a4a' if current_theme == 'dark' else '#7a7a7a'
+            b = tk.Label(
+                parent, text=text,
+                bg=bg, fg='#ffffff',
+                font=('Consolas', 11, 'bold' if primary else 'normal'),
+                padx=16, pady=6, cursor='hand2', relief='flat',
+            )
+            b.bind('<Button-1>', lambda e: cmd())
+            b.bind('<Enter>',    lambda e: b.config(bg=bg_h))
+            b.bind('<Leave>',    lambda e: b.config(bg=bg))
+            return b
+
+        def do_cancel():
+            dlg.destroy()
+
+        def do_apply():
+            global current_language, current_theme, SETTINGS
+            global BG, FG, CURSOR_CLR, SELECT_BG, STATUS_BG, STATUS_FG
+            global TAB_BG, TAB_ACTIVE, TAB_FG, TAB_FG_ACT
+            global C_H1, C_H2, C_H3, C_H4, C_CODE, C_BOLD, C_ITALIC
+            global C_LIST, C_QUOTE, C_LINK, C_HR, C_UNDERLINE, C_STRIKE
+            global FONT_BODY, FONT_H1, FONT_H2, FONT_H3, FONT_H4
+            global FONT_CODE, FONT_BOLD, FONT_ITALIC
+
+            # ── Langue ────────────────────────────────────────────────────────────
+            current_language = lang_var.get()
+
+            # ── Thème ─────────────────────────────────────────────────────────────
+            new_theme = theme_var.get()
+            if new_theme != current_theme:
+                current_theme = new_theme
+                BG         = THEMES[current_theme]['BG']
+                FG         = THEMES[current_theme]['FG']
+                CURSOR_CLR = THEMES[current_theme]['CURSOR_CLR']
+                SELECT_BG  = THEMES[current_theme]['SELECT_BG']
+                STATUS_BG  = THEMES[current_theme]['STATUS_BG']
+                STATUS_FG  = THEMES[current_theme]['STATUS_FG']
+                TAB_BG     = THEMES[current_theme]['TAB_BG']
+                TAB_ACTIVE = THEMES[current_theme]['TAB_ACTIVE']
+                TAB_FG     = THEMES[current_theme]['TAB_FG']
+                TAB_FG_ACT = THEMES[current_theme]['TAB_FG_ACT']
+                C_H1 = THEMES[current_theme]['C_H1']; C_H2 = THEMES[current_theme]['C_H2']
+                C_H3 = THEMES[current_theme]['C_H3']; C_H4 = THEMES[current_theme]['C_H4']
+                C_CODE  = THEMES[current_theme]['C_CODE']; C_BOLD  = THEMES[current_theme]['C_BOLD']
+                C_ITALIC = THEMES[current_theme]['C_ITALIC']
+                C_LIST  = THEMES[current_theme]['C_LIST']; C_QUOTE = THEMES[current_theme]['C_QUOTE']
+                C_LINK  = THEMES[current_theme]['C_LINK']; C_HR    = THEMES[current_theme]['C_HR']
+                C_UNDERLINE = THEMES[current_theme]['C_UNDERLINE']
+                C_STRIKE    = THEMES[current_theme]['C_STRIKE']
+                tab_bar.toggle_theme.__func__  # juste pour éviter l'appel complet
+                # Appliquer manuellement (même logique que toggle_theme)
+                tab_bar.update_theme()
+                for tab in tab_bar.tabs:
+                    tab.update_theme()
+                status_bar.config(bg=STATUS_BG)
+                status_file.config(bg=STATUS_BG, fg=STATUS_FG)
+                status_pos.config(bg=STATUS_BG, fg=STATUS_FG)
+                status_words.config(bg=STATUS_BG, fg=STATUS_FG)
+                win.config(bg=BG)
+                editor_area.config(bg=BG)
+                menubar.config(bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+                tab_bar.theme_button.config(
+                    image=tab_bar.dark_icon if current_theme == 'dark' else tab_bar.light_icon
+                )
+                entry_bg = THEMES[current_theme]['TAB_BG'] if current_theme == 'dark' else THEMES[current_theme]['STATUS_BG']
+                entry_border = "#555555" if current_theme == 'dark' else "#aaaaaa"
+                search_bar.config(bg=STATUS_BG)
+                search_entry.config(bg=entry_bg, fg=FG, insertbackground=FG,
+                                    highlightbackground=entry_border, highlightcolor=SELECT_BG)
+                search_count.config(bg=STATUS_BG, fg=STATUS_FG)
+                btn_prev.config(bg=STATUS_BG, fg=FG)
+                btn_next.config(bg=STATUS_BG, fg=FG)
+                btn_close_search.config(bg=STATUS_BG, fg=STATUS_FG)
+
+            # ── Éditeur ───────────────────────────────────────────────────────────
+            new_ff   = font_fam_var.get()
+            new_fs   = font_size_var.get()
+            new_wrap = wrap_var.get()
+            new_pad  = padding_var.get()
+
+            SETTINGS['font_family']  = new_ff
+            SETTINGS['font_size']    = new_fs
+            SETTINGS['line_wrap']    = new_wrap
+            SETTINGS['padding']      = new_pad
+
+            FONT_BODY   = (new_ff, new_fs)
+            FONT_H1     = (new_ff, int(new_fs * 1.9), 'bold')
+            FONT_H2     = (new_ff, int(new_fs * 1.55), 'bold')
+            FONT_H3     = (new_ff, int(new_fs * 1.33), 'bold')
+            FONT_H4     = (new_ff, int(new_fs * 1.1), 'bold')
+            FONT_BOLD   = (new_ff, new_fs, 'bold')
+            FONT_ITALIC = (new_ff, new_fs, 'italic')
+
+            tk_wrap = {'word': 'word', 'char': 'char', 'none': 'none'}.get(new_wrap, 'word')
+            for tab in tab_bar.tabs:
+                tab.text.config(
+                    wrap=tk_wrap,
+                    padx=new_pad,
+                    font=(new_ff, new_fs),
+                )
+                tab._configure_tags()
+                tab.highlight_markdown()
+
+            # ── Interface ─────────────────────────────────────────────────────────
+            SETTINGS['show_status']    = status_var.get()
+            SETTINGS['show_wordcount'] = wcount_var.get()
+            SETTINGS['win_width']      = win_w_var.get()
+            SETTINGS['win_height']     = win_h_var.get()
+
+            if SETTINGS['show_status']:
+                status_bar.pack(fill='x', side='bottom')
+            else:
+                status_bar.pack_forget()
+
+            status_words.pack(side='right') if SETTINGS['show_wordcount'] else status_words.pack_forget()
+
+            win.geometry(f"{SETTINGS['win_width']}x{SETTINGS['win_height']}")
+
+            # ── Rebuild menu + fermeture ──────────────────────────────────────────
+            rebuild_menu()
+            dlg.destroy()
+
+        _sbtn(btn_frame, tr('settings_cancel'), do_cancel).pack(side='left')
+        _sbtn(btn_frame, tr('settings_apply'),  do_apply, primary=True).pack(side='right')
+
+        # ── Centrage ──────────────────────────────────────────────────────────────
+        dlg.update_idletasks()
+        w, h = dlg.winfo_width(), dlg.winfo_height()
+        x = win.winfo_x() + (win.winfo_width()  - w) // 2
+        y = win.winfo_y() + (win.winfo_height() - h) // 2
+        dlg.geometry(f'+{x}+{y}')
+        dlg.focus_force()
+        dlg.bind('<Escape>', lambda e: do_cancel())
+
     # ── Raccourcis ────────────────────────────────────────────────────────────────
     # Détecter l'OS pour utiliser les bonnes touches de modification
     is_macos = platform.system() == 'Darwin'
@@ -1215,7 +1777,7 @@ if __name__ == '__main__':
                 _search_index[0] = 0
             _search_highlight_current()
         else:
-            search_count.config(text="No results")
+            search_count.config(text=tr('search_no_results'))
         
         _search_last_query[0] = query
 
@@ -1336,27 +1898,31 @@ if __name__ == '__main__':
     menubar = tk.Menu(win, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG, bd=0)
 
     mf = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    mf.add_command(label="New Window",        accelerator=f"{mod_display}N",          command=new_window)
-    mf.add_command(label="New Tab",           accelerator=f"{mod_display}T",          command=new_tab)
-    mf.add_command(label="Reopen Closed Tab", accelerator=f"{mod_display}Shift+T",    command=reopen_last_closed_tab)
-    mf.add_command(label="Open…",             accelerator=f"{mod_display}O",          command=open_file)
-    mf.add_command(label="Close Tab",         accelerator=f"{mod_display}W",          command=close_tab)
+    mf.add_command(label=tr('menu_new_window'),  accelerator=f"{mod_display}N",          command=new_window)
+    mf.add_command(label=tr('menu_new_tab'),     accelerator=f"{mod_display}T",          command=new_tab)
+    mf.add_command(label=tr('menu_reopen_tab'),  accelerator=f"{mod_display}Shift+T",    command=reopen_last_closed_tab)
+    mf.add_command(label=tr('menu_open'),        accelerator=f"{mod_display}O",          command=open_file)
+    mf.add_command(label=tr('menu_close_tab'),   accelerator=f"{mod_display}W",          command=close_tab)
     mf.add_separator()
-    mf.add_command(label="Save",              accelerator=f"{mod_display}S",          command=save_text)
-    mf.add_command(label="Save All",          accelerator=f"{mod_display}Alt+S",      command=save_all)
-    mf.add_command(label="Save As…",          accelerator=f"{mod_display}Shift+S",    command=save_as)
-    menubar.add_cascade(label="File", menu=mf)
+    mf.add_command(label=tr('menu_save'),        accelerator=f"{mod_display}S",          command=save_text)
+    mf.add_command(label=tr('menu_save_all'),    accelerator=f"{mod_display}Alt+S",      command=save_all)
+    mf.add_command(label=tr('menu_save_as'),     accelerator=f"{mod_display}Shift+S",    command=save_as)
+    menubar.add_cascade(label=tr('menu_file'), menu=mf)
 
     me = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    me.add_command(label="Undo",      accelerator=f"{mod_display}Z",       command=lambda: current_tab() and current_tab().text.edit_undo())
-    me.add_command(label="Redo",      accelerator=f"{mod_display}Shift+Z", command=lambda: current_tab() and current_tab().text.edit_redo())
+    me.add_command(label=tr('menu_undo'),  accelerator=f"{mod_display}Z",       command=lambda: current_tab() and current_tab().text.edit_undo())
+    me.add_command(label=tr('menu_redo'),  accelerator=f"{mod_display}Shift+Z", command=lambda: current_tab() and current_tab().text.edit_redo())
     me.add_separator()
-    me.add_command(label="Find…",     accelerator=f"{mod_display}F",       command=open_search)
-    menubar.add_cascade(label="Edit", menu=me)
+    me.add_command(label=tr('menu_find'), accelerator=f"{mod_display}F",       command=open_search)
+    menubar.add_cascade(label=tr('menu_edit'), menu=me)
 
     mg = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    mg.add_command(label="Minimize", accelerator=f"{mod_display}M", command=lambda: minimise_win())
-    menubar.add_cascade(label="Window", menu=mg)
+    mg.add_command(label=tr('menu_minimize'), accelerator=f"{mod_display}M", command=lambda: minimise_win())
+    menubar.add_cascade(label=tr('menu_window'), menu=mg)
+
+    ms = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+    ms.add_command(label=tr('menu_open_settings'), command=open_settings)
+    menubar.add_cascade(label=tr('menu_settings'), menu=ms)
 
     win.config(menu=menubar)
 

@@ -1,1 +1,0 @@
-../../../../Resources/tkinterdnd2/tkdnd/osx-x64/tkdnd_unix.tcl

@@ -13,10 +13,10 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 - **Code Blocks:** ` ```code``` `
 - **Text Coloration:** Using the `&^color text^&` syntax.
 - **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ~~this for strikethrough~~.
-- **Underline**: -:using:- ```-: and :-```
+- **Underline**: using ```-: and :-```
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
-
-![Capture d’écran 2026-04-10 à 21.04.10.png](/Users/zoko/Desktop/Capture%20d’écran%202026-04-10%20à%2021.04.10.png)
+  
+  ![showcase.png](/Users/zoko/Nextcloud/Code/Python/Notys/Notys%20-sync%20github-/showcase.png)
 
 ---
 

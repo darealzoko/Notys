@@ -25,3 +25,6 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 2. Download the latest `Notys.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
 4. **Right-click > Open** (required only for the first launch to bypass macOS Gatekeeper).
+
+## Known issues
+Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking.

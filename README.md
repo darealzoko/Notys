@@ -29,7 +29,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
   
   ![showcase.png](./showcase.png)
 
-  ![dragndropshowcase.mov](./dragndropshowcase.mov)
+  ![dragndropshowcase.mp4](./dragndropshowcase.mp4)
 
 ---
 

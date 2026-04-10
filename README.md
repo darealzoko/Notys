@@ -28,4 +28,8 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 5. Have fun!
 
 ## Known issues
-Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking (also in light theme).
+- Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking (also in light theme).
+- Bottom bar (for informations like "words", the line etc...) is not visible if the height resolution is not enough.
+- Even non-markdown files will have the markdown syntax.
+- The shortcut to save all is not working, but the button in the menu bar is (please use that instead while i am working on the issue).
+- The scrolling bar is not very looking like a scrolling bar

@@ -1,47 +1,26 @@
 # Notys
 
-Notys est une application super légère pour écrire des notes.
-Notys ne dispose que des features nécessaires.
+**Notys** is an ultra-lightweight note-taking application designed for speed and simplicity.  
+No bloat, just the essential features you need to get your thoughts down.
 
-## Commencer
+## Features (Markdown-style)
 
-Voici les features (à utiliser comme du markdown) :
+Notys supports real-time formatting using a simple and intuitive syntax:
 
-- Des headers (jusqu'à 4)
-- **Gras**
-- *Italique*
-- ```code```
-- Coloration de texte
-- surlignage
-- Drag n Drop des fichiers pour les ouvrir
-- ## Ce qui est nécessaire pour installer :
-- Un ordinateur
-- Une interface graphique en tout genre
-- Python 3.12.10 (pas plus pour l'instant) téléchargé de préférence sur le site officiel (python.org)
-- tkinter
-- tkinterdnd2
-- pillow
-  
-  ## Notes :
-  
-  (Pour macos après avoir installé python 3.12.10 sur leur site officiel) :
-  `echo "alias pyr='/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12'" >> ~/.zshrc && source ~/.zshrc` puis faites `pyr main.py`.
-  
-  ## Installation :
-- Télécharger python si pas installé
-- Télécharger le fichier main.py ainsi que les fichiers .svg
-- Mettre les trois fichiers dans un même dossier
-- Ouvrir un terminal dans ce dossier
-- Éxecuter le fichier main.py via le terminal
-  
-  ## Recommendations pour l'ordinateur
-  
-  | Hardware            | Minimum   | Recommandé    |
-  |:------------------- |:---------:|:-------------:|
-  | Processeur          | Existant  | Pentium       |
-  | GPU                 | Optionnel | Intel HD 5100 |
-  | RAM (pour l'app)    | 512M      | 1G            |
-  | RAM (en tout)       | 4G        | 8G            |
-  | Électricité         | Optionnel | Existant      |
-  | Disque (pour l'app) | 1Mo      | 10Mo          |
-  | Disque (en tout)    | 128G      | 256G          |
+- **Headers:** Up to 4 levels (using `#`)
+- **Bold:** `**text**`
+- **Italic:** `*text*`
+- **Code Blocks:** ` ```code``` `
+- **Text Coloration:** Using the `&^color text^&` syntax.
+- **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ~~this for strikethrough~~.
+- **Drag & Drop:** Simply drop files into the app to open them instantly.
+
+---
+
+## Getting Started
+
+### For macOS
+1. Go to the **Releases** section on GitHub.
+2. Download the latest `Notys.zip`.
+3. Unzip and move `Notys.app` to your **Applications** folder.
+4. **Right-click > Open** (required only for the first launch to bypass macOS Gatekeeper).

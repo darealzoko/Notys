@@ -27,4 +27,4 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 4. **Right-click > Open** (required only for the first launch to bypass macOS Gatekeeper).
 
 ## Known issues
-Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking.
+Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking (also in light theme).

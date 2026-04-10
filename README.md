@@ -8,15 +8,22 @@ No bloat, just the essential features you need to get your thoughts down.
 Notys supports real-time formatting using a simple and intuitive syntax:
 
 - **Headers:** Up to 4 levels (using `#`)
+
 - **Bold:** `**text**`
+
 - **Italic:** `*text*`
+
 - **Code Blocks:** ` ```code``` `
+
 - **Text Coloration:** Using the `&^color text^&` syntax.
+
 - **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ~~this for strikethrough~~.
+
 - **Underline**: using ```-: and :-```
+
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
   
-  ![showcase.png](/Users/zoko/Nextcloud/Code/Python/Notys/Notys%20-sync%20github-/showcase.png)
+  ![showcase.png](./showcase.png)
 
 ---
 

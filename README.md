@@ -16,7 +16,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 - **Underline**: using ```-: and :-```
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
   
-  ![showcase.png](/Users/zoko/Nextcloud/Code/Python/Notys/Notys%20-sync%20github-/showcase.png)
+  ![showcase.png](./showcase.png)
 
 ---
 

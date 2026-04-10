@@ -17,7 +17,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 
 - **Text Coloration:** Using the `&^color text^&` syntax.
 
-- **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ~~this for strikethrough~~.
+- **Strikethrough & Highlighting:** For advanced note-taking using ==equals for highlight== and ```~~this for strikethrough~~```.
 
 - **Underline**: using ```-: and :-```
 

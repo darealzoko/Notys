@@ -51,3 +51,4 @@ I'm actively working on improving Notys. Here is what's on the stove:
 - [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other files (maybe gonna put something to enable or disable that in the settings)
 - [ ] **Bug Fix:** Repairing the "Save All" keyboard shortcut (use the Menu Bar for now!).
 - [ ] **Visuals:** Redesigning the scroll bar for a more native look.
+- [ ] **Settings Improvements**: Fixing the fact that modified settings are reset after a re-launch of the app.

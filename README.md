@@ -22,6 +22,10 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 - **Underline**: using ```-: and :-```
 
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
+
+- **Languages**: There is support for French and English (english by default)
+
+- **Settings**: Various settings for customisation and other.
   
   ![showcase.png](./showcase.png)
 

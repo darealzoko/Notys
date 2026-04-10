@@ -16,11 +16,14 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 - **Underline**: -:using:- ```-: and :-```
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
 
+![Capture d’écran 2026-04-10 à 21.04.10.png](/Users/zoko/Desktop/Capture%20d’écran%202026-04-10%20à%2021.04.10.png)
+
 ---
 
 ## Getting Started
 
 ### For macOS
+
 1. Go to the **Releases** section on GitHub.
 2. Download the latest `Notys.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
@@ -28,6 +31,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 5. Have fun!
 
 ## Known issues
+
 - Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking (also in light theme).
 - Bottom bar (for informations like "words", the line etc...) is not visible if the height resolution is not enough.
 - Even non-markdown files will have the markdown syntax.

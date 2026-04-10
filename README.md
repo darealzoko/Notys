@@ -43,5 +43,5 @@ Voici les features (à utiliser comme du markdown) :
   | RAM (pour l'app)    | 512M      | 1G            |
   | RAM (en tout)       | 4G        | 8G            |
   | Électricité         | Optionnel | Existant      |
-  | Disque (pour l'app) | 10Ko      | 10Mo          |
+  | Disque (pour l'app) | 1Mo      | 10Mo          |
   | Disque (en tout)    | 128G      | 256G          |

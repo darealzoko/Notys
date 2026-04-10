@@ -43,10 +43,11 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 4. Open the app
 5. Have fun!
 
-## Known issues
+## Work in Progress (Roadmap)
 
-- Underline is not visible (at all) in light theme, and strikethrough is visible but not good looking (also in light theme).
-- Bottom bar (for informations like "words", the line etc...) is not visible if the height resolution is not enough.
-- Even non-markdown files will have the markdown syntax.
-- The shortcut to save all is not working, but the button in the menu bar is (please use that instead while i am working on the issue).
-- The scrolling bar is not very looking like a scrolling bar
+I'm actively working on improving Notys. Here is what's on the stove:
+- [ ] **UI Refinement:** Fixing visibility for Underline and Strikethrough in Light Theme.
+- [ ] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
+- [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other files (maybe gonna put something to enable or disable that in the settings)
+- [ ] **Bug Fix:** Repairing the "Save All" keyboard shortcut (use the Menu Bar for now!).
+- [ ] **Visuals:** Redesigning the scroll bar for a more native look.

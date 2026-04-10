@@ -1,3 +1,14 @@
+## Changelog v0.4.1
+- Ajout du raccourcis clavier Ctrl + Tab et Ctrl + Shift + Tab pour circuler entre les onglets plus facilement.
+
+## Changelog v0.4
+- Ajout de plusieurs raccourcis claviers
+    - Cmd / Ctrl + T : nouvel onglet
+    - Cmd / Ctrl + Shift + T : rouvrire le dernier onglet fermé
+    - Cmd / Ctrl + N : nouvelle fenêtre (anciennement nouvel onglet)
+    - Cmd / Ctrl + Opt / Alt + N : enregistrer tous les fichiers (ne fonctionne pas)
+- Modification minime : Cmd/Ctrl + W appel maintenant on_quit() lorsqu'il ne reste qu'un onglet.
+
 ## Changelog v0.3.1
 - Réglage du drag n drop sur MacOS.
 - Ajout du zoom/dézoom

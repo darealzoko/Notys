@@ -228,6 +228,16 @@ if __name__ == '__main__':
             else:
                 self.text.bind('<Control-BackSpace>', self._delete_word_before)
 
+            # Ctrl+Tab / Ctrl+Shift+Tab : onglet suivant / précédent
+            self.text.bind('<Control-Tab>',       lambda e: _next_tab())
+            self.text.bind('<Control-Shift-Tab>', lambda e: _prev_tab())
+
+            # Ctrl+Alt+S / Cmd+Option+S : tout sauvegarder
+            if is_macos:
+                self.text.bind('<Command-Option-s>', lambda e: save_all())
+            else:
+                self.text.bind('<Control-Alt-s>', lambda e: save_all())
+
         def update_theme(self):
             self.frame.config(bg=BG)
             self.text.config(
@@ -1012,6 +1022,9 @@ if __name__ == '__main__':
         win.after(800, lambda: status_file.config(fg=STATUS_FG))
         return True
 
+    # ── Historique des onglets fermés (pour Cmd/Ctrl+Shift+T) ────────────────────
+    _closed_tabs_history = []   # liste de dicts : {'file_path': ..., 'content': ...}
+
     def close_tab(tab=None, event=None):
         if tab is None:
             tab = current_tab()
@@ -1027,11 +1040,13 @@ if __name__ == '__main__':
                     return  # L'utilisateur a annulé le "Enregistrer sous"
 
         if len(tab_bar.tabs) == 1:
-            tab.file_path = None
-            tab.set_content("")
-            tab.set_modified(False)
-            update_title()
+            on_quit()
             return
+        # Mémoriser avant de supprimer
+        _closed_tabs_history.append({
+            'file_path': tab.file_path,
+            'content':   tab.get_content(),
+        })
         idx = tab_bar.tabs.index(tab)
         tab_bar.remove(tab)
         if tab_bar.tabs:
@@ -1104,6 +1119,25 @@ if __name__ == '__main__':
             t.set_zoom(t.font_scale - 0.1)
         return 'break'
 
+    def new_window(event=None):
+        """Ouvre une nouvelle instance de l'application dans une fenêtre séparée."""
+        import subprocess, sys
+        subprocess.Popen([sys.executable, __file__])
+        return 'break'
+
+    def save_all(event=None):
+        """Sauvegarde tous les onglets ouverts."""
+        for tab in list(tab_bar.tabs):
+            _save_tab(tab)
+        return 'break'
+
+    def reopen_last_closed_tab(event=None):
+        """Rouvre le dernier onglet fermé."""
+        if not _closed_tabs_history:
+            return 'break'
+        info = _closed_tabs_history.pop()
+        new_tab(file_path=info['file_path'], content=info['content'])
+        return 'break'
 
     # ── Raccourcis ────────────────────────────────────────────────────────────────
     # Détecter l'OS pour utiliser les bonnes touches de modification
@@ -1252,7 +1286,8 @@ if __name__ == '__main__':
     shortcuts = [
         (f'<{mod_key}-s>', save_text),
         (f'<{mod_key}-o>', open_file),
-        (f'<{mod_key}-n>', new_tab),
+        (f'<{mod_key}-t>', new_tab),
+        (f'<{mod_key}-n>', new_window),
         (f'<{mod_key}-S>', save_as),
         (f'<{mod_key}-w>', lambda e: close_tab()),
         (f'<{mod_key}-m>', minimise_win),
@@ -1262,6 +1297,8 @@ if __name__ == '__main__':
         (f'<{mod_key}-F>', open_search),
         (f'<{mod_key}-=>', zoom_in),
         (f'<{mod_key}-)>', zoom_out),
+        # Cmd/Ctrl+Shift+T : rouvrir le dernier onglet fermé
+        (f'<{mod_key}-T>', reopen_last_closed_tab),
         ('<Command-q>',    lambda e: on_quit()),   # Cmd+Q  (macOS)
         ('<Command-Q>',    lambda e: on_quit()),
         ('<Alt-F4>',       lambda e: on_quit()),   # Alt+F4 (Windows/Linux)
@@ -1270,17 +1307,44 @@ if __name__ == '__main__':
     for seq, cmd in shortcuts:
         win.bind(seq, cmd)
 
+    # Cmd/Ctrl+Alt/Opt+S : tout sauvegarder (séparé car syntaxe conditionnelle)
+    save_all_seq = '<Command-Option-s>' if is_macos else '<Control-Alt-s>'
+    win.bind(save_all_seq, save_all)
+
+    # Ctrl+Tab / Ctrl+Shift+Tab : onglet suivant / précédent
+    def _next_tab(event=None):
+        tabs = tab_bar.tabs
+        if len(tabs) < 2:
+            return 'break'
+        idx = tabs.index(current_tab())
+        tab_bar.select(tabs[(idx + 1) % len(tabs)])
+        return 'break'
+
+    def _prev_tab(event=None):
+        tabs = tab_bar.tabs
+        if len(tabs) < 2:
+            return 'break'
+        idx = tabs.index(current_tab())
+        tab_bar.select(tabs[(idx - 1) % len(tabs)])
+        return 'break'
+
+    win.bind('<Control-Tab>',       _next_tab)
+    win.bind('<Control-Shift-Tab>', _prev_tab)
+
 
     # ── Menu ──────────────────────────────────────────────────────────────────────
     menubar = tk.Menu(win, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG, bd=0)
 
     mf = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
-    mf.add_command(label="Nouvel onglet",     accelerator=f"{mod_display}N", command=new_tab)
-    mf.add_command(label="Ouvrir…",           accelerator=f"{mod_display}O", command=open_file)
-    mf.add_command(label="Fermer l'onglet",   accelerator=f"{mod_display}W", command=close_tab)
+    mf.add_command(label="Nouvelle fenêtre",   accelerator=f"{mod_display}N",          command=new_window)
+    mf.add_command(label="Nouvel onglet",      accelerator=f"{mod_display}T",          command=new_tab)
+    mf.add_command(label="Rouvrir l'onglet fermé", accelerator=f"{mod_display}Shift+T", command=reopen_last_closed_tab)
+    mf.add_command(label="Ouvrir…",            accelerator=f"{mod_display}O",          command=open_file)
+    mf.add_command(label="Fermer l'onglet",    accelerator=f"{mod_display}W",          command=close_tab)
     mf.add_separator()
-    mf.add_command(label="Enregistrer",       accelerator=f"{mod_display}S", command=save_text)
-    mf.add_command(label="Enregistrer sous…", accelerator=f"{mod_display}Shift+S", command=save_as)
+    mf.add_command(label="Enregistrer",        accelerator=f"{mod_display}S",          command=save_text)
+    mf.add_command(label="Tout enregistrer",   accelerator=f"{mod_display}Alt+S",      command=save_all)
+    mf.add_command(label="Enregistrer sous…",  accelerator=f"{mod_display}Shift+S",    command=save_as)
     menubar.add_cascade(label="Fichier", menu=mf)
 
     me = tk.Menu(menubar, tearoff=0, bg=STATUS_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)

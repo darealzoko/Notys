@@ -5,6 +5,7 @@ import sys
 import re
 import platform
 from PIL import Image, ImageTk
+import json
 
 def resource_path(relative_path):
     """
@@ -209,6 +210,66 @@ def tr(key, **kwargs):
         text = text.format(**kwargs)
     return text
 
+def get_config_dir():
+    """Retourne le dossier de configuration adapté à la plateforme, ex: ~/.config/Notys"""
+    system = platform.system()
+    if system == 'Linux':
+        base = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
+    elif system == 'Windows':
+        base = os.environ.get('APPDATA', os.path.expanduser('~'))
+    elif system == 'Darwin':
+        base = os.path.expanduser('~/Library/Application Support')
+    else:
+        base = os.path.expanduser('~/.config')
+    return os.path.join(base, 'Notys')
+
+def settings_file_path():
+    return os.path.join(get_config_dir(), 'settings.json')
+
+def save_settings_to_disk():
+    """Écrit SETTINGS + current_language + current_theme dans un fichier JSON atomique."""
+    path = settings_file_path()
+    data = {
+        'settings': SETTINGS,
+        'current_language': current_language,
+        'current_theme': current_theme,
+    }
+    try:
+        os.makedirs(get_config_dir(), exist_ok=True)
+        tmp = path + '.tmp'
+        with open(tmp, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        # Remplace atomiquement
+        os.replace(tmp, path)
+    except Exception as e:
+        # N'échoue pas l'application si l'écriture échoue, mais log pour debug
+        print(f"[Settings] erreur en sauvegardant {path}: {e}")
+
+def load_settings_from_disk():
+    """Charge settings depuis le fichier JSON s'il existe et met à jour SETTINGS, current_language, current_theme."""
+    global SETTINGS, current_language, current_theme
+    path = settings_file_path()
+    if not os.path.isfile(path):
+        return
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            s = data.get('settings')
+            if isinstance(s, dict):
+                # Mettre à jour uniquement les clés connues
+                for k in list(SETTINGS.keys()):
+                    if k in s:
+                        SETTINGS[k] = s[k]
+            lang = data.get('current_language')
+            if isinstance(lang, str) and lang in TRANSLATIONS:
+                current_language = lang
+            theme = data.get('current_theme')
+            if isinstance(theme, str) and theme in THEMES:
+                current_theme = theme
+    except Exception as e:
+        print(f"[Settings] erreur en lisant {path}: {e}")
+
 # ── Couleurs ──────────────────────────────────────────────────────────────────
 THEMES = {
     'dark': {
@@ -246,6 +307,7 @@ THEMES = {
 }
 
 current_theme = 'dark'
+load_settings_from_disk()
 
 def get_color(key):
     return THEMES[current_theme][key]
@@ -516,7 +578,7 @@ if __name__ == '__main__':
             for tag in t.tag_names():
                 if tag.startswith('highlight_'):
                     t.tag_remove(tag, '1.0', 'end')
-            
+
             # Configure highlight tag with a fixed readable text color
             highlight_bg = normalize_color(COLOR_NAMES.get('highlight_yellow', '#ffff00'))
             t.tag_configure('highlight', background='#ffff00', foreground='#000000')
@@ -691,7 +753,7 @@ if __name__ == '__main__':
                     color_name = m.group(1).lower()
                     text = m.group(2) if m.group(2) else m.group(1)
                     color_hex = COLOR_NAMES.get(color_name, COLOR_NAMES.get('yellow', '#ffff00'))
-                    
+
                     if m.group(2):
                         # ==color:text==
                         text_start = m.start(2)
@@ -704,11 +766,11 @@ if __name__ == '__main__':
                         text_end = m.end(1)
                         prefix_end = m.start(1)
                         suffix_start = m.end(1)
-                    
+
                     tag_name = f'highlight_{color_name}_{self.id}'
                     t.tag_configure(tag_name, background='#ffff00', foreground='#000000')
                     t.tag_add(tag_name, f'1.0+{text_start}c', f'1.0+{text_end}c')
-                    
+
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -1584,12 +1646,7 @@ if __name__ == '__main__':
 
         def do_apply():
             global current_language, current_theme, SETTINGS
-            global BG, FG, CURSOR_CLR, SELECT_BG, STATUS_BG, STATUS_FG
-            global TAB_BG, TAB_ACTIVE, TAB_FG, TAB_FG_ACT
-            global C_H1, C_H2, C_H3, C_H4, C_CODE, C_BOLD, C_ITALIC
-            global C_LIST, C_QUOTE, C_LINK, C_HR, C_UNDERLINE, C_STRIKE
-            global FONT_BODY, FONT_H1, FONT_H2, FONT_H3, FONT_H4
-            global FONT_CODE, FONT_BOLD, FONT_ITALIC
+            global current_language, current_theme, SETTINGS, BG, FG, CURSOR_CLR, SELECT_BG, STATUS_BG, STATUS_FG, TAB_BG, TAB_ACTIVE, TAB_FG, TAB_FG_ACT, C_H1, C_H2, C_H3, C_H4, C_CODE, C_BOLD, C_ITALIC, C_LIST, C_QUOTE, C_LINK, C_HR, C_UNDERLINE, C_STRIKE, FONT_BODY, FONT_H1, FONT_H2, FONT_H3, FONT_H4, FONT_CODE, FONT_BOLD, FONT_ITALIC
 
             # ── Langue ────────────────────────────────────────────────────────────
             current_language = lang_var.get()
@@ -1685,6 +1742,11 @@ if __name__ == '__main__':
 
             win.geometry(f"{SETTINGS['win_width']}x{SETTINGS['win_height']}")
 
+            try:
+                save_settings_to_disk()
+            except Exception as e:
+                print(f"[Settings] erreur en sauvegardant après Apply: {e}")
+
             # ── Rebuild menu + fermeture ──────────────────────────────────────────
             rebuild_menu()
             dlg.destroy()
@@ -1778,7 +1840,7 @@ if __name__ == '__main__':
             _search_highlight_current()
         else:
             search_count.config(text=tr('search_no_results'))
-        
+
         _search_last_query[0] = query
 
     def _search_highlight_current():
@@ -1832,7 +1894,7 @@ if __name__ == '__main__':
     def _handle_search_tab(event=None):
         _search_next()
         return 'break'
-    
+
     def _handle_search_shift_tab(event=None):
         _search_prev()
         return 'break'
@@ -1857,8 +1919,15 @@ if __name__ == '__main__':
         (f'<{mod_key}-Z>', lambda e: current_tab() and current_tab().text.edit_redo()),
         (f'<{mod_key}-f>', open_search),
         (f'<{mod_key}-F>', open_search),
-        (f'<{mod_key}-=>', zoom_in),
-        (f'<{mod_key}-)>', zoom_out),
+        # Remplacer :
+        # (f'<{mod_key}-=>', zoom_in),
+        # (f'<{mod_key}-)>', zoom_out),
+
+        # Par :
+        (f'<{mod_key}-equal>', zoom_in),
+        (f'<{mod_key}-parenright>', zoom_out),
+        (f'<{mod_key}-plus>', zoom_in),       # Bonus : gère aussi le '+' du pavé num/clavier
+        (f'<{mod_key}-minus>', zoom_out),     # Bonus : gère aussi le '-' du pavé num/clavier
         # Cmd/Ctrl+Shift+T : rouvrir le dernier onglet fermé
         (f'<{mod_key}-T>', reopen_last_closed_tab),
         ('<Command-q>',    lambda e: on_quit()),   # Cmd+Q  (macOS)

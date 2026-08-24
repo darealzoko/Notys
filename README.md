@@ -5,6 +5,7 @@ No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
 The latest version of Notys (v1.1.2) is currently available for:
+
 **Linux:**
 - AppImage (Recommended, see "Get started" for more informations)
 - .zip and run in the .venv

@@ -57,7 +57,9 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 ### What's behind the scenes?
 Behind the scenes, Notys uses simple and lightweight technologies to do what it does.
 It is built with Python, Tkinter (for the main window and some utilities), tkinterdnd2 (drag n drop support), Pillow (image/icon management), and JSON (to save the settings even when you restart the app).
+
 Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT).
+
 README has been through chatGPT to correct typos as I am not an English native speaker.
 
 ---

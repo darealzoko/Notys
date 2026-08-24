@@ -12,10 +12,12 @@ The latest version of Notys (v1.1.2) is currently available for:
 - Source code
 
 **Windows:**
+
 (Windows is not officially supported, no build has been published for Windows yet)
 - Source code
 
 **macOS (INTEL ONLY!)**:
+
 (macOS version is dropped after v1.1.1)
 - .zip to extract the .app file
 - Source code (only way to make it support v1.1.2+, but with a lot of tweaks.)

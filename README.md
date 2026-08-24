@@ -37,11 +37,17 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 
 ### For macOS
 
-1. Go to the **Releases** section on GitHub.
+1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.1).
 2. Download the latest `Notys.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
 4. Open the app
 5. Have fun!
+
+### For Linux
+1. Go to the **Releases** section on Github and navigate to the latest release available.
+2. Download the .AppImage file.
+3. Run "chmod +x path/to/you/appimage"
+4. Then run it.
 
 ## Work in Progress (Roadmap)
 

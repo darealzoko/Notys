@@ -11,7 +11,7 @@ The latest version of Notys (v1.1.2) is currently available for:
 - Source code
 
 **Windows:**
-(windows is not officially supported, no build has been published for windows yet)
+(Windows is not officially supported, no build has been published for Windows yet)
 - Source code
 
 **macOS (INTEL ONLY!)**:
@@ -54,13 +54,15 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 ### What's behind the scenes?
 Behind the scenes, Notys uses simple and lightweight technologies to do what it does.
 It is built with Python, Tkinter (for the main window and some utilities), tkinterdnd2 (drag n drop support), Pillow (image/icon management), and JSON (to save the settings even when you restart the app).
+Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT).
+README has been through chatGPT to correct typos as I am not an English native speaker.
 
 ---
 
 ## Getting Started
 
 ### For macOS (Intel ONLY!)
-**Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built AND tested on Intel Macs, including Hackintosh systems.. And macOS support is dropped entirely in the newest version.**
+**Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems. And macOS support is dropped entirely in the newest version.**
 
 1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.1).
 2. Download the latest `Notys.zip`.
@@ -71,11 +73,11 @@ It is built with Python, Tkinter (for the main window and some utilities), tkint
 ### For Linux
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
-3. Run "chmod +x path/to/you/appimage"
+3. Run "chmod +x path/to/your/appimage"
 4. Then run it.
 
 ### For Windows
-Unfortunately, windows does not have .exe yet so if you want Notys on windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
+Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
 
 ## Work in Progress (Roadmap)
 

@@ -4,7 +4,7 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.1.2) is currently available for:
+The latest version of Notys (v1.1.2.1) is currently available for:
 
 *quick precision: the files above are what i used to build the 1.1.1 for macos, even tho the main.py and the dev playground is up to date, everything else is for 1.1.1 macOS Intel*
 
@@ -20,7 +20,6 @@ The latest version of Notys (v1.1.2) is currently available for:
 
 **macOS (INTEL ONLY!)**:
 
-(macOS version is dropped after v1.1.1)
 - .zip to extract the .app file
 - Source code (only way to make it support v1.1.2+, but with a lot of tweaks.)
 
@@ -69,15 +68,17 @@ README has been through chatGPT to correct typos as I am not an English native s
 ## Getting Started
 
 ### For macOS (Intel ONLY!)
-**Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems. And macOS support is dropped entirely in the newest version.**
+**Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems.**
+*btw, macOS support was supposed to be droped after v1.1.1, but I recompiled everything from the 1.1.2 (latest version) to create the 1.1.2.1 which is the exact same thing + macOS support*
 
-1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.1).
+1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.2.1).
 2. Download the latest `Notys.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
 4. Open the app
 5. Have fun!
 
 ### For Linux
+*If there is any error, don't try to correct it manually. It's a headache. For some reason it works only on newer libraries so distros like Debian are officially not supported, but try it if you want*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
 3. Run "chmod +x path/to/your/appimage"
@@ -98,7 +99,8 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 
 ## Known bugs
 ### Major Bugs
-- [ ] **Closing unsaved tabs:** There's a bug where when you try to close an unsaved tab, the pop-up will not appear and you can't close the tab.
+- [ ] **Closing unsaved tabs:** There's a bug only on Linux where when you try to close an unsaved tab, the pop-up will not appear and you can't close the tab.
+*How to fix*: Build from source or run directly from the main.py
 ### Minor Bugs
 - [ ] **Scrolling Bar Visibility:** The scroll bar is not very visible nor usable
 - [ ] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2, while still existing and working in manual non-compiled execution of the main python file.

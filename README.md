@@ -6,9 +6,10 @@ No bloat, just the essential features you need to get your thoughts down.
 ## Download
 The latest version of Notys (v1.1.2.1) is currently available for:
 
-*quick precision: the files above are what i used to build the 1.1.1 for macos, even tho the main.py and the dev playground is up to date, everything else is for 1.1.1 macOS Intel*
+*Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
 
 **Linux:**
+*Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
 - AppImage (Recommended, see "Get started" for more informations)
 - .zip and run in the .venv
 - Source code
@@ -59,7 +60,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 Behind the scenes, Notys uses simple and lightweight technologies to do what it does.
 It is built with Python, Tkinter (for the main window and some utilities), tkinterdnd2 (drag n drop support), Pillow (image/icon management), and JSON (to save the settings even when you restart the app).
 
-Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT).
+Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT). I (human) test it manually, imagine features and design prompts.
 
 README has been through chatGPT to correct typos as I am not an English native speaker.
 
@@ -69,7 +70,7 @@ README has been through chatGPT to correct typos as I am not an English native s
 
 ### For macOS (Intel ONLY!)
 **Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems.**
-*btw, macOS support was supposed to be droped after v1.1.1, but I recompiled everything from the 1.1.2 (latest version) to create the 1.1.2.1 which is the exact same thing + macOS support*
+*macOS support was originally planned to be dropped after v1.1.1. However, I rebuilt the v1.1.2 codebase to create v1.1.2.1, which is identical to v1.1.2 while retaining Intel macOS support.*
 
 1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.2.1).
 2. Download the latest `Notys.zip`.
@@ -78,7 +79,7 @@ README has been through chatGPT to correct typos as I am not an English native s
 5. Have fun!
 
 ### For Linux
-*If there is any error, don't try to correct it manually. It's a headache. For some reason it works only on newer libraries so distros like Debian are officially not supported, but try it if you want*
+*Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
 3. Run "chmod +x path/to/your/appimage"
@@ -92,7 +93,7 @@ Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, y
 I'm actively working on improving Notys. Here's what I'm currently working on:
 - [ ] **UI Refinement:** Fixing visibility for Underline and Strikethrough in Light Theme.
 - [ ] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
-- [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other files (maybe gonna put something to enable or disable that in the settings)
+- [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other file types (maybe gonna put something to enable or disable that in the settings)
 - [ ] **Bug Fix:** Repairing the "Save All" keyboard shortcut (use the Menu Bar for now!).
 - [ ] **Visuals:** Redesigning the scroll bar for a more native look.
 - [x] **Settings Improvements**: Fixing the fact that modified settings are reset after a re-launch of the app.

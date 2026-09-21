@@ -4,13 +4,14 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.1.2.1) is currently available for:
+The latest version of Notys (v1.1.3) is currently available for:
 
 *Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
 
 **Linux:**
 
 *Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
+*Notys will no longer be updated for linux, therefor the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
 - AppImage (Recommended, see "Get started" for more informations)
 - .zip and run in the .venv
 - Source code
@@ -81,6 +82,7 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ### For Linux
 *Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
+*Notys will no longer be updated for linux, therefor the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
 3. Run "chmod +x path/to/your/appimage"
@@ -105,4 +107,4 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 *How to fix*: Build from source or run directly from the main.py
 ### Minor Bugs
 - [x] **Scrolling Bar Visibility:** The scroll bar is not very visible nor usable
-- [ ] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2.1, while still existing and working in manual non-compiled execution of the main python file and macOS compiled version.
+- [x] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2.1, while still existing and working in manual non-compiled execution of the main python file and macOS compiled version. *as linux is no longer updated, i just mark it as complete*

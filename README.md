@@ -23,7 +23,7 @@ The latest version of Notys (v1.1.2.1) is currently available for:
 **macOS (INTEL ONLY!)**:
 
 - .zip to extract the .app file
-- Source code (to use the source code, you will need ![Python3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate`)
+- Source code (to use the source code, you will need [Python3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate`)
 
 ## Features (Markdown-style)
 

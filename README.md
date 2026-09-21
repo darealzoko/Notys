@@ -63,7 +63,7 @@ It is built with Python, Tkinter (for the main window and some utilities), tkint
 
 Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT). I (human) test it manually, imagine features and design prompts.
 
-README has been through chatGPT to correct typos as I am not an English native speaker.
+README has been through chatGPT to correct typos as I am not an native English speaker.
 
 ---
 

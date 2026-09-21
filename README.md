@@ -9,6 +9,7 @@ The latest version of Notys (v1.1.2.1) is currently available for:
 *Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
 
 **Linux:**
+
 *Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
 - AppImage (Recommended, see "Get started" for more informations)
 - .zip and run in the .venv

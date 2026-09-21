@@ -96,7 +96,7 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 - [ ] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
 - [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other file types (maybe gonna put something to enable or disable that in the settings)
 - [ ] **Bug Fix:** Repairing the "Save All" keyboard shortcut (use the Menu Bar for now!).
-- [ ] **Visuals:** Redesigning the scroll bar for a more native look.
+- [x] **Visuals:** Redesigning the scroll bar for a more native look.
 - [x] **Settings Improvements**: Fixing the fact that modified settings are reset after a re-launch of the app.
 
 ## Known bugs
@@ -104,5 +104,5 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 - [ ] **Closing unsaved tabs:** There's a bug only on Linux where when you try to close an unsaved tab, the pop-up will not appear and you can't close the tab.
 *How to fix*: Build from source or run directly from the main.py
 ### Minor Bugs
-- [ ] **Scrolling Bar Visibility:** The scroll bar is not very visible nor usable
+- [x] **Scrolling Bar Visibility:** The scroll bar is not very visible nor usable
 - [ ] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2.1, while still existing and working in manual non-compiled execution of the main python file and macOS compiled version.

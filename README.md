@@ -23,7 +23,7 @@ The latest version of Notys (v1.1.2.1) is currently available for:
 **macOS (INTEL ONLY!)**:
 
 - .zip to extract the .app file
-- Source code (only way to make it support v1.1.2+, but with a lot of tweaks.)
+- Source code
 
 ## Features (Markdown-style)
 

@@ -94,9 +94,9 @@ Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, y
 ## Work in Progress (Roadmap)
 
 I'm actively working on improving Notys. Here's what I'm currently working on:
-- [ ] **UI Refinement:** Fixing visibility for Underline and Strikethrough in Dark Theme.
-- [ ] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
-- [ ] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other file types (maybe gonna put something to enable or disable that in the settings)
+- [x] **UI Refinement:** Fixing visibility for Underline and Strikethrough in Dark Theme.
+- [x] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
+- [x] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other file types (maybe gonna put something to enable or disable that in the settings)
 - [ ] **Bug Fix:** Repairing the "Save All" keyboard shortcut (use the Menu Bar for now!).
 - [x] **Visuals:** Redesigning the scroll bar for a more native look.
 - [x] **Settings Improvements**: Fixing the fact that modified settings are reset after a re-launch of the app.

@@ -104,4 +104,4 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 *How to fix*: Build from source or run directly from the main.py
 ### Minor Bugs
 - [ ] **Scrolling Bar Visibility:** The scroll bar is not very visible nor usable
-- [ ] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2, while still existing and working in manual non-compiled execution of the main python file.
+- [ ] **Light/Dark theme quick button:** The button disappeared in the compiled Linux version 1.1.2.1, while still existing and working in manual non-compiled execution of the main python file and macOS compiled version.

@@ -96,6 +96,8 @@ I'm actively working on improving Notys. Here's what I'm currently working on:
 - [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
 - [ ] **More compatibility**: Windows support to come!
 - [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
+- [ ] **EVEN MORE compatibility**: During builds, i will make it so that the macOS .app is universal with Apple Silicon and Intel.
+- [ ] **Updates**: showing a little icon/text that says there's a new update.
 
 ## Known bugs
 ### Minor Bugs

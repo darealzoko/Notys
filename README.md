@@ -4,15 +4,15 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.1.3) is currently available for:
+The latest version of Notys (v1.2.1) is currently available for:
 
 *Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
 
 **Linux:**
 
 *Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
-*Notys will no longer be updated for linux, therefor the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
-- AppImage (Recommended, see "Get started" for more informations)
+*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
+- AppImage (Recommended, see "Get started" for more information)
 - .zip and run in the .venv
 - Source code
 
@@ -82,7 +82,7 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ### For Linux
 *Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
-*Notys will no longer be updated for linux, therefor the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
+*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
 3. Run "chmod +x path/to/your/appimage"
@@ -92,13 +92,10 @@ README has been through chatGPT to correct typos as I am not an native English s
 Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
 
 ## Work in Progress (Roadmap)
-
 I'm actively working on improving Notys. Here's what I'm currently working on:
-- [x] **UI Refinement:** Fixing visibility for Underline and Strikethrough in Dark Theme.
-- [x] **Responsiveness:** Improving the bottom bar visibility on smaller app dimensions.
-- [x] **Smart Parsing:** Ensuring Markdown syntax only applies to `.md` and not to other file types (maybe gonna put something to enable or disable that in the settings)
-- [x] **Visuals:** Redesigning the scroll bar for a more native look.
-- [x] **Settings Improvements**: Fixing the fact that modified settings are reset after a re-launch of the app.
+- [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
+- [ ] **More compatibility**: Windows support to come!
+- [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
 
 ## Known bugs
 ### Minor Bugs

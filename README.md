@@ -92,12 +92,14 @@ README has been through chatGPT to correct typos as I am not an native English s
 Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
 
 ## Work in Progress (Roadmap)
-I'm actively working on improving Notys. Here's what I'm currently working on:
+### Planned for v1.3.0:
+- [ ] **More compatibility**: Windows support!
 - [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
-- [ ] **More compatibility**: Windows support to come!
-- [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
 - [ ] **EVEN MORE compatibility**: During builds, i will make it so that the macOS .app is universal with Apple Silicon and Intel.
 - [ ] **Updates**: showing a little icon/text that says there's a new update.
+### Planned in the near or far future:
+- [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
+
 
 ## Known bugs
 ### Minor Bugs

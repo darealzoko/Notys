@@ -1,11 +1,11 @@
-# v1.3.0 Beta 2 (24/09/26 21:06)
+# v1.3.0 Beta 2
 Still windows preview only.
 By the way, when 1.3 will finally release, there will be macOS executables, but for now it's only windows Beta.
 
 ### Fixes:
 - There is now an icon in the taskbar.
 
-# v1.3.0 Beta 1 (24/09/26 20:54)
+# v1.3.0 Beta 1
 This is a beta, the UI is not really good with windows (functionnal tho) and there may have some bugs.
 It's really ugly, a bit buggy but kinda usable if you don't mind the appearance.
 

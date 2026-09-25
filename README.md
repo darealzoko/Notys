@@ -94,13 +94,14 @@ Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, y
 ## Work in Progress (Roadmap)
 ### Planned for v1.3.0:
 - [ ] **More compatibility**: Windows support!
-- [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
 - [ ] **EVEN MORE compatibility**: During builds, i will make it so that the macOS .app is universal with Apple Silicon and Intel.
 - [ ] **Updates**: showing a little icon/text that says there's a new update.
 ### Planned in the near or far future:
+- [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
 - [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
 
 
 ## Known bugs
 ### Minor Bugs
 - [ ] **Keyboard shortcut:** The "Save All" and "Reopen Last Closed" keyboard shortcuts do not work, use the menu bar instead.
+- [ ] **Light/Dark Theme Button**: The dark/light theme button in the tab bar doesn't display the right icon if started in light mode. Still completely usable at 100%. Just a UI bug.

@@ -1,3 +1,38 @@
+# v1.3.2
+### Fixes:
+- The bug making the "reopen last closed tab" shortcut not work is fixed. Not the save_all one, i tried to apply the same fix and it doesn't work...
+- The menu bar was bugged from 1.3.1 on macOS (displaying the windows menubar). Now it is fixed.
+*still lazy as fuck to reboot into windows and build an executable bruh*
+
+# v1.3.1
+### New:
+- A new option in the menu bar -> File -> Open recent to see the last 10 opened files and to open them back quickly.
+- Added a whole folder management. You can now open folder by dragndropping just like files and also open folder in a more classical way via the menu bar.
+### Fixes:
+- From v1.3.0.1, fixed the settings reseting every restart of the app.
+- Fixed a bug where it would quit the app when you do Ctrl+Cmd+Q to lock macOS.
+
+# v1.3.0.1
+This is a quick hotfix, turned out the settings resetting after restart of the app bug was a single line fix...
+(i literraly commented the "load_settings_from_disk()" function at line 364 which prevented the load of the settings... whoopsies)
+*windows executable still to come, i'm too lazy to restart into windows and compile bruh*
+
+# v1.3.0
+### New:
+- Added dynamic theme based on your system's one.
+- When you press enter in a list, it now adds a dash to continue the list. Re-hitting enter cancels the new dash and ends the list.
+### Removed:
+- Removed the emojis in the settings panel
+### Known bugs:
+- The settings are now reseted to default when you restart the app
+
+# v1.3.0 Beta 3
+### New:
+- added an update message if there's a newer version available.
+- added shortcuts for text formatting
+### Modification:
+- modified the list's color to something less flashy
+
 # v1.3.0 Beta 2
 Still windows preview only.
 By the way, when 1.3 will finally release, there will be macOS executables, but for now it's only windows Beta.

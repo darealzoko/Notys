@@ -1,4 +1,4 @@
-# v1.3.2
+# v1.3.2
 ### Fixes:
 - The bug making the "reopen last closed tab" shortcut not work is fixed. Not the save_all one, i tried to apply the same fix and it doesn't work...
 - The menu bar was bugged from 1.3.1 on macOS (displaying the windows menubar). Now it is fixed.

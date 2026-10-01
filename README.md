@@ -4,7 +4,7 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.2.1) is currently available for:
+The latest version of Notys (v1.3.2) is currently available for:
 
 *Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
 

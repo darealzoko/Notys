@@ -92,13 +92,19 @@ README has been through chatGPT to correct typos as I am not an native English s
 Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
 
 ## Work in Progress (Roadmap)
-### Planned for v1.3.0:
-- [X] **More compatibility**: Windows support!
-- [ ] **EVEN MORE compatibility**: During builds, i will make it so that the macOS .app is universal with Apple Silicon and Intel.
-- [X] **Updates**: showing a little icon/text that says there's a new update.
+### Planned for v1.3.3:
+- [ ] fix the fact that when you restart notys and you closed the sidebar, is reopens anyway
+- [ ] give actual list feeling when creating a list (instead of just a dash, i would like a dot or something...)
+- [ ] checkmarks cuz its fun
+- [ ] making the # disappear when not selected (ux change)
+- [ ] middle click to close a tab
+- [ ] fix when you do a cmd+, and maintain it for a bit it just makes more settings windows. and even when ur super fast it does two of them generally (happens on both macOS and Windows 11)
+- [ ] an "X" button next to the parent folder opened to close it
+- [ ] change keyboard shortcut from CmdOptS for save all to CmdShiftD
+- [ ] add under Edit/Édition copy, cut and paste*
+- [ ] windows has the same bug on the scrollbar as on macos (it's white even in dark theme, macOS one is fixed tho)
+- [ ] fix cursor on macOS (the "click" cursor is the generic cursor of linux)
 ### Planned in the near or far future:
-- [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
-- [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)
 
 
 ## Known bugs

@@ -93,9 +93,9 @@ Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, y
 
 ## Work in Progress (Roadmap)
 ### Planned for v1.3.0:
-- [ ] **More compatibility**: Windows support!
+- [X] **More compatibility**: Windows support!
 - [ ] **EVEN MORE compatibility**: During builds, i will make it so that the macOS .app is universal with Apple Silicon and Intel.
-- [ ] **Updates**: showing a little icon/text that says there's a new update.
+- [X] **Updates**: showing a little icon/text that says there's a new update.
 ### Planned in the near or far future:
 - [ ] **Practicality**: The feature of dragging and dropping tabs between windows.
 - [ ] **Liquid Glass**: Maybe going to add liquid glass for people on macOS Tahoe+ and have a toggle in the settings for activating it, and disabling it. macOS Tahoe+ will have it enabled by default, and Windows disabled by default. (i'm going to create a separated spec/main.py file to do it)

@@ -18,7 +18,7 @@ The latest version of Notys (v1.3.2) is currently available for:
 
 **Windows:**
 
-(Windows is not officially supported, no build has been published for Windows yet)
+- Windows .zip in the release sections 
 - Source code
 
 **macOS (INTEL ONLY!)**:
@@ -82,14 +82,18 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ### For Linux
 *Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
-*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
+*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer releases on github.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
 2. Download the .AppImage file.
 3. Run "chmod +x path/to/your/appimage"
 4. Then run it.
 
 ### For Windows
-Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, you will have to run it from the .py file or compile it yourself, but i haven't tried both of these options. So, good luck! 🫡️ 
+
+1. Go to the **Releases** section on github and navigate to the latest release available.
+2. Download the Notys-windows-x.x.x.zip (if it isn't here, just wait i'll be compiling it soon enough)
+3. Extract the zip and place the Notys.exe and the _interal folder in the same parent folder (the .exe needs it to execute)
+4. Run the .exe file
 
 ## Work in Progress (Roadmap)
 ### Planned for v1.3.3:

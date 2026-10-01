@@ -104,7 +104,7 @@ README has been through chatGPT to correct typos as I am not an native English s
 - [ ] middle click to close a tab
 - [ ] fix when you do a cmd+, and maintain it for a bit it just makes more settings windows. and even when ur super fast it does two of them generally (happens on both macOS and Windows 11)
 - [ ] an "X" button next to the parent folder opened to close it
-- [ ] change keyboard shortcut from CmdOptS for save all to CmdShiftD
+- [ ] change keyboard shortcut from CmdOptS for save all to CmdD
 - [ ] add under Edit/Édition copy, cut and paste*
 - [ ] windows has the same bug on the scrollbar as on macos (it's white even in dark theme, macOS one is fixed tho)
 - [ ] fix cursor on macOS (the "click" cursor is the generic cursor of linux)

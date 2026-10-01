@@ -105,7 +105,9 @@ Unfortunately, Windows does not have .exe yet so if you want Notys on Windows, y
 - [ ] windows has the same bug on the scrollbar as on macos (it's white even in dark theme, macOS one is fixed tho)
 - [ ] fix cursor on macOS (the "click" cursor is the generic cursor of linux)
 ### Planned in the near or far future:
-
+- [ ] Liquid glass, maybe for 2.0.0
+- [ ] macOS ARM Support, for 2.0.0
+- [ ] Switch to SwiftUI+Rust (or swift itself, i haven't decided yet), maybe for 2.0.0
 
 ## Known bugs
 ### Minor Bugs

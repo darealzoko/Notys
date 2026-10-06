@@ -1,3 +1,72 @@
+# v1.4.0
+
+### Modification:
+- Modified the "new window" shortcut from Ctrl/Cmd+Shift+N, Ctrl/Cmd+N
+
+# v1.4.0 Beta 2 :
+### Remove:
+- Removed the phrase "A clean, lightweight Markdown & Text Editor." in the windows' about section.
+
+### Fixes:
+- Re-fixed a bug where the settings buttons Apply/Appliquer and Cancel/Annuler would have white text over white background.
+- Fixed a bug where when you change the language, the sidebar's "empty" text (EXPLORER) still stays in the previous language.
+
+# v1.4.0 Beta 1 :
+### Modification:
+- Modified the version system. Instead of it being based on vibes, it will follow the SemVer logic.
+- Modified the about section to include the creator (me)
+
+# v1.3.3
+### Added:
+- Added the Esperanto language. Available now in the settings.
+
+### Modification:
+- The sidebar arrows' size has been modified to be the same size in both collapsed and opened.
+
+# v1.3.3 Beta 2
+### Fixes:
+- Fixed the search bar not opening with both keyboard shortcut and menu bar button.
+- Fixed windows shortcut being enabled on macOS.
+- Fixed the Cancel/Annuler and Apply/Appliquer button in the settings for an at least readable experience. It is better, but not the best.
+
+### Modification:
+- Changed the list's color to fully white instead of light purple.
+- The sidebar is now resizable.
+- You can now middle click to close a tab (works only on windows for some reason)
+
+### Known bugs:
+#### On every systems:
+- The scroll bar scrolls weirdly with the mouse: it does not follow the system's mouse sensitivity, making it feel weird. (minor bug though)
+#### Windows Only:
+- The top bar (as well as menubar's menus) is white even in dark theme, making a flash bang.
+- Not really a bug, but the UI's font is really ugly.
+#### macOS Only:
+- The middle click to close a tab still does not work.
+
+# v1.3.3 Beta 1
+### Added:
+- Added an "X" button in the sidebar to close the current opened folder.
+- Added "Undo" and "Redo" in the Edit menu in the menu bar.
+- Added the checkmarks, just do "- [ ]" do get a checkmark and click on the [ ] to mark it as done and vice-versa.
+
+### Modifications:
+- Modified the list's aesthetic to something else than just a dash. It now gives actual lists vibes.
+- The headers (the #) now disappear when the text selection is not on it, giving a cleaner aesthetic.
+- *nerdy modification* Now the shortcuts are much easier to modify, as they are in a dictionnary in plain json in the main.py file.
+
+### Fixes:
+- The side bar will not reopen after a restart of the app.
+- The settings page will not appear more then once when you maintain Cmd+, now. (it would just make the OS laggy because of all of the settings pages)
+- The save all shortcut now works (by changing the shortcut, i can't believe i haven't though of that...). For some reasons the Option key just does not get picked up by Notys.
+- Fixed the macOS cursor not being the right "click" cursor.
+
+### Known bugs:
+- If the folder name is too long, the "X" to close the folder in the sidebar will be hidden.
+- The middle click to close tabs was supposed to be added, but it does not work. Looking for fixing it in the next beta.
+- For every shortcuts on windows with the "Control" key modifier, it will also work on macOS still as control ("^"). Still works with command tho.
+- The search does not work (you can't open the search menu, not from the menu bar, not from shortcuts)
+- The aesthetic of the buttons in the settings in dark mode is not very good. One of the buttons is better in light mode, the other, is as bad.
+
 # v1.3.2
 ### Fixes:
 - The bug making the "reopen last closed tab" shortcut not work is fixed. Not the save_all one, i tried to apply the same fix and it doesn't work...

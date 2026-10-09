@@ -4,14 +4,14 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.3.2) is currently available for:
+The latest version of Notys (v1.5.0) is currently available for:
 
-*Compatibility note: The macOS files included here were used to build the 1.1.1 release. main.py and the development playground are up to date, but the other files correspond to the older Intel macOS version and may not work correctly with the latest source code.*
+*Compatibility note: The macOS files included here were used to build the 1.1.1 release.*
 
 **Linux:**
 
 *Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
-*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer version.*
+*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will not put the linux 1.1.2 versions in the newer version.*
 - AppImage (Recommended, see "Get started" for more information)
 - .zip and run in the .venv
 - Source code
@@ -24,7 +24,7 @@ The latest version of Notys (v1.3.2) is currently available for:
 **macOS (INTEL ONLY!)**:
 
 - .zip to extract the .app file
-- Source code (to use the source code, you will need [this file](https://github.com/darealzoko/Notys/releases/download/v1.1.2.1/Notys.macOS.build.env.zip) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt`)
+- Source code (to use the source code, you will need the build env (available in every notys release) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or if you don't want to activate the .venv `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt && python3 -m pip intall pyinstaller`)
 
 ## Features (Markdown-style)
 
@@ -46,9 +46,11 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 
 - **Underline**: using ```-: and :-```
 
+- **Link**: using `[google](google.com)` you can create a link.
+
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
 
-- **Languages**: There is support for French and English (English by default)
+- **Languages**: There is support for French, Esperanto and English (English by default)
 
 - **Settings**: Various settings for customization and more.
   
@@ -72,9 +74,8 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ### For macOS (Intel ONLY!)
 **Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems.**
-*macOS support was originally planned to be dropped after v1.1.1. However, I rebuilt the v1.1.2 codebase to create v1.1.2.1, which is identical to v1.1.2 while retaining Intel macOS support.*
 
-1. Go to the **Releases** section on GitHub and navigate to the latest version that supports macOS (v1.1.2.1).
+1. Go to the **Releases** section on GitHub and navigate to the latest version.
 2. Download the latest `Notys.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
 4. Open the app
@@ -82,11 +83,11 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ### For Linux
 *Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
-*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will still put the linux 1.1.2 versions in the newer releases on github.*
+*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will not put the linux 1.1.2 versions in the newer releases on github.*
+*If you want the latest version on Linux, you will have to either compile from build-env or run from build-env.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
-2. Download the .AppImage file.
-3. Run "chmod +x path/to/your/appimage"
-4. Then run it.
+2. Download the Notys-build-env-x.x.x.zip
+3. Run it from the source
 
 ### For Windows
 
@@ -96,22 +97,13 @@ README has been through chatGPT to correct typos as I am not an native English s
 4. Run the .exe file
 
 ## Work in Progress (Roadmap)
-### Planned for v1.3.3:
-- [ ] fix the fact that when you restart notys and you closed the sidebar, is reopens anyway
-- [ ] give actual list feeling when creating a list (instead of just a dash, i would like a dot or something...)
-- [ ] checkmarks cuz its fun
-- [ ] making the # disappear when not selected (ux change)
-- [ ] middle click to close a tab
-- [ ] fix when you do a cmd+, and maintain it for a bit it just makes more settings windows. and even when ur super fast it does two of them generally (happens on both macOS and Windows 11)
-- [ ] an "X" button next to the parent folder opened to close it
-- [ ] change keyboard shortcut from CmdOptS for save all to CmdD
-- [ ] add under Edit/Édition copy, cut and paste*
-- [ ] windows has the same bug on the scrollbar as on macos (it's white even in dark theme, macOS one is fixed tho)
-- [ ] fix cursor on macOS (the "click" cursor is the generic cursor of linux)
+### Planned for v1.5.1:
+- [ ] Add more languages.
+- [ ] Add a mission-control-ish overview
 ### Planned in the near or far future:
-- [ ] Liquid glass, maybe for 2.0.0
+- [X] Liquid glass, maybe for 2.0.0
 - [ ] macOS ARM Support, for 2.0.0
-- [ ] Switch to SwiftUI+Rust (or swift itself, i haven't decided yet), maybe for 2.0.0
+- [X] Switch to SwiftUI+Swift (or swift itself, i haven't decided yet), for 2.0.0
 
 ## Known bugs
 ### Minor Bugs

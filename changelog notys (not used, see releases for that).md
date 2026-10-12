@@ -1,3 +1,51 @@
+# 1.6.2
+
+### Minor Add:
+- Added the "text" option in the style settings page (yes, i wanted to give this a whole new version)
+
+# 1.6.1
+
+### Fix:
+- Fixed the style setting's page button theme making it harder to read.
+
+### Modification:
+- Redesigned the style setting's page for the button and usability part.
+
+# 1.6.0
+
+### Add:
+- Added .rtf support
+- Added a comment at the very top of the main.py file, writing where the config files are stored.
+- Added styles. Styles are making YOU able to customize the markdown syntax, right in the settings.
+
+# 1.5.0
+
+### Add:
+- Added pinned tabs. Pinned tabs re-open when you close and re-start Notys. To toggle it, you do cmd/ctrl+shift+p or do it in the menu bar.
+
+### Modification:
+- Redesigned settings to "General" with everything nicely organized in subcategories and "Language" with only languages.
+
+### Removed:
+- Removed underscore-based italics (didn't work in 1.4.1); asterisks still apply italics.
+
+### Fixes:
+- Nothing to be fixed yet!
+
+### Known bugs:
+- When you navigate the settings categories, you have to move the mouse for the page to refresh.
+- The update text does not appear anymore.
+
+# 1.4.1
+
+### Fixes:
+- Tried to fix the typing delay. It is not gone, but much shorter.
+- Tried the fix the scrollbar sensitivity. Still a bit off, but way better.
+- Fixed a bug where the link would not disappear leaving `[google](google.com)` instead of just [google](google.com).
+
+### Removed:
+- Removed the ability of doing an italic text with the underscores.
+
 # v1.4.0
 
 ### Modification:

@@ -4,9 +4,7 @@
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.5.0) is currently available for:
-
-*Compatibility note: The macOS files included here were used to build the 1.1.1 release.*
+The latest version of Notys (v1.6.2) is currently available for:
 
 **Linux:**
 

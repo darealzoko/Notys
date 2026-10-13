@@ -1,3 +1,14 @@
+# 1.7.0
+
+### Add:
+- Added new languages (spanish, portuguese, german, italian, dutch, russian, japanese, chinese, korean)
+
+### Modification:
+- Made english the first language in the language list instead of french in the settings.
+
+### Fix:
+- Fixed translations not applying everywhere. For example; the style section in the settings could not be translated.
+
 # 1.6.2
 
 ### Minor Add:

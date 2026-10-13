@@ -20,7 +20,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.6.2' # [Update default version string]
+    APP_VERSION = '1.7.0' # [Update default version string]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -345,8 +345,1080 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         ),
 
         'untitled': "Sen titro", # [Untitled tab name]
-    }
+    },
+    'es': { # [Spanish translations dictionary]
+        'menu_file': "Archivo", # [File menu label]
+        'menu_new_window': "Nueva ventana", # [New window menu]
+        'menu_new_tab': "Nueva pestaña", # [New tab menu]
+        'menu_reopen_tab': "Reabrir pestaña cerrada", # [Reopen tab menu]
+        'menu_open': "Abrir...", # [Open menu]
+        'menu_open_folder': "Abrir carpeta...", # [Open folder menu]
+        'menu_open_recents': "Abrir recientes", # [Open recent menu]
+        'menu_close_tab': "Cerrar pestaña", # [Close tab menu]
+        'menu_toggle_pin': "Anclar / Desanclar pestaña",
+        'menu_save': "Guardar", # [Save menu]
+        'menu_save_all': "Guardar todo", # [Save all menu]
+        'menu_save_as': "Guardar como...", # [Save as menu]
+
+        'menu_edit': "Edición", # [Edit menu]
+        'menu_undo': "Deshacer", # [Undo menu]
+        'menu_redo': "Rehacer", # [Redo menu]
+        'menu_cut': "Cortar", # [Cut menu]
+        'menu_copy': "Copiar", # [Copy menu]
+        'menu_paste': "Pegar", # [Paste menu]
+        'menu_find': "Buscar...", # [Find menu]
+
+        'menu_window': "Ventana", # [Window menu]
+        'menu_minimize': "Minimizar", # [Minimize menu]
+
+        'menu_settings': "Ajustes", # [Settings menu]
+        'menu_open_settings': "Abrir ajustes", # [Open settings menu]
+
+        'menu_about': "Acerca de", # [About menu]
+
+        'settings_title': "Ajustes", # [Settings title]
+        'settings_apply': "Aplicar", # [Apply button]
+        'settings_cancel': "Cancelar", # [Cancel button]
+
+        'section_language': "Idioma", # [Language section]
+        'section_general': "General",
+        'section_appearance': "Apariencia", # [Appearance section]
+        'section_editor': "Editor", # [Editor section]
+        'section_interface': "Interfaz", # [Interface section]
+        'section_styles': "Estilos",
+
+        'settings_language': "Idioma de la interfaz", # [Language label]
+        'settings_theme': "Tema", # [Theme label]
+        'theme_dark': "Oscuro", # [Dark theme option]
+        'theme_light': "Claro", # [Light theme option]
+        'theme_system': "Sistema", # [System theme option]
+
+        'settings_font_family': "Fuente", # [Font family label]
+        'settings_font_size': "Tamaño de fuente", # [Font size label]
+        'settings_line_height': "Altura de línea", # [Line height label]
+        'settings_line_wrap': "Ajuste de línea", # [Line wrap label]
+        'wrap_word': "Por palabra", # [Word wrap option]
+        'wrap_char': "Por carácter", # [Character wrap option]
+        'wrap_none': "Ninguno", # [No wrap option]
+        'settings_padding': "Márgenes laterales", # [Padding label]
+
+        'settings_show_status': "Barra de estado", # [Status bar label]
+        'settings_show_wordcount': "Contador de palabras", # [Word counter label]
+        'settings_win_size': "Tamaño predeterminado de la ventana", # [Window size label]
+        'on': "Activado", # [On label]
+        'off': "Desactivado", # [Off label]
+
+        'dlg_save_title': "Guardar {name}", # [Save dialog title]
+        'dlg_save_msg': '¿Quieres guardar los cambios\nrealizados en "{name}"?', # [Save message]
+        'dlg_save_sub': "Los cambios se perderán si no los guardas.", # [Save subtitle]
+        'dlg_dont_save': "No guardar", # [Don't save button]
+        'dlg_cancel': "Cancelar", # [Cancel button]
+        'dlg_save': "Guardar...", # [Save button]
+
+        'status_words_one': "palabra", # [Singular word]
+        'status_words_many': "palabras", # [Plural words]
+        'status_untitled': "Sin título", # [Untitled status]
+
+        'search_no_results': "Sin resultados", # [Search no results]
+        'sidebar_explorer': "EXPLORADOR", # [Explorer title]
+        'no_folder': "No hay ninguna carpeta abierta", # [No folder message]
+
+        'dnd_title': "Arrastrar y soltar no disponible", # [DND unavailable title]
+        'dnd_msg': ( # [DND unavailable message]
+            "La función de arrastrar y soltar no está disponible:\n"
+            "tkinterdnd2 no se encontró.\n\n"
+            "Instálalo con:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Luego reinicia Notys."
+        ),
+
+        'untitled': "Sin título", # [Untitled tab name]
+    },
+    'pt': {  # [Portuguese translations dictionary]
+        'menu_file': "Arquivo",
+        'menu_new_window': "Nova janela",
+        'menu_new_tab': "Nova aba",
+        'menu_reopen_tab': "Reabrir guia fechada",
+        'menu_open': "Abrir…",
+        'menu_open_folder': "Abrir pasta…",
+        'menu_open_recents': "Abrir recentes",
+        'menu_close_tab': "Fechar guia",
+        'menu_toggle_pin': "Fixar / desafixar guia",
+        'menu_save': "Salvar",
+        'menu_save_all': "Salvar tudo",
+        'menu_save_as': "Salvar como…",
+
+        'menu_edit': "Edição",
+        'menu_undo': "Desfazer",
+        'menu_redo': "Refazer",
+        'menu_cut': "Recortar",
+        'menu_copy': "Copiar",
+        'menu_paste': "Colar",
+        'menu_find': "Buscar…",
+
+        'menu_window': "Janela",
+        'menu_minimize': "Minimizar",
+
+        'menu_settings': "Configurações",
+        'menu_open_settings': "Abrir configurações…",
+        'menu_about': "Sobre",
+
+        'settings_title': "Configurações",
+        'settings_apply': "Aplicar",
+        'settings_cancel': "Cancelar",
+
+        'section_language': "Idioma",
+        'section_general': "Geral",
+        'section_appearance': "Aparência",
+        'section_editor': "Editor",
+        'section_interface': "Interface",
+        'section_styles': "Estilos",
+
+        'settings_language': "Idioma da interface",
+        'settings_theme': "Tema",
+        'theme_dark': "Escuro",
+        'theme_light': "Claro",
+        'theme_system': "Sistema",
+
+        'settings_font_family': "Fonte",
+        'settings_font_size': "Tamanho da fonte",
+        'settings_line_height': "Altura da linha",
+        'settings_line_wrap': "Quebra de linha",
+        'wrap_word': "Por palavra",
+        'wrap_char': "Por caractere",
+        'wrap_none': "Nenhuma",
+        'settings_padding': "Margens laterais",
+
+        'settings_show_status': "Barra de estado",
+        'settings_show_wordcount': "Contador de palavras",
+        'settings_win_size': "Tamanho padrão da janela",
+        'on': "Ativado",
+        'off': "Desativado",
+
+        'dlg_save_title': "Salvar {name}",
+        'dlg_save_msg': 'Deseja salvar as alterações\nfeitas em "{name}"?',
+        'dlg_save_sub': "As alterações serão perdidas se você não as salvar.",
+        'dlg_dont_save': "Não salvar",
+        'dlg_cancel': "Cancelar",
+        'dlg_save': "Salvar…",
+
+        'status_words_one': "palavra",
+        'status_words_many': "palavras",
+        'status_untitled': "Sem título",
+
+        'search_no_results': "Nenhum resultado",
+        'sidebar_explorer': "EXPLORADOR",
+        'no_folder': "Nenhuma pasta aberta",
+
+        'dnd_title': "Arrastar e soltar indisponível",
+        'dnd_msg': (
+            "A função de arrastar e soltar não está disponível:\n"
+            "tkinterdnd2 não foi encontrado.\n\n"
+            "Instale com:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Em seguida, reinicie o Notys."
+        ),
+
+        'untitled': "Sem título",
+    },
+    'de': {  # [German translations dictionary]
+        'menu_file': "Datei",
+        'menu_new_window': "Neues Fenster",
+        'menu_new_tab': "Neuer Tab",
+        'menu_reopen_tab': "Geschlossenen Tab erneut öffnen",
+        'menu_open': "Öffnen…",
+        'menu_open_folder': "Ordner öffnen…",
+        'menu_open_recents': "Zuletzt verwendet",
+        'menu_close_tab': "Tab schließen",
+        'menu_toggle_pin': "Tab anheften / lösen",
+        'menu_save': "Speichern",
+        'menu_save_all': "Alles speichern",
+        'menu_save_as': "Speichern unter…",
+
+        'menu_edit': "Bearbeiten",
+        'menu_undo': "Rückgängig",
+        'menu_redo': "Wiederholen",
+        'menu_cut': "Ausschneiden",
+        'menu_copy': "Kopieren",
+        'menu_paste': "Einfügen",
+        'menu_find': "Suchen…",
+
+        'menu_window': "Fenster",
+        'menu_minimize': "Minimieren",
+
+        'menu_settings': "Einstellungen",
+        'menu_open_settings': "Einstellungen öffnen…",
+        'menu_about': "Info",
+
+        'settings_title': "Einstellungen",
+        'settings_apply': "Übernehmen",
+        'settings_cancel': "Abbrechen",
+
+        'section_language': "Sprache",
+        'section_general': "Allgemein",
+        'section_appearance': "Erscheinungsbild",
+        'section_editor': "Editor",
+        'section_interface': "Oberfläche",
+        'section_styles': "Stile",
+
+        'settings_language': "Sprache der Oberfläche",
+        'settings_theme': "Thema",
+        'theme_dark': "Dunkel",
+        'theme_light': "Hell",
+        'theme_system': "System",
+
+        'settings_font_family': "Schriftart",
+        'settings_font_size': "Schriftgröße",
+        'settings_line_height': "Zeilenabstand",
+        'settings_line_wrap': "Zeilenumbruch",
+        'wrap_word': "Nach Wort",
+        'wrap_char': "Nach Zeichen",
+        'wrap_none': "Keiner",
+        'settings_padding': "Seitenabstände",
+
+        'settings_show_status': "Statusleiste",
+        'settings_show_wordcount': "Wortzähler",
+        'settings_win_size': "Standardfenstergröße",
+        'on': "An",
+        'off': "Aus",
+
+        'dlg_save_title': "{name} speichern",
+        'dlg_save_msg': 'Möchten Sie die Änderungen\nan "{name}" speichern?',
+        'dlg_save_sub': "Ihre Änderungen gehen verloren, wenn Sie sie nicht speichern.",
+        'dlg_dont_save': "Nicht speichern",
+        'dlg_cancel': "Abbrechen",
+        'dlg_save': "Speichern…",
+
+        'status_words_one': "Wort",
+        'status_words_many': "Wörter",
+        'status_untitled': "Unbenannt",
+
+        'search_no_results': "Keine Ergebnisse",
+        'sidebar_explorer': "EXPLORER",
+        'no_folder': "Kein Ordner geöffnet",
+
+        'dnd_title': "Drag & Drop nicht verfügbar",
+        'dnd_msg': (
+            "Drag & Drop ist nicht verfügbar:\n"
+            "tkinterdnd2 wurde nicht gefunden.\n\n"
+            "Installieren Sie es mit:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Starten Sie Notys danach neu."
+        ),
+
+        'untitled': "Unbenannt",
+    },
+    'it': {  # [Italian translations dictionary]
+        'menu_file': "File",
+        'menu_new_window': "Nuova finestra",
+        'menu_new_tab': "Nuova scheda",
+        'menu_reopen_tab': "Riapri scheda chiusa",
+        'menu_open': "Apri…",
+        'menu_open_folder': "Apri cartella…",
+        'menu_open_recents': "Apri recenti",
+        'menu_close_tab': "Chiudi scheda",
+        'menu_toggle_pin': "Blocca / sblocca scheda",
+        'menu_save': "Salva",
+        'menu_save_all': "Salva tutto",
+        'menu_save_as': "Salva con nome…",
+
+        'menu_edit': "Modifica",
+        'menu_undo': "Annulla",
+        'menu_redo': "Ripristina",
+        'menu_cut': "Taglia",
+        'menu_copy': "Copia",
+        'menu_paste': "Incolla",
+        'menu_find': "Cerca…",
+
+        'menu_window': "Finestra",
+        'menu_minimize': "Minimizza",
+
+        'menu_settings': "Impostazioni",
+        'menu_open_settings': "Apri impostazioni…",
+        'menu_about': "Informazioni",
+
+        'settings_title': "Impostazioni",
+        'settings_apply': "Applica",
+        'settings_cancel': "Annulla",
+
+        'section_language': "Lingua",
+        'section_general': "Generale",
+        'section_appearance': "Aspetto",
+        'section_editor': "Editor",
+        'section_interface': "Interfaccia",
+        'section_styles': "Stili",
+
+        'settings_language': "Lingua dell'interfaccia",
+        'settings_theme': "Tema",
+        'theme_dark': "Scuro",
+        'theme_light': "Chiaro",
+        'theme_system': "Sistema",
+
+        'settings_font_family': "Carattere",
+        'settings_font_size': "Dimensione carattere",
+        'settings_line_height': "Altezza riga",
+        'settings_line_wrap': "A capo automatico",
+        'wrap_word': "Per parola",
+        'wrap_char': "Per carattere",
+        'wrap_none': "Nessuno",
+        'settings_padding': "Margini laterali",
+
+        'settings_show_status': "Barra di stato",
+        'settings_show_wordcount': "Conteggio parole",
+        'settings_win_size': "Dimensione predefinita della finestra",
+        'on': "Attivo",
+        'off': "Disattivo",
+
+        'dlg_save_title': "Salva {name}",
+        'dlg_save_msg': 'Vuoi salvare le modifiche\napplicate a "{name}"?',
+        'dlg_save_sub': "Le modifiche andranno perse se non le salvi.",
+        'dlg_dont_save': "Non salvare",
+        'dlg_cancel': "Annulla",
+        'dlg_save': "Salva…",
+
+        'status_words_one': "parola",
+        'status_words_many': "parole",
+        'status_untitled': "Senza titolo",
+
+        'search_no_results': "Nessun risultato",
+        'sidebar_explorer': "ESPLORATORE",
+        'no_folder': "Nessuna cartella aperta",
+
+        'dnd_title': "Drag & Drop non disponibile",
+        'dnd_msg': (
+            "Drag & drop non disponibile:\n"
+            "tkinterdnd2 non è stato trovato.\n\n"
+            "Installalo con:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Poi riavvia Notys."
+        ),
+
+        'untitled': "Senza titolo",
+    },
+    'nl': {  # [Dutch translations dictionary]
+        'menu_file': "Bestand",
+        'menu_new_window': "Nieuw venster",
+        'menu_new_tab': "Nieuw tabblad",
+        'menu_reopen_tab': "Gesloten tabblad opnieuw openen",
+        'menu_open': "Openen…",
+        'menu_open_folder': "Map openen…",
+        'menu_open_recents': "Recent openen",
+        'menu_close_tab': "Tabblad sluiten",
+        'menu_toggle_pin': "Tabblad vastzetten / losmaken",
+        'menu_save': "Opslaan",
+        'menu_save_all': "Alles opslaan",
+        'menu_save_as': "Opslaan als…",
+
+        'menu_edit': "Bewerken",
+        'menu_undo': "Ongedaan maken",
+        'menu_redo': "Opnieuw",
+        'menu_cut': "Knippen",
+        'menu_copy': "Kopiëren",
+        'menu_paste': "Plakken",
+        'menu_find': "Zoeken…",
+
+        'menu_window': "Venster",
+        'menu_minimize': "Minimaliseren",
+
+        'menu_settings': "Instellingen",
+        'menu_open_settings': "Instellingen openen…",
+        'menu_about': "Over",
+
+        'settings_title': "Instellingen",
+        'settings_apply': "Toepassen",
+        'settings_cancel': "Annuleren",
+
+        'section_language': "Taal",
+        'section_general': "Algemeen",
+        'section_appearance': "Uiterlijk",
+        'section_editor': "Editor",
+        'section_interface': "Interface",
+        'section_styles': "Stijlen",
+
+        'settings_language': "Taal van de interface",
+        'settings_theme': "Thema",
+        'theme_dark': "Donker",
+        'theme_light': "Licht",
+        'theme_system': "Systeem",
+
+        'settings_font_family': "Lettertype",
+        'settings_font_size': "Tekengrootte",
+        'settings_line_height': "Regelhoogte",
+        'settings_line_wrap': "Regelafbreking",
+        'wrap_word': "Per woord",
+        'wrap_char': "Per teken",
+        'wrap_none': "Geen",
+        'settings_padding': "Zijmarges",
+
+        'settings_show_status': "Statusbalk",
+        'settings_show_wordcount': "Woordtelling",
+        'settings_win_size': "Standaard venstergrootte",
+        'on': "Aan",
+        'off': "Uit",
+
+        'dlg_save_title': "Opslaan {name}",
+        'dlg_save_msg': 'Wilt u de wijzigingen\nin "{name}" opslaan?',
+        'dlg_save_sub': "Uw wijzigingen gaan verloren als u ze niet opslaat.",
+        'dlg_dont_save': "Niet opslaan",
+        'dlg_cancel': "Annuleren",
+        'dlg_save': "Opslaan…",
+
+        'status_words_one': "woord",
+        'status_words_many': "woorden",
+        'status_untitled': "Naamloos",
+
+        'search_no_results': "Geen resultaten",
+        'sidebar_explorer': "VERKENNER",
+        'no_folder': "Geen map geopend",
+
+        'dnd_title': "Drag & Drop niet beschikbaar",
+        'dnd_msg': (
+            "Drag & drop is niet beschikbaar:\n"
+            "tkinterdnd2 is niet gevonden.\n\n"
+            "Installeer het met:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Start Notys daarna opnieuw."
+        ),
+
+        'untitled': "Naamloos",
+    },
+    'ru': {  # [Russian translations dictionary]
+        'menu_file': "Файл",
+        'menu_new_window': "Новое окно",
+        'menu_new_tab': "Новая вкладка",
+        'menu_reopen_tab': "Переоткрыть закрытую вкладку",
+        'menu_open': "Открыть…",
+        'menu_open_folder': "Открыть папку…",
+        'menu_open_recents': "Открыть недавние",
+        'menu_close_tab': "Закрыть вкладку",
+        'menu_toggle_pin': "Закрепить / открепить вкладку",
+        'menu_save': "Сохранить",
+        'menu_save_all': "Сохранить все",
+        'menu_save_as': "Сохранить как…",
+
+        'menu_edit': "Правка",
+        'menu_undo': "Отменить",
+        'menu_redo': "Повторить",
+        'menu_cut': "Вырезать",
+        'menu_copy': "Копировать",
+        'menu_paste': "Вставить",
+        'menu_find': "Найти…",
+
+        'menu_window': "Окно",
+        'menu_minimize': "Свернуть",
+
+        'menu_settings': "Настройки",
+        'menu_open_settings': "Открыть настройки…",
+        'menu_about': "О программе",
+
+        'settings_title': "Настройки",
+        'settings_apply': "Применить",
+        'settings_cancel': "Отмена",
+
+        'section_language': "Язык",
+        'section_general': "Общее",
+        'section_appearance': "Внешний вид",
+        'section_editor': "Редактор",
+        'section_interface': "Интерфейс",
+        'section_styles': "Стили",
+
+        'settings_language': "Язык интерфейса",
+        'settings_theme': "Тема",
+        'theme_dark': "Тёмная",
+        'theme_light': "Светлая",
+        'theme_system': "Система",
+
+        'settings_font_family': "Шрифт",
+        'settings_font_size': "Размер шрифта",
+        'settings_line_height': "Высота строки",
+        'settings_line_wrap': "Перенос строк",
+        'wrap_word': "По словам",
+        'wrap_char': "По символам",
+        'wrap_none': "Нет",
+        'settings_padding': "Боковые поля",
+
+        'settings_show_status': "Строка состояния",
+        'settings_show_wordcount': "Счетчик слов",
+        'settings_win_size': "Размер окна по умолчанию",
+        'on': "Вкл.",
+        'off': "Выкл.",
+
+        'dlg_save_title': "Сохранить {name}",
+        'dlg_save_msg': 'Сохранить изменения\nв "{name}"?',
+        'dlg_save_sub': "Изменения будут потеряны, если вы их не сохраните.",
+        'dlg_dont_save': "Не сохранять",
+        'dlg_cancel': "Отмена",
+        'dlg_save': "Сохранить…",
+
+        'status_words_one': "слово",
+        'status_words_many': "слов",
+        'status_untitled': "Без названия",
+
+        'search_no_results': "Ничего не найдено",
+        'sidebar_explorer': "ПАПКИ",
+        'no_folder': "Папка не открыта",
+
+        'dnd_title': "Перетаскивание недоступно",
+        'dnd_msg': (
+            "Перетаскивание недоступно:\n"
+            "tkinterdnd2 не найден.\n\n"
+            "Установите его командой:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "Затем перезапустите Notys."
+        ),
+
+        'untitled': "Без названия",
+    },
+    'ja': {  # [Japanese translations dictionary]
+        'menu_file': "ファイル",
+        'menu_new_window': "新しいウィンドウ",
+        'menu_new_tab': "新しいタブ",
+        'menu_reopen_tab': "閉じたタブを再表示",
+        'menu_open': "開く…",
+        'menu_open_folder': "フォルダーを開く…",
+        'menu_open_recents': "最近のファイル",
+        'menu_close_tab': "タブを閉じる",
+        'menu_toggle_pin': "タブの固定を切り替え",
+        'menu_save': "保存",
+        'menu_save_all': "すべて保存",
+        'menu_save_as': "名前を付けて保存…",
+
+        'menu_edit': "編集",
+        'menu_undo': "元に戻す",
+        'menu_redo': "やり直す",
+        'menu_cut': "切り取り",
+        'menu_copy': "コピー",
+        'menu_paste': "貼り付け",
+        'menu_find': "検索…",
+
+        'menu_window': "ウィンドウ",
+        'menu_minimize': "最小化",
+
+        'menu_settings': "設定",
+        'menu_open_settings': "設定を開く…",
+        'menu_about': "情報",
+
+        'settings_title': "設定",
+        'settings_apply': "適用",
+        'settings_cancel': "キャンセル",
+
+        'section_language': "言語",
+        'section_general': "一般",
+        'section_appearance': "外観",
+        'section_editor': "エディター",
+        'section_interface': "インターフェイス",
+        'section_styles': "スタイル",
+
+        'settings_language': "インターフェイスの言語",
+        'settings_theme': "テーマ",
+        'theme_dark': "ダーク",
+        'theme_light': "ライト",
+        'theme_system': "システム",
+
+        'settings_font_family': "フォント",
+        'settings_font_size': "フォントサイズ",
+        'settings_line_height': "行の高さ",
+        'settings_line_wrap': "改行",
+        'wrap_word': "単語ごと",
+        'wrap_char': "文字ごと",
+        'wrap_none': "なし",
+        'settings_padding': "側面の余白",
+
+        'settings_show_status': "ステータスバー",
+        'settings_show_wordcount': "単語数",
+        'settings_win_size': "デフォルトのウィンドウサイズ",
+        'on': "オン",
+        'off': "オフ",
+
+        'dlg_save_title': "{name} を保存",
+        'dlg_save_msg': '"{name}" への変更を\n保存しますか?',
+        'dlg_save_sub': "保存しないと変更内容は失われます。",
+        'dlg_dont_save': "保存しない",
+        'dlg_cancel': "キャンセル",
+        'dlg_save': "保存…",
+
+        'status_words_one': "語",
+        'status_words_many': "語",
+        'status_untitled': "無題",
+
+        'search_no_results': "結果がありません",
+        'sidebar_explorer': "エクスプローラー",
+        'no_folder': "開いているフォルダーはありません",
+
+        'dnd_title': "ドラッグ＆ドロップは利用できません",
+        'dnd_msg': (
+            "ドラッグ＆ドロップは利用できません:\n"
+            "tkinterdnd2 が見つかりませんでした。\n\n"
+            "次のコマンドでインストールしてください:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "その後、Notys を再起動してください。"
+        ),
+
+        'untitled': "無題",
+    },
+    'zh': {  # [Chinese translations dictionary]
+        'menu_file': "文件",
+        'menu_new_window': "新窗口",
+        'menu_new_tab': "新标签页",
+        'menu_reopen_tab': "重新打开关闭的标签页",
+        'menu_open': "打开…",
+        'menu_open_folder': "打开文件夹…",
+        'menu_open_recents': "打开最近文件",
+        'menu_close_tab': "关闭标签页",
+        'menu_toggle_pin': "固定 / 取消固定标签页",
+        'menu_save': "保存",
+        'menu_save_all': "全部保存",
+        'menu_save_as': "另存为…",
+
+        'menu_edit': "编辑",
+        'menu_undo': "撤销",
+        'menu_redo': "重做",
+        'menu_cut': "剪切",
+        'menu_copy': "复制",
+        'menu_paste': "粘贴",
+        'menu_find': "查找…",
+
+        'menu_window': "窗口",
+        'menu_minimize': "最小化",
+
+        'menu_settings': "设置",
+        'menu_open_settings': "打开设置…",
+        'menu_about': "关于",
+
+        'settings_title': "设置",
+        'settings_apply': "应用",
+        'settings_cancel': "取消",
+
+        'section_language': "语言",
+        'section_general': "常规",
+        'section_appearance': "外观",
+        'section_editor': "编辑器",
+        'section_interface': "界面",
+        'section_styles': "样式",
+
+        'settings_language': "界面语言",
+        'settings_theme': "主题",
+        'theme_dark': "深色",
+        'theme_light': "浅色",
+        'theme_system': "系统",
+
+        'settings_font_family': "字体",
+        'settings_font_size': "字号",
+        'settings_line_height': "行高",
+        'settings_line_wrap': "自动换行",
+        'wrap_word': "按词",
+        'wrap_char': "按字符",
+        'wrap_none': "无",
+        'settings_padding': "侧边距",
+
+        'settings_show_status': "状态栏",
+        'settings_show_wordcount': "字数统计",
+        'settings_win_size': "默认窗口大小",
+        'on': "开启",
+        'off': "关闭",
+
+        'dlg_save_title': "保存 {name}",
+        'dlg_save_msg': '是否保存对 "{name}" 的更改？',
+        'dlg_save_sub': "如果不保存，您的更改将会丢失。",
+        'dlg_dont_save': "不保存",
+        'dlg_cancel': "取消",
+        'dlg_save': "保存…",
+
+        'status_words_one': "字",
+        'status_words_many': "字",
+        'status_untitled': "无标题",
+
+        'search_no_results': "没有结果",
+        'sidebar_explorer': "资源管理器",
+        'no_folder': "没有打开的文件夹",
+
+        'dnd_title': "拖放不可用",
+        'dnd_msg': (
+            "拖放功能不可用：\n"
+            "未找到 tkinterdnd2。\n\n"
+            "请使用：\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "然后重新启动 Notys。"
+        ),
+
+        'untitled': "无标题",
+    },
+    'ko': {  # [Korean translations dictionary]
+        'menu_file': "파일",
+        'menu_new_window': "새 창",
+        'menu_new_tab': "새 탭",
+        'menu_reopen_tab': "닫은 탭 다시 열기",
+        'menu_open': "열기…",
+        'menu_open_folder': "폴더 열기…",
+        'menu_open_recents': "최근 항목 열기",
+        'menu_close_tab': "탭 닫기",
+        'menu_toggle_pin': "탭 고정/고정 해제",
+        'menu_save': "저장",
+        'menu_save_all': "모두 저장",
+        'menu_save_as': "다른 이름으로 저장…",
+
+        'menu_edit': "편집",
+        'menu_undo': "실행 취소",
+        'menu_redo': "다시 실행",
+        'menu_cut': "잘라내기",
+        'menu_copy': "복사",
+        'menu_paste': "붙여넣기",
+        'menu_find': "찾기…",
+
+        'menu_window': "창",
+        'menu_minimize': "최소화",
+
+        'menu_settings': "설정",
+        'menu_open_settings': "설정 열기…",
+        'menu_about': "정보",
+
+        'settings_title': "설정",
+        'settings_apply': "적용",
+        'settings_cancel': "취소",
+
+        'section_language': "언어",
+        'section_general': "일반",
+        'section_appearance': "모양",
+        'section_editor': "편집기",
+        'section_interface': "인터페이스",
+        'section_styles': "스타일",
+
+        'settings_language': "인터페이스 언어",
+        'settings_theme': "테마",
+        'theme_dark': "어두움",
+        'theme_light': "밝음",
+        'theme_system': "시스템",
+
+        'settings_font_family': "글꼴",
+        'settings_font_size': "글자 크기",
+        'settings_line_height': "줄 간격",
+        'settings_line_wrap': "줄 바꿈",
+        'wrap_word': "단어 단위",
+        'wrap_char': "문자 단위",
+        'wrap_none': "없음",
+        'settings_padding': "측면 여백",
+
+        'settings_show_status': "상태 표시줄",
+        'settings_show_wordcount': "단어 수",
+        'settings_win_size': "기본 창 크기",
+        'on': "켜짐",
+        'off': "꺼짐",
+
+        'dlg_save_title': "{name} 저장",
+        'dlg_save_msg': '"{name}"에 대한\n변경 사항을 저장하시겠습니까?',
+        'dlg_save_sub': "저장하지 않으면 변경 사항이 사라집니다.",
+        'dlg_dont_save': "저장하지 않음",
+        'dlg_cancel': "취소",
+        'dlg_save': "저장…",
+
+        'status_words_one': "단어",
+        'status_words_many': "단어",
+        'status_untitled': "제목 없음",
+
+        'search_no_results': "결과 없음",
+        'sidebar_explorer': "탐색기",
+        'no_folder': "열린 폴더가 없습니다",
+
+        'dnd_title': "끌어다 놓기 사용 불가",
+        'dnd_msg': (
+            "끌어다 놓기를 사용할 수 없습니다:\n"
+            "tkinterdnd2를 찾을 수 없습니다.\n\n"
+            "다음 명령으로 설치하세요:\n"
+            "  python -m pip install tkinterdnd2\n\n"
+            "그다음 Notys를 다시 시작하세요."
+        ),
+
+        'untitled': "제목 없음",
+    },
 }
+
+STYLE_TRANSLATIONS = {
+    'en': {
+        'style_default': 'Default', 'style_custom': 'Custom',
+        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Color', 'style_size': 'Size',
+        'style_save': 'Save', 'style_reset': 'Reset', 'style_add': 'Add', 'style_delete': 'Delete',
+        'style_title': 'Styles', 'style_new_name': 'New style name:',
+        'style_confirm_delete': 'Delete "{name}"?',
+        'style_confirm_reset': 'Reset "{name}" to default values?',
+        'style_invalid_marker': '{element}: marker must contain 1 to 12 characters.',
+        'style_invalid_color': '{element}: color must be a six-digit HEX value.',
+        'style_invalid_size': '{element}: font size must be between 0 and 72.',
+        'style_error_invalid_name': 'Style names must be 1-40 letters, numbers, spaces, _ or -.',
+        'style_error_read_only': 'The default style is read-only.',
+        'style_error_not_found': 'No style named "{name}" exists.',
+        'style_error_choose_name': 'Choose a name other than Default.',
+        'style_error_exists': 'A style named "{name}" already exists.',
+        'style_error_default_reset': 'The default style cannot be reset.',
+        'style_error_profile_missing': 'That style profile does not exist.',
+        'style_text': 'Text', 'style_h1': 'Header 1', 'style_h2': 'Header 2',
+        'style_h3': 'Header 3', 'style_h4': 'Header 4', 'style_h5': 'Header 5', 'style_h6': 'Header 6',
+        'style_bold': 'Bold', 'style_italic': 'Italic', 'style_inline_code': 'Inline Code',
+        'style_code_block': 'Code Block', 'style_quote': 'Blockquote', 'style_link': 'Link',
+        'style_list': 'Bullet List', 'style_underline': 'Underline',
+        'style_strike': 'Strikethrough', 'style_hr': 'Horizontal Rule',
+    },
+    'fr': {
+        'style_default': 'Par défaut', 'style_custom': 'Personnalisé',
+        'style_element': 'Élément', 'style_marker': 'Marqueur', 'style_color': 'Couleur', 'style_size': 'Taille',
+        'style_save': 'Enregistrer', 'style_reset': 'Réinitialiser', 'style_add': 'Ajouter', 'style_delete': 'Supprimer',
+        'style_title': 'Styles', 'style_new_name': 'Nom du nouveau style :',
+        'style_confirm_delete': 'Supprimer « {name} » ?',
+        'style_confirm_reset': 'Rétablir les valeurs par défaut de « {name} » ?',
+        'style_invalid_marker': '{element} : le marqueur doit contenir de 1 à 12 caractères.',
+        'style_invalid_color': '{element} : la couleur doit être au format HEX à six chiffres.',
+        'style_invalid_size': '{element} : la taille doit être comprise entre 0 et 72.',
+        'style_error_invalid_name': 'Le nom doit contenir de 1 à 40 lettres, chiffres, espaces, _ ou -.',
+        'style_error_read_only': 'Le style par défaut est en lecture seule.',
+        'style_error_not_found': 'Aucun style nommé « {name} » n’existe.',
+        'style_error_choose_name': 'Choisissez un nom différent de « Par défaut ».',
+        'style_error_exists': 'Un style nommé « {name} » existe déjà.',
+        'style_error_default_reset': 'Le style par défaut ne peut pas être réinitialisé.',
+        'style_error_profile_missing': 'Ce profil de style n’existe pas.',
+        'style_text': 'Texte', 'style_h1': 'Titre 1', 'style_h2': 'Titre 2', 'style_h3': 'Titre 3',
+        'style_h4': 'Titre 4', 'style_h5': 'Titre 5', 'style_h6': 'Titre 6', 'style_bold': 'Gras',
+        'style_italic': 'Italique', 'style_inline_code': 'Code en ligne', 'style_code_block': 'Bloc de code',
+        'style_quote': 'Citation', 'style_link': 'Lien', 'style_list': 'Liste à puces',
+        'style_underline': 'Souligné', 'style_strike': 'Barré', 'style_hr': 'Séparateur horizontal',
+    },
+    'eo': {
+        'style_default': 'Defaŭlta', 'style_custom': 'Propra',
+        'style_element': 'Elemento', 'style_marker': 'Markilo', 'style_color': 'Koloro', 'style_size': 'Grandeco',
+        'style_save': 'Konservi', 'style_reset': 'Restarigi', 'style_add': 'Aldoni', 'style_delete': 'Forigi',
+        'style_title': 'Stiloj', 'style_new_name': 'Nomo de la nova stilo:',
+        'style_confirm_delete': 'Ĉu forigi "{name}"?',
+        'style_confirm_reset': 'Ĉu restarigi "{name}" al defaŭltaj valoroj?',
+        'style_invalid_marker': '{element}: markilo devas havi 1 ĝis 12 signojn.',
+        'style_invalid_color': '{element}: koloro devas esti ses-cifera HEX-valoro.',
+        'style_invalid_size': '{element}: tipara grandeco devas esti inter 0 kaj 72.',
+        'style_error_invalid_name': 'La nomo devas havi 1–40 literojn, ciferojn, spacojn, _ aŭ -.',
+        'style_error_read_only': 'La defaŭlta stilo estas nurlegebla.',
+        'style_error_not_found': 'Stilo nomata "{name}" ne ekzistas.',
+        'style_error_choose_name': 'Elektu nomon alian ol Defaŭlta.',
+        'style_error_exists': 'Stilo nomata "{name}" jam ekzistas.',
+        'style_error_default_reset': 'La defaŭlta stilo ne povas esti restarigita.',
+        'style_error_profile_missing': 'Tiu stila profilo ne ekzistas.',
+        'style_text': 'Teksto', 'style_h1': 'Titolo 1', 'style_h2': 'Titolo 2', 'style_h3': 'Titolo 3',
+        'style_h4': 'Titolo 4', 'style_h5': 'Titolo 5', 'style_h6': 'Titolo 6', 'style_bold': 'Grasa',
+        'style_italic': 'Kursiva', 'style_inline_code': 'Enlinia kodo', 'style_code_block': 'Kodbloko',
+        'style_quote': 'Citaĵo', 'style_link': 'Ligilo', 'style_list': 'Bul-listo',
+        'style_underline': 'Substrekita', 'style_strike': 'Trastrekita', 'style_hr': 'Horizontala linio',
+    },
+    'es': {
+        'style_default': 'Predeterminado', 'style_custom': 'Personalizado',
+        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Color', 'style_size': 'Tamaño',
+        'style_save': 'Guardar', 'style_reset': 'Restablecer', 'style_add': 'Añadir', 'style_delete': 'Eliminar',
+        'style_title': 'Estilos', 'style_new_name': 'Nombre del nuevo estilo:',
+        'style_confirm_delete': '¿Eliminar "{name}"?',
+        'style_confirm_reset': '¿Restablecer "{name}" a los valores predeterminados?',
+        'style_invalid_marker': '{element}: el marcador debe tener entre 1 y 12 caracteres.',
+        'style_invalid_color': '{element}: el color debe ser un valor HEX de seis dígitos.',
+        'style_invalid_size': '{element}: el tamaño debe estar entre 0 y 72.',
+        'style_error_invalid_name': 'El nombre debe tener entre 1 y 40 letras, números, espacios, _ o -.',
+        'style_error_read_only': 'El estilo predeterminado es de solo lectura.',
+        'style_error_not_found': 'No existe un estilo llamado "{name}".',
+        'style_error_choose_name': 'Elige un nombre distinto de Predeterminado.',
+        'style_error_exists': 'Ya existe un estilo llamado "{name}".',
+        'style_error_default_reset': 'No se puede restablecer el estilo predeterminado.',
+        'style_error_profile_missing': 'Ese perfil de estilo no existe.',
+        'style_text': 'Texto', 'style_h1': 'Encabezado 1', 'style_h2': 'Encabezado 2',
+        'style_h3': 'Encabezado 3', 'style_h4': 'Encabezado 4', 'style_h5': 'Encabezado 5', 'style_h6': 'Encabezado 6',
+        'style_bold': 'Negrita', 'style_italic': 'Cursiva', 'style_inline_code': 'Código en línea',
+        'style_code_block': 'Bloque de código', 'style_quote': 'Cita', 'style_link': 'Enlace',
+        'style_list': 'Lista con viñetas', 'style_underline': 'Subrayado', 'style_strike': 'Tachado',
+        'style_hr': 'Línea horizontal',
+    },
+    'pt': {
+        'style_default': 'Padrão', 'style_custom': 'Personalizado',
+        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Cor', 'style_size': 'Tamanho',
+        'style_save': 'Salvar', 'style_reset': 'Redefinir', 'style_add': 'Adicionar', 'style_delete': 'Excluir',
+        'style_title': 'Estilos', 'style_new_name': 'Nome do novo estilo:',
+        'style_confirm_delete': 'Excluir "{name}"?',
+        'style_confirm_reset': 'Redefinir "{name}" para os valores padrão?',
+        'style_invalid_marker': '{element}: o marcador deve conter de 1 a 12 caracteres.',
+        'style_invalid_color': '{element}: a cor deve ser um valor HEX de seis dígitos.',
+        'style_invalid_size': '{element}: o tamanho deve estar entre 0 e 72.',
+        'style_error_invalid_name': 'O nome deve ter de 1 a 40 letras, números, espaços, _ ou -.',
+        'style_error_read_only': 'O estilo padrão é somente leitura.',
+        'style_error_not_found': 'Não existe um estilo chamado "{name}".',
+        'style_error_choose_name': 'Escolha um nome diferente de Padrão.',
+        'style_error_exists': 'Já existe um estilo chamado "{name}".',
+        'style_error_default_reset': 'O estilo padrão não pode ser redefinido.',
+        'style_error_profile_missing': 'Esse perfil de estilo não existe.',
+        'style_text': 'Texto', 'style_h1': 'Cabeçalho 1', 'style_h2': 'Cabeçalho 2',
+        'style_h3': 'Cabeçalho 3', 'style_h4': 'Cabeçalho 4', 'style_h5': 'Cabeçalho 5', 'style_h6': 'Cabeçalho 6',
+        'style_bold': 'Negrito', 'style_italic': 'Itálico', 'style_inline_code': 'Código em linha',
+        'style_code_block': 'Bloco de código', 'style_quote': 'Citação', 'style_link': 'Link',
+        'style_list': 'Lista com marcadores', 'style_underline': 'Sublinhado', 'style_strike': 'Riscado',
+        'style_hr': 'Linha horizontal',
+    },
+    'de': {
+        'style_default': 'Standard', 'style_custom': 'Benutzerdefiniert',
+        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Farbe', 'style_size': 'Größe',
+        'style_save': 'Speichern', 'style_reset': 'Zurücksetzen', 'style_add': 'Hinzufügen', 'style_delete': 'Löschen',
+        'style_title': 'Stile', 'style_new_name': 'Name des neuen Stils:',
+        'style_confirm_delete': '„{name}" löschen?',
+        'style_confirm_reset': '„{name}" auf Standardwerte zurücksetzen?',
+        'style_invalid_marker': '{element}: Der Marker muss 1 bis 12 Zeichen enthalten.',
+        'style_invalid_color': '{element}: Die Farbe muss ein sechsstelliger HEX-Wert sein.',
+        'style_invalid_size': '{element}: Die Schriftgröße muss zwischen 0 und 72 liegen.',
+        'style_error_invalid_name': 'Der Name muss 1 bis 40 Buchstaben, Zahlen, Leerzeichen, _ oder - enthalten.',
+        'style_error_read_only': 'Der Standardstil ist schreibgeschützt.',
+        'style_error_not_found': 'Der Stil „{name}" ist nicht vorhanden.',
+        'style_error_choose_name': 'Wählen Sie einen anderen Namen als Standard.',
+        'style_error_exists': 'Ein Stil namens „{name}" ist bereits vorhanden.',
+        'style_error_default_reset': 'Der Standardstil kann nicht zurückgesetzt werden.',
+        'style_error_profile_missing': 'Dieses Stilprofil ist nicht vorhanden.',
+        'style_text': 'Text', 'style_h1': 'Überschrift 1', 'style_h2': 'Überschrift 2',
+        'style_h3': 'Überschrift 3', 'style_h4': 'Überschrift 4', 'style_h5': 'Überschrift 5', 'style_h6': 'Überschrift 6',
+        'style_bold': 'Fett', 'style_italic': 'Kursiv', 'style_inline_code': 'Inline-Code',
+        'style_code_block': 'Codeblock', 'style_quote': 'Zitat', 'style_link': 'Link',
+        'style_list': 'Aufzählung', 'style_underline': 'Unterstrichen', 'style_strike': 'Durchgestrichen',
+        'style_hr': 'Horizontale Linie',
+    },
+    'it': {
+        'style_default': 'Predefinito', 'style_custom': 'Personalizzato',
+        'style_element': 'Elemento', 'style_marker': 'Marcatore', 'style_color': 'Colore', 'style_size': 'Dimensione',
+        'style_save': 'Salva', 'style_reset': 'Reimposta', 'style_add': 'Aggiungi', 'style_delete': 'Elimina',
+        'style_title': 'Stili', 'style_new_name': 'Nome del nuovo stile:',
+        'style_confirm_delete': 'Eliminare "{name}"?',
+        'style_confirm_reset': 'Ripristinare i valori predefiniti di "{name}"?',
+        'style_invalid_marker': '{element}: il marcatore deve contenere da 1 a 12 caratteri.',
+        'style_invalid_color': '{element}: il colore deve essere un valore HEX a sei cifre.',
+        'style_invalid_size': '{element}: la dimensione deve essere compresa tra 0 e 72.',
+        'style_error_invalid_name': 'Il nome deve contenere da 1 a 40 lettere, numeri, spazi, _ o -.',
+        'style_error_read_only': 'Lo stile predefinito è di sola lettura.',
+        'style_error_not_found': 'Non esiste uno stile chiamato "{name}".',
+        'style_error_choose_name': 'Scegli un nome diverso da Predefinito.',
+        'style_error_exists': 'Esiste già uno stile chiamato "{name}".',
+        'style_error_default_reset': 'Lo stile predefinito non può essere reimpostato.',
+        'style_error_profile_missing': 'Questo profilo di stile non esiste.',
+        'style_text': 'Testo', 'style_h1': 'Intestazione 1', 'style_h2': 'Intestazione 2',
+        'style_h3': 'Intestazione 3', 'style_h4': 'Intestazione 4', 'style_h5': 'Intestazione 5', 'style_h6': 'Intestazione 6',
+        'style_bold': 'Grassetto', 'style_italic': 'Corsivo', 'style_inline_code': 'Codice in linea',
+        'style_code_block': 'Blocco di codice', 'style_quote': 'Citazione', 'style_link': 'Collegamento',
+        'style_list': 'Elenco puntato', 'style_underline': 'Sottolineato', 'style_strike': 'Barrato',
+        'style_hr': 'Linea orizzontale',
+    },
+    'nl': {
+        'style_default': 'Standaard', 'style_custom': 'Aangepast',
+        'style_element': 'Element', 'style_marker': 'Markering', 'style_color': 'Kleur', 'style_size': 'Grootte',
+        'style_save': 'Opslaan', 'style_reset': 'Herstellen', 'style_add': 'Toevoegen', 'style_delete': 'Verwijderen',
+        'style_title': 'Stijlen', 'style_new_name': 'Naam van de nieuwe stijl:',
+        'style_confirm_delete': '"{name}" verwijderen?',
+        'style_confirm_reset': '"{name}" herstellen naar de standaardwaarden?',
+        'style_invalid_marker': '{element}: de markering moet 1 tot 12 tekens bevatten.',
+        'style_invalid_color': '{element}: de kleur moet een HEX-waarde van zes cijfers zijn.',
+        'style_invalid_size': '{element}: de tekengrootte moet tussen 0 en 72 liggen.',
+        'style_error_invalid_name': 'De naam moet 1 tot 40 letters, cijfers, spaties, _ of - bevatten.',
+        'style_error_read_only': 'De standaardstijl is alleen-lezen.',
+        'style_error_not_found': 'Er bestaat geen stijl met de naam "{name}".',
+        'style_error_choose_name': 'Kies een andere naam dan Standaard.',
+        'style_error_exists': 'Er bestaat al een stijl met de naam "{name}".',
+        'style_error_default_reset': 'De standaardstijl kan niet worden hersteld.',
+        'style_error_profile_missing': 'Dit stijlprofiel bestaat niet.',
+        'style_text': 'Tekst', 'style_h1': 'Kop 1', 'style_h2': 'Kop 2', 'style_h3': 'Kop 3',
+        'style_h4': 'Kop 4', 'style_h5': 'Kop 5', 'style_h6': 'Kop 6', 'style_bold': 'Vet',
+        'style_italic': 'Cursief', 'style_inline_code': 'Inline-code', 'style_code_block': 'Codeblok',
+        'style_quote': 'Citaat', 'style_link': 'Koppeling', 'style_list': 'Lijst met opsommingstekens',
+        'style_underline': 'Onderstrepen', 'style_strike': 'Doorhalen', 'style_hr': 'Horizontale lijn',
+    },
+    'ru': {
+        'style_default': 'По умолчанию', 'style_custom': 'Пользовательский',
+        'style_element': 'Элемент', 'style_marker': 'Маркер', 'style_color': 'Цвет', 'style_size': 'Размер',
+        'style_save': 'Сохранить', 'style_reset': 'Сбросить', 'style_add': 'Добавить', 'style_delete': 'Удалить',
+        'style_title': 'Стили', 'style_new_name': 'Название нового стиля:',
+        'style_confirm_delete': 'Удалить «{name}»?',
+        'style_confirm_reset': 'Сбросить «{name}» к значениям по умолчанию?',
+        'style_invalid_marker': '{element}: маркер должен содержать от 1 до 12 символов.',
+        'style_invalid_color': '{element}: цвет должен быть шестизначным HEX-значением.',
+        'style_invalid_size': '{element}: размер шрифта должен быть от 0 до 72.',
+        'style_error_invalid_name': 'Имя должно содержать от 1 до 40 букв, цифр, пробелов, _ или -.',
+        'style_error_read_only': 'Стиль по умолчанию доступен только для чтения.',
+        'style_error_not_found': 'Стиль «{name}» не найден.',
+        'style_error_choose_name': 'Выберите имя, отличное от «По умолчанию».',
+        'style_error_exists': 'Стиль «{name}» уже существует.',
+        'style_error_default_reset': 'Нельзя сбросить стиль по умолчанию.',
+        'style_error_profile_missing': 'Этот профиль стиля не существует.',
+        'style_text': 'Текст', 'style_h1': 'Заголовок 1', 'style_h2': 'Заголовок 2',
+        'style_h3': 'Заголовок 3', 'style_h4': 'Заголовок 4', 'style_h5': 'Заголовок 5', 'style_h6': 'Заголовок 6',
+        'style_bold': 'Полужирный', 'style_italic': 'Курсив', 'style_inline_code': 'Строчный код',
+        'style_code_block': 'Блок кода', 'style_quote': 'Цитата', 'style_link': 'Ссылка',
+        'style_list': 'Маркированный список', 'style_underline': 'Подчёркивание', 'style_strike': 'Зачёркивание',
+        'style_hr': 'Горизонтальная линия',
+    },
+    'ja': {
+        'style_default': 'デフォルト', 'style_custom': 'カスタム',
+        'style_element': '要素', 'style_marker': '記号', 'style_color': '色', 'style_size': 'サイズ',
+        'style_save': '保存', 'style_reset': 'リセット', 'style_add': '追加', 'style_delete': '削除',
+        'style_title': 'スタイル', 'style_new_name': '新しいスタイル名:',
+        'style_confirm_delete': '「{name}」を削除しますか？',
+        'style_confirm_reset': '「{name}」をデフォルト値に戻しますか？',
+        'style_invalid_marker': '{element}: 記号は1〜12文字で指定してください。',
+        'style_invalid_color': '{element}: 色は6桁のHEX値で指定してください。',
+        'style_invalid_size': '{element}: フォントサイズは0〜72で指定してください。',
+        'style_error_invalid_name': '名前は1〜40文字で、英字、数字、空白、_、-を使用できます。',
+        'style_error_read_only': 'デフォルトのスタイルは読み取り専用です。',
+        'style_error_not_found': 'スタイル「{name}」が見つかりません。',
+        'style_error_choose_name': 'デフォルト以外の名前を指定してください。',
+        'style_error_exists': 'スタイル「{name}」はすでに存在します。',
+        'style_error_default_reset': 'デフォルトのスタイルはリセットできません。',
+        'style_error_profile_missing': 'スタイルプロファイルが見つかりません。',
+        'style_text': 'テキスト', 'style_h1': '見出し 1', 'style_h2': '見出し 2',
+        'style_h3': '見出し 3', 'style_h4': '見出し 4', 'style_h5': '見出し 5', 'style_h6': '見出し 6',
+        'style_bold': '太字', 'style_italic': '斜体', 'style_inline_code': 'インラインコード',
+        'style_code_block': 'コードブロック', 'style_quote': '引用', 'style_link': 'リンク',
+        'style_list': '箇条書き', 'style_underline': '下線', 'style_strike': '取り消し線',
+        'style_hr': '水平線',
+    },
+    'zh': {
+        'style_default': '默认', 'style_custom': '自定义',
+        'style_element': '元素', 'style_marker': '标记', 'style_color': '颜色', 'style_size': '大小',
+        'style_save': '保存', 'style_reset': '重置', 'style_add': '添加', 'style_delete': '删除',
+        'style_title': '样式', 'style_new_name': '新样式名称：',
+        'style_confirm_delete': '确定删除“{name}”吗？',
+        'style_confirm_reset': '确定将“{name}”重置为默认值吗？',
+        'style_invalid_marker': '{element}：标记长度必须为 1 到 12 个字符。',
+        'style_invalid_color': '{element}：颜色必须是六位 HEX 值。',
+        'style_invalid_size': '{element}：字体大小必须在 0 到 72 之间。',
+        'style_error_invalid_name': '名称须为 1 到 40 个字符，可包含字母、数字、空格、_ 或 -。',
+        'style_error_read_only': '默认样式为只读。',
+        'style_error_not_found': '找不到名为“{name}”的样式。',
+        'style_error_choose_name': '请选择“默认”以外的名称。',
+        'style_error_exists': '名为“{name}”的样式已存在。',
+        'style_error_default_reset': '无法重置默认样式。',
+        'style_error_profile_missing': '该样式配置不存在。',
+        'style_text': '文本', 'style_h1': '标题 1', 'style_h2': '标题 2', 'style_h3': '标题 3',
+        'style_h4': '标题 4', 'style_h5': '标题 5', 'style_h6': '标题 6', 'style_bold': '粗体',
+        'style_italic': '斜体', 'style_inline_code': '行内代码', 'style_code_block': '代码块',
+        'style_quote': '引用', 'style_link': '链接', 'style_list': '项目符号列表',
+        'style_underline': '下划线', 'style_strike': '删除线', 'style_hr': '水平线',
+    },
+    'ko': {
+        'style_default': '기본값', 'style_custom': '사용자 지정',
+        'style_element': '요소', 'style_marker': '표시자', 'style_color': '색상', 'style_size': '크기',
+        'style_save': '저장', 'style_reset': '초기화', 'style_add': '추가', 'style_delete': '삭제',
+        'style_title': '스타일', 'style_new_name': '새 스타일 이름:',
+        'style_confirm_delete': '"{name}"을(를) 삭제할까요?',
+        'style_confirm_reset': '"{name}"을(를) 기본값으로 초기화할까요?',
+        'style_invalid_marker': '{element}: 표시자는 1~12자로 입력해야 합니다.',
+        'style_invalid_color': '{element}: 색상은 6자리 HEX 값이어야 합니다.',
+        'style_invalid_size': '{element}: 글꼴 크기는 0~72 사이여야 합니다.',
+        'style_error_invalid_name': '이름은 영문자, 숫자, 공백, _ 또는 -를 사용해 1~40자로 입력해야 합니다.',
+        'style_error_read_only': '기본 스타일은 읽기 전용입니다.',
+        'style_error_not_found': '"{name}" 스타일을 찾을 수 없습니다.',
+        'style_error_choose_name': '기본값이 아닌 이름을 선택하세요.',
+        'style_error_exists': '"{name}" 스타일이 이미 있습니다.',
+        'style_error_default_reset': '기본 스타일은 초기화할 수 없습니다.',
+        'style_error_profile_missing': '해당 스타일 프로필이 없습니다.',
+        'style_text': '텍스트', 'style_h1': '제목 1', 'style_h2': '제목 2', 'style_h3': '제목 3',
+        'style_h4': '제목 4', 'style_h5': '제목 5', 'style_h6': '제목 6', 'style_bold': '굵게',
+        'style_italic': '기울임꼴', 'style_inline_code': '인라인 코드', 'style_code_block': '코드 블록',
+        'style_quote': '인용', 'style_link': '링크', 'style_list': '글머리 기호 목록',
+        'style_underline': '밑줄', 'style_strike': '취소선', 'style_hr': '가로줄',
+    },
+}
+for language, translations in STYLE_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
 
 current_language = 'en' # [Default initial language setting]
 theme_preferences = 'system' # [Default theme preference setting]
@@ -2623,13 +3695,38 @@ if __name__ == '__main__': # [Main application execution block]
 
         p_language = tk.Frame(content_area, bg=H_BG)
         row_label(p_language, tr('settings_language'), 2)
-        make_radiogroup(p_language, lang_var, [("Français", 'fr'), ("English", 'en'), ("Esperanto", 'eo')], row=2)
+        make_radiogroup(p_language, lang_var, [("English", 'en'), ("Français", 'fr'), ("Esperanto", 'eo'), ("Español", 'es'), ('Português', 'pt'), ('Deutsch', 'de'), ('Italiano', 'it')], row=2)
+        make_radiogroup(p_language, lang_var, [('Nederlands', 'nl'), ('Русский', 'ru'), ('日本語', 'ja'), ('中文', 'zh'), ('한국어', 'ko')], row=3)
 
         p_styles = tk.Frame(content_area, bg=H_BG)
         style_toolbar = tk.Frame(p_styles, bg=H_BG)
         style_toolbar.pack(fill='x', pady=(0, 8))
         def style_display_name(name):
-            return name.title() if name.casefold() in ('default', 'custom') else name
+            if name.casefold() == 'default':
+                return tr('style_default')
+            if name.casefold() == 'custom':
+                return tr('style_custom')
+            return name
+
+        def style_error_text(error):
+            message = str(error)
+            if message == 'Style names must be 1-40 letters, numbers, spaces, _ or -.':
+                return tr('style_error_invalid_name')
+            if message == 'The default style is read-only.':
+                return tr('style_error_read_only')
+            if message == 'Choose a name other than Default.':
+                return tr('style_error_choose_name')
+            if message == 'The default style cannot be reset.':
+                return tr('style_error_default_reset')
+            if message == 'That style profile does not exist.':
+                return tr('style_error_profile_missing')
+            match = re.fullmatch(r'No style named "(.+)" exists\.', message)
+            if match:
+                return tr('style_error_not_found', name=match.group(1))
+            match = re.fullmatch(r'A style named "(.+)" already exists\.', message)
+            if match:
+                return tr('style_error_exists', name=match.group(1))
+            return message
 
         style_name_var = tk.StringVar(value=style_display_name(ACTIVE_STYLE_NAME))
         style_dirty = [False]
@@ -2711,7 +3808,7 @@ if __name__ == '__main__': # [Main application execution block]
         )
         styles_canvas.bind('<MouseWheel>', lambda event: styles_canvas.yview_scroll(int(-event.delta / 120), 'units'))
 
-        headers = ('Element', 'Marker', 'Color', 'B', 'I', 'U', 'S', 'Size')
+        headers = (tr('style_element'), tr('style_marker'), tr('style_color'), 'B', 'I', 'U', 'S', tr('style_size'))
         header_columns = (0, 1, 3, 4, 5, 6, 7, 8)
         for label, column in zip(headers, header_columns):
             tk.Label(
@@ -2719,7 +3816,7 @@ if __name__ == '__main__': # [Main application execution block]
                 font=('Consolas', 9, 'bold'), anchor='w',
             ).grid(row=0, column=column, sticky='w', padx=(4, 3), pady=(2, 6))
 
-        for row_index, (element, label, _marker, _color, _bold, _italic, _underline, _strike) in enumerate(STYLE_ELEMENTS, start=1):
+        for row_index, (element, _label, _marker, _color, _bold, _italic, _underline, _strike) in enumerate(STYLE_ELEMENTS, start=1):
             defaults = ACTIVE_STYLE['elements'][element]
             marker_var = tk.StringVar(value=defaults['marker'])
             color_var = tk.StringVar(value=resolved_style_color(defaults['color']))
@@ -2739,7 +3836,7 @@ if __name__ == '__main__': # [Main application execution block]
             }
 
             tk.Label(
-                styles_rows, text=label, bg=H_BG, fg=FG,
+                styles_rows, text=tr(f'style_{element}'), bg=H_BG, fg=FG,
                 font=('Consolas', 9), anchor='w', width=15,
             ).grid(row=row_index, column=0, sticky='w', padx=4, pady=2)
             marker_entry = tk.Entry(
@@ -2817,18 +3914,18 @@ if __name__ == '__main__': # [Main application execution block]
                 marker = controls['marker'].get()
                 color = controls['color'].get().strip()
                 if (element != 'text' and not marker.strip()) or len(marker) > 12:
-                    raise ValueError(f'{element}: marker must contain 1 to 12 characters.')
+                    raise ValueError(tr('style_invalid_marker', element=tr(f'style_{element}')))
                 if not re.fullmatch(r'#[0-9a-fA-F]{6}', color):
-                    raise ValueError(f'{element}: color must be a six-digit HEX value.')
+                    raise ValueError(tr('style_invalid_color', element=tr(f'style_{element}')))
                 previous_color = ACTIVE_STYLE['elements'][element]['color']
                 if original_style_colors[element].casefold() == color.casefold():
                     color = previous_color
                 try:
                     font_size = int(controls['font_size'].get())
                 except ValueError as error:
-                    raise ValueError(f'{element}: font size must be between 0 and 72.') from error
+                    raise ValueError(tr('style_invalid_size', element=tr(f'style_{element}'))) from error
                 if not 0 <= font_size <= 72:
-                    raise ValueError(f'{element}: font size must be between 0 and 72.')
+                    raise ValueError(tr('style_invalid_size', element=tr(f'style_{element}')))
                 elements[element] = {
                     'marker': '' if element == 'text' else marker,
                     'color': color,
@@ -2845,7 +3942,7 @@ if __name__ == '__main__': # [Main application execution block]
             try:
                 ACTIVE_STYLE = style_manager.save(ACTIVE_STYLE_NAME, profile_from_controls())
             except (ValueError, OSError, tk.TclError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return False
             style_manager.profile = ACTIVE_STYLE
             style_dirty[0] = False
@@ -2863,21 +3960,21 @@ if __name__ == '__main__': # [Main application execution block]
             try:
                 activate_style(selected_name)
             except (ValueError, OSError, json.JSONDecodeError, tk.TclError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 refresh_style_menu()
                 return
             refresh_style_menu()
             load_style_controls(ACTIVE_STYLE)
 
         def add_style():
-            name = simpledialog.askstring('Styles', 'New style name:', parent=dlg)
+            name = simpledialog.askstring(tr('style_title'), tr('style_new_name'), parent=dlg)
             if not name:
                 return
             try:
                 style_manager.create(name, style_manager.load('default'))
                 activate_style(name)
             except (ValueError, OSError, json.JSONDecodeError, tk.TclError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             refresh_style_menu()
             load_style_controls(ACTIVE_STYLE)
@@ -2886,27 +3983,27 @@ if __name__ == '__main__': # [Main application execution block]
             if ACTIVE_STYLE_NAME.casefold() == 'default':
                 return
             if not messagebox.askyesno(
-                'Styles', f'Delete "{style_display_name(ACTIVE_STYLE_NAME)}"?', parent=dlg,
+                tr('style_title'), tr('style_confirm_delete', name=style_display_name(ACTIVE_STYLE_NAME)), parent=dlg,
             ):
                 return
             try:
                 style_manager.delete(ACTIVE_STYLE_NAME)
                 activate_style('default')
             except (ValueError, OSError, json.JSONDecodeError, tk.TclError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             refresh_style_menu()
             load_style_controls(ACTIVE_STYLE)
 
         def reset_active_style():
             if not messagebox.askyesno(
-                'Styles', f'Reset "{style_display_name(ACTIVE_STYLE_NAME)}" to default values?', parent=dlg,
+                tr('style_title'), tr('style_confirm_reset', name=style_display_name(ACTIVE_STYLE_NAME)), parent=dlg,
             ):
                 return
             try:
                 style_manager.reset(ACTIVE_STYLE_NAME)
             except (ValueError, OSError, tk.TclError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             activate_style(ACTIVE_STYLE_NAME)
             load_style_controls(ACTIVE_STYLE)
@@ -2914,19 +4011,19 @@ if __name__ == '__main__': # [Main application execution block]
         button_bg = '#222222' if theme_preferences == 'dark' else '#ffffff'
         button_fg = '#ffffff' if theme_preferences == 'dark' else '#202020'
 
-        save_style_button = style_button('Save', save_current_style)
+        save_style_button = style_button(tr('style_save'), save_current_style)
         save_style_button.config(bg=button_bg, fg=button_fg)
         save_style_button.pack(side='right', padx=(4, 0))
 
-        reset_style_button = style_button('Reset', reset_active_style)
+        reset_style_button = style_button(tr('style_reset'), reset_active_style)
         reset_style_button.config(bg=button_bg, fg=button_fg)
         reset_style_button.pack(side='right', padx=(4, 0))
 
-        add_style_button = style_button('Add', add_style)
+        add_style_button = style_button(tr('style_add'), add_style)
         add_style_button.config(bg=button_bg, fg=button_fg)
         add_style_button.pack(side='right', padx=(4, 0))
 
-        delete_style_button = style_button('Delete', delete_active_style)
+        delete_style_button = style_button(tr('style_delete'), delete_active_style)
         delete_style_button.config(bg=button_bg, fg=button_fg)
         delete_style_button.pack(side='right', padx=(4, 0))
 
@@ -2948,7 +4045,7 @@ if __name__ == '__main__': # [Main application execution block]
             try:
                 activate_style(ACTIVE_STYLE_NAME)
             except (ValueError, OSError, json.JSONDecodeError) as error:
-                messagebox.showerror('Styles', str(error), parent=dlg)
+                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             current_language = lang_var.get()
             SETTINGS['font_family'] = font_fam_var.get()

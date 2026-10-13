@@ -74,7 +74,7 @@ README has been through chatGPT to correct typos as I am not an native English s
 **Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems.**
 
 1. Go to the **Releases** section on GitHub and navigate to the latest version.
-2. Download the latest `Notys.zip`.
+2. Download the latest `Notys-macOS-x.x.x.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
 4. Open the app
 5. Have fun!
@@ -95,7 +95,7 @@ README has been through chatGPT to correct typos as I am not an native English s
 4. Run the .exe file
 
 ## Work in Progress (Roadmap)
-### Planned for v1.5.1:
+### Planned for v1.7.0:
 - [ ] Add more languages.
 - [ ] Add a mission-control-ish overview
 ### Planned in the near or far future:
@@ -105,5 +105,5 @@ README has been through chatGPT to correct typos as I am not an native English s
 
 ## Known bugs
 ### Minor Bugs
-- [ ] **Keyboard shortcut:** The "Save All" and "Reopen Last Closed" keyboard shortcuts do not work, use the menu bar instead.
+- [X] **Keyboard shortcut:** The "Save All" and "Reopen Last Closed" keyboard shortcuts do not work, use the menu bar instead.
 - [ ] **Light/Dark Theme Button**: The dark/light theme button in the tab bar doesn't display the right icon if started in light mode. Still completely usable at 100%. Just a UI bug.

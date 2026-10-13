@@ -1,6 +1,6 @@
 # Notys
 
-**Notys** is an ultra-lightweight note-taking application designed for speed and simplicity.  
+Notys is an ultra-lightweight note-taking application designed for speed and simplicity.  
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download

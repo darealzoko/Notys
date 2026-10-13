@@ -4,7 +4,7 @@ Notys is an ultra-lightweight note-taking application designed for speed and sim
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.6.2) is currently available for:
+The latest version of Notys (v1.7.0) is currently available for:
 
 **Linux:**
 

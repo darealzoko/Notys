@@ -21,7 +21,7 @@ namespace eval tcltest {
     # When the version number changes, be sure to update the pkgIndex.tcl file,
     # and the install directory in the Makefiles.  When the minor version
     # changes (new feature) be sure to update the man page as well.
-    variable Version 2.5.9
+    variable Version 2.5.7
 
     # Compatibility support for dumb variables defined in tcltest 1
     # Do not use these.  Call [package require] and [info patchlevel]
@@ -43,7 +43,7 @@ namespace eval tcltest {
 	    outputChannel testConstraint
 
     # Export commands that are duplication (candidates for deprecation)
-    if {![package vsatisfies [package provide Tcl] 9.0-]} {
+    if {!$fullutf} {
 	namespace export bytestring	;# dups [encoding convertfrom identity]
     }
     namespace export debug		;#	[configure -debug]
@@ -1158,15 +1158,15 @@ proc tcltest::SafeFetch {n1 n2 op} {
 proc tcltest::Asciify {s} {
     set print ""
     foreach c [split $s ""] {
-	if {(($c < "\x7F") && [string is print $c]) || ($c eq "\n")} {
-	    append print $c
-	} elseif {$c < "\u0100"} {
-	    append print \\x[format %02X [scan $c %c]]
-	} elseif {$c > "\uFFFF"} {
-	    append print \\U[format %08X [scan $c %c]]
-	} else {
-	    append print \\u[format %04X [scan $c %c]]
-	}
+        if {(($c < "\x7F") && [string is print $c]) || ($c eq "\n")} {
+            append print $c
+        } elseif {$c < "\u0100"} {
+            append print \\x[format %02X [scan $c %c]]
+        } elseif {$c > "\uFFFF"} {
+            append print \\U[format %08X [scan $c %c]]
+        } else {
+            append print \\u[format %04X [scan $c %c]]
+        }
     }
     return $print
 }
@@ -1282,23 +1282,19 @@ proc tcltest::DefineConstraintInitializers {} {
 
     # Skip empty tests
 
-    ConstraintInitializer emptyTest {expr 0}
+    ConstraintInitializer emptyTest {format 0}
 
     # By default, tests that expose known bugs are skipped.
 
-    ConstraintInitializer knownBug {expr 0}
+    ConstraintInitializer knownBug {format 0}
 
     # By default, non-portable tests are skipped.
 
-    ConstraintInitializer nonPortable {expr 0}
-
-    # By default, extremely slow, extensive or IO-aggressive tests are skipped.
-
-    ConstraintInitializer extensive {expr 0}
+    ConstraintInitializer nonPortable {format 0}
 
     # Some tests require user interaction.
 
-    ConstraintInitializer userInteraction {expr 0}
+    ConstraintInitializer userInteraction {format 0}
 
     # Some tests must be skipped if the interpreter is not in
     # interactive mode
@@ -2923,7 +2919,7 @@ proc tcltest::runAllTests { {shell ""} } {
 	if {[singleProcess]} {
 	    if {[catch {
 		incr numTestFiles
-		uplevel 1 [list ::source -encoding utf-8 $file]
+		uplevel 1 [list ::source $file]
 	    } msg]} {
 		puts [outputChannel] "Test file error: $msg"
 		# append the name of the test to a list to be reported
@@ -3008,7 +3004,7 @@ proc tcltest::runAllTests { {shell ""} } {
 	puts [outputChannel] [string repeat ~ 44]
 	puts [outputChannel] "$dir test began at [eval $timeCmd]\n"
 
-	uplevel 1 [list ::source -encoding utf-8 [file join $directory all.tcl]]
+	uplevel 1 [list ::source [file join $directory all.tcl]]
 
 	set endTime [eval $timeCmd]
 	puts [outputChannel] "\n$dir test ended at $endTime"
@@ -3342,7 +3338,7 @@ proc tcltest::viewFile {name {directory ""}} {
 # Side effects:
 #	None
 
-if {![package vsatisfies [package provide Tcl] 9.0-]} {
+if {!$::tcltest::fullutf} {
     proc tcltest::bytestring {string} {
 	return [encoding convertfrom identity $string]
     }

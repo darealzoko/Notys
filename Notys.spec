@@ -1,5 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
+import sys
+import platform
+SPECPATH = os.path.dirname(os.path.abspath(__file__)) if 'SPECPATH' not in globals() else SPECPATH
+sys.path.append(SPECPATH)
+import version
 
+# Detect platform icon
+icon_file = 'app_icon.ico' if platform.system() == 'Windows' else 'app_icon.icns'
 
 a = Analysis(
     ['main.py'],
@@ -32,7 +39,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['app_icon.icns'],
+    icon=icon_file,  # <-- Set dynamic icon here
 )
 coll = COLLECT(
     exe,
@@ -45,7 +52,14 @@ coll = COLLECT(
 )
 app = BUNDLE(
     coll,
-    name='Notys.app',
+    name=f'{version.APP_NAME}.app',
     icon='app_icon.icns',
     bundle_identifier=None,
+    info_plist={
+        'CFBundleName': version.APP_NAME,
+        'CFBundleGetInfoString': version.INFO_STRING,
+        'CFBundleVersion': version.VERSION,
+        'CFBundleShortVersionString': version.SHORT_VERSION,
+        'NSHumanReadableCopyright': version.COPYRIGHT,
+    },
 )

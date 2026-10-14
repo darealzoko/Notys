@@ -95,13 +95,15 @@ README has been through chatGPT to correct typos as I am not an native English s
 4. Run the .exe file
 
 ## Work in Progress (Roadmap)
-### Planned for v1.7.0:
-- [ ] Add more languages.
+### Planned for v1.8.0:
+- [ ] Add a right menu
+- [ ] Add an option under file called "Show in Finder" or "Show in File Explorer" depending on your system.
 - [ ] Add a mission-control-ish overview
 ### Planned in the near or far future:
+- [ ] HTML/PDF exporting
 - [X] Liquid glass, maybe for 2.0.0
 - [ ] macOS ARM Support, for 2.0.0
-- [X] Switch to SwiftUI+Swift (or swift itself, i haven't decided yet), for 2.0.0
+- [X] Switch to SwiftUI+Swift, for 2.0.0. SIKE! I'm going with Rust and Slink for the next Beta.
 
 ## Known bugs
 ### Minor Bugs

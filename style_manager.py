@@ -24,10 +24,34 @@ STYLE_ELEMENTS = (
     ('hr', 'Horizontal Rule', '---', 'theme:C_HR', False, False, False, False),
 )
 
+# Keep the built-in profile aligned with the palettes in main.py (THEMES).
+# These are intentionally separate so Default remains readable in either theme.
+THEME_COLOR_PAIRS = {
+    'text': ('#000000', '#d4d4d4'),
+    'h1': ('#1e90ff', '#39BBD8'),
+    'h2': ('#1e90ff', '#39BBD8'),
+    'h3': ('#1e90ff', '#39BBD8'),
+    'h4': ('#1e90ff', '#39BBD8'),
+    'h5': ('#1e90ff', '#39BBD8'),
+    'h6': ('#1e90ff', '#39BBD8'),
+    'bold': ('#000000', '#ffffff'),
+    'italic': ('#666666', '#c8c8c8'),
+    'inline_code': ('#ff4500', '#DE7316'),
+    'code_block': ('#ff4500', '#DE7316'),
+    'quote': ('#228b22', '#6A9955'),
+    'link': ('#006400', '#4ec9b0'),
+    # The light palette's C_LIST was white, which is invisible on its white background.
+    'list': ('#000000', '#ffffff'),
+    'underline': ('#000000', '#ffffff'),
+    'strike': ('#666666', '#c8c8c8'),
+    'hr': ('#cccccc', '#555555'),
+}
+
 ELEMENT_DEFAULTS = {
     key: {
         'marker': marker,
-        'color': color,
+        'light_color': THEME_COLOR_PAIRS.get(key, (color, color))[0],
+        'dark_color': THEME_COLOR_PAIRS.get(key, (color, color))[1],
         'bold': bold,
         'italic': italic,
         'underline': underline,
@@ -80,12 +104,15 @@ class StyleManager:
             marker = value.get('marker')
             if isinstance(marker, str) and len(marker) <= 12 and (marker.strip() or key == 'text'):
                 defaults['marker'] = marker
-            color = value.get('color')
-            if isinstance(color, str) and (
-                re.fullmatch(r'#[0-9a-fA-F]{6}', color)
-                or re.fullmatch(r'theme:[A-Z_]+', color)
-            ):
-                defaults['color'] = color
+            # Migrate profiles created by earlier builds (including the first
+            # two-column build, which used color_light/color_dark).
+            for color_key, legacy_key in (('light_color', 'color_light'), ('dark_color', 'color_dark')):
+                color = value.get(color_key, value.get(legacy_key, value.get('color')))
+                if isinstance(color, str) and (
+                    re.fullmatch(r'#[0-9a-fA-F]{6}', color)
+                    or re.fullmatch(r'theme:[A-Z_]+', color)
+                ):
+                    defaults[color_key] = color
             for flag in ('bold', 'italic', 'underline', 'strikethrough'):
                 if isinstance(value.get(flag), bool):
                     defaults[flag] = value[flag]
@@ -107,11 +134,9 @@ class StyleManager:
         return next((item for item in self.list_styles() if item.casefold() == valid_name.casefold()), None)
 
     def _ensure_default(self):
-        path = self._path('default')
-        try:
-            self.load('default')
-        except (OSError, ValueError, json.JSONDecodeError):
-            self._write('default', {'elements': ELEMENT_DEFAULTS})
+        # Default is read-only and built-in: refresh it so existing installations
+        # receive the correct paired light/dark palette instead of stale values.
+        self._write('default', {'elements': ELEMENT_DEFAULTS})
 
     def _ensure_custom(self, migrated_profile=None):
         try:

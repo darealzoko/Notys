@@ -20,7 +20,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.7.0' # [Update default version string]
+    APP_VERSION = '1.8.0 Beta 1' # [Update default version string]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -88,6 +88,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Enregistrer", # [Translate save]
         'menu_save_all': "Tout enregistrer", # [Translate save all]
         'menu_save_as': "Enregistrer sous…", # [Translate save as]
+        'menu_open_in_finder': "Ouvrir dans le Finder" if is_macos else "Ouvrir dans le File Explorer", # [Translate open in finder]
 
         'menu_edit': "Édition", # [Translate edit menu]
         'menu_undo': "Annuler", # [Translate undo]
@@ -96,6 +97,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Copier", # [Translate copy]
         'menu_paste': "Coller", # [Translate paste]
         'menu_find': "Rechercher…", # [Translate find]
+
+        'menu_view': "Affichage", # [Translate view menu]
+        'menu_toggle_sidebar': "Afficher / Masquer la barre latérale", # [Translate toggle sidebar]
 
         'menu_window': "Fenêtre", # [Translate window menu]
         'menu_minimize': "Réduire", # [Translate minimize]
@@ -176,6 +180,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Save", # [Save menu]
         'menu_save_all': "Save All", # [Save all menu]
         'menu_save_as': "Save As…", # [Save as menu]
+        'menu_open_in_finder': "Open in Finder" if is_macos else "Open in Explorer", # [Open in finder/explorer menu]
 
         'menu_edit': "Edit", # [Edit menu]
         'menu_undo': "Undo", # [Undo menu]
@@ -185,12 +190,14 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_paste': "Paste", # [Paste menu]
         'menu_find': "Find…", # [Find menu]
 
+        'menu_view': "View", # [View menu]
+        'menu_toggle_sidebar': "Toggle Sidebar", # [Toggle sidebar menu]
+
         'menu_window': "Window", # [Window menu]
         'menu_minimize': "Minimize", # [Minimize menu]
 
         'menu_settings': "Settings", # [Settings menu]
         'menu_open_settings': "Open Settings…", # [Open settings menu]
-        
         'menu_about': "About", # [About menu]
 
         'settings_title': "Settings", # [Settings title]
@@ -264,6 +271,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Konservi", # [Save menu]
         'menu_save_all': "Konservi ĉiujn", # [Save all menu]
         'menu_save_as': "Konservi kiel...", # [Save as menu]
+        'menu_open_in_finder': "Malfermi en Finder" if is_macos else "Malfermi en File Explorer", # [Open in finder/explorer menu]
 
         'menu_edit': "Redakti", # [Edit menu]
         'menu_undo': "Malfari", # [Undo menu]
@@ -272,6 +280,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Kopii", # [Copy menu]
         'menu_paste': "Alglui", # [Paste menu]
         'menu_find': "Serĉi...", # [Find menu]
+
+        'menu_view': "Vidigi", # [View menu]
+        'menu_toggle_sidebar': "Montri / Kaŝi flankobreton", # [Toggle sidebar menu]
 
         'menu_window': "Fenestro", # [Window menu]
         'menu_minimize': "Redukti", # [Minimize menu]
@@ -359,6 +370,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Guardar", # [Save menu]
         'menu_save_all': "Guardar todo", # [Save all menu]
         'menu_save_as': "Guardar como...", # [Save as menu]
+        'menu_open_in_finder': "Abrir en Finder" if is_macos else "Abrir en File Explorer", # [Open in finder/explorer menu]
 
         'menu_edit': "Edición", # [Edit menu]
         'menu_undo': "Deshacer", # [Undo menu]
@@ -367,6 +379,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Copiar", # [Copy menu]
         'menu_paste': "Pegar", # [Paste menu]
         'menu_find': "Buscar...", # [Find menu]
+
+        'menu_view': "Vista", # [View menu]
+        'menu_toggle_sidebar': "Alternar Barra Lateral", # [Toggle sidebar menu]
 
         'menu_window': "Ventana", # [Window menu]
         'menu_minimize': "Minimizar", # [Minimize menu]
@@ -447,6 +462,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Salvar",
         'menu_save_all': "Salvar tudo",
         'menu_save_as': "Salvar como…",
+        'menu_open_in_finder': "Abrir no Finder" if is_macos else "Abrir no File Explorer",
 
         'menu_edit': "Edição",
         'menu_undo': "Desfazer",
@@ -455,6 +471,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Copiar",
         'menu_paste': "Colar",
         'menu_find': "Buscar…",
+
+        'menu_view': "Vista",
+        'menu_toggle_sidebar': "Alternar Barra Lateral",
 
         'menu_window': "Janela",
         'menu_minimize': "Minimizar",
@@ -534,6 +553,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Speichern",
         'menu_save_all': "Alles speichern",
         'menu_save_as': "Speichern unter…",
+        'menu_open_in_finder': "Im Finder öffnen" if is_macos else "Im File Explorer öffnen", # [Open in finder/explorer menu]
 
         'menu_edit': "Bearbeiten",
         'menu_undo': "Rückgängig",
@@ -542,6 +562,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Kopieren",
         'menu_paste': "Einfügen",
         'menu_find': "Suchen…",
+
+        'menu_view': "Ansicht",
+        'menu_toggle_sidebar': "Seitenleiste ein-/ausblenden",
 
         'menu_window': "Fenster",
         'menu_minimize': "Minimieren",
@@ -621,7 +644,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Salva",
         'menu_save_all': "Salva tutto",
         'menu_save_as': "Salva con nome…",
-
+        'menu_open_in_finder': "Apri nel Finder" if is_macos else "Apri nel File Explorer", # [Open in finder/explorer menu]
         'menu_edit': "Modifica",
         'menu_undo': "Annulla",
         'menu_redo': "Ripristina",
@@ -629,6 +652,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Copia",
         'menu_paste': "Incolla",
         'menu_find': "Cerca…",
+
+        'menu_view': "Visualizza",
+        'menu_toggle_sidebar': "Mostra / Nascondi barra laterale",
 
         'menu_window': "Finestra",
         'menu_minimize': "Minimizza",
@@ -708,7 +734,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Opslaan",
         'menu_save_all': "Alles opslaan",
         'menu_save_as': "Opslaan als…",
-
+        'menu_open_in_finder': "Opslaan in Finder" if is_macos else "Opslaan in File Explorer", # [Open in finder/explorer menu]
         'menu_edit': "Bewerken",
         'menu_undo': "Ongedaan maken",
         'menu_redo': "Opnieuw",
@@ -716,6 +742,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Kopiëren",
         'menu_paste': "Plakken",
         'menu_find': "Zoeken…",
+
+        'menu_view': "Beeld",
+        'menu_toggle_sidebar': "Zijbalk in-/uitschakelen",
 
         'menu_window': "Venster",
         'menu_minimize': "Minimaliseren",
@@ -795,6 +824,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Сохранить",
         'menu_save_all': "Сохранить все",
         'menu_save_as': "Сохранить как…",
+        'menu_open_in_finder': "Открыть в Finder" if is_macos else "Открыть в Проводнике", # [Open in finder/explorer menu]
 
         'menu_edit': "Правка",
         'menu_undo': "Отменить",
@@ -803,6 +833,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "Копировать",
         'menu_paste': "Вставить",
         'menu_find': "Найти…",
+
+        'menu_view': "Вид",
+        'menu_toggle_sidebar': "Показать / скрыть боковую панель",
 
         'menu_window': "Окно",
         'menu_minimize': "Свернуть",
@@ -882,7 +915,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "保存",
         'menu_save_all': "すべて保存",
         'menu_save_as': "名前を付けて保存…",
-
+        'menu_open_in_finder': "フォルダーで開く" if is_macos else "エクスプローラーで開く",
         'menu_edit': "編集",
         'menu_undo': "元に戻す",
         'menu_redo': "やり直す",
@@ -890,6 +923,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "コピー",
         'menu_paste': "貼り付け",
         'menu_find': "検索…",
+
+        'menu_view': "表示",
+        'menu_toggle_sidebar': "サイドバーの切り替え",
 
         'menu_window': "ウィンドウ",
         'menu_minimize': "最小化",
@@ -969,7 +1005,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "保存",
         'menu_save_all': "全部保存",
         'menu_save_as': "另存为…",
-
+        'menu_open_in_finder': "在资源管理器中打开" if is_macos else "在文件资源管理器中打开",
         'menu_edit': "编辑",
         'menu_undo': "撤销",
         'menu_redo': "重做",
@@ -977,6 +1013,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "复制",
         'menu_paste': "粘贴",
         'menu_find': "查找…",
+
+        'menu_view': "视图",
+        'menu_toggle_sidebar': "切换侧边栏",
 
         'menu_window': "窗口",
         'menu_minimize': "最小化",
@@ -1056,7 +1095,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "저장",
         'menu_save_all': "모두 저장",
         'menu_save_as': "다른 이름으로 저장…",
-
+        'menu_open_in_finder': "Finder에서 열기" if is_macos else "파일 탐색기에서 열기",
         'menu_edit': "편집",
         'menu_undo': "실행 취소",
         'menu_redo': "다시 실행",
@@ -1064,6 +1103,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_copy': "복사",
         'menu_paste': "붙여넣기",
         'menu_find': "찾기…",
+
+        'menu_view': "보기",
+        'menu_toggle_sidebar': "사이드바 전환",
 
         'menu_window': "창",
         'menu_minimize': "최소화",
@@ -1135,7 +1177,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 STYLE_TRANSLATIONS = {
     'en': {
         'style_default': 'Default', 'style_custom': 'Custom',
-        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Color', 'style_size': 'Size',
+        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Light colors', 'style_dark_color': 'Dark colors', 'style_size': 'Size',
         'style_save': 'Save', 'style_reset': 'Reset', 'style_add': 'Add', 'style_delete': 'Delete',
         'style_title': 'Styles', 'style_new_name': 'New style name:',
         'style_confirm_delete': 'Delete "{name}"?',
@@ -1159,7 +1201,7 @@ STYLE_TRANSLATIONS = {
     },
     'fr': {
         'style_default': 'Par défaut', 'style_custom': 'Personnalisé',
-        'style_element': 'Élément', 'style_marker': 'Marqueur', 'style_color': 'Couleur', 'style_size': 'Taille',
+        'style_element': 'Élément', 'style_marker': 'Marqueur', 'style_color': 'Couleurs claires', 'style_dark_color': 'Couleurs sombres', 'style_size': 'Taille',
         'style_save': 'Enregistrer', 'style_reset': 'Réinitialiser', 'style_add': 'Ajouter', 'style_delete': 'Supprimer',
         'style_title': 'Styles', 'style_new_name': 'Nom du nouveau style :',
         'style_confirm_delete': 'Supprimer « {name} » ?',
@@ -1182,7 +1224,7 @@ STYLE_TRANSLATIONS = {
     },
     'eo': {
         'style_default': 'Defaŭlta', 'style_custom': 'Propra',
-        'style_element': 'Elemento', 'style_marker': 'Markilo', 'style_color': 'Koloro', 'style_size': 'Grandeco',
+        'style_element': 'Elemento', 'style_marker': 'Markilo', 'style_color': 'Helaj koloroj', 'style_dark_color': 'Malhelaj koloroj', 'style_size': 'Grandeco',
         'style_save': 'Konservi', 'style_reset': 'Restarigi', 'style_add': 'Aldoni', 'style_delete': 'Forigi',
         'style_title': 'Stiloj', 'style_new_name': 'Nomo de la nova stilo:',
         'style_confirm_delete': 'Ĉu forigi "{name}"?',
@@ -1205,7 +1247,7 @@ STYLE_TRANSLATIONS = {
     },
     'es': {
         'style_default': 'Predeterminado', 'style_custom': 'Personalizado',
-        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Color', 'style_size': 'Tamaño',
+        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Colores claros', 'style_dark_color': 'Colores oscuros', 'style_size': 'Tamaño',
         'style_save': 'Guardar', 'style_reset': 'Restablecer', 'style_add': 'Añadir', 'style_delete': 'Eliminar',
         'style_title': 'Estilos', 'style_new_name': 'Nombre del nuevo estilo:',
         'style_confirm_delete': '¿Eliminar "{name}"?',
@@ -1229,7 +1271,7 @@ STYLE_TRANSLATIONS = {
     },
     'pt': {
         'style_default': 'Padrão', 'style_custom': 'Personalizado',
-        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Cor', 'style_size': 'Tamanho',
+        'style_element': 'Elemento', 'style_marker': 'Marcador', 'style_color': 'Cores claras', 'style_dark_color': 'Cores escuras', 'style_size': 'Tamanho',
         'style_save': 'Salvar', 'style_reset': 'Redefinir', 'style_add': 'Adicionar', 'style_delete': 'Excluir',
         'style_title': 'Estilos', 'style_new_name': 'Nome do novo estilo:',
         'style_confirm_delete': 'Excluir "{name}"?',
@@ -1253,7 +1295,7 @@ STYLE_TRANSLATIONS = {
     },
     'de': {
         'style_default': 'Standard', 'style_custom': 'Benutzerdefiniert',
-        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Farbe', 'style_size': 'Größe',
+        'style_element': 'Element', 'style_marker': 'Marker', 'style_color': 'Helle Farben', 'style_dark_color': 'Dunkle Farben', 'style_size': 'Größe',
         'style_save': 'Speichern', 'style_reset': 'Zurücksetzen', 'style_add': 'Hinzufügen', 'style_delete': 'Löschen',
         'style_title': 'Stile', 'style_new_name': 'Name des neuen Stils:',
         'style_confirm_delete': '„{name}" löschen?',
@@ -1277,7 +1319,7 @@ STYLE_TRANSLATIONS = {
     },
     'it': {
         'style_default': 'Predefinito', 'style_custom': 'Personalizzato',
-        'style_element': 'Elemento', 'style_marker': 'Marcatore', 'style_color': 'Colore', 'style_size': 'Dimensione',
+        'style_element': 'Elemento', 'style_marker': 'Marcatore', 'style_color': 'Colori chiari', 'style_dark_color': 'Colori scuri', 'style_size': 'Dimensione',
         'style_save': 'Salva', 'style_reset': 'Reimposta', 'style_add': 'Aggiungi', 'style_delete': 'Elimina',
         'style_title': 'Stili', 'style_new_name': 'Nome del nuovo stile:',
         'style_confirm_delete': 'Eliminare "{name}"?',
@@ -1301,7 +1343,7 @@ STYLE_TRANSLATIONS = {
     },
     'nl': {
         'style_default': 'Standaard', 'style_custom': 'Aangepast',
-        'style_element': 'Element', 'style_marker': 'Markering', 'style_color': 'Kleur', 'style_size': 'Grootte',
+        'style_element': 'Element', 'style_marker': 'Markering', 'style_color': 'Lichte kleuren', 'style_dark_color': 'Donkere kleuren', 'style_size': 'Grootte',
         'style_save': 'Opslaan', 'style_reset': 'Herstellen', 'style_add': 'Toevoegen', 'style_delete': 'Verwijderen',
         'style_title': 'Stijlen', 'style_new_name': 'Naam van de nieuwe stijl:',
         'style_confirm_delete': '"{name}" verwijderen?',
@@ -1324,7 +1366,7 @@ STYLE_TRANSLATIONS = {
     },
     'ru': {
         'style_default': 'По умолчанию', 'style_custom': 'Пользовательский',
-        'style_element': 'Элемент', 'style_marker': 'Маркер', 'style_color': 'Цвет', 'style_size': 'Размер',
+        'style_element': 'Элемент', 'style_marker': 'Маркер', 'style_color': 'Светлые цвета', 'style_dark_color': 'Тёмные цвета', 'style_size': 'Размер',
         'style_save': 'Сохранить', 'style_reset': 'Сбросить', 'style_add': 'Добавить', 'style_delete': 'Удалить',
         'style_title': 'Стили', 'style_new_name': 'Название нового стиля:',
         'style_confirm_delete': 'Удалить «{name}»?',
@@ -1348,7 +1390,7 @@ STYLE_TRANSLATIONS = {
     },
     'ja': {
         'style_default': 'デフォルト', 'style_custom': 'カスタム',
-        'style_element': '要素', 'style_marker': '記号', 'style_color': '色', 'style_size': 'サイズ',
+        'style_element': '要素', 'style_marker': '記号', 'style_color': 'ライトカラー', 'style_dark_color': 'ダークカラー', 'style_size': 'サイズ',
         'style_save': '保存', 'style_reset': 'リセット', 'style_add': '追加', 'style_delete': '削除',
         'style_title': 'スタイル', 'style_new_name': '新しいスタイル名:',
         'style_confirm_delete': '「{name}」を削除しますか？',
@@ -1372,7 +1414,7 @@ STYLE_TRANSLATIONS = {
     },
     'zh': {
         'style_default': '默认', 'style_custom': '自定义',
-        'style_element': '元素', 'style_marker': '标记', 'style_color': '颜色', 'style_size': '大小',
+        'style_element': '元素', 'style_marker': '标记', 'style_color': '浅色', 'style_dark_color': '深色', 'style_size': '大小',
         'style_save': '保存', 'style_reset': '重置', 'style_add': '添加', 'style_delete': '删除',
         'style_title': '样式', 'style_new_name': '新样式名称：',
         'style_confirm_delete': '确定删除“{name}”吗？',
@@ -1395,7 +1437,7 @@ STYLE_TRANSLATIONS = {
     },
     'ko': {
         'style_default': '기본값', 'style_custom': '사용자 지정',
-        'style_element': '요소', 'style_marker': '표시자', 'style_color': '색상', 'style_size': '크기',
+        'style_element': '요소', 'style_marker': '표시자', 'style_color': '밝은 색상', 'style_dark_color': '어두운 색상', 'style_size': '크기',
         'style_save': '저장', 'style_reset': '초기화', 'style_add': '추가', 'style_delete': '삭제',
         'style_title': '스타일', 'style_new_name': '새 스타일 이름:',
         'style_confirm_delete': '"{name}"을(를) 삭제할까요?',
@@ -1603,7 +1645,7 @@ THEMES = { # [Color themes dictionary for UI styling]
         'TAB_FG_ACT': "#000000", # [Active tab text color]
         'C_H1': "#1e90ff", 'C_H2': "#1e90ff", 'C_H3': "#1e90ff", 'C_H4': "#1e90ff", # [Heading colors]
         'C_CODE': "#ff4500", 'C_BOLD': "#000000", 'C_ITALIC': "#666666", # [Markdown formatting colors]
-        'C_LIST': "#ffffff", 'C_QUOTE': "#228b22", 'C_LINK': "#006400", 'C_HR': "#cccccc", # [List, quote, link, HR colors]
+        'C_LIST': "#000000", 'C_QUOTE': "#228b22", 'C_LINK': "#006400", 'C_HR': "#cccccc", # [List, quote, link, HR colors]
         'C_UNDERLINE': "#000000", 'C_STRIKE': "#666666" # [Underline and strike colors]
     }
 }
@@ -1766,7 +1808,9 @@ COLOR_NAMES = { # [Named color map for custom syntax highlighting]
 ALL_TAGS = ('body_style', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code', 'code_block', 'bold', 'italic', 'underline', 'strike', 'list', 'quote', 'link', 'hr') # [Tuple of all markdown text tags]
 
 def _style_color(element):
-    color = ACTIVE_STYLE['elements'][element]['color']
+    style = ACTIVE_STYLE['elements'][element]
+    color_key = 'dark_color' if current_theme == 'dark' else 'light_color'
+    color = style.get(color_key, style.get('color', 'theme:FG'))
     if color.startswith('theme:'):
         return get_color(color[6:])
     return color
@@ -2266,7 +2310,12 @@ if __name__ == '__main__': # [Main application execution block]
 
             # italic
             italic_marker = re.escape(ACTIVE_STYLE['elements']['italic']['marker'])
-            for m in re.finditer(r'(?<!' + italic_marker + r')' + italic_marker + r'([^\n]+?)' + italic_marker + r'(?!' + italic_marker + r')', content):
+            if ACTIVE_STYLE['elements']['italic']['marker'] == '*':
+                italic_pattern = r'(?<!\*)\*(?!\*)'
+            else:
+                italic_pattern = r'(?<!' + italic_marker + r')' + italic_marker + r'(?!' + italic_marker + r')'
+
+            for m in re.finditer(italic_pattern + r'([^\n]+?)' + italic_pattern, content):
                 grp = m.group(1)
                 si = m.start() + m.group(0).index(grp)
                 if not in_code_block(m.start(), m.end()):
@@ -2648,6 +2697,77 @@ if __name__ == '__main__': # [Main application execution block]
         padx=10,
     )
     status_file.pack(side='left')
+
+    _file_path_popup = [None]
+    _file_path_popup_hide_job = [None]
+
+    def _cancel_file_path_popup_hide(event=None):
+        job = _file_path_popup_hide_job[0]
+        if job is not None:
+            try:
+                win.after_cancel(job)
+            except tk.TclError:
+                pass
+            _file_path_popup_hide_job[0] = None
+
+    def _hide_file_path_popup():
+        _file_path_popup_hide_job[0] = None
+        popup = _file_path_popup[0]
+        _file_path_popup[0] = None
+        if popup is not None:
+            try:
+                popup.destroy()
+            except tk.TclError:
+                pass
+
+    def _schedule_file_path_popup_hide(event=None):
+        _cancel_file_path_popup_hide()
+        _file_path_popup_hide_job[0] = win.after(1500, _hide_file_path_popup)
+
+    def _show_file_path_popup(event=None):
+        tab = tab_bar.active
+        path = tab.file_path if tab else None
+        if not path:
+            return
+        _cancel_file_path_popup_hide()
+        _hide_file_path_popup()
+
+        popup = tk.Toplevel(win)
+        _file_path_popup[0] = popup
+        popup.overrideredirect(True)
+        popup.configure(bg=STATUS_BG)
+        popup_frame = tk.Frame(popup, bg=STATUS_BG, bd=1, relief='solid')
+        popup_frame.pack(fill='both', expand=True)
+        tk.Label(
+            popup_frame, text=path, bg=STATUS_BG, fg=STATUS_FG,
+            font=('Andale Mono', 9), padx=8, pady=6,
+        ).pack(side='left')
+
+        def copy_file_path():
+            win.clipboard_clear()
+            win.clipboard_append(path)
+            copy_button.config(text='Copied')
+
+        copy_button = tk.Label(
+            popup_frame, text='Copy', bg=TAB_BG, fg=TAB_FG,
+            font=('Andale Mono', 9), padx=8, pady=6, cursor=HAND_CURSOR,
+        )
+        copy_button.pack(side='right', padx=4, pady=3)
+        copy_button.bind('<Button-1>', lambda e: copy_file_path())
+
+        for widget in (popup, popup_frame, *popup_frame.winfo_children()):
+            widget.bind('<Enter>', _cancel_file_path_popup_hide)
+            widget.bind('<Leave>', _schedule_file_path_popup_hide)
+        copy_button.bind('<Enter>', lambda e: copy_button.config(bg=SELECT_BG), add='+')
+        copy_button.bind('<Leave>', lambda e: copy_button.config(bg=TAB_BG), add='+')
+
+        popup.update_idletasks()
+        x = status_file.winfo_rootx()
+        y = status_file.winfo_rooty() - popup.winfo_height()
+        popup.geometry(f'+{x}+{max(0, y)}')
+
+    status_file.bind('<Enter>', _show_file_path_popup)
+    status_file.bind('<Leave>', _schedule_file_path_popup_hide)
 
     #status_file.config(text=tr('status_untitled'))
 
@@ -3117,6 +3237,21 @@ if __name__ == '__main__': # [Main application execution block]
     def current_tab(): # [Get active tab instance]
         return tab_bar.active
 
+    def open_in_finder(): # [Reveal the current file in Finder or File Explorer]
+        tab = current_tab()
+        path = tab.file_path if tab else None
+        if not path or not os.path.isfile(path):
+            return
+
+        import subprocess
+        try:
+            if platform.system() == 'Darwin':
+                subprocess.Popen(['open', '-R', path])
+            elif platform.system() == 'Windows':
+                subprocess.Popen(['explorer', '/select,', os.path.normpath(path)])
+        except OSError as e:
+            messagebox.showerror('Error', f'Could not open the file location: {e}')
+
     def toggle_current_tab_pin(event=None):
         tab = current_tab()
         if tab:
@@ -3406,6 +3541,7 @@ if __name__ == '__main__': # [Main application execution block]
         'paste': {'cmd': lambda e=None: current_tab() and current_tab().text.event_generate('<<Paste>>'), 'disp': f"{mod_display}V", 'keys': ['<Command-v>', '<Command-V>'] if is_macos else ['<Control-v>', '<Control-V>']},
         'find': {'cmd': lambda e=None: show_find(), 'disp': f"{mod_display}F", 'keys': ['<Command-f>', '<Command-F>'] if is_macos else ['<Control-f>', '<Control-F>']},
         'settings': {'cmd': lambda e=None: open_settings(), 'disp': f"{mod_display},", 'keys': ['<Command-comma>'] if is_macos else ['<Control-comma>']},
+        'open_in_finder': {'cmd': lambda e=None: open_in_finder(), 'disp': f"{mod_display}Shift+F", 'keys': ['<Command-Shift-F>', '<Command-Shift-f>'] if is_macos else ['<Control-Shift-F>', '<Control-Shift-f>']},
     }
 
     def register_shortcuts(): # [Register global keyboard shortcuts]
@@ -3437,6 +3573,7 @@ if __name__ == '__main__': # [Main application execution block]
         file_menu.add_separator()
         file_menu.add_command(label=tr('menu_open'), command=open_file_dialog, accelerator=SHORTCUTS['open_file']['disp'])
         file_menu.add_command(label=tr('menu_open_folder'), command=open_folder, accelerator=SHORTCUTS['open_folder']['disp'])
+        file_menu.add_command(label=tr('menu_open_in_finder'), command=open_in_finder, accelerator=SHORTCUTS['open_in_finder']['disp']) # still needs to add a shortcut and proper language
 
         # Récents
         recents_menu = tk.Menu(file_menu, tearoff=0)
@@ -3470,6 +3607,11 @@ if __name__ == '__main__': # [Main application execution block]
         edit_menu.add_separator()
         edit_menu.add_command(label=tr('menu_find'), command=show_find, accelerator=SHORTCUTS['find']['disp'])
         menubar.add_cascade(label=tr('menu_edit'), menu=edit_menu)
+
+        # Menu présentation
+        view_menu = tk.Menu(menubar, tearoff=0)
+        view_menu.add_command(label=tr('menu_toggle_sidebar'), command=toggle_sidebar, accelerator=SHORTCUTS['open_folder']['disp'])
+        menubar.add_cascade(label=tr('menu_view'), menu=view_menu)
 
         # ── Menus dédiés Windows & Linux ─────────────────────────────────────────
         if not is_macos:
@@ -3736,6 +3878,7 @@ if __name__ == '__main__': # [Main application execution block]
         style_marker_widgets = {}
         style_control_widgets = []
         original_style_colors = {}
+        original_style_dark_colors = {}
 
         def resolved_style_color(color):
             return get_color(color[6:]) if color.startswith('theme:') else color
@@ -3772,22 +3915,23 @@ if __name__ == '__main__': # [Main application execution block]
             if not loading_style[0]:
                 style_dirty[0] = True
 
-        def update_style_swatch(element):
-            color = style_vars[element]['color'].get().strip()
+        def update_style_swatch(element, variant='light_color'):
+            color = style_vars[element][variant].get().strip()
+            swatch = style_swatch_widgets[element][variant]
             if re.fullmatch(r'#[0-9a-fA-F]{6}', color):
-                style_swatch_widgets[element].config(bg=color)
+                swatch.config(bg=color)
             else:
-                style_swatch_widgets[element].config(bg=TAB_BG)
+                swatch.config(bg=TAB_BG)
 
-        def choose_style_color(element):
+        def choose_style_color(element, variant='light_color'):
             if ACTIVE_STYLE_NAME.casefold() == 'default':
                 return
             selected = colorchooser.askcolor(
-                color=style_vars[element]['color'].get(),
+                color=style_vars[element][variant].get(),
                 parent=dlg,
             )[1]
             if selected:
-                style_vars[element]['color'].set(selected)
+                style_vars[element][variant].set(selected)
 
         styles_scroll_frame = tk.Frame(p_styles, bg=H_BG)
         styles_scroll_frame.pack(fill='both', expand=True)
@@ -3808,8 +3952,8 @@ if __name__ == '__main__': # [Main application execution block]
         )
         styles_canvas.bind('<MouseWheel>', lambda event: styles_canvas.yview_scroll(int(-event.delta / 120), 'units'))
 
-        headers = (tr('style_element'), tr('style_marker'), tr('style_color'), 'B', 'I', 'U', 'S', tr('style_size'))
-        header_columns = (0, 1, 3, 4, 5, 6, 7, 8)
+        headers = (tr('style_element'), tr('style_marker'), tr('style_color'), tr('style_dark_color'), 'B', 'I', 'U', 'S', tr('style_size'))
+        header_columns = (0, 1, 3, 5, 7, 8, 9, 10, 11)
         for label, column in zip(headers, header_columns):
             tk.Label(
                 styles_rows, text=label, bg=H_BG, fg=STATUS_FG,
@@ -3819,7 +3963,8 @@ if __name__ == '__main__': # [Main application execution block]
         for row_index, (element, _label, _marker, _color, _bold, _italic, _underline, _strike) in enumerate(STYLE_ELEMENTS, start=1):
             defaults = ACTIVE_STYLE['elements'][element]
             marker_var = tk.StringVar(value=defaults['marker'])
-            color_var = tk.StringVar(value=resolved_style_color(defaults['color']))
+            light_color_var = tk.StringVar(value=resolved_style_color(defaults.get('light_color', defaults.get('color', 'theme:FG'))))
+            dark_color_var = tk.StringVar(value=resolved_style_color(defaults.get('dark_color', defaults.get('color', 'theme:FG'))))
             bold_var = tk.BooleanVar(value=defaults['bold'])
             italic_var = tk.BooleanVar(value=defaults['italic'])
             underline_var = tk.BooleanVar(value=defaults['underline'])
@@ -3827,7 +3972,8 @@ if __name__ == '__main__': # [Main application execution block]
             size_var = tk.StringVar(value=str(defaults['font_size']))
             style_vars[element] = {
                 'marker': marker_var,
-                'color': color_var,
+                'light_color': light_color_var,
+                'dark_color': dark_color_var,
                 'bold': bold_var,
                 'italic': italic_var,
                 'underline': underline_var,
@@ -3845,22 +3991,27 @@ if __name__ == '__main__': # [Main application execution block]
             )
             marker_entry.grid(row=row_index, column=1, sticky='w', padx=3, pady=2)
             style_marker_widgets[element] = marker_entry
-            swatch = tk.Frame(styles_rows, bg=color_var.get(), width=18, height=18, cursor=HAND_CURSOR)
-            swatch.grid(row=row_index, column=2, padx=(4, 2), pady=2)
-            swatch.grid_propagate(False)
-            swatch.bind('<Button-1>', lambda event, key=element: choose_style_color(key))
-            style_swatch_widgets[element] = swatch
-            color_entry = tk.Entry(
-                styles_rows, textvariable=color_var, width=9,
-                bg=TAB_BG, fg=FG, insertbackground=FG, relief='flat',
-            )
-            color_entry.grid(row=row_index, column=3, sticky='w', padx=2, pady=2)
-            style_control_widgets.append(color_entry)
-            color_var.trace_add('write', lambda *_args, key=element: (mark_style_dirty(), update_style_swatch(key)))
+            style_swatch_widgets[element] = {}
+            for variant, color_var, swatch_col, entry_col in (
+                ('light_color', light_color_var, 2, 3),
+                ('dark_color', dark_color_var, 4, 5),
+            ):
+                swatch = tk.Frame(styles_rows, bg=color_var.get(), width=18, height=18, cursor=HAND_CURSOR)
+                swatch.grid(row=row_index, column=swatch_col, padx=(4, 2), pady=2)
+                swatch.grid_propagate(False)
+                swatch.bind('<Button-1>', lambda event, key=element, v=variant: choose_style_color(key, v))
+                style_swatch_widgets[element][variant] = swatch
+                color_entry = tk.Entry(
+                    styles_rows, textvariable=color_var, width=9,
+                    bg=TAB_BG, fg=FG, insertbackground=FG, relief='flat',
+                )
+                color_entry.grid(row=row_index, column=entry_col, sticky='w', padx=2, pady=2)
+                style_control_widgets.append(color_entry)
+                color_var.trace_add('write', lambda *_args, key=element, v=variant: (mark_style_dirty(), update_style_swatch(key, v)))
 
             for column, text, variable in (
-                (4, 'B', bold_var), (5, 'I', italic_var),
-                (6, 'U', underline_var), (7, 'S', strike_var),
+                (6, 'B', bold_var), (7, 'I', italic_var),
+                (8, 'U', underline_var), (9, 'S', strike_var),
             ):
                 toggle = tk.Checkbutton(
                     styles_rows, text=text, variable=variable,
@@ -3888,14 +4039,19 @@ if __name__ == '__main__': # [Main application execution block]
                 style = profile['elements'][element]
                 controls = style_vars[element]
                 controls['marker'].set(style['marker'])
-                controls['color'].set(resolved_style_color(style['color']))
-                original_style_colors[element] = controls['color'].get()
+                light_color = style.get('light_color', style.get('color', 'theme:FG'))
+                dark_color = style.get('dark_color', style.get('color', 'theme:FG'))
+                controls['light_color'].set(resolved_style_color(light_color))
+                controls['dark_color'].set(resolved_style_color(dark_color))
+                original_style_colors[element] = controls['light_color'].get()
+                original_style_dark_colors[element] = controls['dark_color'].get()
                 controls['bold'].set(style['bold'])
                 controls['italic'].set(style['italic'])
                 controls['underline'].set(style['underline'])
                 controls['strikethrough'].set(style['strikethrough'])
                 controls['font_size'].set(style['font_size'])
-                update_style_swatch(element)
+                update_style_swatch(element, 'light_color')
+                update_style_swatch(element, 'dark_color')
             style_dirty[0] = False
             loading_style[0] = False
             is_default = ACTIVE_STYLE_NAME.casefold() == 'default'
@@ -3912,14 +4068,18 @@ if __name__ == '__main__': # [Main application execution block]
             for element, *_rest in STYLE_ELEMENTS:
                 controls = style_vars[element]
                 marker = controls['marker'].get()
-                color = controls['color'].get().strip()
+                light_color = controls['light_color'].get().strip()
+                dark_color = controls['dark_color'].get().strip()
                 if (element != 'text' and not marker.strip()) or len(marker) > 12:
                     raise ValueError(tr('style_invalid_marker', element=tr(f'style_{element}')))
-                if not re.fullmatch(r'#[0-9a-fA-F]{6}', color):
-                    raise ValueError(tr('style_invalid_color', element=tr(f'style_{element}')))
-                previous_color = ACTIVE_STYLE['elements'][element]['color']
-                if original_style_colors[element].casefold() == color.casefold():
-                    color = previous_color
+                for color in (light_color, dark_color):
+                    if not re.fullmatch(r'#[0-9a-fA-F]{6}', color):
+                        raise ValueError(tr('style_invalid_color', element=tr(f'style_{element}')))
+                previous = ACTIVE_STYLE['elements'][element]
+                if original_style_colors[element].casefold() == light_color.casefold():
+                    light_color = previous.get('light_color', previous.get('color', light_color))
+                if original_style_dark_colors[element].casefold() == dark_color.casefold():
+                    dark_color = previous.get('dark_color', previous.get('color', dark_color))
                 try:
                     font_size = int(controls['font_size'].get())
                 except ValueError as error:
@@ -3928,7 +4088,8 @@ if __name__ == '__main__': # [Main application execution block]
                     raise ValueError(tr('style_invalid_size', element=tr(f'style_{element}')))
                 elements[element] = {
                     'marker': '' if element == 'text' else marker,
-                    'color': color,
+                    'light_color': light_color,
+                    'dark_color': dark_color,
                     'bold': controls['bold'].get(),
                     'italic': controls['italic'].get(),
                     'underline': controls['underline'].get(),

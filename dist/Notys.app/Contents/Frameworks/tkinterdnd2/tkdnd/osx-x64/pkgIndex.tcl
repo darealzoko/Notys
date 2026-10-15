@@ -1,1 +1,0 @@
-../../../../Resources/tkinterdnd2/tkdnd/osx-x64/pkgIndex.tcl

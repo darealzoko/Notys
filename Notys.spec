@@ -21,7 +21,6 @@ a = Analysis(
     noarchive=False,
     optimize=0,
 )
-a.binaries = [x for x in a.binaries if 'PIL' not in x[0] and '_imaging' not in x[0]]
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -37,7 +36,7 @@ exe = EXE(
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
-    target_arch='universal2',
+    target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
     icon=icon_file,  # <-- Set dynamic icon here

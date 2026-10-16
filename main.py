@@ -10,6 +10,10 @@ import platform # [Add checks for other OS types if necessary]
 from PIL import Image, ImageTk # [Handle custom image formats or caching]
 import json # [Switch to TOML/YAML for settings if required]
 import time
+import queue
+import threading
+import urllib.request
+import webbrowser
 from striprtf.striprtf import rtf_to_text
 from style_manager import STYLE_ELEMENTS, StyleManager
 
@@ -20,7 +24,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.8.0 Beta 3' # [Update default version string]
+    APP_VERSION = '1.8.0' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -88,7 +92,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Enregistrer", # [Translate save]
         'menu_save_all': "Tout enregistrer", # [Translate save all]
         'menu_save_as': "Enregistrer sous…", # [Translate save as]
-        'menu_open_in_finder': "Ouvrir dans le Finder" if is_macos else "Ouvrir dans le File Explorer", # [Translate open in finder]
+        'menu_open_in_finder': "Ouvrir dans le Finder" if is_macos else ("Ouvrir dans l’Explorateur de fichiers" if platform.system() == 'Windows' else "Ouvrir dans le gestionnaire de fichiers"),
 
         'menu_edit': "Édition", # [Translate edit menu]
         'menu_undo': "Annuler", # [Translate undo]
@@ -164,6 +168,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Redémarrez ensuite Notys."
         ),
+        'menu_pin_tab': 'Épingler',
+        'menu_unpin_tab': 'Désépingler',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Gras',
+        'markdown_italic': 'Italique',
+        'markdown_underline': 'Souligné',
+        'markdown_strikethrough': 'Barré',
+        'markdown_inline_code': 'Code en ligne',
+        'markdown_link': 'Lien',
+        'markdown_quote': 'Citation',
+        'markdown_bullet_list': 'Liste à puces',
+        'markdown_headings': 'Titres',
+        'markdown_heading_1': 'Titre 1',
+        'markdown_heading_2': 'Titre 2',
+        'markdown_heading_3': 'Titre 3',
+        'markdown_heading_4': 'Titre 4',
+        'markdown_heading_5': 'Titre 5',
+        'markdown_heading_6': 'Titre 6',
+        'pin_tab_save_first': 'Enregistrez ce document avant de l’épingler.',
+        'error_title': 'Erreur',
+        'open_file_location_error': 'Impossible d’ouvrir l’emplacement du fichier : {error}',
+
+
 
         'untitled': "Sans titre", # [Default untitled tab name]
     },
@@ -180,7 +207,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Save", # [Save menu]
         'menu_save_all': "Save All", # [Save all menu]
         'menu_save_as': "Save As…", # [Save as menu]
-        'menu_open_in_finder': "Open in Finder" if is_macos else "Open in Explorer", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Open in Finder" if is_macos else ("Open in File Explorer" if platform.system() == 'Windows' else "Open in file manager"),
 
         'menu_edit': "Edit", # [Edit menu]
         'menu_undo': "Undo", # [Undo menu]
@@ -255,6 +282,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Then restart Notys."
         ),
+        'menu_pin_tab': 'Pin',
+        'menu_unpin_tab': 'Unpin',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Bold',
+        'markdown_italic': 'Italic',
+        'markdown_underline': 'Underline',
+        'markdown_strikethrough': 'Strikethrough',
+        'markdown_inline_code': 'Inline Code',
+        'markdown_link': 'Link',
+        'markdown_quote': 'Blockquote',
+        'markdown_bullet_list': 'Bullet List',
+        'markdown_headings': 'Headings',
+        'markdown_heading_1': 'Heading 1',
+        'markdown_heading_2': 'Heading 2',
+        'markdown_heading_3': 'Heading 3',
+        'markdown_heading_4': 'Heading 4',
+        'markdown_heading_5': 'Heading 5',
+        'markdown_heading_6': 'Heading 6',
+        'pin_tab_save_first': 'Save this document before pinning it.',
+        'error_title': 'Error',
+        'open_file_location_error': 'Could not open the file location: {error}',
+
+
 
         'untitled': "Untitled", # [Untitled tab name]
     },
@@ -271,7 +321,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Konservi", # [Save menu]
         'menu_save_all': "Konservi ĉiujn", # [Save all menu]
         'menu_save_as': "Konservi kiel...", # [Save as menu]
-        'menu_open_in_finder': "Malfermi en Finder" if is_macos else "Malfermi en File Explorer", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Malfermi en Finder" if is_macos else ("Malfermi en Dosier-Esplorilo" if platform.system() == 'Windows' else "Malfermi en dosieradministrilo"),
 
         'menu_edit': "Redakti", # [Edit menu]
         'menu_undo': "Malfari", # [Undo menu]
@@ -354,6 +404,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Kaj restartigu Notyso."
         ),
+        'menu_pin_tab': 'Alpingli',
+        'menu_unpin_tab': 'Malalpingli',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Grasa',
+        'markdown_italic': 'Kursiva',
+        'markdown_underline': 'Substrekita',
+        'markdown_strikethrough': 'Trastrekita',
+        'markdown_inline_code': 'Enlinia kodo',
+        'markdown_link': 'Ligo',
+        'markdown_quote': 'Citaĵo',
+        'markdown_bullet_list': 'Bulforma listo',
+        'markdown_headings': 'Titoloj',
+        'markdown_heading_1': 'Titolo 1',
+        'markdown_heading_2': 'Titolo 2',
+        'markdown_heading_3': 'Titolo 3',
+        'markdown_heading_4': 'Titolo 4',
+        'markdown_heading_5': 'Titolo 5',
+        'markdown_heading_6': 'Titolo 6',
+        'pin_tab_save_first': 'Konservu ĉi tiun dokumenton antaŭ ol alpingli ĝin.',
+        'error_title': 'Eraro',
+        'open_file_location_error': 'Ne eblis malfermi la dosierlokon: {error}',
+
+
 
         'untitled': "Sen titro", # [Untitled tab name]
     },
@@ -370,7 +443,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Guardar", # [Save menu]
         'menu_save_all': "Guardar todo", # [Save all menu]
         'menu_save_as': "Guardar como...", # [Save as menu]
-        'menu_open_in_finder': "Abrir en Finder" if is_macos else "Abrir en File Explorer", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Abrir en Finder" if is_macos else ("Abrir en el Explorador de archivos" if platform.system() == 'Windows' else "Abrir en el gestor de archivos"),
 
         'menu_edit': "Edición", # [Edit menu]
         'menu_undo': "Deshacer", # [Undo menu]
@@ -446,6 +519,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Luego reinicia Notys."
         ),
+        'menu_pin_tab': 'Anclar',
+        'menu_unpin_tab': 'Desanclar',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Negrita',
+        'markdown_italic': 'Cursiva',
+        'markdown_underline': 'Subrayado',
+        'markdown_strikethrough': 'Tachado',
+        'markdown_inline_code': 'Código en línea',
+        'markdown_link': 'Enlace',
+        'markdown_quote': 'Cita en bloque',
+        'markdown_bullet_list': 'Lista con viñetas',
+        'markdown_headings': 'Encabezados',
+        'markdown_heading_1': 'Encabezado 1',
+        'markdown_heading_2': 'Encabezado 2',
+        'markdown_heading_3': 'Encabezado 3',
+        'markdown_heading_4': 'Encabezado 4',
+        'markdown_heading_5': 'Encabezado 5',
+        'markdown_heading_6': 'Encabezado 6',
+        'pin_tab_save_first': 'Guarda este documento antes de anclarlo.',
+        'error_title': 'Error',
+        'open_file_location_error': 'No se pudo abrir la ubicación del archivo: {error}',
+
+
 
         'untitled': "Sin título", # [Untitled tab name]
     },
@@ -462,7 +558,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Salvar",
         'menu_save_all': "Salvar tudo",
         'menu_save_as': "Salvar como…",
-        'menu_open_in_finder': "Abrir no Finder" if is_macos else "Abrir no File Explorer",
+        'menu_open_in_finder': "Abrir no Finder" if is_macos else ("Abrir no Explorador de Arquivos" if platform.system() == 'Windows' else "Abrir no gerenciador de arquivos"),
 
         'menu_edit': "Edição",
         'menu_undo': "Desfazer",
@@ -537,6 +633,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Em seguida, reinicie o Notys."
         ),
+        'menu_pin_tab': 'Fixar',
+        'menu_unpin_tab': 'Desafixar',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Negrito',
+        'markdown_italic': 'Itálico',
+        'markdown_underline': 'Sublinhado',
+        'markdown_strikethrough': 'Tachado',
+        'markdown_inline_code': 'Código em linha',
+        'markdown_link': 'Link',
+        'markdown_quote': 'Citação em bloco',
+        'markdown_bullet_list': 'Lista com marcadores',
+        'markdown_headings': 'Títulos',
+        'markdown_heading_1': 'Título 1',
+        'markdown_heading_2': 'Título 2',
+        'markdown_heading_3': 'Título 3',
+        'markdown_heading_4': 'Título 4',
+        'markdown_heading_5': 'Título 5',
+        'markdown_heading_6': 'Título 6',
+        'pin_tab_save_first': 'Salve este documento antes de fixá-lo.',
+        'error_title': 'Erro',
+        'open_file_location_error': 'Não foi possível abrir o local do arquivo: {error}',
+
+
 
         'untitled': "Sem título",
     },
@@ -553,7 +672,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Speichern",
         'menu_save_all': "Alles speichern",
         'menu_save_as': "Speichern unter…",
-        'menu_open_in_finder': "Im Finder öffnen" if is_macos else "Im File Explorer öffnen", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Im Finder öffnen" if is_macos else ("Im Datei-Explorer öffnen" if platform.system() == 'Windows' else "Im Dateimanager öffnen"),
 
         'menu_edit': "Bearbeiten",
         'menu_undo': "Rückgängig",
@@ -628,6 +747,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Starten Sie Notys danach neu."
         ),
+        'menu_pin_tab': 'Anheften',
+        'menu_unpin_tab': 'Lösen',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Fett',
+        'markdown_italic': 'Kursiv',
+        'markdown_underline': 'Unterstrichen',
+        'markdown_strikethrough': 'Durchgestrichen',
+        'markdown_inline_code': 'Inline-Code',
+        'markdown_link': 'Link',
+        'markdown_quote': 'Blockzitat',
+        'markdown_bullet_list': 'Aufzählungsliste',
+        'markdown_headings': 'Überschriften',
+        'markdown_heading_1': 'Überschrift 1',
+        'markdown_heading_2': 'Überschrift 2',
+        'markdown_heading_3': 'Überschrift 3',
+        'markdown_heading_4': 'Überschrift 4',
+        'markdown_heading_5': 'Überschrift 5',
+        'markdown_heading_6': 'Überschrift 6',
+        'pin_tab_save_first': 'Speichere dieses Dokument, bevor du es anheftest.',
+        'error_title': 'Fehler',
+        'open_file_location_error': 'Der Dateispeicherort konnte nicht geöffnet werden: {error}',
+
+
 
         'untitled': "Unbenannt",
     },
@@ -644,7 +786,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Salva",
         'menu_save_all': "Salva tutto",
         'menu_save_as': "Salva con nome…",
-        'menu_open_in_finder': "Apri nel Finder" if is_macos else "Apri nel File Explorer", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Apri nel Finder" if is_macos else ("Apri in Esplora file" if platform.system() == 'Windows' else "Apri nel gestore file"),
         'menu_edit': "Modifica",
         'menu_undo': "Annulla",
         'menu_redo': "Ripristina",
@@ -718,6 +860,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Poi riavvia Notys."
         ),
+        'menu_pin_tab': 'Fissa',
+        'menu_unpin_tab': 'Rimuovi fissaggio',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Grassetto',
+        'markdown_italic': 'Corsivo',
+        'markdown_underline': 'Sottolineato',
+        'markdown_strikethrough': 'Barrato',
+        'markdown_inline_code': 'Codice in linea',
+        'markdown_link': 'Collegamento',
+        'markdown_quote': 'Citazione',
+        'markdown_bullet_list': 'Elenco puntato',
+        'markdown_headings': 'Intestazioni',
+        'markdown_heading_1': 'Intestazione 1',
+        'markdown_heading_2': 'Intestazione 2',
+        'markdown_heading_3': 'Intestazione 3',
+        'markdown_heading_4': 'Intestazione 4',
+        'markdown_heading_5': 'Intestazione 5',
+        'markdown_heading_6': 'Intestazione 6',
+        'pin_tab_save_first': 'Salva questo documento prima di fissarlo.',
+        'error_title': 'Errore',
+        'open_file_location_error': 'Impossibile aprire la posizione del file: {error}',
+
+
 
         'untitled': "Senza titolo",
     },
@@ -734,7 +899,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Opslaan",
         'menu_save_all': "Alles opslaan",
         'menu_save_as': "Opslaan als…",
-        'menu_open_in_finder': "Opslaan in Finder" if is_macos else "Opslaan in File Explorer", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Openen in Finder" if is_macos else ("Openen in Verkenner" if platform.system() == 'Windows' else "Openen in bestandsbeheer"),
         'menu_edit': "Bewerken",
         'menu_undo': "Ongedaan maken",
         'menu_redo': "Opnieuw",
@@ -808,6 +973,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Start Notys daarna opnieuw."
         ),
+        'menu_pin_tab': 'Vastzetten',
+        'menu_unpin_tab': 'Losmaken',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Vet',
+        'markdown_italic': 'Cursief',
+        'markdown_underline': 'Onderstrepen',
+        'markdown_strikethrough': 'Doorhalen',
+        'markdown_inline_code': 'Inlinecode',
+        'markdown_link': 'Link',
+        'markdown_quote': 'Citaat',
+        'markdown_bullet_list': 'Opsomming',
+        'markdown_headings': 'Koppen',
+        'markdown_heading_1': 'Kop 1',
+        'markdown_heading_2': 'Kop 2',
+        'markdown_heading_3': 'Kop 3',
+        'markdown_heading_4': 'Kop 4',
+        'markdown_heading_5': 'Kop 5',
+        'markdown_heading_6': 'Kop 6',
+        'pin_tab_save_first': 'Sla dit document op voordat je het vastzet.',
+        'error_title': 'Fout',
+        'open_file_location_error': 'De bestandslocatie kon niet worden geopend: {error}',
+
+
 
         'untitled': "Naamloos",
     },
@@ -824,7 +1012,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Сохранить",
         'menu_save_all': "Сохранить все",
         'menu_save_as': "Сохранить как…",
-        'menu_open_in_finder': "Открыть в Finder" if is_macos else "Открыть в Проводнике", # [Open in finder/explorer menu]
+        'menu_open_in_finder': "Открыть в Finder" if is_macos else ("Открыть в Проводнике" if platform.system() == 'Windows' else "Открыть в файловом менеджере"),
 
         'menu_edit': "Правка",
         'menu_undo': "Отменить",
@@ -899,6 +1087,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "Затем перезапустите Notys."
         ),
+        'menu_pin_tab': 'Закрепить',
+        'menu_unpin_tab': 'Открепить',
+        'context_markdown': 'Markdown',
+        'markdown_bold': 'Жирный',
+        'markdown_italic': 'Курсив',
+        'markdown_underline': 'Подчёркнутый',
+        'markdown_strikethrough': 'Зачёркнутый',
+        'markdown_inline_code': 'Строчный код',
+        'markdown_link': 'Ссылка',
+        'markdown_quote': 'Цитата',
+        'markdown_bullet_list': 'Маркированный список',
+        'markdown_headings': 'Заголовки',
+        'markdown_heading_1': 'Заголовок 1',
+        'markdown_heading_2': 'Заголовок 2',
+        'markdown_heading_3': 'Заголовок 3',
+        'markdown_heading_4': 'Заголовок 4',
+        'markdown_heading_5': 'Заголовок 5',
+        'markdown_heading_6': 'Заголовок 6',
+        'pin_tab_save_first': 'Сохраните документ, прежде чем закреплять его.',
+        'error_title': 'Ошибка',
+        'open_file_location_error': 'Не удалось открыть расположение файла: {error}',
+
+
 
         'untitled': "Без названия",
     },
@@ -915,7 +1126,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "保存",
         'menu_save_all': "すべて保存",
         'menu_save_as': "名前を付けて保存…",
-        'menu_open_in_finder': "フォルダーで開く" if is_macos else "エクスプローラーで開く",
+        'menu_open_in_finder': "Finderで開く" if is_macos else ("エクスプローラーで開く" if platform.system() == 'Windows' else "ファイルマネージャーで開く"),
         'menu_edit': "編集",
         'menu_undo': "元に戻す",
         'menu_redo': "やり直す",
@@ -989,6 +1200,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "その後、Notys を再起動してください。"
         ),
+        'menu_pin_tab': '固定',
+        'menu_unpin_tab': '固定を解除',
+        'context_markdown': 'Markdown',
+        'markdown_bold': '太字',
+        'markdown_italic': '斜体',
+        'markdown_underline': '下線',
+        'markdown_strikethrough': '取り消し線',
+        'markdown_inline_code': 'インラインコード',
+        'markdown_link': 'リンク',
+        'markdown_quote': '引用',
+        'markdown_bullet_list': '箇条書き',
+        'markdown_headings': '見出し',
+        'markdown_heading_1': '見出し 1',
+        'markdown_heading_2': '見出し 2',
+        'markdown_heading_3': '見出し 3',
+        'markdown_heading_4': '見出し 4',
+        'markdown_heading_5': '見出し 5',
+        'markdown_heading_6': '見出し 6',
+        'pin_tab_save_first': '固定する前に、このドキュメントを保存してください。',
+        'error_title': 'エラー',
+        'open_file_location_error': 'ファイルの場所を開けませんでした: {error}',
+
+
 
         'untitled': "無題",
     },
@@ -1005,7 +1239,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "保存",
         'menu_save_all': "全部保存",
         'menu_save_as': "另存为…",
-        'menu_open_in_finder': "在资源管理器中打开" if is_macos else "在文件资源管理器中打开",
+        'menu_open_in_finder': "在 Finder 中打开" if is_macos else ("在文件资源管理器中打开" if platform.system() == 'Windows' else "在文件管理器中打开"),
         'menu_edit': "编辑",
         'menu_undo': "撤销",
         'menu_redo': "重做",
@@ -1079,6 +1313,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "然后重新启动 Notys。"
         ),
+        'menu_pin_tab': '固定',
+        'menu_unpin_tab': '取消固定',
+        'context_markdown': 'Markdown',
+        'markdown_bold': '粗体',
+        'markdown_italic': '斜体',
+        'markdown_underline': '下划线',
+        'markdown_strikethrough': '删除线',
+        'markdown_inline_code': '行内代码',
+        'markdown_link': '链接',
+        'markdown_quote': '引用块',
+        'markdown_bullet_list': '项目符号列表',
+        'markdown_headings': '标题',
+        'markdown_heading_1': '标题 1',
+        'markdown_heading_2': '标题 2',
+        'markdown_heading_3': '标题 3',
+        'markdown_heading_4': '标题 4',
+        'markdown_heading_5': '标题 5',
+        'markdown_heading_6': '标题 6',
+        'pin_tab_save_first': '固定前请先保存此文档。',
+        'error_title': '错误',
+        'open_file_location_error': '无法打开文件位置：{error}',
+
+
 
         'untitled': "无标题",
     },
@@ -1095,7 +1352,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "저장",
         'menu_save_all': "모두 저장",
         'menu_save_as': "다른 이름으로 저장…",
-        'menu_open_in_finder': "Finder에서 열기" if is_macos else "파일 탐색기에서 열기",
+        'menu_open_in_finder': "Finder에서 열기" if is_macos else ("파일 탐색기에서 열기" if platform.system() == 'Windows' else "파일 관리자에서 열기"),
         'menu_edit': "편집",
         'menu_undo': "실행 취소",
         'menu_redo': "다시 실행",
@@ -1169,6 +1426,29 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
             "  python -m pip install tkinterdnd2\n\n"
             "그다음 Notys를 다시 시작하세요."
         ),
+        'menu_pin_tab': '고정',
+        'menu_unpin_tab': '고정 해제',
+        'context_markdown': 'Markdown',
+        'markdown_bold': '굵게',
+        'markdown_italic': '기울임꼴',
+        'markdown_underline': '밑줄',
+        'markdown_strikethrough': '취소선',
+        'markdown_inline_code': '인라인 코드',
+        'markdown_link': '링크',
+        'markdown_quote': '인용 블록',
+        'markdown_bullet_list': '글머리 기호 목록',
+        'markdown_headings': '제목',
+        'markdown_heading_1': '제목 1',
+        'markdown_heading_2': '제목 2',
+        'markdown_heading_3': '제목 3',
+        'markdown_heading_4': '제목 4',
+        'markdown_heading_5': '제목 5',
+        'markdown_heading_6': '제목 6',
+        'pin_tab_save_first': '고정하기 전에 이 문서를 저장하세요.',
+        'error_title': '오류',
+        'open_file_location_error': '파일 위치를 열 수 없습니다: {error}',
+
+
 
         'untitled': "제목 없음",
     },
@@ -1462,6 +1742,121 @@ STYLE_TRANSLATIONS = {
 for language, translations in STYLE_TRANSLATIONS.items():
     TRANSLATIONS[language].update(translations)
 
+# Update-status text is kept separately so every supported language gets the same keys.
+UPDATE_TRANSLATIONS = {
+    'en': {
+        'update_section': 'Updates',
+        'update_checking': 'Checking for updates…',
+        'update_available': 'Notys {version} is available. Click here to open the GitHub release.',
+        'update_up_to_date': 'You are using the latest version of Notys.',
+        'update_check_failed': 'Could not check for updates. Click here to try again.',
+        'update_tab_available': 'Update available: {version}',
+        'update_tab_failed': 'Update check failed · click to retry',
+    },
+    'fr': {
+        'update_section': 'Mises à jour',
+        'update_checking': 'Recherche des mises à jour…',
+        'update_available': 'Notys {version} est disponible. Cliquez ici pour ouvrir la release GitHub.',
+        'update_up_to_date': 'Vous utilisez la dernière version de Notys.',
+        'update_check_failed': 'Impossible de vérifier les mises à jour. Cliquez ici pour réessayer.',
+        'update_tab_available': 'Mise à jour : {version}',
+        'update_tab_failed': 'Échec de vérification · réessayer',
+    },
+    'eo': {
+        'update_section': 'Ĝisdatigoj',
+        'update_checking': 'Kontrolante ĝisdatigojn…',
+        'update_available': 'Notys {version} disponeblas. Klaku ĉi tie por malfermi la GitHub-eldonon.',
+        'update_up_to_date': 'Vi uzas la plej novan version de Notys.',
+        'update_check_failed': 'Ne eblis kontroli ĝisdatigojn. Klaku ĉi tie por reprovi.',
+        'update_tab_available': 'Ĝisdatigo disponeblas: {version}',
+        'update_tab_failed': 'Ĝisdatiga kontrolo malsukcesis · reprovi',
+    },
+    'es': {
+        'update_section': 'Actualizaciones',
+        'update_checking': 'Buscando actualizaciones…',
+        'update_available': 'Notys {version} está disponible. Haz clic aquí para abrir la versión en GitHub.',
+        'update_up_to_date': 'Estás usando la versión más reciente de Notys.',
+        'update_check_failed': 'No se pudieron comprobar las actualizaciones. Haz clic aquí para reintentar.',
+        'update_tab_available': 'Actualización disponible: {version}',
+        'update_tab_failed': 'Error al buscar actualizaciones · reintentar',
+    },
+    'pt': {
+        'update_section': 'Atualizações',
+        'update_checking': 'Verificando atualizações…',
+        'update_available': 'Notys {version} está disponível. Clique aqui para abrir a versão no GitHub.',
+        'update_up_to_date': 'Você está usando a versão mais recente do Notys.',
+        'update_check_failed': 'Não foi possível verificar as atualizações. Clique aqui para tentar novamente.',
+        'update_tab_available': 'Atualização disponível: {version}',
+        'update_tab_failed': 'Falha ao verificar atualizações · tentar novamente',
+    },
+    'de': {
+        'update_section': 'Updates',
+        'update_checking': 'Suche nach Updates…',
+        'update_available': 'Notys {version} ist verfügbar. Hier klicken, um die GitHub-Version zu öffnen.',
+        'update_up_to_date': 'Du verwendest die neueste Version von Notys.',
+        'update_check_failed': 'Updates konnten nicht geprüft werden. Hier klicken, um es erneut zu versuchen.',
+        'update_tab_available': 'Update verfügbar: {version}',
+        'update_tab_failed': 'Update-Prüfung fehlgeschlagen · erneut versuchen',
+    },
+    'it': {
+        'update_section': 'Aggiornamenti',
+        'update_checking': 'Ricerca aggiornamenti…',
+        'update_available': 'Notys {version} è disponibile. Fai clic qui per aprire la release su GitHub.',
+        'update_up_to_date': 'Stai usando la versione più recente di Notys.',
+        'update_check_failed': 'Impossibile controllare gli aggiornamenti. Fai clic qui per riprovare.',
+        'update_tab_available': 'Aggiornamento disponibile: {version}',
+        'update_tab_failed': 'Controllo aggiornamenti non riuscito · riprova',
+    },
+    'nl': {
+        'update_section': 'Updates',
+        'update_checking': 'Controleren op updates…',
+        'update_available': 'Notys {version} is beschikbaar. Klik hier om de GitHub-release te openen.',
+        'update_up_to_date': 'Je gebruikt de nieuwste versie van Notys.',
+        'update_check_failed': 'Updates controleren is mislukt. Klik hier om het opnieuw te proberen.',
+        'update_tab_available': 'Update beschikbaar: {version}',
+        'update_tab_failed': 'Updatecontrole mislukt · opnieuw proberen',
+    },
+    'ru': {
+        'update_section': 'Обновления',
+        'update_checking': 'Проверка обновлений…',
+        'update_available': 'Доступна Notys {version}. Нажмите здесь, чтобы открыть релиз на GitHub.',
+        'update_up_to_date': 'Вы используете последнюю версию Notys.',
+        'update_check_failed': 'Не удалось проверить обновления. Нажмите здесь, чтобы повторить попытку.',
+        'update_tab_available': 'Доступно обновление: {version}',
+        'update_tab_failed': 'Не удалось проверить обновления · повторить',
+    },
+    'ja': {
+        'update_section': 'アップデート',
+        'update_checking': 'アップデートを確認中…',
+        'update_available': 'Notys {version} が利用可能です。ここをクリックして GitHub のリリースを開きます。',
+        'update_up_to_date': 'Notys は最新バージョンです。',
+        'update_check_failed': 'アップデートを確認できませんでした。ここをクリックして再試行します。',
+        'update_tab_available': '更新あり: {version}',
+        'update_tab_failed': '更新確認に失敗 · 再試行',
+    },
+    'zh': {
+        'update_section': '更新',
+        'update_checking': '正在检查更新…',
+        'update_available': 'Notys {version} 已发布。点击此处打开 GitHub 发布页面。',
+        'update_up_to_date': '你正在使用最新版本的 Notys。',
+        'update_check_failed': '无法检查更新。点击此处重试。',
+        'update_tab_available': '有可用更新：{version}',
+        'update_tab_failed': '更新检查失败 · 点击重试',
+    },
+    'ko': {
+        'update_section': '업데이트',
+        'update_checking': '업데이트 확인 중…',
+        'update_available': 'Notys {version}을(를) 사용할 수 있습니다. 여기를 클릭해 GitHub 릴리스를 여세요.',
+        'update_up_to_date': '최신 버전의 Notys를 사용하고 있습니다.',
+        'update_check_failed': '업데이트를 확인할 수 없습니다. 여기를 클릭해 다시 시도하세요.',
+        'update_tab_available': '업데이트 사용 가능: {version}',
+        'update_tab_failed': '업데이트 확인 실패 · 다시 시도',
+    },
+}
+for language, translations in UPDATE_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
+
 current_language = 'en' # [Default initial language setting]
 theme_preferences = 'system' # [Default theme preference setting]
 ACTIVE_STYLE_NAME = 'default'
@@ -1486,6 +1881,154 @@ def tr(key, **kwargs): # [Translation function with formatting support]
     if kwargs: # [Format string if keyword arguments provided]
         text = text.format(**kwargs) # [Apply string formatting]
     return text # [Return translated string]
+
+GITHUB_RELEASES_API = 'https://api.github.com/repos/darealzoko/Notys/releases?per_page=100'
+GITHUB_RELEASES_URL = 'https://github.com/darealzoko/Notys/releases/'
+
+
+def _parse_update_version(value):
+    """Return a comparable SemVer key, including a simple beta/rc suffix."""
+    match = re.search(
+        r'(?i)\bv?(\d+)\.(\d+)\.(\d+)(?:[\s._-]*(alpha|beta|preview|pre|rc)(?:[\s._-]*(\d+))?)?',
+        str(value or '').strip(),
+    )
+    if not match:
+        return None
+    major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
+    prerelease_name = (match.group(4) or '').lower()
+    prerelease_number = int(match.group(5) or 0)
+    stable_rank = 1 if not prerelease_name else 0
+    prerelease_rank = {'alpha': 0, 'a': 0, 'beta': 1, 'b': 1, 'pre': 2, 'preview': 2, 'rc': 3}
+    suffix_rank = prerelease_rank.get(prerelease_name, 0)
+    return (major, minor, patch, stable_rank, suffix_rank, prerelease_number)
+
+
+def fetch_update_info(current_version):
+    """Find the newest published stable release in the current major series.
+
+    Release notes and binary assets are deliberately not required: the tag is
+    sufficient to detect a published release.
+    """
+    current_key = _parse_update_version(current_version)
+    if current_key is None:
+        raise ValueError(f'Unrecognized current version: {current_version!r}')
+
+    request = urllib.request.Request(
+        GITHUB_RELEASES_API,
+        headers={
+            'Accept': 'application/vnd.github+json',
+            'User-Agent': 'Notys-update-checker',
+            'X-GitHub-Api-Version': '2022-11-28',
+        },
+    )
+    with urllib.request.urlopen(request, timeout=8) as response:
+        releases = json.loads(response.read().decode('utf-8'))
+    if not isinstance(releases, list):
+        raise ValueError('Unexpected response from GitHub Releases API')
+
+    candidates = []
+    for release in releases:
+        if not isinstance(release, dict) or release.get('draft') or release.get('prerelease'):
+            continue
+        tag = release.get('tag_name', '')
+        release_key = _parse_update_version(tag)
+        if release_key is None or release_key[0] != current_key[0]:
+            # v1 checks v1.x updates; v2 betas are a separate app line.
+            continue
+        candidates.append((release_key, release, tag))
+
+    if not candidates:
+        return {'state': 'current'}
+
+    release_key, release, tag = max(candidates, key=lambda item: item[0])
+    if release_key <= current_key:
+        return {'state': 'current'}
+
+    return {
+        'state': 'available',
+        'version': re.sub(r'^[vV]', '', tag),
+        'url': release.get('html_url') or GITHUB_RELEASES_URL,
+    }
+
+
+
+# Shared update check state: the main tab bar and Settings observe the same request.
+_UPDATE_CHECK_RESULT = None
+_UPDATE_CHECK_RUNNING = False
+_UPDATE_CHECK_WAITERS = []
+
+
+def request_update_check(callback=None, force=False):
+    """Check GitHub in a worker thread, then update Tk widgets on the UI thread."""
+    global _UPDATE_CHECK_RESULT, _UPDATE_CHECK_RUNNING, _UPDATE_CHECK_WAITERS
+    root = globals().get('win')
+    if root is None:
+        return
+
+    if callback is not None:
+        if _UPDATE_CHECK_RESULT is not None and not force and not _UPDATE_CHECK_RUNNING:
+            try:
+                root.after(0, lambda result=_UPDATE_CHECK_RESULT: callback(result))
+            except tk.TclError:
+                pass
+            return
+        _UPDATE_CHECK_WAITERS.append(callback)
+
+    if _UPDATE_CHECK_RUNNING:
+        return
+    if _UPDATE_CHECK_RESULT is not None and not force:
+        return
+
+    _UPDATE_CHECK_RUNNING = True
+    result_queue = queue.Queue()
+
+    def worker():
+        try:
+            result = fetch_update_info(APP_VERSION)
+        except Exception as error:
+            print(f'[Updates] Could not check GitHub releases: {error}')
+            result = {'state': 'error'}
+        result_queue.put(result)
+
+    threading.Thread(target=worker, name='NotysUpdateCheck', daemon=True).start()
+
+    def poll_result():
+        global _UPDATE_CHECK_RESULT, _UPDATE_CHECK_RUNNING, _UPDATE_CHECK_WAITERS
+        try:
+            if not root.winfo_exists():
+                _UPDATE_CHECK_RUNNING = False
+                _UPDATE_CHECK_WAITERS = []
+                return
+        except tk.TclError:
+            _UPDATE_CHECK_RUNNING = False
+            _UPDATE_CHECK_WAITERS = []
+            return
+
+        try:
+            result = result_queue.get_nowait()
+        except queue.Empty:
+            root.after(100, poll_result)
+            return
+
+        _UPDATE_CHECK_RESULT = result
+        _UPDATE_CHECK_RUNNING = False
+
+        tabbar = globals().get('tab_bar')
+        if tabbar is not None:
+            try:
+                tabbar.set_update_status(result)
+            except (tk.TclError, AttributeError) as error:
+                print(f'[Updates] Could not update tab-bar notice: {error}')
+
+        callbacks = _UPDATE_CHECK_WAITERS
+        _UPDATE_CHECK_WAITERS = []
+        for waiter in callbacks:
+            try:
+                waiter(result)
+            except (tk.TclError, RuntimeError) as error:
+                print(f'[Updates] Could not update an update-status view: {error}')
+
+    root.after(100, poll_result)
 
 def get_config_dir(): # [Get platform-specific configuration directory path]
     """Retourne le dossier de configuration adapté à la plateforme, ex: ~/.config/Notys"""
@@ -1957,6 +2500,18 @@ if __name__ == '__main__': # [Main application execution block]
 
             self.text.bind('<Control-Tab>', lambda e: _next_tab()) # [Ctrl+Tab next tab shortcut]
             self.text.bind('<Control-Shift-Tab>', lambda e: _prev_tab()) # [Ctrl+Shift+Tab prev tab shortcut]
+            # App shortcuts on the Text widget run before Tk's built-in Text class bindings.
+            # This prevents native shortcuts (especially Cmd/Ctrl+V) from firing a second time.
+            for shortcut_name, shortcut in globals().get('SHORTCUTS', {}).items():
+                for key_binding in shortcut['keys']:
+                    self.text.bind(
+                        key_binding,
+                        lambda event, name=shortcut_name: (SHORTCUTS[name]['cmd'](event), 'break')[1],
+                    )
+
+            # Right-click is Button-2 on Tk/Aqua macOS, and Button-3 on Windows/Linux.
+            context_button = '<Button-2>' if is_macos else '<Button-3>'
+            self.text.bind(context_button, self._show_text_context_menu)
 
         # function to fix the sensitivity on the scrollbar
         def _on_mousewheel(self, event):
@@ -2106,6 +2661,168 @@ if __name__ == '__main__': # [Main application execution block]
             word_start = self.text.index(f'{insert} -1c wordstart')
             if self.text.compare(word_start, '<', insert):
                 self.text.delete(word_start, insert)
+            return 'break'
+
+        def _apply_markdown_to_selection(self, kind):
+            """Wrap the selected text in the chosen Markdown syntax."""
+            t = self.text
+            try:
+                start = t.index('sel.first')
+                end = t.index('sel.last')
+            except tk.TclError:
+                return 'break'
+
+            selected = t.get(start, end)
+            if not selected:
+                return 'break'
+
+            # Structural formatting applies to the complete selected lines.
+            if kind.startswith('heading_') or kind in ('quote', 'list'):
+                start = t.index('sel.first linestart')
+                end = t.index('sel.last lineend')
+                selected = t.get(start, end)
+                lines = selected.splitlines(keepends=True)
+                if not lines:
+                    lines = [selected]
+                if kind.startswith('heading_'):
+                    level = int(kind.rsplit('_', 1)[1])
+                    marker = ACTIVE_STYLE['elements'][f'h{level}']['marker']
+                    replacement = ''.join(
+                        f'{marker} {line}' if line.strip() else line
+                        for line in lines
+                    )
+                elif kind == 'quote':
+                    marker = ACTIVE_STYLE['elements']['quote']['marker']
+                    replacement = ''.join(
+                        f'{marker} {line}' if line.strip() else line
+                        for line in lines
+                    )
+                else:
+                    marker = ACTIVE_STYLE['elements']['list']['marker']
+                    if marker not in ('-', '*', '+', '•'):
+                        marker = '•'
+                    replacement = ''.join(
+                        f'{marker} {line}' if line.strip() else line
+                        for line in lines
+                    )
+                select_entire_result = True
+                url_range = None
+            elif kind == 'link':
+                marker = ACTIVE_STYLE['elements']['link']['marker']
+                replacement = f'{marker}{selected}](URL)'
+                select_entire_result = False
+                url_start_offset = len(marker) + len(selected) + 2
+                url_range = (url_start_offset, url_start_offset + 3)
+            else:
+                style_key = 'inline_code' if kind == 'inline_code' else kind
+                marker = ACTIVE_STYLE['elements'][style_key]['marker']
+                end_marker = ':-' if kind == 'underline' and marker == '-:' else marker
+                if kind in ('italic', 'inline_code', 'underline', 'strike') and '\n' in selected:
+                    # These syntaxes are parsed line by line, so format each line separately.
+                    parts = selected.splitlines(keepends=True)
+                    replacement = ''.join(
+                        (f'{marker}{part[:-1]}{end_marker}\n' if part[:-1] else part)
+                        if part.endswith('\n')
+                        else (f'{marker}{part}{end_marker}' if part else part)
+                        for part in parts
+                    )
+                else:
+                    replacement = f'{marker}{selected}{end_marker}'
+                select_entire_result = False
+                url_range = None
+
+            if kind in ('italic', 'inline_code', 'underline', 'strike') and '\n' in selected:
+                select_entire_result = True
+
+            t.edit_separator()
+            t.delete(start, end)
+            t.insert(start, replacement)
+            result_end = t.index(f'{start}+{len(replacement)}c')
+            t.tag_remove('sel', '1.0', 'end')
+
+            if url_range:
+                url_start = t.index(f'{start}+{url_range[0]}c')
+                url_end = t.index(f'{start}+{url_range[1]}c')
+                t.tag_add('sel', url_start, url_end)
+                t.mark_set('insert', url_end)
+            elif select_entire_result:
+                t.tag_add('sel', start, result_end)
+                t.mark_set('insert', result_end)
+            else:
+                inner_start = t.index(f'{start}+{len(marker)}c')
+                inner_end = t.index(f'{inner_start}+{len(selected)}c')
+                t.tag_add('sel', inner_start, inner_end)
+                t.mark_set('insert', inner_end)
+
+            t.edit_separator()
+            self.set_modified(True)
+            self.schedule_highlight()
+            update_status()
+            t.focus_set()
+            return 'break'
+
+        def _show_text_context_menu(self, event):
+            """Show formatting commands for the current text selection."""
+            t = self.text
+            try:
+                t.index('sel.first')
+                has_selection = True
+            except tk.TclError:
+                has_selection = False
+
+            menu = tk.Menu(
+                win, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            markdown_menu = tk.Menu(
+                menu, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            menu.add_cascade(label=tr('context_markdown'), menu=markdown_menu, state='normal' if has_selection else 'disabled')
+            formatting = [
+                ('markdown_bold', 'bold'),
+                ('markdown_italic', 'italic'),
+                ('markdown_underline', 'underline'),
+                ('markdown_strikethrough', 'strike'),
+                ('markdown_inline_code', 'inline_code'),
+                ('markdown_link', 'link'),
+            ]
+            for label_key, kind in formatting:
+                markdown_menu.add_command(
+                    label=tr(label_key),
+                    command=lambda selected_kind=kind: self._apply_markdown_to_selection(selected_kind),
+                    state='normal' if has_selection else 'disabled',
+                )
+            markdown_menu.add_separator()
+            markdown_menu.add_command(
+                label=tr('markdown_quote'),
+                command=lambda: self._apply_markdown_to_selection('quote'),
+                state='normal' if has_selection else 'disabled',
+            )
+            markdown_menu.add_command(
+                label=tr('markdown_bullet_list'),
+                command=lambda: self._apply_markdown_to_selection('list'),
+                state='normal' if has_selection else 'disabled',
+            )
+            headings_menu = tk.Menu(
+                markdown_menu, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            markdown_menu.add_cascade(label=tr('markdown_headings'), menu=headings_menu, state='normal' if has_selection else 'disabled')
+            for level in range(1, 7):
+                headings_menu.add_command(
+                    label=tr(f'markdown_heading_{level}'),
+                    command=lambda current_level=level: self._apply_markdown_to_selection(f'heading_{current_level}'),
+                    state='normal' if has_selection else 'disabled',
+                )
+
+            try:
+                menu.tk_popup(event.x_root, event.y_root)
+            finally:
+                try:
+                    menu.grab_release()
+                except tk.TclError:
+                    pass
             return 'break'
 
         def _on_key(self, event=None): # [Key press event handler]
@@ -2544,6 +3261,15 @@ if __name__ == '__main__': # [Main application execution block]
             self.theme_button.pack(side='right', fill='y')
             self.theme_button.bind('<Button-1>', self.toggle_theme)
 
+            # The update notice belongs in the main tab bar, not only in Settings.
+            self.update_status = None
+            self.update_label = tk.Label(
+                self.frame, text='', bg=TAB_BG, fg=TAB_FG,
+                font=('Consolas', 10, 'bold'), cursor=HAND_CURSOR,
+                padx=10, pady=2, relief='solid', borderwidth=1,
+            )
+            self.update_label.pack_forget()
+
         def reorder_tab_frames(self): # [Reorder tab widgets after drag]
             for tab in self.tabs:
                 if tab.id in self._btns:
@@ -2590,7 +3316,58 @@ if __name__ == '__main__': # [Main application execution block]
             self.frame.config(bg=TAB_BG)
             self.btn_new.config(bg=TAB_BG, fg=TAB_FG)
             self.theme_button.config(bg=TAB_BG, fg=TAB_FG)
+            self.update_label.config(bg=TAB_BG)
+            self.set_update_status(self.update_status)
             self.refresh()
+
+        def set_update_status(self, result):
+            """Show a clickable, localized notice in the main tab bar when a newer release exists."""
+            self.update_status = result
+            if not isinstance(result, dict):
+                self.update_label.pack_forget()
+                self.update_label.unbind('<Button-1>')
+                return
+
+            state = result.get('state')
+            if state == 'available':
+                version_text = result.get('version', '')
+                release_url = result.get('url') or GITHUB_RELEASES_URL
+                # High-visibility fluorescent green badge, deliberately independent
+                # of the app theme so the update cannot blend into the tab bar.
+                self.update_label.config(
+                    text=tr('update_tab_available', version=version_text),
+                    bg='#39FF14', fg='#102000', cursor=HAND_CURSOR,
+                    font=('Consolas', 10, 'bold'),
+                    relief='solid', borderwidth=1,
+                    padx=10, pady=2,
+                )
+                self.update_label.unbind('<Button-1>')
+                self.update_label.bind(
+                    '<Button-1>',
+                    lambda _event, url=release_url: webbrowser.open(url),
+                )
+            elif state == 'error':
+                self.update_label.config(
+                    text=tr('update_tab_failed'),
+                    bg='#FFD54A', fg='#252000', cursor=HAND_CURSOR,
+                    font=('Consolas', 9, 'bold'),
+                    relief='solid', borderwidth=1,
+                    padx=8, pady=2,
+                )
+                self.update_label.unbind('<Button-1>')
+                self.update_label.bind(
+                    '<Button-1>',
+                    lambda _event: request_update_check(force=True),
+                )
+            else:
+                self.update_label.pack_forget()
+                self.update_label.unbind('<Button-1>')
+                return
+
+            # Keep it as a distinct, padded badge instead of a tiny plain-text label.
+            self.update_label.pack(
+                side='right', padx=6, pady=4, before=self.theme_button
+            )
 
         def add(self, tab): # [Add new tab to bar]
             self.tabs.append(tab)
@@ -2599,7 +3376,7 @@ if __name__ == '__main__': # [Main application execution block]
 
         def toggle_pin(self, tab):
             if not tab.file_path:
-                messagebox.showinfo('Pin Tab', 'Save this document before pinning it.')
+                messagebox.showinfo(tr('menu_pin_tab'), tr('pin_tab_save_first'))
                 return 'break'
             path = os.path.abspath(tab.file_path)
             tab.is_pinned = not tab.is_pinned
@@ -2609,6 +3386,29 @@ if __name__ == '__main__': # [Main application execution block]
                 PINNED_DOCS.remove(path)
             save_pinned_docs()
             self.refresh()
+            return 'break'
+
+        def _show_tab_context_menu(self, event, tab):
+            menu = tk.Menu(
+                win, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            pin_label = tr('menu_unpin_tab') if tab.is_pinned else tr('menu_pin_tab')
+            menu.add_command(label=pin_label, command=lambda: self.toggle_pin(tab))
+            menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(tab))
+            menu.add_separator()
+            menu.add_command(
+                label=tr('menu_open_in_finder'),
+                command=lambda: open_tab_in_finder(tab),
+                state='normal' if tab.file_path and os.path.isfile(tab.file_path) else 'disabled',
+            )
+            try:
+                menu.tk_popup(event.x_root, event.y_root)
+            finally:
+                try:
+                    menu.grab_release()
+                except tk.TclError:
+                    pass
             return 'break'
 
         def _make_btn(self, tab): # [Create tab button widget with middle click close support]
@@ -2631,11 +3431,15 @@ if __name__ == '__main__': # [Main application execution block]
             lbl.bind('<B1-Motion>', lambda e, t=tab: self._on_tab_drag(e, t))
             pin.bind('<Button-1>', lambda e, t=tab: self.toggle_pin(t))
 
-            # Middle-click closes the tab regardless of which tab sub-widget is hit.
-            # Return 'break' so the event cannot trigger unrelated widget bindings.
+            # Tk/Aqua reports the macOS secondary (right) click as Button-2.
+            # Keep that for the context menu, and use Button-3 for middle-click close on macOS.
+            # Windows/Linux use Button-3 for right-click and Button-2 for middle-click.
+            middle_button = '<Button-3>' if is_macos else '<Button-2>'
+            context_button = '<Button-2>' if is_macos else '<Button-3>'
             middle_close = lambda e, t=tab: (close_tab(t), 'break')[1]
             for widget in (f, border, lbl, pin, close):
-                widget.bind('<Button-2>', middle_close)
+                widget.bind(middle_button, middle_close)
+                widget.bind(context_button, lambda e, t=tab: self._show_tab_context_menu(e, t))
 
             close.bind('<Button-1>', lambda e, t=tab: close_tab(t))
 
@@ -3237,20 +4041,26 @@ if __name__ == '__main__': # [Main application execution block]
     def current_tab(): # [Get active tab instance]
         return tab_bar.active
 
-    def open_in_finder(): # [Reveal the current file in Finder or File Explorer]
-        tab = current_tab()
+    def open_tab_in_finder(tab):
+        """Reveal a tab's saved file in the native file manager."""
         path = tab.file_path if tab else None
         if not path or not os.path.isfile(path):
             return
 
         import subprocess
         try:
-            if platform.system() == 'Darwin':
+            system = platform.system()
+            if system == 'Darwin':
                 subprocess.Popen(['open', '-R', path])
-            elif platform.system() == 'Windows':
+            elif system == 'Windows':
                 subprocess.Popen(['explorer', '/select,', os.path.normpath(path)])
+            else:
+                subprocess.Popen(['xdg-open', os.path.dirname(os.path.abspath(path))])
         except OSError as e:
-            messagebox.showerror('Error', f'Could not open the file location: {e}')
+            messagebox.showerror(tr('error_title'), tr('open_file_location_error', error=e))
+
+    def open_in_finder(): # [Reveal the current file in Finder or File Explorer]
+        open_tab_in_finder(current_tab())
 
     def toggle_current_tab_pin(event=None):
         tab = current_tab()
@@ -3545,7 +4355,12 @@ if __name__ == '__main__': # [Main application execution block]
     }
 
     def register_shortcuts(): # [Register global keyboard shortcuts]
+        # Text editing shortcuts are handled on each editor widget before Tk's class bindings.
+        # Do not bind them globally: doing so makes Cmd/Ctrl+V run twice and steals paste from entries.
+        text_edit_shortcuts = {'undo', 'redo', 'cut', 'copy', 'paste'}
         for name, item in SHORTCUTS.items():
+            if name in text_edit_shortcuts:
+                continue
             for key_binding in item['keys']:
                 win.bind_all(key_binding, item['cmd'])
 
@@ -3835,10 +4650,131 @@ if __name__ == '__main__': # [Main application execution block]
                    highlightthickness=1, highlightbackground=SEP_FG,
                    highlightcolor=ACCENT).pack(side='left')
 
+        section_label(p_general, tr('update_section'), 15)
+        update_status_label = tk.Label(
+            p_general,
+            text=tr('update_checking'),
+            bg=H_BG, fg=STATUS_FG,
+            font=('Consolas', 10), anchor='w', justify='left',
+            wraplength=690, cursor='arrow',
+        )
+        update_status_label.grid(row=17, column=0, columnspan=3, sticky='w', pady=(4, 0))
+        update_result_queue = queue.Queue()
+
+        def apply_update_status(result):
+            try:
+                if not dlg.winfo_exists():
+                    return
+            except tk.TclError:
+                return
+
+            update_status_label.unbind('<Button-1>')
+            state = result.get('state')
+            if state == 'available':
+                update_status_label.config(
+                    text=tr('update_available', version=result.get('version', '')),
+                    fg=ACCENT, cursor=HAND_CURSOR,
+                    font=('Consolas', 10, 'underline'),
+                )
+                release_url = result.get('url') or GITHUB_RELEASES_URL
+                update_status_label.bind(
+                    '<Button-1>',
+                    lambda _event, url=release_url: webbrowser.open(url),
+                )
+            elif state == 'current':
+                update_status_label.config(
+                    text=tr('update_up_to_date'), fg=STATUS_FG,
+                    cursor='arrow', font=('Consolas', 10),
+                )
+            else:
+                update_status_label.config(
+                    text=tr('update_check_failed'), fg=STATUS_FG,
+                    cursor=HAND_CURSOR, font=('Consolas', 10, 'underline'),
+                )
+                update_status_label.bind('<Button-1>', lambda _event: start_update_check(force=True))
+
+        def start_update_check(force=False):
+            try:
+                if not dlg.winfo_exists():
+                    return
+            except tk.TclError:
+                return
+
+            update_status_label.unbind('<Button-1>')
+            update_status_label.config(
+                text=tr('update_checking'), fg=STATUS_FG,
+                cursor='arrow', font=('Consolas', 10),
+            )
+            request_update_check(apply_update_status, force=force)
+
         p_language = tk.Frame(content_area, bg=H_BG)
         row_label(p_language, tr('settings_language'), 2)
-        make_radiogroup(p_language, lang_var, [("English", 'en'), ("Français", 'fr'), ("Esperanto", 'eo'), ("Español", 'es'), ('Português', 'pt'), ('Deutsch', 'de'), ('Italiano', 'it')], row=2)
-        make_radiogroup(p_language, lang_var, [('Nederlands', 'nl'), ('Русский', 'ru'), ('日本語', 'ja'), ('中文', 'zh'), ('한국어', 'ko')], row=3)
+        p_language.grid_columnconfigure(0, weight=1)
+        p_language.grid_columnconfigure(1, weight=1)
+        p_language.grid_rowconfigure(4, weight=1)
+
+        language_scroll_frame = tk.Frame(p_language, bg=H_BG)
+        language_scroll_frame.grid(row=4, column=0, columnspan=3, sticky='nsew', pady=(8, 0))
+        language_canvas = tk.Canvas(language_scroll_frame, bg=H_BG, highlightthickness=0, bd=0)
+        language_scrollbar = ttk.Scrollbar(language_scroll_frame, orient='vertical', command=language_canvas.yview)
+        language_canvas.configure(yscrollcommand=language_scrollbar.set)
+        language_scrollbar.pack(side='right', fill='y')
+        language_canvas.pack(side='left', fill='both', expand=True)
+        language_options_frame = tk.Frame(language_canvas, bg=H_BG)
+        language_canvas_window = language_canvas.create_window((0, 0), window=language_options_frame, anchor='nw')
+
+        language_options = [
+            ('English', 'en'), ('Français', 'fr'), ('Esperanto', 'eo'), ('Español', 'es'),
+            ('Português', 'pt'), ('Deutsch', 'de'), ('Italiano', 'it'), ('Nederlands', 'nl'),
+            ('Русский', 'ru'), ('日本語', 'ja'), ('中文', 'zh'), ('한국어', 'ko'),
+        ]
+        language_buttons = []
+        for label, value in language_options:
+            button = tk.Radiobutton(
+                language_options_frame, text=label, variable=lang_var, value=value,
+                bg=H_BG, fg=FG, selectcolor=TAB_BG,
+                activebackground=H_BG, activeforeground=FG,
+                font=('Consolas', 11), cursor=HAND_CURSOR, anchor='w',
+            )
+            language_buttons.append(button)
+
+        language_columns = [None]
+        def layout_language_options(event=None):
+            width = max(1, event.width if event is not None else language_canvas.winfo_width())
+            columns = max(1, min(len(language_buttons), width // 190))
+            language_canvas.itemconfigure(language_canvas_window, width=width)
+            if columns != language_columns[0]:
+                language_columns[0] = columns
+                for button in language_buttons:
+                    button.grid_forget()
+                for index, button in enumerate(language_buttons):
+                    button.grid(
+                        row=index // columns, column=index % columns,
+                        sticky='w', padx=(8, 16), pady=5,
+                    )
+                for column in range(columns):
+                    language_options_frame.grid_columnconfigure(column, weight=1)
+            language_canvas.after_idle(
+                lambda: language_canvas.configure(scrollregion=language_canvas.bbox('all'))
+            )
+
+        language_canvas.bind('<Configure>', layout_language_options)
+        language_options_frame.bind(
+            '<Configure>',
+            lambda event: language_canvas.configure(scrollregion=language_canvas.bbox('all')),
+        )
+        def scroll_language_options(event):
+            if getattr(event, 'delta', 0):
+                language_canvas.yview_scroll(int(-event.delta / 120), 'units')
+            elif getattr(event, 'num', None) == 4:
+                language_canvas.yview_scroll(-1, 'units')
+            elif getattr(event, 'num', None) == 5:
+                language_canvas.yview_scroll(1, 'units')
+            return 'break'
+        for widget in (language_canvas, language_options_frame, *language_buttons):
+            widget.bind('<MouseWheel>', scroll_language_options, add='+')
+            widget.bind('<Button-4>', scroll_language_options, add='+')
+            widget.bind('<Button-5>', scroll_language_options, add='+')
 
         p_styles = tk.Frame(content_area, bg=H_BG)
         style_toolbar = tk.Frame(p_styles, bg=H_BG)
@@ -4193,6 +5129,8 @@ if __name__ == '__main__': # [Main application execution block]
 
         pages = [p_general, p_language, p_styles]
         show_page(0)
+        # Check asynchronously so a slow/offline connection never freezes Settings.
+        dlg.after(200, start_update_check)
 
         tk.Frame(dlg, bg=SEP_FG, height=1).pack(fill='x')
 
@@ -4209,6 +5147,7 @@ if __name__ == '__main__': # [Main application execution block]
                 messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             current_language = lang_var.get()
+            tab_bar.set_update_status(tab_bar.update_status)
             SETTINGS['font_family'] = font_fam_var.get()
             SETTINGS['font_size'] = font_size_var.get()
             SETTINGS['line_wrap'] = wrap_var.get()
@@ -4266,4 +5205,5 @@ if __name__ == '__main__': # [Main application execution block]
 
     rebuild_menu() # [Build initial menu bar structure]
     restore_pinned_tabs() # [Reopen saved pinned documents]
+    request_update_check() # [Check for updates at startup; notice appears in the tab bar]
     win.mainloop() # [Run main Tkinter event loop]

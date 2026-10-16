@@ -45,6 +45,6 @@
  False,
  False,
  [],
- 'x86_64',
+ 'universal2',
  None,
  None)

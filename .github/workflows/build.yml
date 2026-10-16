@@ -1,0 +1,79 @@
+name: Build Universal2 Notys
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+
+jobs:
+  build-intel:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyinstaller striprtf pillow
+      - name: Build Intel binary
+        run: pyinstaller Notys.spec
+      - name: Upload Intel Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: notys-intel
+          path: dist/Notys.app/Contents/MacOS/Notys
+
+  build-apple-silicon:
+    runs-on: macos-14  # This is a real Apple Silicon runner in the cloud!
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyinstaller striprtf pillow
+      - name: Build ARM binary
+        run: pyinstaller Notys.spec
+      - name: Upload ARM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: notys-arm
+          path: dist/Notys.app/Contents/MacOS/Notys
+
+  merge-universal:
+    needs: [build-intel, build-apple-silicon]
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Intel Binary
+        uses: actions/download-artifact@v4
+        with:
+          name: notys-intel
+          path: build-intel
+      - name: Download ARM Binary
+        uses: actions/download-artifact@v4
+        with:
+          name: notys-arm
+          path: build-arm
+      - name: Create Universal2 App Bundle
+        run: |
+          # Generate base app structure
+          pyinstaller Notys.spec
+          
+          # Use macOS lipo to merge both architectures into one fat executable
+          lipo -create -output dist/Notys.app/Contents/MacOS/Notys build-intel/Notys build-arm/Notys
+          
+          # Sign the final bundle so macOS allows it to execute without crashing
+          codesign --deep --force --sign - dist/Notys.app
+      - name: Upload Final Universal2 App
+        uses: actions/upload-artifact@v4
+        with:
+          name: Notys-Universal2.app
+          path: dist/Notys.app

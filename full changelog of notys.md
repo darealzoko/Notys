@@ -1,3 +1,39 @@
+# 1.8.0
+
+### Add:
+- Right click menu for markdown syntax
+- Right click menu on tabs for options
+
+### Fixes:
+- Fixed the update message
+- Fixed the language's tab in the settings. Now it doesn't crop out of sight when you resize the settings.
+- Middle click to close a tab is now working in macOS as well!
+- Fixed a bug where Cmd/Ctrl+V would paste twice the same text.
+
+# 1.8.0 Beta 2
+
+### Fix:
+- Fixed a bug where Windows's build could not complete. The solution was adding 'striprtf' to hiddenimports in Notys.spec (has been fixed but not published for the windows build on Beta 1)
+
+# 1.8.0 Beta 1
+
+### Add:
+- More menu bar options (a "View" and "Open file in Finder" option)
+- Added a "hover" menu in the file name in the bottom left where you can easily copy the filepath of your file.
+- Added a shortcut to open the file in Finder/File Explorer (Cmd/Ctrl+Shift+F)
+
+# 1.7.1
+### Minor Add:
+- Added a dark column for the styles, that way I fixed the light theme being unreadable now readable.
+- Added new installation form for macOS, introducing .dmg. First attempt, it may not be perfect but sure usable.
+
+### Fix:
+- Fixed a bug where text would be unreadable on light theme.
+- Fixed a bug where you could not do bold
+
+### Known bugs:
+- The update text message is still not appearing if there's a new update
+
 # 1.7.0
 
 ### Add:

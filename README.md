@@ -4,7 +4,7 @@ Notys is an ultra-lightweight note-taking application designed for speed and sim
 No bloat, just the essential features you need to get your thoughts down.
 
 ## Download
-The latest version of Notys (v1.7.0) is currently available for:
+The latest version of Notys (v1.8.0) is currently available for:
 
 **Linux:**
 
@@ -19,7 +19,7 @@ The latest version of Notys (v1.7.0) is currently available for:
 - Windows .zip in the release sections 
 - Source code
 
-**macOS (INTEL ONLY!)**:
+**macOS (Intel and ARM)**:
 
 - .zip to extract the .app file
 - Source code (to use the source code, you will need the build env (available in every notys release) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or if you don't want to activate the .venv `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt && python3 -m pip intall pyinstaller`)
@@ -71,8 +71,6 @@ README has been through chatGPT to correct typos as I am not an native English s
 ## Getting Started
 
 ### For macOS (Intel ONLY!)
-**Quick precision, Notys WILL not work on Macs with Apple Silicon (M1, M2, M3, etc.) or on the MacBook Neo. Notys was built and tested on Intel Macs, including Hackintosh systems.**
-
 1. Go to the **Releases** section on GitHub and navigate to the latest version.
 2. Download the latest `Notys-macOS-x.x.x.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
@@ -95,14 +93,14 @@ README has been through chatGPT to correct typos as I am not an native English s
 4. Run the .exe file
 
 ## Work in Progress (Roadmap)
-### Planned for v1.8.0:
-- [ ] Add a right menu
-- [ ] Add an option under file called "Show in Finder" or "Show in File Explorer" depending on your system.
+### Planned for v1.9.0:
+- [ ] Date and time timestamps
+- [ ] "Format" menu in the menu bar
 - [ ] Add a mission-control-ish overview
 ### Planned in the near or far future:
 - [ ] HTML/PDF exporting
 - [X] Liquid glass, maybe for 2.0.0
-- [ ] macOS ARM Support, for 2.0.0
+- [X] macOS ARM Support, for 2.0.0
 - [X] Switch to SwiftUI+Swift, for 2.0.0. SIKE! I'm going with Rust and Slink for the next Beta.
 
 ## Known bugs

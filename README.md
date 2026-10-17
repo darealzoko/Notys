@@ -22,6 +22,7 @@ The latest version of Notys (v1.8.0) is currently available for:
 **macOS (Intel and ARM)**:
 
 - .zip to extract the .app file
+- .dmg for regular and common app installation method
 - Source code (to use the source code, you will need the build env (available in every notys release) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or if you don't want to activate the .venv `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt && python3 -m pip intall pyinstaller`)
 
 ## Features (Markdown-style)

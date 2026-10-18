@@ -24,7 +24,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.8.0' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.8.1' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -1885,6 +1885,7 @@ def tr(key, **kwargs): # [Translation function with formatting support]
 GITHUB_RELEASES_API = 'https://api.github.com/repos/darealzoko/Notys/releases?per_page=100'
 GITHUB_RELEASES_URL = 'https://github.com/darealzoko/Notys/releases/'
 
+# UPDATE MANAGER
 
 def _parse_update_version(value):
     """Return a comparable SemVer key, including a simple beta/rc suffix."""
@@ -1921,7 +1922,18 @@ def fetch_update_info(current_version):
             'X-GitHub-Api-Version': '2022-11-28',
         },
     )
-    with urllib.request.urlopen(request, timeout=8) as response:
+    # Some macOS Python builds (notably Intel builds running under Rosetta)
+    # do not locate the system CA bundle reliably. Add certifi's trusted roots
+    # when available; keep normal certificate verification enabled either way.
+    import ssl
+    ssl_context = ssl.create_default_context()
+    try:
+        import certifi
+        ssl_context.load_verify_locations(cafile=certifi.where())
+    except (ImportError, OSError):
+        pass
+
+    with urllib.request.urlopen(request, timeout=15, context=ssl_context) as response:
         releases = json.loads(response.read().decode('utf-8'))
     if not isinstance(releases, list):
         raise ValueError('Unexpected response from GitHub Releases API')

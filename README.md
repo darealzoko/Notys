@@ -8,11 +8,10 @@ The latest version of Notys (v1.8.0) is currently available for:
 
 **Linux:**
 
-*Notys relies on recent libraries. Non-rolling release distributions aren't officially supported, Arch Linux based distributions are recommended. You can try it anyways, it may work depending on your distro's library versions.*
-*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will not put the linux 1.1.2 versions in the newer version.*
+*While it is technically working on Linux OSs, it is not well integrated and is pretty ugly.*
 - AppImage (Recommended, see "Get started" for more information)
 - .zip and run in the .venv
-- Source code
+- Source code (be sure to have downloaded python-tk (arch) or python3-tk (ubuntu) and run `python3 -m pip install --upgrade pip --break-system-packages && python3 -m pip install -r requirements.txt pyinstaller --break-system-packages && python3 -m PyInstaller Notys.spec`)
 
 **Windows:**
 
@@ -23,7 +22,7 @@ The latest version of Notys (v1.8.0) is currently available for:
 
 - .zip to extract the .app file
 - .dmg for regular and common app installation method
-- Source code (to use the source code, you will need the build env (available in every notys release) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or if you don't want to activate the .venv `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt && python3 -m pip intall pyinstaller`)
+- Source code (to use the source code, you will need the build env (available in every notys release) and [Python 3.12](https://www.python.org/ftp/python/3.12.4/python-3.12.4-macos11.pkg) and to activate the .venv with `source .venv/bin/activate` or if you don't want to activate the .venv `python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt pyinstaller`)
 
 ## Features (Markdown-style)
 
@@ -49,7 +48,7 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 
 - **Drag & Drop:** Simply drop files into the app to open them instantly.
 
-- **Languages**: There is support for French, Esperanto and English (English by default)
+- **Languages**: There is support for French, Esperanto and English (English by default) and more!
 
 - **Settings**: Various settings for customization and more.
   
@@ -63,15 +62,15 @@ Notys supports real-time formatting using a simple and intuitive syntax:
 Behind the scenes, Notys uses simple and lightweight technologies to do what it does.
 It is built with Python, Tkinter (for the main window and some utilities), tkinterdnd2 (drag n drop support), Pillow (image/icon management), and JSON (to save the settings even when you restart the app).
 
-Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and chatGPT). I (human) test it manually, imagine features and design prompts.
+Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot in GitHub and ChatGPT). I (human) test it manually, imagine features and design prompts.
 
-README has been through chatGPT to correct typos as I am not an native English speaker.
+README has been through ChatGPT to correct typos as I am not an native English speaker.
 
 ---
 
 ## Getting Started
 
-### For macOS (Intel ONLY!)
+### For macOS (Intel and now ARM thanks to Rosetta2!)
 1. Go to the **Releases** section on GitHub and navigate to the latest version.
 2. Download the latest `Notys-macOS-x.x.x.zip`.
 3. Unzip and move `Notys.app` to your **Applications** folder.
@@ -79,12 +78,9 @@ README has been through chatGPT to correct typos as I am not an native English s
 5. Have fun!
 
 ### For Linux
-*Linux is supported, but only on distributions with sufficiently recent library versions. Arch-based distributions are strongly recommended. Older/non-rolling distributions may encounter compatibility issues.*
-*Notys will no longer be updated for linux, therefore the latest ""working"" (it was so buggy and hard to maintain i dropped support) is 1.1.2. I will not put the linux 1.1.2 versions in the newer releases on github.*
-*If you want the latest version on Linux, you will have to either compile from build-env or run from build-env.*
 1. Go to the **Releases** section on GitHub and navigate to the latest release available.
-2. Download the Notys-build-env-x.x.x.zip
-3. Run it from the source
+2. Download the Notys-linux-x.x.x-x86_64.zip
+3. Run the executable.
 
 ### For Windows
 

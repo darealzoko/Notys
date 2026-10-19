@@ -24,7 +24,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.8.1' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.8.2' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -2496,6 +2496,7 @@ if __name__ == '__main__': # [Main application execution block]
             self.text.bind('<Button-1>', self._on_click_checkbox) # [Bind mouse click on checkbox]
             self.text.bind('<Tab>', self._handle_tab) # [Bind tab key handler]
             self.text.bind('<Return>', self._handle_enter) # [Bind enter key handler]
+            self.text.bind('<<Paste>>', self._paste)
             # fix mouse sensitivity on scrollbars
             self.text.bind('<MouseWheel>', self._on_mousewheel)
             self.sb.bind('<MouseWheel>', self._on_mousewheel)
@@ -2586,6 +2587,31 @@ if __name__ == '__main__': # [Main application execution block]
             self.text.insert('insert', '    ')
             return 'break'
 
+        def _paste(self, event=None):
+            try:
+                content = self.text.clipboard_get()
+            except tk.TclError:
+                return None
+
+            converted = re.sub(r'(?m)^([ \t]*)-\s+', r'\1• ', content)
+            if converted == content:
+                return None
+
+            try:
+                start = self.text.index('sel.first')
+                end = self.text.index('sel.last')
+            except tk.TclError:
+                start = end = 'insert'
+
+            self.text.edit_separator()
+            if start != end:
+                self.text.delete(start, end)
+            self.text.insert(start, converted)
+            self.text.edit_separator()
+            self.schedule_highlight()
+            update_status()
+            return 'break'
+
         def _handle_enter(self, event): # [Handle enter key, checkbox & list bullet auto-continuation]
             insert = self.text.index('insert')
             line_start = f"{insert} linestart"
@@ -2600,6 +2626,7 @@ if __name__ == '__main__': # [Main application execution block]
                     return None
                 indent = re.match(r'^\s*', line_text).group(0)
                 self.text.insert('insert', f'\n{indent}• [ ] ')
+                self.text.see('insert')
                 return 'break'
 
             # Unordered bullet list continuation check
@@ -2611,6 +2638,7 @@ if __name__ == '__main__': # [Main application execution block]
                     return None
                 indent = re.match(r'^\s*', line_text).group(0)
                 self.text.insert('insert', f'\n{indent}• ')
+                self.text.see('insert')
                 return 'break'
 
             # Numbered list continuation check
@@ -2621,6 +2649,7 @@ if __name__ == '__main__': # [Main application execution block]
                     self.text.delete(line_start, insert)
                     return None
                 self.text.insert('insert', f'\n{indent}{int(num) + 1}. ')
+                self.text.see('insert')
                 return 'break'
 
             return None
@@ -4391,6 +4420,7 @@ if __name__ == '__main__': # [Main application execution block]
 
             win.createcommand('::tk::mac::ShowPreferences', open_settings)
             win.createcommand('::tk::mac::ShowAbout', show_about)
+            win.createcommand('::tk::mac::Quit', on_quit)
 
         # ── Menu Fichier ──────────────────────────────────────────────────────────
         file_menu = tk.Menu(menubar, tearoff=0)
@@ -4476,6 +4506,7 @@ if __name__ == '__main__': # [Main application execution block]
         dlg.title(tr('settings_title'))
         dlg.geometry("1020x680")
         dlg.resizable(True, True)
+        dlg.minsize(800, 550)
         dlg.configure(bg=STATUS_BG)
         dlg.transient(win)
         dlg.grab_set()
@@ -4662,7 +4693,7 @@ if __name__ == '__main__': # [Main application execution block]
                    highlightthickness=1, highlightbackground=SEP_FG,
                    highlightcolor=ACCENT).pack(side='left')
 
-        section_label(p_general, tr('update_section'), 15)
+        """section_label(p_general, tr('update_section'), 15)
         update_status_label = tk.Label(
             p_general,
             text=tr('update_checking'),
@@ -4717,7 +4748,7 @@ if __name__ == '__main__': # [Main application execution block]
                 text=tr('update_checking'), fg=STATUS_FG,
                 cursor='arrow', font=('Consolas', 10),
             )
-            request_update_check(apply_update_status, force=force)
+            request_update_check(apply_update_status, force=force)"""
 
         p_language = tk.Frame(content_area, bg=H_BG)
         row_label(p_language, tr('settings_language'), 2)
@@ -5141,8 +5172,8 @@ if __name__ == '__main__': # [Main application execution block]
 
         pages = [p_general, p_language, p_styles]
         show_page(0)
-        # Check asynchronously so a slow/offline connection never freezes Settings.
-        dlg.after(200, start_update_check)
+        # Removed the automatic update check in the settings dialog to avoid duplicates
+        #dlg.after(200, start_update_check)
 
         tk.Frame(dlg, bg=SEP_FG, height=1).pack(fill='x')
 

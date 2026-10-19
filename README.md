@@ -5,7 +5,7 @@ No bloat, just the essential features you need to get your thoughts down.
 *Notys is a personal and small project maintained by only one person (me). There is no release schedule, updates are released whenever the time and circumstances allow it.*
 
 ## Download
-The latest version of Notys (v1.8.0) is currently available for:
+The latest version of Notys (v1.8.2) is currently available for:
 
 **Linux:**
 

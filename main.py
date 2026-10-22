@@ -10,6 +10,7 @@ import platform # [Add checks for other OS types if necessary]
 from PIL import Image, ImageTk # [Handle custom image formats or caching]
 import json # [Switch to TOML/YAML for settings if required]
 import time
+from datetime import datetime
 import queue
 import threading
 import urllib.request
@@ -24,7 +25,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.8.2' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.0 Beta 3' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -92,6 +93,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Enregistrer", # [Translate save]
         'menu_save_all': "Tout enregistrer", # [Translate save all]
         'menu_save_as': "Enregistrer sous…", # [Translate save as]
+        'menu_revert_saved': "Revenir à la dernière version enregistrée",
+        'menu_insert_date': "Insérer la date",
+        'menu_insert_time': "Insérer l’heure",
         'menu_open_in_finder': "Ouvrir dans le Finder" if is_macos else ("Ouvrir dans l’Explorateur de fichiers" if platform.system() == 'Windows' else "Ouvrir dans le gestionnaire de fichiers"),
 
         'menu_edit': "Édition", # [Translate edit menu]
@@ -141,6 +145,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'settings_show_status': "Barre de statut", # [Translate status bar toggle]
         'settings_show_wordcount': "Compteur de mots", # [Translate word count toggle]
+        'settings_beta_updates': "Recevoir aussi les mises à jour bêta",
         'settings_win_size': "Taille de fenêtre par défaut", # [Translate window size label]
         'on': "Activé", # [Translate 'on']
         'off': "Désactivé", # [Translate 'off']
@@ -171,6 +176,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Épingler',
         'menu_unpin_tab': 'Désépingler',
         'context_markdown': 'Markdown',
+        'menu_format': 'Formater', # [Translate Format menu label]
+        'context_copy': 'Copier', # [Translate context Copy]
+        'context_cut': 'Couper', # [Translate context Cut]
+        'context_paste': 'Coller', # [Translate context Paste]
         'markdown_bold': 'Gras',
         'markdown_italic': 'Italique',
         'markdown_underline': 'Souligné',
@@ -207,6 +216,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_save': "Save", # [Save menu]
         'menu_save_all': "Save All", # [Save all menu]
         'menu_save_as': "Save As…", # [Save as menu]
+        'menu_revert_saved': "Revert to Last Saved",
+        'menu_insert_date': "Insert Date",
+        'menu_insert_time': "Insert Time",
         'menu_open_in_finder': "Open in Finder" if is_macos else ("Open in File Explorer" if platform.system() == 'Windows' else "Open in file manager"),
 
         'menu_edit': "Edit", # [Edit menu]
@@ -255,6 +267,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'settings_show_status': "Status bar", # [Status bar label]
         'settings_show_wordcount': "Word counter", # [Word counter label]
+        'settings_beta_updates': "Also notify me about beta updates",
         'settings_win_size': "Default window size", # [Window size label]
         'on': "On", # [On label]
         'off': "Off", # [Off label]
@@ -285,6 +298,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Pin',
         'menu_unpin_tab': 'Unpin',
         'context_markdown': 'Markdown',
+        'menu_format': 'Format', # [Translate Format menu label]
+        'context_copy': 'Copy', # [Translate context Copy]
+        'context_cut': 'Cut', # [Translate context Cut]
+        'context_paste': 'Paste', # [Translate context Paste]
         'markdown_bold': 'Bold',
         'markdown_italic': 'Italic',
         'markdown_underline': 'Underline',
@@ -407,6 +424,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Alpingli',
         'menu_unpin_tab': 'Malalpingli',
         'context_markdown': 'Markdown',
+        'menu_format': 'Formato', # [Translate Format menu label]
+        'context_copy': 'Kopii', # [Translate context Copy]
+        'context_cut': 'Eltondi', # [Translate context Cut]
+        'context_paste': 'Alglui', # [Translate context Paste]
         'markdown_bold': 'Grasa',
         'markdown_italic': 'Kursiva',
         'markdown_underline': 'Substrekita',
@@ -522,6 +543,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Anclar',
         'menu_unpin_tab': 'Desanclar',
         'context_markdown': 'Markdown',
+        'menu_format': 'Formato', # [Translate Format menu label]
+        'context_copy': 'Copiar', # [Translate context Copy]
+        'context_cut': 'Cortar', # [Translate context Cut]
+        'context_paste': 'Pegar', # [Translate context Paste]
         'markdown_bold': 'Negrita',
         'markdown_italic': 'Cursiva',
         'markdown_underline': 'Subrayado',
@@ -636,6 +661,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Fixar',
         'menu_unpin_tab': 'Desafixar',
         'context_markdown': 'Markdown',
+        'menu_format': 'Formatar', # [Translate Format menu label]
+        'context_copy': 'Copiar', # [Translate context Copy]
+        'context_cut': 'Recortar', # [Translate context Cut]
+        'context_paste': 'Colar', # [Translate context Paste]
         'markdown_bold': 'Negrito',
         'markdown_italic': 'Itálico',
         'markdown_underline': 'Sublinhado',
@@ -750,6 +779,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Anheften',
         'menu_unpin_tab': 'Lösen',
         'context_markdown': 'Markdown',
+        'menu_format': 'Format', # [Translate Format menu label]
+        'context_copy': 'Kopieren', # [Translate context Copy]
+        'context_cut': 'Ausschneiden', # [Translate context Cut]
+        'context_paste': 'Einfügen', # [Translate context Paste]
         'markdown_bold': 'Fett',
         'markdown_italic': 'Kursiv',
         'markdown_underline': 'Unterstrichen',
@@ -863,6 +896,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Fissa',
         'menu_unpin_tab': 'Rimuovi fissaggio',
         'context_markdown': 'Markdown',
+        'menu_format': 'Formato', # [Translate Format menu label]
+        'context_copy': 'Copia', # [Translate context Copy]
+        'context_cut': 'Taglia', # [Translate context Cut]
+        'context_paste': 'Incolla', # [Translate context Paste]
         'markdown_bold': 'Grassetto',
         'markdown_italic': 'Corsivo',
         'markdown_underline': 'Sottolineato',
@@ -976,6 +1013,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Vastzetten',
         'menu_unpin_tab': 'Losmaken',
         'context_markdown': 'Markdown',
+        'menu_format': 'Opmaak', # [Translate Format menu label]
+        'context_copy': 'Kopiëren', # [Translate context Copy]
+        'context_cut': 'Knippen', # [Translate context Cut]
+        'context_paste': 'Plakken', # [Translate context Paste]
         'markdown_bold': 'Vet',
         'markdown_italic': 'Cursief',
         'markdown_underline': 'Onderstrepen',
@@ -1090,6 +1131,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': 'Закрепить',
         'menu_unpin_tab': 'Открепить',
         'context_markdown': 'Markdown',
+        'menu_format': 'Формат', # [Translate Format menu label]
+        'context_copy': 'Копировать', # [Translate context Copy]
+        'context_cut': 'Вырезать', # [Translate context Cut]
+        'context_paste': 'Вставить', # [Translate context Paste]
         'markdown_bold': 'Жирный',
         'markdown_italic': 'Курсив',
         'markdown_underline': 'Подчёркнутый',
@@ -1203,6 +1248,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': '固定',
         'menu_unpin_tab': '固定を解除',
         'context_markdown': 'Markdown',
+        'menu_format': 'フォーマット', # [Translate Format menu label]
+        'context_copy': 'コピー', # [Translate context Copy]
+        'context_cut': '切り取り', # [Translate context Cut]
+        'context_paste': '貼り付け', # [Translate context Paste]
         'markdown_bold': '太字',
         'markdown_italic': '斜体',
         'markdown_underline': '下線',
@@ -1316,6 +1365,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': '固定',
         'menu_unpin_tab': '取消固定',
         'context_markdown': 'Markdown',
+        'menu_format': '格式', # [Translate Format menu label]
+        'context_copy': '复制', # [Translate context Copy]
+        'context_cut': '剪切', # [Translate context Cut]
+        'context_paste': '粘贴', # [Translate context Paste]
         'markdown_bold': '粗体',
         'markdown_italic': '斜体',
         'markdown_underline': '下划线',
@@ -1429,6 +1482,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_pin_tab': '고정',
         'menu_unpin_tab': '고정 해제',
         'context_markdown': 'Markdown',
+        'menu_format': '서식', # [Translate Format menu label]
+        'context_copy': '복사', # [Translate context Copy]
+        'context_cut': '잘라내기', # [Translate context Cut]
+        'context_paste': '붙여넣기', # [Translate context Paste]
         'markdown_bold': '굵게',
         'markdown_italic': '기울임꼴',
         'markdown_underline': '밑줄',
@@ -1869,6 +1926,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'padding': 40, # [Default text widget padding]
     'show_status': True, # [Show status bar by default]
     'show_wordcount': True, # [Show word count by default]
+    'notify_beta_updates': False, # [Include prerelease/beta releases in update notifications]
     'win_width': 900, # [Default window width]
     'win_height': 650, # [Default window height]
     'sidebar_collapsed': False, # [Remember sidebar collapse state]
@@ -1888,9 +1946,16 @@ GITHUB_RELEASES_URL = 'https://github.com/darealzoko/Notys/releases/'
 # UPDATE MANAGER
 
 def _parse_update_version(value):
-    """Return a comparable SemVer key, including a simple beta/rc suffix."""
+    """Return a comparable version key, including full and abbreviated prerelease suffixes.
+
+    Examples: 1.9.0.b2, 1.9.0-beta.2, and 1.9.0 Beta 2 all map to the
+    same key, so a release cannot be reported as newer than itself merely
+    because the app and GitHub use different beta notation.
+    """
     match = re.search(
-        r'(?i)\bv?(\d+)\.(\d+)\.(\d+)(?:[\s._-]*(alpha|beta|preview|pre|rc)(?:[\s._-]*(\d+))?)?',
+        r'(?i)(?:^|\b)v?(\d+)\.(\d+)\.(\d+)'
+        r'(?:[\s._-]*(alpha|a|beta|b|preview|pre|rc)'
+        r'(?:[\s._-]*(\d+))?)?',
         str(value or '').strip(),
     )
     if not match:
@@ -1898,28 +1963,36 @@ def _parse_update_version(value):
     major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
     prerelease_name = (match.group(4) or '').lower()
     prerelease_number = int(match.group(5) or 0)
+    aliases = {'a': 'alpha', 'b': 'beta'}
+    prerelease_name = aliases.get(prerelease_name, prerelease_name)
     stable_rank = 1 if not prerelease_name else 0
-    prerelease_rank = {'alpha': 0, 'a': 0, 'beta': 1, 'b': 1, 'pre': 2, 'preview': 2, 'rc': 3}
+    prerelease_rank = {'alpha': 0, 'beta': 1, 'pre': 2, 'preview': 2, 'rc': 3}
     suffix_rank = prerelease_rank.get(prerelease_name, 0)
     return (major, minor, patch, stable_rank, suffix_rank, prerelease_number)
 
 
-def fetch_update_info(current_version):
-    """Find the newest published stable release in the current major series.
+def fetch_update_info(current_version, include_prereleases=False):
+    """Find the newest published release in the current major series.
 
-    Release notes and binary assets are deliberately not required: the tag is
-    sufficient to detect a published release.
+    Prereleases are included only when the user opts into beta notifications.
+    Release notes and binary assets are not required; the tag is sufficient.
     """
     current_key = _parse_update_version(current_version)
     if current_key is None:
         raise ValueError(f'Unrecognized current version: {current_version!r}')
 
+    # Bypass intermediary/browser-style caches: release creation/deletion must
+    # be reflected in every fresh startup check.
+    separator = '&' if '?' in GITHUB_RELEASES_API else '?'
+    api_url = f'{GITHUB_RELEASES_API}{separator}_notys_check={time.time_ns()}'
     request = urllib.request.Request(
-        GITHUB_RELEASES_API,
+        api_url,
         headers={
             'Accept': 'application/vnd.github+json',
             'User-Agent': 'Notys-update-checker',
             'X-GitHub-Api-Version': '2022-11-28',
+            'Cache-Control': 'no-cache, no-store, max-age=0',
+            'Pragma': 'no-cache',
         },
     )
     # Some macOS Python builds (notably Intel builds running under Rosetta)
@@ -1940,7 +2013,9 @@ def fetch_update_info(current_version):
 
     candidates = []
     for release in releases:
-        if not isinstance(release, dict) or release.get('draft') or release.get('prerelease'):
+        if not isinstance(release, dict) or release.get('draft'):
+            continue
+        if release.get('prerelease') and not include_prereleases:
             continue
         tag = release.get('tag_name', '')
         release_key = _parse_update_version(tag)
@@ -1960,6 +2035,7 @@ def fetch_update_info(current_version):
         'state': 'available',
         'version': re.sub(r'^[vV]', '', tag),
         'url': release.get('html_url') or GITHUB_RELEASES_URL,
+        'prerelease': bool(release.get('prerelease', False)),
     }
 
 
@@ -1996,7 +2072,7 @@ def request_update_check(callback=None, force=False):
 
     def worker():
         try:
-            result = fetch_update_info(APP_VERSION)
+            result = fetch_update_info(APP_VERSION, include_prereleases=bool(SETTINGS.get('notify_beta_updates', False)))
         except Exception as error:
             print(f'[Updates] Could not check GitHub releases: {error}')
             result = {'state': 'error'}
@@ -2360,7 +2436,9 @@ COLOR_NAMES = { # [Named color map for custom syntax highlighting]
     'highlight_yellow': '#ffff00',
 }
 
-ALL_TAGS = ('body_style', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code', 'code_block', 'bold', 'italic', 'underline', 'strike', 'list', 'quote', 'link', 'hr') # [Tuple of all markdown text tags]
+# MAINTENANCE: syntax_delimiter is separate from content tags so Markdown punctuation
+# stays neutral while the associated text keeps its existing syntax color.
+ALL_TAGS = ('body_style', 'syntax_delimiter', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code', 'code_block', 'bold', 'italic', 'underline', 'strike', 'list', 'quote', 'link', 'hr') # [Tuple of all markdown text tags]
 
 def _style_color(element):
     style = ACTIVE_STYLE['elements'][element]
@@ -2489,6 +2567,8 @@ if __name__ == '__main__': # [Main application execution block]
             self.text.pack(fill='both', expand=True) # [Pack text widget]
 
             self.text.tag_configure('hidden', foreground=BG, font=self._scaled_font(('Andale Mono', 1)), elide=True) # [Configure hidden tag for syntax masking]
+            # MAINTENANCE: delimiter styling is deliberately independent of Markdown content.
+            self.text.tag_configure('syntax_delimiter', foreground=('#777777' if current_theme == 'light' else '#888888'), font=self._scaled_font(FONT_BODY))
 
             self._configure_tags() # [Configure syntax tags]
             self.text.bind('<KeyRelease>', self._on_key) # [Bind key release event]
@@ -2583,6 +2663,8 @@ if __name__ == '__main__': # [Main application execution block]
                     underline=style['underline'],
                     overstrike=style['strikethrough'],
                 )
+            # Delimiters are neutral grey; hidden-tag priority still controls cursor-aware elision.
+            self.text.tag_configure('syntax_delimiter', foreground=('#777777' if current_theme == 'light' else '#888888'), font=self._scaled_font(FONT_BODY))
         def _handle_tab(self, event): # [Handle tab indentation]
             self.text.insert('insert', '    ')
             return 'break'
@@ -2820,6 +2902,10 @@ if __name__ == '__main__': # [Main application execution block]
                 activebackground=SELECT_BG, activeforeground=FG,
             )
             menu.add_cascade(label=tr('context_markdown'), menu=markdown_menu, state='normal' if has_selection else 'disabled')
+            # MAINTENANCE: keep native edit actions directly below Markdown, using the same shortcut commands as Edit.
+            menu.add_command(label=tr('context_copy'), command=SHORTCUTS['copy']['cmd'], accelerator=SHORTCUTS['copy']['disp'])
+            menu.add_command(label=tr('context_cut'), command=SHORTCUTS['cut']['cmd'], accelerator=SHORTCUTS['cut']['disp'])
+            menu.add_command(label=tr('context_paste'), command=SHORTCUTS['paste']['cmd'], accelerator=SHORTCUTS['paste']['disp'])
             formatting = [
                 ('markdown_bold', 'bold'),
                 ('markdown_italic', 'italic'),
@@ -2998,6 +3084,21 @@ if __name__ == '__main__': # [Main application execution block]
                     code_line_set.add(ln)
                 t.tag_add('code_block', f'{s}.0', f'{e}.end')
 
+            # Fenced-code delimiters should remain grey even though the whole block
+            # receives the code-block style.
+            for ln in sorted(code_line_set):
+                code_line = lines[ln - 1]
+                stripped = code_line.lstrip()
+                if stripped.startswith(code_marker):
+                    marker_start = len(code_line) - len(stripped)
+                    marker_end = marker_start + len(code_marker)
+                    offset = sum(len(existing) + 1 for existing in lines[:ln - 1])
+                    t.tag_add(
+                        'syntax_delimiter',
+                        f'1.0+{offset + marker_start}c',
+                        f'1.0+{offset + marker_end}c',
+                    )
+
             line_offsets = []
             off = 0
             for line in lines:
@@ -3020,6 +3121,15 @@ if __name__ == '__main__': # [Main application execution block]
                 if hm:
                     prefix_len = len(hm.group(1))
                     t.tag_add(f'h{heading_level}', ls, le)
+                    # Explicitly color the Markdown heading marker, not just the heading text.
+                    heading_prefix_start = len(hm.group(1)) - len(hm.group(1).lstrip())
+                    heading_prefix_end = prefix_len
+                    if heading_prefix_end > heading_prefix_start:
+                        t.tag_add(
+                            'syntax_delimiter',
+                            f'1.0+{line_offsets[i - 1] + heading_prefix_start}c',
+                            f'1.0+{line_offsets[i - 1] + heading_prefix_end}c',
+                        )
 
                     # Store heading symbols for disappearing when cursor is off
                     line_start_off = line_offsets[i - 1]
@@ -3028,15 +3138,27 @@ if __name__ == '__main__': # [Main application execution block]
                         'line_num': i,
                         'full_start': line_start_off,
                         'full_end': line_start_off + len(line),
-                        'prefix_span': (line_start_off, line_start_off + prefix_len),
+                        'prefix_span': (line_start_off + len(hm.group(1)) - len(hm.group(1).lstrip()), line_start_off + prefix_len),
                         'suffix_span': (line_start_off + len(line), line_start_off + len(line)),
                     })
                 elif re.match(r'^\s*' + re.escape(ACTIVE_STYLE['elements']['quote']['marker']) + r'\s', line):
                     t.tag_add('quote', ls, le)
+                    q = re.match(r'^(\s*)' + re.escape(ACTIVE_STYLE['elements']['quote']['marker']), line)
+                    if q:
+                        ps = line_offsets[i - 1] + len(q.group(1)); pe = ps + len(ACTIVE_STYLE['elements']['quote']['marker'])
+                        t.tag_add('syntax_delimiter', f'1.0+{ps}c', f'1.0+{pe}c')
+                        self._syntax_matches.append({'full_start': line_offsets[i - 1], 'full_end': line_offsets[i - 1] + len(line), 'prefix_span': (ps, pe), 'suffix_span': (pe, pe)})
                 elif re.fullmatch(r'\s*(?:' + re.escape(ACTIVE_STYLE['elements']['hr']['marker']) + r')+\s*', line):
                     t.tag_add('hr', ls, le)
+                    hs = line_offsets[i - 1] + len(line) - len(line.lstrip()); he = line_offsets[i - 1] + len(line.rstrip())
+                    t.tag_add('syntax_delimiter', f'1.0+{hs}c', f'1.0+{he}c')
                 elif re.match(r'^\s*' + (r'[-*+•]' if ACTIVE_STYLE['elements']['list']['marker'] == '•' else re.escape(ACTIVE_STYLE['elements']['list']['marker'])) + r'\s', line):
                     t.tag_add('list', ls, le)
+                    lm = re.match(r'^(\s*)([-*+•]|\d+\.)', line)
+                    if lm:
+                        ps = line_offsets[i - 1] + len(lm.group(1)); pe = ps + len(lm.group(2))
+                        # MAINTENANCE: list/bullet markers are the one delimiter exception: never hide them.
+                        t.tag_add('syntax_delimiter', f'1.0+{ps}c', f'1.0+{pe}c')
                 elif re.match(r'^\s*\d+\.\s', line):
                     t.tag_add('list', ls, le)
 
@@ -3053,12 +3175,16 @@ if __name__ == '__main__': # [Main application execution block]
             for m in re.finditer(inline_marker + r'([^\n]+?)' + inline_marker, content):
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('code', f'1.0+{m.start(1)}c', f'1.0+{m.end(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{m.start(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.end(1)}c', f'1.0+{m.end()}c')
 
             # bold                    
             bold_marker = re.escape(ACTIVE_STYLE['elements']['bold']['marker'])
             for m in re.finditer(r'(?<!' + bold_marker + r')' + bold_marker + r'(.+?)' + bold_marker + r'(?!' + bold_marker + r')', content, re.DOTALL):
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('bold', f'1.0+{m.start(1)}c', f'1.0+{m.end(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{m.start(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.end(1)}c', f'1.0+{m.end()}c')
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -3078,6 +3204,8 @@ if __name__ == '__main__': # [Main application execution block]
                 si = m.start() + m.group(0).index(grp)
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('italic', f'1.0+{si}c', f'1.0+{si + len(grp)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{si}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{si + len(grp)}c', f'1.0+{m.end()}c')
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -3092,6 +3220,8 @@ if __name__ == '__main__': # [Main application execution block]
             for m in re.finditer(underline_marker + r'(.+?)' + underline_end_marker, content):
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('underline', f'1.0+{m.start(1)}c', f'1.0+{m.end(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{m.start(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.end(1)}c', f'1.0+{m.end()}c')
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -3104,6 +3234,8 @@ if __name__ == '__main__': # [Main application execution block]
             for m in re.finditer(strike_marker + r'(.+?)' + strike_marker, content):
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('strike', f'1.0+{m.start(1)}c', f'1.0+{m.end(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{m.start(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.end(1)}c', f'1.0+{m.end()}c')
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -3116,6 +3248,9 @@ if __name__ == '__main__': # [Main application execution block]
             for m in re.finditer(link_marker + r'([^\]]+)\]\(([^)]+)\)', content):
                 if not in_code_block(m.start(), m.end()):
                     t.tag_add('link', f'1.0+{m.start(1)}c', f'1.0+{m.end(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start()}c', f'1.0+{m.start(1)}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.end(1)}c', f'1.0+{m.start(1)+len(m.group(1))+2}c')
+                    t.tag_add('syntax_delimiter', f'1.0+{m.start(1)+len(m.group(1))+2+len(m.group(2))}c', f'1.0+{m.end()}c')
                     self._syntax_matches.append({
                         'full_start': m.start(),
                         'full_end': m.end(),
@@ -3186,6 +3321,10 @@ if __name__ == '__main__': # [Main application execution block]
                         'suffix_span': (suffix_start, m.end()),
                     })
 
+            # Markdown syntax markers can overlap heading/emphasis tags. Raise their tag
+            # priority so the neutral grey foreground is actually rendered.
+            t.tag_raise('syntax_delimiter')
+            t.tag_raise('hidden')
             self._apply_symbol_visibility()
 
         def _apply_symbol_visibility(self): # [Toggle markdown symbol hiding on cursor move]
@@ -3373,11 +3512,14 @@ if __name__ == '__main__': # [Main application execution block]
             if state == 'available':
                 version_text = result.get('version', '')
                 release_url = result.get('url') or GITHUB_RELEASES_URL
-                # High-visibility fluorescent green badge, deliberately independent
-                # of the app theme so the update cannot blend into the tab bar.
+                # Stable releases use fluorescent green; beta/prereleases use
+                # orange so users can distinguish experimental builds at a glance.
+                is_prerelease = bool(result.get('prerelease', False))
                 self.update_label.config(
                     text=tr('update_tab_available', version=version_text),
-                    bg='#39FF14', fg='#102000', cursor=HAND_CURSOR,
+                    bg='#FF9F1C' if is_prerelease else '#39FF14',
+                    fg='#2B1600' if is_prerelease else '#102000',
+                    cursor=HAND_CURSOR,
                     font=('Consolas', 10, 'bold'),
                     relief='solid', borderwidth=1,
                     padx=10, pady=2,
@@ -4310,6 +4452,39 @@ if __name__ == '__main__': # [Main application execution block]
         if paths:
             _open_paths(paths)
 
+    def revert_to_last_saved(event=None):
+        tab = current_tab()
+        if not tab:
+            return 'break'
+        if not tab.file_path or not os.path.isfile(tab.file_path):
+            messagebox.showinfo(tr('menu_revert_saved'), "This document has no saved file to revert to yet.")
+            return 'break'
+        if not messagebox.askyesno(
+            tr('menu_revert_saved'),
+            "Discard all unsaved changes and restore the last version saved on disk?"
+        ):
+            return 'break'
+        try:
+            with open(tab.file_path, 'r', encoding='utf-8') as saved_file:
+                content = saved_file.read()
+            tab.set_content(content)
+            tab.set_modified(False)
+        except (OSError, UnicodeError) as exc:
+            messagebox.showerror(tr('error_title'), f"Could not revert this document: {exc}")
+        return 'break'
+
+    def insert_timestamp(kind):
+        tab = current_tab()
+        if not tab:
+            return 'break'
+        value = datetime.now().strftime("%Y-%m-%d" if kind == 'date' else "%H:%M:%S")
+        try:
+            tab.text.insert('insert', value)
+            tab.text.focus_set()
+        except Exception:
+            pass
+        return 'break'
+
     def save_file(event=None):
         t = current_tab()
         if t:
@@ -4380,6 +4555,9 @@ if __name__ == '__main__': # [Main application execution block]
         'reopen_tab': {'cmd': lambda e=None: reopen_closed_tab(), 'disp': f"{mod_display}Shift+T", 'keys': ['<Command-Shift-T>', '<Command-Shift-t>'] if is_macos else ['<Control-Shift-T>', '<Control-Shift-t>']},
         'open_file': {'cmd': lambda e=None: open_file_dialog(), 'disp': f"{mod_display}O", 'keys': ['<Command-o>', '<Command-O>'] if is_macos else ['<Control-o>', '<Control-O>']},
         'open_folder': {'cmd': lambda e=None: open_folder(), 'disp': f"{mod_display}Shift+O", 'keys': ['<Command-Shift-O>', '<Command-Shift-o>'] if is_macos else ['<Control-Shift-O>', '<Control-Shift-o>']},
+        'revert_saved': {'cmd': lambda e=None: revert_to_last_saved(), 'disp': f"{mod_display}R", 'keys': ['<Command-r>', '<Command-R>'] if is_macos else ['<Control-r>', '<Control-R>']},
+        'insert_date': {'cmd': lambda e=None: insert_timestamp('date'), 'disp': f"{mod_display}G", 'keys': ['<Command-g>', '<Command-G>'] if is_macos else ['<Control-g>', '<Control-G>']},
+        'insert_time': {'cmd': lambda e=None: insert_timestamp('time'), 'disp': f"{mod_display}Shift+G", 'keys': ['<Command-Shift-g>', '<Command-Shift-G>'] if is_macos else ['<Control-Shift-g>', '<Control-Shift-G>']},
         'save_file': {'cmd': lambda e=None: save_file(), 'disp': f"{mod_display}S", 'keys': ['<Command-s>', '<Command-S>'] if is_macos else ['<Control-s>', '<Control-S>']},
         'save_file_as': {'cmd': lambda e=None: save_file_as(), 'disp': f"{mod_display}Shift+S", 'keys': ['<Command-Shift-S>', '<Command-Shift-s>'] if is_macos else ['<Control-Shift-S>', '<Control-Shift-s>']},
         'save_all': {'cmd': lambda e=None: save_all(), 'disp': f"{mod_display}D", 'keys': ['<Command-d>', '<Command-D>'] if is_macos else ['<Control-d>', '<Control-D>']},
@@ -4448,6 +4626,8 @@ if __name__ == '__main__': # [Main application execution block]
         file_menu.add_command(label=tr('menu_save'), command=save_file, accelerator=SHORTCUTS['save_file']['disp'])
         file_menu.add_command(label=tr('menu_save_as'), command=save_file_as, accelerator=SHORTCUTS['save_file_as']['disp'])
         file_menu.add_command(label=tr('menu_save_all'), command=save_all, accelerator=SHORTCUTS['save_all']['disp'])
+        file_menu.add_command(label=tr('menu_revert_saved'), command=revert_to_last_saved, accelerator=SHORTCUTS['revert_saved']['disp'])
+        file_menu.add_separator()
         file_menu.add_command(label=tr('menu_toggle_pin'), command=toggle_current_tab_pin, accelerator=SHORTCUTS['pin_tab']['disp'])
         file_menu.add_separator()
         file_menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(), accelerator=SHORTCUTS['close_tab']['disp'])
@@ -4462,8 +4642,36 @@ if __name__ == '__main__': # [Main application execution block]
         edit_menu.add_command(label=tr('menu_copy'), command=SHORTCUTS['copy']['cmd'], accelerator=SHORTCUTS['copy']['disp'])
         edit_menu.add_command(label=tr('menu_paste'), command=SHORTCUTS['paste']['cmd'], accelerator=SHORTCUTS['paste']['disp'])
         edit_menu.add_separator()
+        edit_menu.add_command(label=tr('menu_insert_date'), command=lambda: insert_timestamp('date'), accelerator=SHORTCUTS['insert_date']['disp'])
+        edit_menu.add_command(label=tr('menu_insert_time'), command=lambda: insert_timestamp('time'), accelerator=SHORTCUTS['insert_time']['disp'])
+        edit_menu.add_separator()
         edit_menu.add_command(label=tr('menu_find'), command=show_find, accelerator=SHORTCUTS['find']['disp'])
         menubar.add_cascade(label=tr('menu_edit'), menu=edit_menu)
+
+        # MAINTENANCE: Format mirrors the Markdown submenu in the context menu and reuses its shortcuts/actions.
+        format_menu = tk.Menu(menubar, tearoff=0)
+        format_actions = [
+            ('markdown_bold', 'bold'), ('markdown_italic', 'italic'),
+            ('markdown_underline', 'underline'), ('markdown_strikethrough', 'strike'),
+            ('markdown_inline_code', 'inline_code'), ('markdown_link', 'link'),
+        ]
+        for label_key, kind in format_actions:
+            format_menu.add_command(
+                label=tr(label_key),
+                command=lambda selected_kind=kind: current_tab() and current_tab()._apply_markdown_to_selection(selected_kind),
+                accelerator=SHORTCUTS.get(f'markdown_{kind}', {}).get('disp', ''),
+            )
+        format_menu.add_separator()
+        format_menu.add_command(label=tr('markdown_quote'), command=lambda: current_tab() and current_tab()._apply_markdown_to_selection('quote'))
+        format_menu.add_command(label=tr('markdown_bullet_list'), command=lambda: current_tab() and current_tab()._apply_markdown_to_selection('list'))
+        headings_menu = tk.Menu(format_menu, tearoff=0)
+        format_menu.add_cascade(label=tr('markdown_headings'), menu=headings_menu)
+        for level in range(1, 7):
+            headings_menu.add_command(
+                label=tr(f'markdown_heading_{level}'),
+                command=lambda current_level=level: current_tab() and current_tab()._apply_markdown_to_selection(f'heading_{current_level}'),
+            )
+        menubar.add_cascade(label=tr('menu_format'), menu=format_menu)
 
         # Menu présentation
         view_menu = tk.Menu(menubar, tearoff=0)
@@ -4528,6 +4736,7 @@ if __name__ == '__main__': # [Main application execution block]
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         status_var = tk.BooleanVar(value=SETTINGS['show_status'])
         wcount_var = tk.BooleanVar(value=SETTINGS['show_wordcount'])
+        beta_updates_var = tk.BooleanVar(value=SETTINGS.get('notify_beta_updates', False))
         win_w_var = tk.IntVar(value=SETTINGS['win_width'])
         win_h_var = tk.IntVar(value=SETTINGS['win_height'])
 
@@ -4678,9 +4887,12 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_show_wordcount'), 12)
         make_toggle(p_general, wcount_var, row=12)
 
-        row_label(p_general, tr('settings_win_size'), 13)
+        row_label(p_general, tr('settings_beta_updates'), 13)
+        make_toggle(p_general, beta_updates_var, row=13)
+
+        row_label(p_general, tr('settings_win_size'), 14)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=13, column=1, sticky='w', pady=4)
+        size_f.grid(row=14, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -4714,10 +4926,15 @@ if __name__ == '__main__': # [Main application execution block]
             update_status_label.unbind('<Button-1>')
             state = result.get('state')
             if state == 'available':
+                is_prerelease = bool(result.get('prerelease', False))
                 update_status_label.config(
                     text=tr('update_available', version=result.get('version', '')),
-                    fg=ACCENT, cursor=HAND_CURSOR,
+                    bg='#FF9F1C' if is_prerelease else H_BG,
+                    fg='#2B1600' if is_prerelease else ACCENT,
+                    cursor=HAND_CURSOR,
                     font=('Consolas', 10, 'underline'),
+                    padx=6 if is_prerelease else 0,
+                    pady=2 if is_prerelease else 0,
                 )
                 release_url = result.get('url') or GITHUB_RELEASES_URL
                 update_status_label.bind(
@@ -5197,10 +5414,16 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['show_status'] = status_var.get()
             SETTINGS['show_wordcount'] = wcount_var.get()
+            beta_updates_changed = SETTINGS.get('notify_beta_updates', False) != beta_updates_var.get()
+            SETTINGS['notify_beta_updates'] = beta_updates_var.get()
             SETTINGS['win_width'] = win_w_var.get()
             SETTINGS['win_height'] = win_h_var.get()
 
             save_settings_to_disk()
+            if beta_updates_changed:
+                global _UPDATE_CHECK_RESULT
+                _UPDATE_CHECK_RESULT = None
+                request_update_check(force=True)
             update_font_definitions()
             sidebar_title_lbl.config(text=tr('sidebar_explorer')) # fixes a bug where the sidebar's empty name would stay in the same language even when we changed the language
 
@@ -5248,5 +5471,6 @@ if __name__ == '__main__': # [Main application execution block]
 
     rebuild_menu() # [Build initial menu bar structure]
     restore_pinned_tabs() # [Reopen saved pinned documents]
-    request_update_check() # [Check for updates at startup; notice appears in the tab bar]
+    # Always fetch fresh GitHub release data on startup; never reuse a stale result.
+    request_update_check(force=True) # [Fresh update check at startup; notice appears in the tab bar]
     win.mainloop() # [Run main Tkinter event loop]

@@ -1,8 +1,9 @@
 # Config files are stored in the Notys config directory: ~/Library/Application Support/Notys on macOS,
 # %APPDATA%/Notys on Windows, and $XDG_CONFIG_HOME/Notys (or ~/.config/Notys) on Linux.
 # The files are settings.json, recents_doc.json, and pin_docs.json.
-import tkinter as tk # [Check custom tkinter or theme modules here]
-from tkinter import colorchooser, filedialog, messagebox, simpledialog, ttk # [Import additional dialogs or widgets if needed]
+import tkinter as tk  # Tk remains necessary for Text, Menu, Canvas, Treeview and native dialogs.
+from tkinter import colorchooser, filedialog, messagebox, simpledialog, ttk
+import customtkinter as ctk
 import os # [Handle custom path operations or environment variables]
 import sys # [Modify sys.path or handle command-line arguments here]
 import re # [Adjust regex patterns for markdown parsing or custom tokens]
@@ -25,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.0 Beta 3' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.0 Beta 4' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -35,9 +36,7 @@ mod_display = 'Cmd+' if is_macos else 'Ctrl+' # [Change modifier display string]
 HAND_CURSOR = 'pointinghand' if is_macos else 'hand2' # [Fix macOS pointer hand cursor]
 
 def resource_path(relative_path): # [Customize resource lookup for assets/icons]
-    """Transforme un chemin relatif en chemin absolu pour PyInstaller.
-    Fonctionne pour les fichiers individuels et les dossiers.
-    """
+    """Resolve a resource path for both normal execution and PyInstaller bundles."""
     try: # [Handle PyInstaller bundle paths]
         base_path = sys._MEIPASS # [Access temp folder path]
     except Exception: # [Fallback for normal python execution]
@@ -1915,7 +1914,7 @@ for language, translations in UPDATE_TRANSLATIONS.items():
 
 
 current_language = 'en' # [Default initial language setting]
-theme_preferences = 'system' # [Default theme preference setting]
+theme_preferences = 'dark' # [Default theme preference setting]
 ACTIVE_STYLE_NAME = 'default'
 
 # ── Paramètres utilisateur ────────────────────────────────────────────────────
@@ -2335,6 +2334,9 @@ def apply_theme(theme_name): # [Apply theme changes dynamically across app]
     if theme_name not in THEMES: # [Validate theme name]
         theme_name = 'dark' # [Default to dark if invalid]
     current_theme = theme_name # [Update current theme variable]
+    # Keep CustomTkinter widgets synchronized with the resolved theme, including
+    # changes triggered by the OS theme watcher while the preference is 'system'.
+    ctk.set_appearance_mode('Dark' if current_theme == 'dark' else 'Light')
 
     BG = THEMES[current_theme]['BG'] # [Update BG]
     FG = THEMES[current_theme]['FG'] # [Update FG]
@@ -2362,7 +2364,10 @@ def apply_theme(theme_name): # [Apply theme changes dynamically across app]
     C_STRIKE = THEMES[current_theme].get('C_STRIKE', STATUS_FG) # [Update strike color]
 
     if 'win' in globals(): # [Reconfigure main window background]
-        win.config(bg=BG)
+        if isinstance(win, ctk.CTk):
+            win.configure(fg_color=BG)
+        else:
+            win.config(bg=BG)
     if 'main_work_area' in globals(): # [Reconfigure work area background]
         main_work_area.config(bg=BG)
     if 'editor_area' in globals(): # [Reconfigure editor area background]
@@ -2489,14 +2494,25 @@ def _prev_tab(): # [Switch to previous tab handler]
 
 # ── Fenêtre principale ────────────────────────────────────────────────────────
 if __name__ == '__main__': # [Main application execution block]
-    TkClass = DnDTk if DND_AVAILABLE else tk.Tk # [Select root window class with or without DND]
-    win = TkClass() # [Instantiate main application window]
+    # Use CustomTkinter for the application root when drag-and-drop support is not
+    # available. tkinterdnd2 currently supplies its own Tk subclass, so preserve
+    # that root when DnD is enabled rather than silently breaking file drops.
+    if DND_AVAILABLE:
+        win = DnDTk()
+        ctk.set_appearance_mode('Dark' if current_theme == 'dark' else 'Light')
+    else:
+        ctk.set_appearance_mode('Dark' if current_theme == 'dark' else 'Light')
+        ctk.set_default_color_theme('blue')
+        win = ctk.CTk()
 
     if platform.system() == 'Windows':
         win.option_add('*Font', ('Segoe UI', 9))
 
     win.title("Notys") # [Set window title]
-    win.configure(bg=BG) # [Configure window background]
+    if isinstance(win, ctk.CTk):
+        win.configure(fg_color=BG)
+    else:
+        win.configure(bg=BG)
     win.geometry(f"{SETTINGS['win_width']}x{SETTINGS['win_height']}") # [Set initial window dimensions]
     start_system_theme_watcher(win) # [Start theme watcher loop]
 
@@ -2531,25 +2547,18 @@ if __name__ == '__main__': # [Main application execution block]
 
             self.frame = tk.Frame(editor_area, bg=BG) # [Tab container frame]
 
-            # Uniform custom scrollbar system for all operating systems
-            self.sb = tk.Canvas(
+            # Native CustomTkinter scrollbar; the editor itself remains tk.Text
+            # because CustomTkinter does not provide a rich text widget.
+            self.sb = ctk.CTkScrollbar(
                 self.frame,
+                orientation='vertical',
+                command=lambda *args: self.text.yview(*args),
                 width=12,
-                bg=BG,
-                highlightthickness=0,
-                bd=0,
+                fg_color=BG,
+                button_color=TAB_BG,
+                button_hover_color=SELECT_BG,
             )
-            self.sb.pack(side='right', fill='y') # [Pack custom scrollbar canvas]
-
-            self.scroll_thumb = self.sb.create_rectangle(
-                2, 0, 10, 50,
-                fill=TAB_BG,
-                outline=TAB_BG,
-            ) # [Create scrollbar thumb rectangle]
-
-            self._scrollbar_drag_offset = 0 # [Drag offset tracker]
-            self.sb.bind('<Button-1>', self._scrollbar_click) # [Bind scrollbar click]
-            self.sb.bind('<B1-Motion>', self._scrollbar_drag) # [Bind scrollbar drag]
+            self.sb.pack(side='right', fill='y')
 
             self.text = tk.Text( # [Main text editor widget instance]
                 self.frame,
@@ -2562,7 +2571,7 @@ if __name__ == '__main__': # [Main application execution block]
                 spacing1=2, spacing3=4,
                 wrap=SETTINGS['line_wrap'],
                 undo=True,
-                yscrollcommand=self._on_text_scroll,
+                yscrollcommand=self.sb.set,
             )
             self.text.pack(fill='both', expand=True) # [Pack text widget]
 
@@ -2622,11 +2631,10 @@ if __name__ == '__main__': # [Main application execution block]
                 selectbackground=SELECT_BG,
             )
 
-            self.sb.config(bg=BG)
-            self.sb.itemconfig(
-                self.scroll_thumb,
-                fill=TAB_BG,
-                outline=TAB_BG,
+            self.sb.configure(
+                fg_color=BG,
+                button_color=TAB_BG,
+                button_hover_color=SELECT_BG,
             )
 
             self._configure_tags() # [Re-configure syntax tags]
@@ -2975,68 +2983,6 @@ if __name__ == '__main__': # [Main application execution block]
             if self.highlight_job:
                 win.after_cancel(self.highlight_job)
             self.highlight_job = win.after(16, self.highlight_markdown)
-
-        def _on_text_scroll(self, first, last): # [Text scrolling event handler]
-            try:
-                first = float(first)
-                last = float(last)
-            except (TypeError, ValueError):
-                return
-
-            height = self.sb.winfo_height()
-            if height <= 1:
-                return
-
-            visible_fraction = max(0.0, min(1.0, last - first))
-            thumb_height = max(20, visible_fraction * height)
-            thumb_height = min(height, thumb_height)
-
-            max_top = height - thumb_height
-            thumb_top = min(max_top, max(0, first * height))
-            thumb_bottom = thumb_top + thumb_height
-
-            self.sb.coords(
-                self.scroll_thumb,
-                2,
-                thumb_top,
-                10,
-                thumb_bottom,
-            )
-
-        def _scrollbar_click(self, event): # [Custom scrollbar click handler]
-            coords = self.sb.coords(self.scroll_thumb)
-            if not coords:
-                return
-
-            thumb_top, thumb_bottom = coords[1], coords[3]
-
-            if thumb_top <= event.y <= thumb_bottom:
-                self._scrollbar_drag_offset = event.y - thumb_top
-            else:
-                height = self.sb.winfo_height()
-                thumb_height = thumb_bottom - thumb_top
-                max_top = max(1, height - thumb_height)
-
-                new_top = event.y - thumb_height / 2
-                fraction = new_top / max_top
-                self.text.yview_moveto(max(0.0, min(1.0, fraction)))
-
-        def _scrollbar_drag(self, event): # [Custom scrollbar drag handler]
-            height = self.sb.winfo_height()
-            if height <= 1:
-                return
-
-            coords = self.sb.coords(self.scroll_thumb)
-            if not coords:
-                return
-
-            thumb_height = coords[3] - coords[1]
-            max_top = max(1, height - thumb_height)
-
-            new_top = event.y - self._scrollbar_drag_offset
-            fraction = new_top / max_top
-
-            self.text.yview_moveto(max(0.0, min(1.0, fraction)))
 
         # ── Coloration principale ─────────────────────────────────────────────────
         def highlight_markdown(self): # [Main markdown syntax highlighter method]
@@ -4976,7 +4922,7 @@ if __name__ == '__main__': # [Main application execution block]
         language_scroll_frame = tk.Frame(p_language, bg=H_BG)
         language_scroll_frame.grid(row=4, column=0, columnspan=3, sticky='nsew', pady=(8, 0))
         language_canvas = tk.Canvas(language_scroll_frame, bg=H_BG, highlightthickness=0, bd=0)
-        language_scrollbar = ttk.Scrollbar(language_scroll_frame, orient='vertical', command=language_canvas.yview)
+        language_scrollbar = ctk.CTkScrollbar(language_scroll_frame, orientation='vertical', command=language_canvas.yview, fg_color=H_BG, button_color=TAB_BG, button_hover_color=SELECT_BG)
         language_canvas.configure(yscrollcommand=language_scrollbar.set)
         language_scrollbar.pack(side='right', fill='y')
         language_canvas.pack(side='left', fill='both', expand=True)
@@ -5132,7 +5078,7 @@ if __name__ == '__main__': # [Main application execution block]
         styles_scroll_frame = tk.Frame(p_styles, bg=H_BG)
         styles_scroll_frame.pack(fill='both', expand=True)
         styles_canvas = tk.Canvas(styles_scroll_frame, bg=H_BG, highlightthickness=0)
-        styles_scrollbar = ttk.Scrollbar(styles_scroll_frame, orient='vertical', command=styles_canvas.yview)
+        styles_scrollbar = ctk.CTkScrollbar(styles_scroll_frame, orientation='vertical', command=styles_canvas.yview, fg_color=H_BG, button_color=TAB_BG, button_hover_color=SELECT_BG)
         styles_canvas.configure(yscrollcommand=styles_scrollbar.set)
         styles_scrollbar.pack(side='right', fill='y')
         styles_canvas.pack(side='left', fill='both', expand=True)
@@ -5365,8 +5311,8 @@ if __name__ == '__main__': # [Main application execution block]
             activate_style(ACTIVE_STYLE_NAME)
             load_style_controls(ACTIVE_STYLE)
 
-        button_bg = '#222222' if theme_preferences == 'dark' else '#ffffff'
-        button_fg = '#ffffff' if theme_preferences == 'dark' else '#202020'
+        button_bg = '#000000' if current_theme == 'dark' else '#ffffff'
+        button_fg = '#ffffff' if current_theme == 'dark' else '#202020'
 
         save_style_button = style_button(tr('style_save'), save_current_style)
         save_style_button.config(bg=button_bg, fg=button_fg)
@@ -5449,8 +5395,8 @@ if __name__ == '__main__': # [Main application execution block]
             rebuild_menu()
             _on_settings_close()
 
-        button_bg = '#222222' if theme_preferences == 'dark' else '#ffffff'
-        button_fg = '#ffffff' if theme_preferences == 'dark' else '#202020'
+        button_bg = '#000000' if current_theme == 'dark' else '#ffffff'
+        button_fg = '#ffffff' if current_theme == 'dark' else '#202020'
 
         tk.Button(
             btn_bar, text=tr('settings_apply'), command=apply_settings,

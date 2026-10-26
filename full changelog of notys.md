@@ -1,3 +1,57 @@
+# 1.9.0 Beta 4
+
+### Fix:
+- A lot of things thanks to customtkinter being objectively better (fixed the scrollbar, the theme hazard, etc.)
+- Also thx to customtkinter, it should theorically change and fix the windows's ugly UI
+
+### Bugs:
+- Scaling on Linux is broken and harder to read.
+
+# 1.9.0 Beta 3
+
+### Fix:
+- Fixed the beta release alert thinking that itself was newer than itself (thinking v1.9.0.b2 was newer than v1.9.0.b2)
+- Fixed the refresh of new release at every launch of the app, before it was doing it sometimes on some relaunches.
+
+### Modify:
+- Modified the Beta alert to be orange to see at a quick look that the new release is in Beta.
+
+# 1.9.0 Beta 2
+
+### Add:
+- Added date and time timestamps.
+- Added the "revert to last saved".
+- Added an option to see beta releases as an alert.
+
+### Fix:
+- Fixed the french translation of "Format" to "Formater"
+
+# 1.9.0 Beta 1
+
+### Add:
+- "Copy", "Cut" and "Paste" in the right click menu.
+- The "Format" menu in the menu bar with every markdown styles for quick formatting
+
+### Modify:
+- The markdown code (like the "#") are now greyed so visible, but less aggressive.
+
+# 1.8.2
+
+### Fix:
+- Fixed the setting being unusable if you resize it too low; added a minimum width size.
+- Fixed a duplicate: there was an update message in the settings. Removed it.
+- Fixed the new line in a list not scrolling automatically to show the new line.
+- Fixed the cmd+q quitting the app no matter what. Now, if there's any unsaved tabs it will show a prompt asking if you want to save or not.
+- Fixed the list, when you paste a list with dashes made in an other app it stays with dashes instead of the dots.
+
+### Known bugs:
+- When you paste a list from an other app, it doesn't really create a new line automatically. It's a really small bug; everything is usable but a bit annoying.
+
+# 1.8.1
+
+### Fix:
+- Preventing the update message from tweaking out when there's no more newer updates on ARM MacOS running throught Rosetta.
+
 # 1.8.0
 
 ### Add:

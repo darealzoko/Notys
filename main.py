@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.0 Beta 4' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.0' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -119,6 +119,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Paramètres", # [Translate settings title]
         'settings_apply': "Appliquer", # [Translate apply button]
         'settings_cancel': "Annuler", # [Translate cancel button]
+        'settings_ok': 'OK',
 
         'section_language': "Langue", # [Translate language section]
         'section_general': "Général",
@@ -141,6 +142,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Par caractère", # [Translate char wrap]
         'wrap_none': "Aucun", # [Translate no wrap]
         'settings_padding': "Marges latérales", # [Translate padding label]
+        'settings_markdown_mode': 'Syntaxe Markdown',
+        'markdown_mode_md': 'Fichiers Markdown (.md, .markdown)',
+        'markdown_mode_all': 'Tous les fichiers',
+        'markdown_mode_none': 'Aucun',
 
         'settings_show_status': "Barre de statut", # [Translate status bar toggle]
         'settings_show_wordcount': "Compteur de mots", # [Translate word count toggle]
@@ -241,6 +246,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Settings", # [Settings title]
         'settings_apply': "Apply", # [Apply button]
         'settings_cancel': "Cancel", # [Cancel button]
+        'settings_ok': 'OK',
 
         'section_language': "Language", # [Language section]
         'section_general': "General",
@@ -263,6 +269,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "By character", # [Character wrap option]
         'wrap_none': "None", # [No wrap option]
         'settings_padding': "Side margins", # [Padding label]
+        'settings_markdown_mode': 'Markdown syntax',
+        'markdown_mode_md': 'Markdown files (.md, .markdown)',
+        'markdown_mode_all': 'All files',
+        'markdown_mode_none': 'None',
 
         'settings_show_status': "Status bar", # [Status bar label]
         'settings_show_wordcount': "Word counter", # [Word counter label]
@@ -361,6 +371,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Agordoj", # [Settings title]
         'settings_apply': "Apliki", # [Apply button]
         'settings_cancel': "Nuligi", # [Cancel button]*
+        'settings_ok': 'Bone',
         # got to translate all three of the above thanks to minecraft :3
 
         'section_language': "Lingvo", # [Language section]
@@ -385,6 +396,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Laŭ signoj", # [Character wrap option]
         'wrap_none': "Neniu", # [No wrap option]
         'settings_padding': "Flankaj marĝenoj", # [Padding label]
+        'settings_markdown_mode': 'Markdown-sintakso',
+        'markdown_mode_md': 'Markdown-dosieroj (.md, .markdown)',
+        'markdown_mode_all': 'Ĉiuj dosieroj',
+        'markdown_mode_none': 'Neniu',
 
         'settings_show_status': "Statusbreto", # [Status bar label]
         'settings_show_wordcount': "Vortnombrilo", # [Word counter label]
@@ -487,6 +502,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Ajustes", # [Settings title]
         'settings_apply': "Aplicar", # [Apply button]
         'settings_cancel': "Cancelar", # [Cancel button]
+        'settings_ok': 'Aceptar',
 
         'section_language': "Idioma", # [Language section]
         'section_general': "General",
@@ -509,6 +525,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Por carácter", # [Character wrap option]
         'wrap_none': "Ninguno", # [No wrap option]
         'settings_padding': "Márgenes laterales", # [Padding label]
+        'settings_markdown_mode': 'Sintaxis Markdown',
+        'markdown_mode_md': 'Archivos Markdown (.md, .markdown)',
+        'markdown_mode_all': 'Todos los archivos',
+        'markdown_mode_none': 'Ninguno',
 
         'settings_show_status': "Barra de estado", # [Status bar label]
         'settings_show_wordcount': "Contador de palabras", # [Word counter label]
@@ -605,6 +625,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Configurações",
         'settings_apply': "Aplicar",
         'settings_cancel': "Cancelar",
+        'settings_ok': 'OK',
 
         'section_language': "Idioma",
         'section_general': "Geral",
@@ -627,6 +648,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Por caractere",
         'wrap_none': "Nenhuma",
         'settings_padding': "Margens laterais",
+        'settings_markdown_mode': 'Sintaxe Markdown',
+        'markdown_mode_md': 'Arquivos Markdown (.md, .markdown)',
+        'markdown_mode_all': 'Todos os arquivos',
+        'markdown_mode_none': 'Nenhum',
 
         'settings_show_status': "Barra de estado",
         'settings_show_wordcount': "Contador de palavras",
@@ -723,6 +748,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Einstellungen",
         'settings_apply': "Übernehmen",
         'settings_cancel': "Abbrechen",
+        'settings_ok': 'OK',
 
         'section_language': "Sprache",
         'section_general': "Allgemein",
@@ -745,6 +771,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Nach Zeichen",
         'wrap_none': "Keiner",
         'settings_padding': "Seitenabstände",
+        'settings_markdown_mode': 'Markdown-Syntax',
+        'markdown_mode_md': 'Markdown-Dateien (.md, .markdown)',
+        'markdown_mode_all': 'Alle Dateien',
+        'markdown_mode_none': 'Keine',
 
         'settings_show_status': "Statusleiste",
         'settings_show_wordcount': "Wortzähler",
@@ -840,6 +870,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Impostazioni",
         'settings_apply': "Applica",
         'settings_cancel': "Annulla",
+        'settings_ok': 'OK',
 
         'section_language': "Lingua",
         'section_general': "Generale",
@@ -862,6 +893,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Per carattere",
         'wrap_none': "Nessuno",
         'settings_padding': "Margini laterali",
+        'settings_markdown_mode': 'Sintassi Markdown',
+        'markdown_mode_md': 'File Markdown (.md, .markdown)',
+        'markdown_mode_all': 'Tutti i file',
+        'markdown_mode_none': 'Nessuno',
 
         'settings_show_status': "Barra di stato",
         'settings_show_wordcount': "Conteggio parole",
@@ -957,6 +992,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Instellingen",
         'settings_apply': "Toepassen",
         'settings_cancel': "Annuleren",
+        'settings_ok': 'OK',
 
         'section_language': "Taal",
         'section_general': "Algemeen",
@@ -979,6 +1015,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Per teken",
         'wrap_none': "Geen",
         'settings_padding': "Zijmarges",
+        'settings_markdown_mode': 'Markdown-syntaxis',
+        'markdown_mode_md': 'Markdown-bestanden (.md, .markdown)',
+        'markdown_mode_all': 'Alle bestanden',
+        'markdown_mode_none': 'Geen',
 
         'settings_show_status': "Statusbalk",
         'settings_show_wordcount': "Woordtelling",
@@ -1075,6 +1115,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "Настройки",
         'settings_apply': "Применить",
         'settings_cancel': "Отмена",
+        'settings_ok': 'ОК',
 
         'section_language': "Язык",
         'section_general': "Общее",
@@ -1097,6 +1138,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "По символам",
         'wrap_none': "Нет",
         'settings_padding': "Боковые поля",
+        'settings_markdown_mode': 'Синтаксис Markdown',
+        'markdown_mode_md': 'Файлы Markdown (.md, .markdown)',
+        'markdown_mode_all': 'Все файлы',
+        'markdown_mode_none': 'Нет',
 
         'settings_show_status': "Строка состояния",
         'settings_show_wordcount': "Счетчик слов",
@@ -1192,6 +1237,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "設定",
         'settings_apply': "適用",
         'settings_cancel': "キャンセル",
+        'settings_ok': 'OK',
 
         'section_language': "言語",
         'section_general': "一般",
@@ -1214,6 +1260,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "文字ごと",
         'wrap_none': "なし",
         'settings_padding': "側面の余白",
+        'settings_markdown_mode': 'Markdown 構文',
+        'markdown_mode_md': 'Markdown ファイル (.md, .markdown)',
+        'markdown_mode_all': 'すべてのファイル',
+        'markdown_mode_none': 'なし',
 
         'settings_show_status': "ステータスバー",
         'settings_show_wordcount': "単語数",
@@ -1309,6 +1359,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "设置",
         'settings_apply': "应用",
         'settings_cancel': "取消",
+        'settings_ok': '确定',
 
         'section_language': "语言",
         'section_general': "常规",
@@ -1331,6 +1382,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "按字符",
         'wrap_none': "无",
         'settings_padding': "侧边距",
+        'settings_markdown_mode': 'Markdown 语法',
+        'markdown_mode_md': 'Markdown 文件 (.md, .markdown)',
+        'markdown_mode_all': '所有文件',
+        'markdown_mode_none': '无',
 
         'settings_show_status': "状态栏",
         'settings_show_wordcount': "字数统计",
@@ -1426,6 +1481,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_title': "설정",
         'settings_apply': "적용",
         'settings_cancel': "취소",
+        'settings_ok': '확인',
 
         'section_language': "언어",
         'section_general': "일반",
@@ -1448,6 +1504,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "문자 단위",
         'wrap_none': "없음",
         'settings_padding': "측면 여백",
+        'settings_markdown_mode': 'Markdown 구문',
+        'markdown_mode_md': 'Markdown 파일 (.md, .markdown)',
+        'markdown_mode_all': '모든 파일',
+        'markdown_mode_none': '없음',
 
         'settings_show_status': "상태 표시줄",
         'settings_show_wordcount': "단어 수",
@@ -1922,6 +1982,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'font_family': 'Consolas', # [Default editor font family]
     'font_size': 18, # [Default editor font size]
     'line_wrap': 'word', # [Default line wrapping mode]
+    'markdown_mode': 'md', # [Markdown syntax for .md/.markdown, all files, or none]
     'padding': 40, # [Default text widget padding]
     'show_status': True, # [Show status bar by default]
     'show_wordcount': True, # [Show word count by default]
@@ -1994,16 +2055,29 @@ def fetch_update_info(current_version, include_prereleases=False):
             'Pragma': 'no-cache',
         },
     )
-    # Some macOS Python builds (notably Intel builds running under Rosetta)
-    # do not locate the system CA bundle reliably. Add certifi's trusted roots
-    # when available; keep normal certificate verification enabled either way.
+    # Some packaged macOS Python builds do not locate a CA bundle reliably.
+    # Add certifi's roots when available, otherwise try the system bundle;
+    # certificate verification remains enabled in every case.
     import ssl
     ssl_context = ssl.create_default_context()
+    ca_files = []
     try:
         import certifi
-        ssl_context.load_verify_locations(cafile=certifi.where())
-    except (ImportError, OSError):
+        ca_files.append(certifi.where())
+    except ImportError:
         pass
+    default_cafile = ssl.get_default_verify_paths().cafile
+    if default_cafile:
+        ca_files.append(default_cafile)
+    if platform.system() == 'Darwin':
+        ca_files.append('/etc/ssl/cert.pem')
+    for ca_file in dict.fromkeys(ca_files):
+        if not os.path.isfile(ca_file):
+            continue
+        try:
+            ssl_context.load_verify_locations(cafile=ca_file)
+        except (OSError, ssl.SSLError):
+            continue
 
     with urllib.request.urlopen(request, timeout=15, context=ssl_context) as response:
         releases = json.loads(response.read().decode('utf-8'))
@@ -2228,6 +2302,8 @@ def load_settings_from_disk(): # [Load settings from disk]
                 for k in SETTINGS: # [Iterate over default setting keys]
                     if k in s: # [Update setting if present]
                         SETTINGS[k] = s[k] # [Assign saved setting value]
+                if SETTINGS.get('markdown_mode') not in ('md', 'all', 'none'):
+                    SETTINGS['markdown_mode'] = 'md'
             
             lang = data.get('current_language') # [Extract saved language]
             if isinstance(lang, str) and lang in TRANSLATIONS: # [Validate language]
@@ -2389,6 +2465,16 @@ def apply_theme(theme_name): # [Apply theme changes dynamically across app]
 
     if 'update_sidebar_theme' in globals(): # [Update sidebar theme styling]
         update_sidebar_theme()
+
+    # Refresh an already-open Settings window immediately after a theme change.
+    if 'win' in globals():
+        settings_dialog = getattr(win, '_settings_dlg', None)
+        refresh_settings_theme = getattr(settings_dialog, '_refresh_theme', None)
+        if callable(refresh_settings_theme):
+            try:
+                refresh_settings_theme()
+            except Exception as exc:
+                print(f"[Settings] Could not refresh theme: {exc}")
 
     if 'search_bar' in globals(): # [Reconfigure search bar widgets]
         entry_bg = THEMES[current_theme]['TAB_BG'] if current_theme == 'dark' else THEMES[current_theme]['STATUS_BG']
@@ -2796,6 +2882,8 @@ if __name__ == '__main__': # [Main application execution block]
 
         def _apply_markdown_to_selection(self, kind):
             """Wrap the selected text in the chosen Markdown syntax."""
+            if not self.is_markdown:
+                return 'break'
             t = self.text
             try:
                 start = t.index('sel.first')
@@ -2909,7 +2997,8 @@ if __name__ == '__main__': # [Main application execution block]
                 menu, tearoff=0, bg=STATUS_BG, fg=FG,
                 activebackground=SELECT_BG, activeforeground=FG,
             )
-            menu.add_cascade(label=tr('context_markdown'), menu=markdown_menu, state='normal' if has_selection else 'disabled')
+            markdown_enabled = has_selection and self.is_markdown
+            menu.add_cascade(label=tr('context_markdown'), menu=markdown_menu, state='normal' if markdown_enabled else 'disabled')
             # MAINTENANCE: keep native edit actions directly below Markdown, using the same shortcut commands as Edit.
             menu.add_command(label=tr('context_copy'), command=SHORTCUTS['copy']['cmd'], accelerator=SHORTCUTS['copy']['disp'])
             menu.add_command(label=tr('context_cut'), command=SHORTCUTS['cut']['cmd'], accelerator=SHORTCUTS['cut']['disp'])
@@ -2926,29 +3015,29 @@ if __name__ == '__main__': # [Main application execution block]
                 markdown_menu.add_command(
                     label=tr(label_key),
                     command=lambda selected_kind=kind: self._apply_markdown_to_selection(selected_kind),
-                    state='normal' if has_selection else 'disabled',
+                    state='normal' if markdown_enabled else 'disabled',
                 )
             markdown_menu.add_separator()
             markdown_menu.add_command(
                 label=tr('markdown_quote'),
                 command=lambda: self._apply_markdown_to_selection('quote'),
-                state='normal' if has_selection else 'disabled',
+                state='normal' if markdown_enabled else 'disabled',
             )
             markdown_menu.add_command(
                 label=tr('markdown_bullet_list'),
                 command=lambda: self._apply_markdown_to_selection('list'),
-                state='normal' if has_selection else 'disabled',
+                state='normal' if markdown_enabled else 'disabled',
             )
             headings_menu = tk.Menu(
                 markdown_menu, tearoff=0, bg=STATUS_BG, fg=FG,
                 activebackground=SELECT_BG, activeforeground=FG,
             )
-            markdown_menu.add_cascade(label=tr('markdown_headings'), menu=headings_menu, state='normal' if has_selection else 'disabled')
+            markdown_menu.add_cascade(label=tr('markdown_headings'), menu=headings_menu, state='normal' if markdown_enabled else 'disabled')
             for level in range(1, 7):
                 headings_menu.add_command(
                     label=tr(f'markdown_heading_{level}'),
                     command=lambda current_level=level: self._apply_markdown_to_selection(f'heading_{current_level}'),
-                    state='normal' if has_selection else 'disabled',
+                    state='normal' if markdown_enabled else 'disabled',
                 )
 
             try:
@@ -3315,13 +3404,14 @@ if __name__ == '__main__': # [Main application execution block]
             return self.text.edit_modified()
 
         @property
-        def is_markdown(self): # [Check if file is markdown]
-            return (
-                self.file_path is None
-                or os.path.splitext(self.file_path)[1].lower() == '.md'
-                or os.path.splitext(self.file_path)[1].lower() == '.markdown'
-                or os.path.splitext(self.file_path)[1].lower() == '.mdown'
-            )
+        def is_markdown(self): # [Check whether Markdown syntax is enabled for this file]
+            mode = SETTINGS.get('markdown_mode', 'md')
+            if mode == 'none':
+                return False
+            if mode == 'all':
+                return True
+            # In the 'md' mode, only the two requested extensions are formatted.
+            return bool(self.file_path) and os.path.splitext(self.file_path)[1].lower() in ('.md', '.markdown')
 
         @property
         def label(self): # [Tab label string with modified indicator]
@@ -3429,13 +3519,41 @@ if __name__ == '__main__': # [Main application execution block]
                     self.reorder_tab_frames()
                     break
 
-        def toggle_theme(self, event=None): # [Toggle theme button handler]
+        def toggle_theme(self, event=None): # [Show theme selection menu]
+            menu = tk.Menu(
+                win, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            for preference, key in (
+                ('dark', 'theme_dark'),
+                ('light', 'theme_light'),
+                ('system', 'theme_system'),
+            ):
+                label = tr(key)
+                if theme_preferences == preference:
+                    label = f'✓ {label}'
+                menu.add_command(
+                    label=label,
+                    command=lambda selected=preference: self.set_theme_preference(selected),
+                )
+            try:
+                if event is not None:
+                    menu.tk_popup(event.x_root, event.y_root + self.theme_button.winfo_height())
+                else:
+                    menu.tk_popup(self.theme_button.winfo_rootx(), self.theme_button.winfo_rooty() + self.theme_button.winfo_height())
+            finally:
+                try:
+                    menu.grab_release()
+                except tk.TclError:
+                    pass
+            return 'break'
+
+        def set_theme_preference(self, preference):
             global theme_preferences
-            themes = ['dark', 'light']
-            current_index = themes.index(current_theme) if current_theme in themes else 0
-            next_index = (current_index + 1) % len(themes)
-            theme_preferences = themes[next_index]
-            apply_theme(theme_preferences)
+            if preference not in ('dark', 'light', 'system'):
+                return
+            theme_preferences = preference
+            apply_theme(resolve_theme(preference))
             save_settings_to_disk()
 
         def update_theme(self): # [Update tab bar theme]
@@ -3586,6 +3704,9 @@ if __name__ == '__main__': # [Main application execution block]
             self.refresh()
             update_title()
             update_status()
+            menu_updater = getattr(self, 'update_format_menu_state', None)
+            if callable(menu_updater):
+                menu_updater()
 
         def remove(self, tab): # [Remove tab from bar]
             if tab in self.tabs:
@@ -4619,6 +4740,21 @@ if __name__ == '__main__': # [Main application execution block]
             )
         menubar.add_cascade(label=tr('menu_format'), menu=format_menu)
 
+        def update_format_menu_state():
+            active_tab = current_tab()
+            enabled = bool(active_tab and active_tab.is_markdown)
+            state = 'normal' if enabled else 'disabled'
+            for index in (0, 1, 2, 3, 4, 5, 7, 8, 9):
+                try:
+                    format_menu.entryconfigure(index, state=state)
+                except tk.TclError:
+                    pass
+            for index in range(headings_menu.index('end') + 1 if headings_menu.index('end') is not None else 0):
+                headings_menu.entryconfigure(index, state=state)
+
+        tab_bar.update_format_menu_state = update_format_menu_state
+        update_format_menu_state()
+
         # Menu présentation
         view_menu = tk.Menu(menubar, tearoff=0)
         view_menu.add_command(label=tr('menu_toggle_sidebar'), command=toggle_sidebar, accelerator=SHORTCUTS['open_folder']['disp'])
@@ -4679,6 +4815,7 @@ if __name__ == '__main__': # [Main application execution block]
         font_fam_var = tk.StringVar(value=SETTINGS['font_family'])
         font_size_var = tk.IntVar(value=SETTINGS['font_size'])
         wrap_var = tk.StringVar(value=SETTINGS['line_wrap'])
+        markdown_mode_var = tk.StringVar(value=SETTINGS.get('markdown_mode', 'md'))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         status_var = tk.BooleanVar(value=SETTINGS['show_status'])
         wcount_var = tk.BooleanVar(value=SETTINGS['show_wordcount'])
@@ -4826,19 +4963,26 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_padding'), 8)
         make_spinbox(p_general, padding_var, 0, 200, row=8)
 
-        section_label(p_general, tr('section_interface'), 9)
-        row_label(p_general, tr('settings_show_status'), 11)
-        make_toggle(p_general, status_var, row=11)
+        row_label(p_general, tr('settings_markdown_mode'), 9)
+        make_radiogroup(p_general, markdown_mode_var, [
+            (tr('markdown_mode_md'), 'md'),
+            (tr('markdown_mode_all'), 'all'),
+            (tr('markdown_mode_none'), 'none'),
+        ], row=9)
 
-        row_label(p_general, tr('settings_show_wordcount'), 12)
-        make_toggle(p_general, wcount_var, row=12)
+        section_label(p_general, tr('section_interface'), 11)
+        row_label(p_general, tr('settings_show_status'), 13)
+        make_toggle(p_general, status_var, row=13)
 
-        row_label(p_general, tr('settings_beta_updates'), 13)
-        make_toggle(p_general, beta_updates_var, row=13)
+        row_label(p_general, tr('settings_show_wordcount'), 14)
+        make_toggle(p_general, wcount_var, row=14)
 
-        row_label(p_general, tr('settings_win_size'), 14)
+        row_label(p_general, tr('settings_beta_updates'), 15)
+        make_toggle(p_general, beta_updates_var, row=15)
+
+        row_label(p_general, tr('settings_win_size'), 16)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=14, column=1, sticky='w', pady=4)
+        size_f.grid(row=16, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -5343,7 +5487,7 @@ if __name__ == '__main__': # [Main application execution block]
         btn_bar = tk.Frame(dlg, bg=H_BG, pady=12, padx=16)
         btn_bar.pack(fill='x')
 
-        def apply_settings():
+        def apply_settings(close_after=False):
             global current_language
             if style_dirty[0] and ACTIVE_STYLE_NAME.casefold() != 'default' and not save_current_style():
                 return
@@ -5357,6 +5501,7 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['font_family'] = font_fam_var.get()
             SETTINGS['font_size'] = font_size_var.get()
             SETTINGS['line_wrap'] = wrap_var.get()
+            SETTINGS['markdown_mode'] = markdown_mode_var.get()
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['show_status'] = status_var.get()
             SETTINGS['show_wordcount'] = wcount_var.get()
@@ -5393,13 +5538,23 @@ if __name__ == '__main__': # [Main application execution block]
                 t.highlight_markdown()
 
             rebuild_menu()
-            _on_settings_close()
+            if close_after:
+                _on_settings_close()
+            return True
 
         button_bg = '#000000' if current_theme == 'dark' else '#ffffff'
         button_fg = '#ffffff' if current_theme == 'dark' else '#202020'
 
         tk.Button(
-            btn_bar, text=tr('settings_apply'), command=apply_settings,
+            btn_bar, text=tr('settings_ok'), command=lambda: apply_settings(close_after=True),
+            bg=button_bg, fg=button_fg, activebackground=button_bg,
+            activeforeground=button_fg, font=('Consolas', 10, 'bold'),
+            relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
+            bd=0, highlightthickness=0,
+        ).pack(side='right', padx=(8, 0))
+
+        tk.Button(
+            btn_bar, text=tr('settings_apply'), command=lambda: apply_settings(close_after=False),
             bg=button_bg, fg=button_fg, activebackground=button_bg,
             activeforeground=button_fg, font=('Consolas', 10, 'bold'),
             relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
@@ -5413,6 +5568,132 @@ if __name__ == '__main__': # [Main application execution block]
             relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
             bd=0, highlightthickness=0,
         ).pack(side='right')
+
+        def _settings_theme_snapshot():
+            return {
+                'H_BG': H_BG, 'nav_bg': nav_bg, 'SEP_FG': SEP_FG, 'ACCENT': ACCENT,
+                'FG': FG, 'TAB_BG': TAB_BG, 'TAB_ACTIVE': TAB_ACTIVE,
+                'TAB_FG': TAB_FG, 'TAB_FG_ACT': TAB_FG_ACT, 'STATUS_FG': STATUS_FG,
+                'SELECT_BG': SELECT_BG, 'STATUS_BG': STATUS_BG,
+                'BTN_BG': ('#000000' if current_theme == 'dark' else '#ffffff'),
+                'BTN_FG': ('#ffffff' if current_theme == 'dark' else '#202020'),
+            }
+
+        def _refresh_settings_theme():
+            nonlocal H_BG, nav_bg, SEP_FG, ACCENT
+            try:
+                if not dlg.winfo_exists():
+                    return
+            except tk.TclError:
+                return
+
+            old = getattr(dlg, '_settings_theme_colors', _settings_theme_snapshot())
+            H_BG = STATUS_BG
+            nav_bg = TAB_BG
+            SEP_FG = '#3c3c3c' if current_theme == 'dark' else '#cccccc'
+            ACCENT = SELECT_BG if current_theme == 'dark' else '#1a6bbf'
+            new_colors = _settings_theme_snapshot()
+
+            background_roles = (
+                ('H_BG', 'H_BG'), ('STATUS_BG', 'H_BG'),
+                ('nav_bg', 'nav_bg'), ('TAB_BG', 'TAB_BG'),
+                ('TAB_ACTIVE', 'TAB_ACTIVE'), ('SELECT_BG', 'SELECT_BG'),
+                ('SEP_FG', 'SEP_FG'), ('BTN_BG', 'BTN_BG'),
+            )
+            button_background_roles = (
+                ('BTN_BG', 'BTN_BG'), *background_roles,
+            )
+            foreground_roles = (
+                ('ACCENT', 'ACCENT'), ('FG', 'FG'),
+                ('TAB_FG_ACT', 'TAB_FG_ACT'), ('TAB_FG', 'TAB_FG'),
+                ('STATUS_FG', 'STATUS_FG'), ('BTN_FG', 'BTN_FG'),
+                ('SELECT_BG', 'SELECT_BG'),
+            )
+            button_foreground_roles = (('BTN_FG', 'BTN_FG'), *foreground_roles)
+
+            def mapped(value, roles):
+                for old_role, new_role in roles:
+                    if value == old.get(old_role):
+                        return new_colors.get(new_role, value)
+                return value
+
+            visited = set()
+            def refresh_widget(widget):
+                if str(widget) in visited:
+                    return
+                visited.add(str(widget))
+
+                if isinstance(widget, tk.Menu):
+                    try:
+                        widget.configure(bg=TAB_BG, fg=FG, activebackground=SELECT_BG, activeforeground=FG)
+                        end = widget.index('end')
+                        if end is not None:
+                            for entry_index in range(end + 1):
+                                try:
+                                    widget.entryconfigure(
+                                        entry_index, background=TAB_BG, foreground=FG,
+                                        activebackground=SELECT_BG, activeforeground=FG,
+                                    )
+                                except tk.TclError:
+                                    pass
+                    except tk.TclError:
+                        pass
+                elif isinstance(widget, ctk.CTkScrollbar):
+                    try:
+                        widget.configure(fg_color=H_BG, button_color=TAB_BG, button_hover_color=SELECT_BG)
+                    except tk.TclError:
+                        pass
+                else:
+                    try:
+                        options = widget.configure()
+                    except (tk.TclError, TypeError):
+                        options = {}
+                    is_button = isinstance(widget, tk.Button)
+                    widget_background_roles = button_background_roles if is_button else background_roles
+                    widget_foreground_roles = button_foreground_roles if is_button else foreground_roles
+                    option_roles = {
+                        'bg': widget_background_roles, 'background': widget_background_roles,
+                        'activebackground': widget_background_roles, 'selectcolor': background_roles,
+                        'buttonbackground': background_roles,
+                        'fg': widget_foreground_roles, 'foreground': widget_foreground_roles,
+                        'activeforeground': widget_foreground_roles, 'insertbackground': foreground_roles,
+                        'highlightbackground': (('SEP_FG', 'SEP_FG'), ('ACCENT', 'ACCENT'), ('SELECT_BG', 'SELECT_BG')),
+                        'highlightcolor': (('ACCENT', 'ACCENT'), ('SELECT_BG', 'SELECT_BG'), ('SEP_FG', 'SEP_FG')),
+                    }
+                    for option, roles in option_roles.items():
+                        if option not in options:
+                            continue
+                        try:
+                            value = widget.cget(option)
+                            replacement = mapped(value, roles)
+                            if replacement != value:
+                                widget.configure(**{option: replacement})
+                        except (tk.TclError, TypeError):
+                            pass
+
+                    # OptionMenu's menu is attached as a Tk menu rather than a normal child.
+                    try:
+                        menu_path = widget.cget('menu')
+                        if menu_path:
+                            refresh_widget(widget.nametowidget(menu_path))
+                    except (tk.TclError, KeyError, TypeError):
+                        pass
+
+                try:
+                    for child in widget.winfo_children():
+                        refresh_widget(child)
+                except (tk.TclError, AttributeError):
+                    pass
+
+            refresh_widget(dlg)
+            dlg._settings_theme_colors = new_colors
+            try:
+                dlg.update_idletasks()
+            except tk.TclError:
+                pass
+
+        dlg._settings_theme_colors = _settings_theme_snapshot()
+        dlg._refresh_theme = _refresh_settings_theme
         return 'break'
 
     rebuild_menu() # [Build initial menu bar structure]

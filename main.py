@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.0' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.2' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -4640,6 +4640,45 @@ if __name__ == '__main__': # [Main application execution block]
         'open_in_finder': {'cmd': lambda e=None: open_in_finder(), 'disp': f"{mod_display}Shift+F", 'keys': ['<Command-Shift-F>', '<Command-Shift-f>'] if is_macos else ['<Control-Shift-F>', '<Control-Shift-f>']},
     }
 
+    # Tkinter's Menu accelerator option only displays a shortcut; it does not
+    # register the corresponding key event. Keep the display text and event
+    # sequences together so the Format menu and the actual bindings stay in sync.
+    def _make_markdown_shortcut(letter, shift=False):
+        modifier = 'Command' if is_macos else 'Control'
+        shift_prefix = 'Shift-' if shift else ''
+        display_shift = 'Shift+' if shift else ''
+        keys = [
+            f'<{modifier}-{shift_prefix}{letter.lower()}>',
+            f'<{modifier}-{shift_prefix}{letter.upper()}>',
+        ]
+        return {'disp': f"{mod_display}{display_shift}{letter.upper()}", 'keys': keys}
+
+    markdown_shortcut_specs = {
+        # These are the formatting shortcuts already specified in this file.
+        'markdown_bold': _make_markdown_shortcut('b'),
+        'markdown_italic': _make_markdown_shortcut('i'),
+        'markdown_underline': _make_markdown_shortcut('u'),
+        'markdown_strikethrough': _make_markdown_shortcut('u', shift=True),
+        'markdown_link': _make_markdown_shortcut('l'),
+        'markdown_bullet_list': _make_markdown_shortcut('l', shift=True),
+    }
+
+    # Build all Format menu actions from the same template. Items with no
+    # previously defined shortcut intentionally keep a blank accelerator.
+    for shortcut_name, kind in (
+        ('markdown_bold', 'bold'), ('markdown_italic', 'italic'),
+        ('markdown_underline', 'underline'), ('markdown_strikethrough', 'strike'),
+        ('markdown_inline_code', 'inline_code'), ('markdown_link', 'link'),
+        ('markdown_quote', 'quote'), ('markdown_bullet_list', 'list'),
+        *((f'markdown_heading_{level}', f'heading_{level}') for level in range(1, 7)),
+    ):
+        shortcut_spec = markdown_shortcut_specs.get(shortcut_name, {'disp': '', 'keys': []})
+        SHORTCUTS[shortcut_name] = {
+            'cmd': lambda e=None, selected_kind=kind: current_tab() and current_tab()._apply_markdown_to_selection(selected_kind),
+            'disp': shortcut_spec['disp'],
+            'keys': shortcut_spec['keys'],
+        }
+
     def register_shortcuts(): # [Register global keyboard shortcuts]
         # Text editing shortcuts are handled on each editor widget before Tk's class bindings.
         # Do not bind them globally: doing so makes Cmd/Ctrl+V run twice and steals paste from entries.
@@ -4715,28 +4754,24 @@ if __name__ == '__main__': # [Main application execution block]
         edit_menu.add_command(label=tr('menu_find'), command=show_find, accelerator=SHORTCUTS['find']['disp'])
         menubar.add_cascade(label=tr('menu_edit'), menu=edit_menu)
 
-        # MAINTENANCE: Format mirrors the Markdown submenu in the context menu and reuses its shortcuts/actions.
+        # Keep formatting commands centralized in SHORTCUTS, like the Edit menu.
         format_menu = tk.Menu(menubar, tearoff=0)
-        format_actions = [
-            ('markdown_bold', 'bold'), ('markdown_italic', 'italic'),
-            ('markdown_underline', 'underline'), ('markdown_strikethrough', 'strike'),
-            ('markdown_inline_code', 'inline_code'), ('markdown_link', 'link'),
-        ]
-        for label_key, kind in format_actions:
-            format_menu.add_command(
-                label=tr(label_key),
-                command=lambda selected_kind=kind: current_tab() and current_tab()._apply_markdown_to_selection(selected_kind),
-                accelerator=SHORTCUTS.get(f'markdown_{kind}', {}).get('disp', ''),
-            )
+        format_menu.add_command(label=tr('markdown_bold'), command=SHORTCUTS['markdown_bold']['cmd'], accelerator=SHORTCUTS['markdown_bold']['disp'])
+        format_menu.add_command(label=tr('markdown_italic'), command=SHORTCUTS['markdown_italic']['cmd'], accelerator=SHORTCUTS['markdown_italic']['disp'])
+        format_menu.add_command(label=tr('markdown_underline'), command=SHORTCUTS['markdown_underline']['cmd'], accelerator=SHORTCUTS['markdown_underline']['disp'])
+        format_menu.add_command(label=tr('markdown_strikethrough'), command=SHORTCUTS['markdown_strikethrough']['cmd'], accelerator=SHORTCUTS['markdown_strikethrough']['disp'])
+        format_menu.add_command(label=tr('markdown_inline_code'), command=SHORTCUTS['markdown_inline_code']['cmd'], accelerator=SHORTCUTS['markdown_inline_code']['disp'])
+        format_menu.add_command(label=tr('markdown_link'), command=SHORTCUTS['markdown_link']['cmd'], accelerator=SHORTCUTS['markdown_link']['disp'])
         format_menu.add_separator()
-        format_menu.add_command(label=tr('markdown_quote'), command=lambda: current_tab() and current_tab()._apply_markdown_to_selection('quote'))
-        format_menu.add_command(label=tr('markdown_bullet_list'), command=lambda: current_tab() and current_tab()._apply_markdown_to_selection('list'))
+        format_menu.add_command(label=tr('markdown_quote'), command=SHORTCUTS['markdown_quote']['cmd'], accelerator=SHORTCUTS['markdown_quote']['disp'])
+        format_menu.add_command(label=tr('markdown_bullet_list'), command=SHORTCUTS['markdown_bullet_list']['cmd'], accelerator=SHORTCUTS['markdown_bullet_list']['disp'])
         headings_menu = tk.Menu(format_menu, tearoff=0)
         format_menu.add_cascade(label=tr('markdown_headings'), menu=headings_menu)
         for level in range(1, 7):
             headings_menu.add_command(
                 label=tr(f'markdown_heading_{level}'),
-                command=lambda current_level=level: current_tab() and current_tab()._apply_markdown_to_selection(f'heading_{current_level}'),
+                command=SHORTCUTS[f'markdown_heading_{level}']['cmd'],
+                accelerator=SHORTCUTS[f'markdown_heading_{level}']['disp'],
             )
         menubar.add_cascade(label=tr('menu_format'), menu=format_menu)
 
@@ -4758,14 +4793,13 @@ if __name__ == '__main__': # [Main application execution block]
         # Menu présentation
         view_menu = tk.Menu(menubar, tearoff=0)
         view_menu.add_command(label=tr('menu_toggle_sidebar'), command=toggle_sidebar, accelerator=SHORTCUTS['open_folder']['disp'])
+        if not is_macos:
+            view_menu.add_separator()
+            view_menu.add_command(label=tr('menu_open_settings'), command=open_settings)
         menubar.add_cascade(label=tr('menu_view'), menu=view_menu)
 
         # ── Menus dédiés Windows & Linux ─────────────────────────────────────────
         if not is_macos:
-            settings_menu = tk.Menu(menubar, tearoff=0)
-            settings_menu.add_command(label=tr('menu_open_settings'), command=open_settings)
-            menubar.add_cascade(label=tr('menu_settings'), menu=settings_menu)
-
             about_menu = tk.Menu(menubar, tearoff=0)
             about_menu.add_command(label=tr('menu_about'), command=show_about)
             menubar.add_cascade(label=tr('menu_about'), menu=about_menu)

@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.2' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.3' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -114,7 +114,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_settings': "Paramètres", # [Translate settings]
         'menu_open_settings': "Ouvrir les paramètres…", # [Translate open settings]
         
-        'menu_about': "À propos", # [Translate about]
+        'menu_about': "À propos de Notys", # [Translate about]
+        'menu_about_short': "À propos", # [Translate about short]
 
         'settings_title': "Paramètres", # [Translate settings title]
         'settings_apply': "Appliquer", # [Translate apply button]
@@ -241,7 +242,9 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Settings", # [Settings menu]
         'menu_open_settings': "Open Settings…", # [Open settings menu]
-        'menu_about': "About", # [About menu]
+
+        'menu_about': "About Notys", # [About menu]
+        'menu_about_short': "About", # [About menu short]
 
         'settings_title': "Settings", # [Settings title]
         'settings_apply': "Apply", # [Apply button]
@@ -366,7 +369,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_settings': "Agordoj", # [Settings menu]
         'menu_open_settings': "Malfermi agordojn", # [Open settings menu]
         
-        'menu_about': "Pri", # [About menu]
+        'menu_about': "Pri Notys",
+'menu_about_short': "Pri", # [About menu]
 
         'settings_title': "Agordoj", # [Settings title]
         'settings_apply': "Apliki", # [Apply button]
@@ -497,7 +501,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'menu_settings': "Ajustes", # [Settings menu]
         'menu_open_settings': "Abrir ajustes", # [Open settings menu]
 
-        'menu_about': "Acerca de", # [About menu]
+        'menu_about': "Acerca de Notys",
+'menu_about_short': "Acerca de", # [About menu]
 
         'settings_title': "Ajustes", # [Settings title]
         'settings_apply': "Aplicar", # [Apply button]
@@ -620,7 +625,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Configurações",
         'menu_open_settings': "Abrir configurações…",
-        'menu_about': "Sobre",
+        'menu_about': "Sobre o Notys",
+'menu_about_short': "Sobre",
 
         'settings_title': "Configurações",
         'settings_apply': "Aplicar",
@@ -743,7 +749,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Einstellungen",
         'menu_open_settings': "Einstellungen öffnen…",
-        'menu_about': "Info",
+        'menu_about': "Über Notys",
+'menu_about_short': "Über",
 
         'settings_title': "Einstellungen",
         'settings_apply': "Übernehmen",
@@ -865,7 +872,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Impostazioni",
         'menu_open_settings': "Apri impostazioni…",
-        'menu_about': "Informazioni",
+        'menu_about': "Informazioni su Notys",
+'menu_about_short': "Info",
 
         'settings_title': "Impostazioni",
         'settings_apply': "Applica",
@@ -987,7 +995,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Instellingen",
         'menu_open_settings': "Instellingen openen…",
-        'menu_about': "Over",
+        'menu_about': "Over Notys",
+'menu_about_short': "Over",
 
         'settings_title': "Instellingen",
         'settings_apply': "Toepassen",
@@ -1110,7 +1119,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "Настройки",
         'menu_open_settings': "Открыть настройки…",
-        'menu_about': "О программе",
+        'menu_about': "О программе Notys",
+'menu_about_short': "О программе",
 
         'settings_title': "Настройки",
         'settings_apply': "Применить",
@@ -1232,7 +1242,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "設定",
         'menu_open_settings': "設定を開く…",
-        'menu_about': "情報",
+        'menu_about': "Notysについて",
+'menu_about_short': "情報",
 
         'settings_title': "設定",
         'settings_apply': "適用",
@@ -1354,7 +1365,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "设置",
         'menu_open_settings': "打开设置…",
-        'menu_about': "关于",
+        'menu_about': "关于 Notys",
+'menu_about_short': "关于",
 
         'settings_title': "设置",
         'settings_apply': "应用",
@@ -1476,7 +1488,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
 
         'menu_settings': "설정",
         'menu_open_settings': "설정 열기…",
-        'menu_about': "정보",
+        'menu_about': "Notys 정보",
+'menu_about_short': "정보",
 
         'settings_title': "설정",
         'settings_apply': "적용",
@@ -1974,7 +1987,7 @@ for language, translations in UPDATE_TRANSLATIONS.items():
 
 
 current_language = 'en' # [Default initial language setting]
-theme_preferences = 'dark' # [Default theme preference setting]
+theme_preferences = 'system' # [Default theme preference setting]
 ACTIVE_STYLE_NAME = 'default'
 
 # ── Paramètres utilisateur ────────────────────────────────────────────────────
@@ -4638,6 +4651,7 @@ if __name__ == '__main__': # [Main application execution block]
         'find': {'cmd': lambda e=None: show_find(), 'disp': f"{mod_display}F", 'keys': ['<Command-f>', '<Command-F>'] if is_macos else ['<Control-f>', '<Control-F>']},
         'settings': {'cmd': lambda e=None: open_settings(), 'disp': f"{mod_display},", 'keys': ['<Command-comma>'] if is_macos else ['<Control-comma>']},
         'open_in_finder': {'cmd': lambda e=None: open_in_finder(), 'disp': f"{mod_display}Shift+F", 'keys': ['<Command-Shift-F>', '<Command-Shift-f>'] if is_macos else ['<Control-Shift-F>', '<Control-Shift-f>']},
+        'toggle_sidebar': {'cmd': lambda e=None: toggle_sidebar(), 'disp': f"{mod_display}Shift+D", 'keys': ['<Command-Shift-D>', '<Command-Shift-d>'] if is_macos else ['<Control-Shift-D>', '<Control-Shift-d>']},
     }
 
     # Tkinter's Menu accelerator option only displays a shortcut; it does not
@@ -4792,17 +4806,17 @@ if __name__ == '__main__': # [Main application execution block]
 
         # Menu présentation
         view_menu = tk.Menu(menubar, tearoff=0)
-        view_menu.add_command(label=tr('menu_toggle_sidebar'), command=toggle_sidebar, accelerator=SHORTCUTS['open_folder']['disp'])
+        view_menu.add_command(label=tr('menu_toggle_sidebar'), command=toggle_sidebar, accelerator=SHORTCUTS['toggle_sidebar']['disp'])
         if not is_macos:
             view_menu.add_separator()
-            view_menu.add_command(label=tr('menu_open_settings'), command=open_settings)
+            view_menu.add_command(label=tr('menu_open_settings'), command=open_settings, accelerator=SHORTCUTS['settings']['disp'])
         menubar.add_cascade(label=tr('menu_view'), menu=view_menu)
 
         # ── Menus dédiés Windows & Linux ─────────────────────────────────────────
         if not is_macos:
             about_menu = tk.Menu(menubar, tearoff=0)
             about_menu.add_command(label=tr('menu_about'), command=show_about)
-            menubar.add_cascade(label=tr('menu_about'), menu=about_menu)
+            menubar.add_cascade(label=tr('menu_about_short'), menu=about_menu)
 
     def open_settings(event=None): # [Open settings dialog modal window]
         global current_language, SETTINGS

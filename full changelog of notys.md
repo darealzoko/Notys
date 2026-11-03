@@ -1,3 +1,12 @@
+# 1.9.3
+
+### Changes:
+- Changed the default theme to System instead of Dark.
+- Changed the about menu (for windows and linux). Instead of "About -> About" it is now "About -> About Notys".
+
+### Fixed:
+- Fixed the toggle sidebar shortcut being already taken by opening a folder. It is now Cmd/Ctrl+Shift+D (this bug was here since the Betas of addition of the sidebar, I just never properly realized it was wrong lmfao)
+
 # 1.9.2
 
 ### Fix:

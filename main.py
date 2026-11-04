@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.3' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.9.4' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -203,6 +203,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Enregistrez ce document avant de l’épingler.',
         'error_title': 'Erreur',
         'open_file_location_error': 'Impossible d’ouvrir l’emplacement du fichier : {error}',
+        'recent_file_not_found': 'Le fichier récent est introuvable : {path}',
 
 
 
@@ -332,6 +333,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Save this document before pinning it.',
         'error_title': 'Error',
         'open_file_location_error': 'Could not open the file location: {error}',
+        'recent_file_not_found': 'Recent file not found: {path}',
 
 
 
@@ -464,6 +466,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Konservu ĉi tiun dokumenton antaŭ ol alpingli ĝin.',
         'error_title': 'Eraro',
         'open_file_location_error': 'Ne eblis malfermi la dosierlokon: {error}',
+        'recent_file_not_found': 'Lastatempa dosiero ne troviĝis: {path}',
 
 
 
@@ -589,6 +592,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Guarda este documento antes de anclarlo.',
         'error_title': 'Error',
         'open_file_location_error': 'No se pudo abrir la ubicación del archivo: {error}',
+        'recent_file_not_found': 'No se encuentra el archivo reciente: {path}',
 
 
 
@@ -713,6 +717,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Salve este documento antes de fixá-lo.',
         'error_title': 'Erro',
         'open_file_location_error': 'Não foi possível abrir o local do arquivo: {error}',
+        'recent_file_not_found': 'Arquivo recente não encontrado: {path}',
 
 
 
@@ -837,6 +842,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Speichere dieses Dokument, bevor du es anheftest.',
         'error_title': 'Fehler',
         'open_file_location_error': 'Der Dateispeicherort konnte nicht geöffnet werden: {error}',
+        'recent_file_not_found': 'Zuletzt verwendete Datei nicht gefunden: {path}',
 
 
 
@@ -960,6 +966,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Salva questo documento prima di fissarlo.',
         'error_title': 'Errore',
         'open_file_location_error': 'Impossibile aprire la posizione del file: {error}',
+        'recent_file_not_found': 'File recente non trovato: {path}',
 
 
 
@@ -1083,6 +1090,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Sla dit document op voordat je het vastzet.',
         'error_title': 'Fout',
         'open_file_location_error': 'De bestandslocatie kon niet worden geopend: {error}',
+        'recent_file_not_found': 'Recent bestand niet gevonden: {path}',
 
 
 
@@ -1207,6 +1215,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': 'Сохраните документ, прежде чем закреплять его.',
         'error_title': 'Ошибка',
         'open_file_location_error': 'Не удалось открыть расположение файла: {error}',
+        'recent_file_not_found': 'Недавний файл не найден: {path}',
 
 
 
@@ -1330,6 +1339,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': '固定する前に、このドキュメントを保存してください。',
         'error_title': 'エラー',
         'open_file_location_error': 'ファイルの場所を開けませんでした: {error}',
+        'recent_file_not_found': '最近使ったファイルが見つかりません: {path}',
 
 
 
@@ -1453,6 +1463,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': '固定前请先保存此文档。',
         'error_title': '错误',
         'open_file_location_error': '无法打开文件位置：{error}',
+        'recent_file_not_found': '找不到最近使用的文件：{path}',
 
 
 
@@ -1576,6 +1587,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'pin_tab_save_first': '고정하기 전에 이 문서를 저장하세요.',
         'error_title': '오류',
         'open_file_location_error': '파일 위치를 열 수 없습니다: {error}',
+        'recent_file_not_found': '최근 파일을 찾을 수 없습니다: {path}',
 
 
 
@@ -2012,6 +2024,24 @@ def tr(key, **kwargs): # [Translation function with formatting support]
     if kwargs: # [Format string if keyword arguments provided]
         text = text.format(**kwargs) # [Apply string formatting]
     return text # [Return translated string]
+
+def _uses_markdown(path):
+    mode = SETTINGS.get('markdown_mode', 'md')
+    if mode == 'none':
+        return False
+    if mode == 'all':
+        return True
+    return bool(path) and os.path.splitext(path)[1].lower() in ('.md', '.markdown')
+
+def _markdown_content_for_editor(content, path):
+    if _uses_markdown(path):
+        return re.sub(r'(?m)^([ \t]*)-\s+', r'\1• ', content)
+    return content
+
+def _markdown_content_for_file(content, path):
+    if _uses_markdown(path):
+        return re.sub(r'(?m)^([ \t]*)•(?=\s)', r'\1-', content)
+    return content
 
 GITHUB_RELEASES_API = 'https://api.github.com/repos/darealzoko/Notys/releases?per_page=100'
 GITHUB_RELEASES_URL = 'https://github.com/darealzoko/Notys/releases/'
@@ -2770,6 +2800,8 @@ if __name__ == '__main__': # [Main application execution block]
                     underline=style['underline'],
                     overstrike=style['strikethrough'],
                 )
+            for inline_tag in ('bold', 'italic', 'code', 'underline', 'strike', 'link'):
+                t.tag_raise(inline_tag, 'list')
             # Delimiters are neutral grey; hidden-tag priority still controls cursor-aware elision.
             self.text.tag_configure('syntax_delimiter', foreground=('#777777' if current_theme == 'light' else '#888888'), font=self._scaled_font(FONT_BODY))
         def _handle_tab(self, event): # [Handle tab indentation]
@@ -3439,7 +3471,7 @@ if __name__ == '__main__': # [Main application execution block]
 
         def set_content(self, content): # [Set editor text content]
             self.text.delete('1.0', 'end')
-            self.text.insert('1.0', content)
+            self.text.insert('1.0', _markdown_content_for_editor(content, self.file_path))
             self.text.edit_modified(False)
             self.highlight_markdown()
 
@@ -4294,7 +4326,7 @@ if __name__ == '__main__': # [Main application execution block]
 
     def open_recent_file(path): # [Open recent file handler]
         if not os.path.exists(path):
-            messagebox.showerror("Error", f"File not found: {path}")
+            messagebox.showerror(tr('error_title'), tr('recent_file_not_found', path=path))
             recents = [item for item in load_recents_from_disk() if (item.get('path') if isinstance(item, dict) else item) != path]
             save_recents_to_disk(recents)
             rebuild_menu()
@@ -4473,7 +4505,7 @@ if __name__ == '__main__': # [Main application execution block]
             update_title()
 
         with open(tab.file_path, 'w', encoding='utf-8') as f:
-            f.write(tab.get_content())
+            f.write(_markdown_content_for_file(tab.get_content(), tab.file_path))
 
         tab.highlight_markdown()
         tab.set_modified(False)

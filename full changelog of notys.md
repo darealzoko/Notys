@@ -1,3 +1,19 @@
+# 1.10.0
+
+### Fix:
+- Fixed tabs disappearing off-screen when too much tabs are created.
+- Fixed folder and file actions being unavailable from the sidebar context menu.
+
+### Add:
+- Added a setting to choose whether untitled tabs use Markdown formatting.
+- Added a right click contextual menu for sidebar files and folders, including showing an item in the system file manager, opening it in a new window, and opening files in a new tab or their default app.
+- Added Save to the tab context menu for tabs that has just been modified.
+- Added folder pinning from the sidebar and File menu; pinned folders reopen on startup.
+
+### Modifications:
+- Changed the tab bar to a scrollable row.
+- Moved the tab button placement now staying in a single position.
+
 # 1.9.3
 
 ### Changes:

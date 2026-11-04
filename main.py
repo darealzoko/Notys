@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.9.4' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.10.0' # [Fallback version for the current v1 release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -277,6 +277,10 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'markdown_mode_md': 'Markdown files (.md, .markdown)',
         'markdown_mode_all': 'All files',
         'markdown_mode_none': 'None',
+        'settings_untitled_markdown': 'Format untitled tabs with Markdown',
+        'tree_open_new_window': 'Open in New Window',
+        'tree_open_new_tab': 'Open in New Tab',
+        'tree_open_default_app': 'Open in Default App',
 
         'settings_show_status': "Status bar", # [Status bar label]
         'settings_show_wordcount': "Word counter", # [Word counter label]
@@ -1595,6 +1599,88 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
     },
 }
 
+TREE_CONTEXT_TRANSLATIONS = {
+    'fr': {
+        'tree_open_new_window': 'Ouvrir dans une nouvelle fenêtre',
+        'tree_open_new_tab': 'Ouvrir dans un nouvel onglet',
+        'tree_open_default_app': 'Ouvrir avec l’application par défaut',
+    },
+    'en': {
+        'tree_open_new_window': 'Open in New Window',
+        'tree_open_new_tab': 'Open in New Tab',
+        'tree_open_default_app': 'Open in Default App',
+    },
+    'eo': {
+        'tree_open_new_window': 'Malfermi en nova fenestro',
+        'tree_open_new_tab': 'Malfermi en nova langeto',
+        'tree_open_default_app': 'Malfermi per defaŭlta aplikaĵo',
+    },
+    'es': {
+        'tree_open_new_window': 'Abrir en una ventana nueva',
+        'tree_open_new_tab': 'Abrir en una pestaña nueva',
+        'tree_open_default_app': 'Abrir con la aplicación predeterminada',
+    },
+    'pt': {
+        'tree_open_new_window': 'Abrir em nova janela',
+        'tree_open_new_tab': 'Abrir em nova aba',
+        'tree_open_default_app': 'Abrir com o aplicativo padrão',
+    },
+    'de': {
+        'tree_open_new_window': 'In neuem Fenster öffnen',
+        'tree_open_new_tab': 'In neuem Tab öffnen',
+        'tree_open_default_app': 'Mit Standard-App öffnen',
+    },
+    'it': {
+        'tree_open_new_window': 'Apri in una nuova finestra',
+        'tree_open_new_tab': 'Apri in una nuova scheda',
+        'tree_open_default_app': 'Apri con l’app predefinita',
+    },
+    'nl': {
+        'tree_open_new_window': 'Openen in nieuw venster',
+        'tree_open_new_tab': 'Openen in nieuw tabblad',
+        'tree_open_default_app': 'Openen met standaardapp',
+    },
+    'ru': {
+        'tree_open_new_window': 'Открыть в новом окне',
+        'tree_open_new_tab': 'Открыть в новой вкладке',
+        'tree_open_default_app': 'Открыть в приложении по умолчанию',
+    },
+    'ja': {
+        'tree_open_new_window': '新しいウィンドウで開く',
+        'tree_open_new_tab': '新しいタブで開く',
+        'tree_open_default_app': 'デフォルトのアプリで開く',
+    },
+    'zh': {
+        'tree_open_new_window': '在新窗口中打开',
+        'tree_open_new_tab': '在新标签页中打开',
+        'tree_open_default_app': '使用默认应用打开',
+    },
+    'ko': {
+        'tree_open_new_window': '새 창에서 열기',
+        'tree_open_new_tab': '새 탭에서 열기',
+        'tree_open_default_app': '기본 앱으로 열기',
+    },
+}
+for language, translations in TREE_CONTEXT_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
+FOLDER_PIN_TRANSLATIONS = {
+    'fr': {'menu_pin_folder': 'Épingler le dossier', 'menu_unpin_folder': 'Désépingler le dossier', 'menu_pin_current_folder': 'Épingler le dossier ouvert', 'menu_unpin_current_folder': 'Désépingler le dossier ouvert'},
+    'en': {'menu_pin_folder': 'Pin Folder', 'menu_unpin_folder': 'Unpin Folder', 'menu_pin_current_folder': 'Pin Current Folder', 'menu_unpin_current_folder': 'Unpin Current Folder'},
+    'eo': {'menu_pin_folder': 'Alpingli dosierujon', 'menu_unpin_folder': 'Malalpingli dosierujon', 'menu_pin_current_folder': 'Alpingli la nunan dosierujon', 'menu_unpin_current_folder': 'Malalpingli la nunan dosierujon'},
+    'es': {'menu_pin_folder': 'Anclar carpeta', 'menu_unpin_folder': 'Desanclar carpeta', 'menu_pin_current_folder': 'Anclar carpeta actual', 'menu_unpin_current_folder': 'Desanclar carpeta actual'},
+    'pt': {'menu_pin_folder': 'Fixar pasta', 'menu_unpin_folder': 'Desafixar pasta', 'menu_pin_current_folder': 'Fixar pasta atual', 'menu_unpin_current_folder': 'Desafixar pasta atual'},
+    'de': {'menu_pin_folder': 'Ordner anheften', 'menu_unpin_folder': 'Ordner lösen', 'menu_pin_current_folder': 'Aktuellen Ordner anheften', 'menu_unpin_current_folder': 'Aktuellen Ordner lösen'},
+    'it': {'menu_pin_folder': 'Fissa cartella', 'menu_unpin_folder': 'Rimuovi fissaggio cartella', 'menu_pin_current_folder': 'Fissa cartella attuale', 'menu_unpin_current_folder': 'Rimuovi fissaggio cartella attuale'},
+    'nl': {'menu_pin_folder': 'Map vastzetten', 'menu_unpin_folder': 'Map losmaken', 'menu_pin_current_folder': 'Huidige map vastzetten', 'menu_unpin_current_folder': 'Huidige map losmaken'},
+    'ru': {'menu_pin_folder': 'Закрепить папку', 'menu_unpin_folder': 'Открепить папку', 'menu_pin_current_folder': 'Закрепить текущую папку', 'menu_unpin_current_folder': 'Открепить текущую папку'},
+    'ja': {'menu_pin_folder': 'フォルダーを固定', 'menu_unpin_folder': 'フォルダーの固定を解除', 'menu_pin_current_folder': '現在のフォルダーを固定', 'menu_unpin_current_folder': '現在のフォルダーの固定を解除'},
+    'zh': {'menu_pin_folder': '固定文件夹', 'menu_unpin_folder': '取消固定文件夹', 'menu_pin_current_folder': '固定当前文件夹', 'menu_unpin_current_folder': '取消固定当前文件夹'},
+    'ko': {'menu_pin_folder': '폴더 고정', 'menu_unpin_folder': '폴더 고정 해제', 'menu_pin_current_folder': '현재 폴더 고정', 'menu_unpin_current_folder': '현재 폴더 고정 해제'},
+}
+for language, translations in FOLDER_PIN_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
 STYLE_TRANSLATIONS = {
     'en': {
         'style_default': 'Default', 'style_custom': 'Custom',
@@ -2008,6 +2094,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'font_size': 18, # [Default editor font size]
     'line_wrap': 'word', # [Default line wrapping mode]
     'markdown_mode': 'md', # [Markdown syntax for .md/.markdown, all files, or none]
+    'untitled_markdown': False, # [Enable Markdown formatting in untitled tabs]
     'padding': 40, # [Default text widget padding]
     'show_status': True, # [Show status bar by default]
     'show_wordcount': True, # [Show word count by default]
@@ -2026,6 +2113,8 @@ def tr(key, **kwargs): # [Translation function with formatting support]
     return text # [Return translated string]
 
 def _uses_markdown(path):
+    if not path:
+        return SETTINGS.get('untitled_markdown', False)
     mode = SETTINGS.get('markdown_mode', 'md')
     if mode == 'none':
         return False
@@ -2256,23 +2345,32 @@ def recents_file_path(): # [Get path to recents_doc.json]
 def pinned_docs_file_path():
     return os.path.join(get_config_dir(), 'pin_docs.json')
 
-def load_pinned_docs():
+def load_pinned_items():
     path = pinned_docs_file_path()
     if not os.path.isfile(path):
-        return []
+        return [], []
     try:
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         if isinstance(data, list):
-            return list(dict.fromkeys(
+            documents = list(dict.fromkeys(
                 os.path.abspath(os.path.expanduser(item))
                 for item in data if isinstance(item, str) and item
             ))
+            return documents, []
+        if isinstance(data, dict):
+            documents = data.get('documents', [])
+            folders = data.get('folders', [])
+            normalize_paths = lambda items: list(dict.fromkeys(
+                os.path.abspath(os.path.expanduser(item))
+                for item in items if isinstance(item, str) and item
+            )) if isinstance(items, list) else []
+            return normalize_paths(documents), normalize_paths(folders)
     except Exception as e:
         print(f"[Pins] Error reading {path}: {e}")
-    return []
+    return [], []
 
-PINNED_DOCS = load_pinned_docs()
+PINNED_DOCS, PINNED_FOLDERS = load_pinned_items()
 
 def save_pinned_docs():
     path = pinned_docs_file_path()
@@ -2280,7 +2378,10 @@ def save_pinned_docs():
         os.makedirs(get_config_dir(), exist_ok=True)
         tmp = path + '.tmp'
         with open(tmp, 'w', encoding='utf-8') as f:
-            json.dump(PINNED_DOCS, f, indent=2, ensure_ascii=False)
+            json.dump(
+                {'documents': PINNED_DOCS, 'folders': PINNED_FOLDERS},
+                f, indent=2, ensure_ascii=False,
+            )
         os.replace(tmp, path)
     except Exception as e:
         print(f"[Pins] Error saving {path}: {e}")
@@ -2516,6 +2617,7 @@ def apply_theme(theme_name): # [Apply theme changes dynamically across app]
         if callable(refresh_settings_theme):
             try:
                 refresh_settings_theme()
+                settings_dialog.after_idle(refresh_settings_theme)
             except Exception as exc:
                 print(f"[Settings] Could not refresh theme: {exc}")
 
@@ -3450,13 +3552,7 @@ if __name__ == '__main__': # [Main application execution block]
 
         @property
         def is_markdown(self): # [Check whether Markdown syntax is enabled for this file]
-            mode = SETTINGS.get('markdown_mode', 'md')
-            if mode == 'none':
-                return False
-            if mode == 'all':
-                return True
-            # In the 'md' mode, only the two requested extensions are formatted.
-            return bool(self.file_path) and os.path.splitext(self.file_path)[1].lower() in ('.md', '.markdown')
+            return _uses_markdown(self.file_path)
 
         @property
         def label(self): # [Tab label string with modified indicator]
@@ -3487,9 +3583,12 @@ if __name__ == '__main__': # [Main application execution block]
     # ══════════════════════════════════════════════════════════════════════════════
     class TabBar: # [Tab bar manager class]
         def __init__(self, parent):
-            self.frame = tk.Frame(parent, bg=TAB_BG, height=36)
+            self.frame = tk.Frame(parent, bg=TAB_BG)
             self.frame.pack(fill='x', side='top')
-            self.frame.pack_propagate(False)
+
+            self.controls_frame = tk.Frame(self.frame, bg=TAB_BG, height=36)
+            self.controls_frame.pack(fill='x', side='top')
+            self.controls_frame.pack_propagate(False)
 
             self.tabs = []
             self.active = None
@@ -3509,40 +3608,87 @@ if __name__ == '__main__': # [Main application execution block]
                 self.light_icon = None
 
             self.btn_new = tk.Label(
-                self.frame, text=" + ", bg=TAB_BG, fg=TAB_FG,
+                self.controls_frame, text=" + ", bg=TAB_BG, fg=TAB_FG,
                 font=FONT_TAB, cursor=HAND_CURSOR, padx=6
             )
-            self.btn_new.pack(side='left', fill='y')
             self.btn_new.bind('<Button-1>', lambda e: new_tab())
 
             self.theme_button = tk.Label(
-                self.frame, image=self.dark_icon, bg=TAB_BG, fg=TAB_FG,
+                self.controls_frame, image=self.dark_icon, bg=TAB_BG, fg=TAB_FG,
                 font=FONT_TAB, cursor=HAND_CURSOR, padx=6
             )
             self.theme_button.pack(side='right', fill='y')
             self.theme_button.bind('<Button-1>', self.toggle_theme)
+            self.btn_new.pack(side='right', fill='y')
 
             # The update notice belongs in the main tab bar, not only in Settings.
             self.update_status = None
             self.update_label = tk.Label(
-                self.frame, text='', bg=TAB_BG, fg=TAB_FG,
+                self.controls_frame, text='', bg=TAB_BG, fg=TAB_FG,
                 font=('Consolas', 10, 'bold'), cursor=HAND_CURSOR,
                 padx=10, pady=2, relief='solid', borderwidth=1,
             )
             self.update_label.pack_forget()
+
+            self.tabs_canvas = tk.Canvas(self.controls_frame, bg=TAB_BG, height=36, highlightthickness=0, bd=0)
+            self.tabs_scrollbar = ctk.CTkScrollbar(
+                self.frame, orientation='horizontal', command=self.tabs_canvas.xview,
+                fg_color=TAB_BG, button_color=STATUS_BG, button_hover_color=SELECT_BG,
+            )
+            self.tabs_canvas.configure(xscrollcommand=self.tabs_scrollbar.set)
+            self.tabs_canvas.pack(side='left', fill='both', expand=True)
+            self.tabs_content = tk.Frame(self.tabs_canvas, bg=TAB_BG)
+            self.tabs_canvas_window = self.tabs_canvas.create_window(
+                (0, 0), window=self.tabs_content, anchor='nw',
+            )
+            self.tabs_canvas.bind('<Configure>', self._resize_tab_canvas)
+            self.tabs_content.bind('<Configure>', self._update_tabs_scrollregion)
+            for widget in (self.tabs_canvas, self.tabs_content):
+                widget.bind('<MouseWheel>', self._scroll_tabs, add='+')
+                widget.bind('<Button-4>', self._scroll_tabs, add='+')
+                widget.bind('<Button-5>', self._scroll_tabs, add='+')
 
         def reorder_tab_frames(self): # [Reorder tab widgets after drag]
             for tab in self.tabs:
                 if tab.id in self._btns:
                     f = self._btns[tab.id][0]
                     f.pack_forget()
-                    f.pack(side='left', fill='y', before=self.btn_new)
+                    f.pack(side='left', fill='y')
+            self._update_tabs_scrollregion()
+
+        def _resize_tab_canvas(self, event=None):
+            self.tabs_canvas.itemconfigure(self.tabs_canvas_window, height=max(1, self.tabs_canvas.winfo_height()))
+            self._update_tabs_scrollregion()
+
+        def _update_tabs_scrollregion(self, event=None):
+            bounds = self.tabs_canvas.bbox('all')
+            self.tabs_canvas.configure(scrollregion=bounds)
+            if bounds and bounds[2] - bounds[0] > self.tabs_canvas.winfo_width():
+                if not self.tabs_scrollbar.winfo_manager():
+                    self.tabs_scrollbar.pack(side='bottom', fill='x')
+            else:
+                self.tabs_scrollbar.pack_forget()
+                self.tabs_canvas.xview_moveto(0)
+
+        def _scroll_tabs(self, event):
+            if getattr(event, 'delta', 0):
+                units = -1 if event.delta > 0 else 1
+                if abs(event.delta) >= 120:
+                    units = int(-event.delta / 120)
+            elif getattr(event, 'num', None) == 4:
+                units = -1
+            elif getattr(event, 'num', None) == 5:
+                units = 1
+            else:
+                return
+            self.tabs_canvas.xview_scroll(units, 'units')
+            return 'break'
 
         def _on_tab_drag(self, event, tab): # [Handle tab drag and drop reordering]
             if len(self.tabs) < 2:
                 return
 
-            mouse_x = event.widget.winfo_rootx() + event.x - self.frame.winfo_rootx()
+            mouse_x = event.widget.winfo_rootx() + event.x - self.tabs_content.winfo_rootx()
             curr_idx = self.tabs.index(tab)
 
             for i, other_tab in enumerate(self.tabs):
@@ -3550,7 +3696,7 @@ if __name__ == '__main__': # [Main application execution block]
                     continue
 
                 other_frame = self._btns[other_tab.id][0]
-                left = other_frame.winfo_rootx() - self.frame.winfo_rootx()
+                left = other_frame.winfo_rootx() - self.tabs_content.winfo_rootx()
                 width = other_frame.winfo_width()
 
                 if i < curr_idx and mouse_x < left + (width / 2):
@@ -3603,6 +3749,10 @@ if __name__ == '__main__': # [Main application execution block]
 
         def update_theme(self): # [Update tab bar theme]
             self.frame.config(bg=TAB_BG)
+            self.controls_frame.config(bg=TAB_BG)
+            self.tabs_canvas.config(bg=TAB_BG)
+            self.tabs_content.config(bg=TAB_BG)
+            self.tabs_scrollbar.configure(fg_color=TAB_BG, button_color=STATUS_BG, button_hover_color=SELECT_BG)
             self.btn_new.config(bg=TAB_BG, fg=TAB_FG)
             self.theme_button.config(bg=TAB_BG, fg=TAB_FG)
             self.update_label.config(bg=TAB_BG)
@@ -3664,6 +3814,7 @@ if __name__ == '__main__': # [Main application execution block]
         def add(self, tab): # [Add new tab to bar]
             self.tabs.append(tab)
             self._make_btn(tab)
+            self._update_tabs_scrollregion()
             self.select(tab)
 
         def toggle_pin(self, tab):
@@ -3685,6 +3836,12 @@ if __name__ == '__main__': # [Main application execution block]
                 win, tearoff=0, bg=STATUS_BG, fg=FG,
                 activebackground=SELECT_BG, activeforeground=FG,
             )
+            menu.add_command(
+                label=tr('menu_save'),
+                command=lambda: _save_tab(tab),
+                state='normal' if not tab.file_path else 'disabled',
+            )
+            menu.add_separator()
             pin_label = tr('menu_unpin_tab') if tab.is_pinned else tr('menu_pin_tab')
             menu.add_command(label=pin_label, command=lambda: self.toggle_pin(tab))
             menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(tab))
@@ -3704,20 +3861,25 @@ if __name__ == '__main__': # [Main application execution block]
             return 'break'
 
         def _make_btn(self, tab): # [Create tab button widget with middle click close support]
-            f = tk.Frame(self.frame, bg=TAB_BG)
-            f.pack(side='left', fill='y', before=self.btn_new)
+            f = tk.Frame(self.tabs_content, bg=TAB_BG)
+            f.pack(side='left', fill='y')
 
             border = tk.Frame(f, bg=TAB_BG, width=1)
-            border.pack(side='left', fill='y')
+            border.pack(side='right', fill='y')
 
-            lbl = tk.Label(f, text=tab.label, bg=TAB_BG, fg=TAB_FG, font=FONT_TAB, padx=10, cursor=HAND_CURSOR)
+            lbl = tk.Label(f, text=tab.label, bg=TAB_BG, fg=TAB_FG, font=FONT_TAB, padx=10, cursor=HAND_CURSOR, anchor='w')
             pin = tk.Label(f, text='📌', bg=TAB_BG, fg=STATUS_FG, font=('Arial', 10), padx=3, cursor=HAND_CURSOR)
             if tab.is_pinned:
                 pin.pack(side='left', fill='y')
-            lbl.pack(side='left', fill='y')
+            lbl.pack(side='left', fill='both', expand=True)
 
             close = tk.Label(f, text="✕", bg=TAB_BG, fg=TAB_FG, font=('Arial', 9), padx=6, cursor=HAND_CURSOR)
             close.pack(side='left', fill='y')
+
+            for widget in (f, border, lbl, pin, close):
+                widget.bind('<MouseWheel>', self._scroll_tabs, add='+')
+                widget.bind('<Button-4>', self._scroll_tabs, add='+')
+                widget.bind('<Button-5>', self._scroll_tabs, add='+')
 
             lbl.bind('<Button-1>', lambda e, t=tab: self.select(t))
             lbl.bind('<B1-Motion>', lambda e, t=tab: self._on_tab_drag(e, t))
@@ -3746,6 +3908,19 @@ if __name__ == '__main__': # [Main application execution block]
                 self.active.hide()
             self.active = tab
             tab.show()
+            tab_frame = self._btns.get(tab.id, (None,))[0]
+            if tab_frame is not None:
+                self.tabs_canvas.update_idletasks()
+                left = tab_frame.winfo_x()
+                right = left + tab_frame.winfo_width()
+                view_left = self.tabs_canvas.canvasx(0)
+                view_right = view_left + self.tabs_canvas.winfo_width()
+                if left < view_left or right > view_right:
+                    scroll_region = self.tabs_canvas.bbox('all')
+                    if scroll_region:
+                        target = left if left < view_left else right - self.tabs_canvas.winfo_width()
+                        region_width = max(1, scroll_region[2] - scroll_region[0])
+                        self.tabs_canvas.xview_moveto(max(0, min(1, target / region_width)))
             self.refresh()
             update_title()
             update_status()
@@ -3760,6 +3935,7 @@ if __name__ == '__main__': # [Main application execution block]
                 self._btns[tab.id][0].destroy()
                 del self._btns[tab.id]
             tab.frame.destroy()
+            self._update_tabs_scrollregion()
 
         def refresh(self): # [Refresh tab bar UI and styling]
             for t in self.tabs:
@@ -4065,12 +4241,30 @@ if __name__ == '__main__': # [Main application execution block]
         font=('Consolas', 10, 'bold'), cursor=HAND_CURSOR, padx=4
     )
 
+    sidebar_parent_folder_btn = tk.Label(
+        sidebar_header, text=" ↑ ", bg=STATUS_BG, fg=STATUS_FG,
+        font=('Consolas', 11, 'bold'), cursor=HAND_CURSOR, padx=4,
+    )
+
+    def open_parent_folder(event=None):
+        if not current_opened_folder:
+            return 'break'
+        folder_path = os.path.abspath(current_opened_folder)
+        parent_path = os.path.dirname(folder_path)
+        if parent_path != folder_path:
+            open_folder(parent_path)
+        return 'break'
+
+    sidebar_parent_folder_btn.bind('<Button-1>', open_parent_folder)
+
     def close_folder(event=None): # [Close parent folder action]
         global current_opened_folder
         current_opened_folder = None
         sidebar_tree.delete(*sidebar_tree.get_children())
         sidebar_title_lbl.config(text=tr('sidebar_explorer'))
         sidebar_close_folder_btn.pack_forget()
+        sidebar_parent_folder_btn.pack_forget()
+        rebuild_menu()
 
     sidebar_close_folder_btn.bind('<Button-1>', close_folder)
 
@@ -4119,6 +4313,7 @@ if __name__ == '__main__': # [Main application execution block]
         sidebar_header.config(bg=bg_col)
         sidebar_title_lbl.config(bg=bg_col, fg=STATUS_FG)
         sidebar_close_folder_btn.config(bg=bg_col, fg=STATUS_FG)
+        sidebar_parent_folder_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_toggle_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_collapsed_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_tree_frame.config(bg=bg_col)
@@ -4163,7 +4358,8 @@ if __name__ == '__main__': # [Main application execution block]
                 if entry.name.startswith('.'):
                     continue
                 if entry.is_dir():
-                    node = sidebar_tree.insert(parent_node, 'end', text=f"📁 {entry.name}", values=[entry.path], open=False)
+                    pin_marker = '📌 ' if os.path.abspath(entry.path) in PINNED_FOLDERS else ''
+                    node = sidebar_tree.insert(parent_node, 'end', text=f"{pin_marker}📁 {entry.name}", values=[entry.path], open=False)
                     sidebar_tree.insert(node, 'end', text="loading...")
                 else:
                     sidebar_tree.insert(parent_node, 'end', text=f"📄 {entry.name}", values=[entry.path])
@@ -4186,13 +4382,64 @@ if __name__ == '__main__': # [Main application execution block]
         if values and os.path.isfile(values[0]):
             _open_paths([values[0]])
 
+    def tree_item_path(item):
+        values = sidebar_tree.item(item, 'values')
+        return values[0] if values else None
+
+    def show_tree_item_context_menu(event):
+        item = sidebar_tree.identify_row(event.y)
+        if not item:
+            return 'break'
+        sidebar_tree.selection_set(item)
+        path = tree_item_path(item)
+        if not path or not os.path.exists(path):
+            return 'break'
+
+        is_directory = os.path.isdir(path)
+        menu = tk.Menu(
+            win, tearoff=0, bg=STATUS_BG, fg=FG,
+            activebackground=SELECT_BG, activeforeground=FG,
+        )
+        menu.add_command(label=tr('menu_open_in_finder'), command=lambda: open_path_in_file_manager(path))
+        menu.add_command(
+            label=tr('tree_open_new_window'),
+            command=lambda: new_window(path=path),
+        )
+        menu.add_command(
+            label=tr('tree_open_new_tab'),
+            command=lambda: _open_paths([path], force_new=True),
+            state='disabled' if is_directory else 'normal',
+        )
+        menu.add_command(
+            label=tr('tree_open_default_app'),
+            command=lambda: open_path_in_default_app(path),
+            state='disabled' if is_directory else 'normal',
+        )
+        if is_directory:
+            menu.add_separator()
+            menu.add_command(
+                label=tr('menu_unpin_folder' if os.path.abspath(path) in PINNED_FOLDERS else 'menu_pin_folder'),
+                command=lambda selected_path=path: toggle_pinned_folder(selected_path),
+            )
+        try:
+            menu.tk_popup(event.x_root, event.y_root)
+        finally:
+            try:
+                menu.grab_release()
+            except tk.TclError:
+                pass
+        return 'break'
+
     sidebar_tree.bind('<<TreeviewOpen>>', on_tree_open)
     sidebar_tree.bind('<Double-1>', on_tree_double_click)
+    sidebar_tree.bind('<Button-2>' if is_macos else '<Button-3>', show_tree_item_context_menu)
 
     def open_folder(folder_path=None): # [Open folder dialog and load tree]
         global current_opened_folder
         if not folder_path:
             folder_path = filedialog.askdirectory()
+        if folder_path:
+            folder_path = os.path.abspath(os.path.expanduser(folder_path))
         if not folder_path or not os.path.isdir(folder_path):
             return
 
@@ -4200,13 +4447,37 @@ if __name__ == '__main__': # [Main application execution block]
         folder_name = os.path.basename(folder_path) or folder_path
         sidebar_title_lbl.config(text=f"📁 {folder_name.upper()}")
         sidebar_close_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+        parent_path = os.path.dirname(folder_path)
+        if parent_path != folder_path:
+            sidebar_parent_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+        else:
+            sidebar_parent_folder_btn.pack_forget()
 
         sidebar_tree.delete(*sidebar_tree.get_children())
-        root_node = sidebar_tree.insert('', 'end', text=f"📂 {folder_name}", values=[folder_path], open=True)
+        pin_marker = '📌 ' if folder_path in PINNED_FOLDERS else ''
+        root_node = sidebar_tree.insert('', 'end', text=f"{pin_marker}📂 {folder_name}", values=[folder_path], open=True)
         populate_tree_node(root_node, folder_path)
 
         if sidebar_collapsed:
             toggle_sidebar()
+        rebuild_menu()
+
+    def toggle_pinned_folder(folder_path):
+        path = os.path.abspath(os.path.expanduser(folder_path))
+        if path in PINNED_FOLDERS:
+            PINNED_FOLDERS.remove(path)
+            if current_opened_folder:
+                open_folder(current_opened_folder)
+        else:
+            PINNED_FOLDERS[:] = [path]
+            open_folder(path)
+        save_pinned_docs()
+        rebuild_menu()
+
+    def toggle_current_folder_pin(event=None):
+        if current_opened_folder:
+            toggle_pinned_folder(current_opened_folder)
+        return 'break'
 
     # ── Editor Area ───────────────────────────────────────────────────────────────
     editor_area = tk.Frame(main_work_area, bg=BG) # [Editor area container frame]
@@ -4235,7 +4506,7 @@ if __name__ == '__main__': # [Main application execution block]
                 i = end + 1
         return [p for p in paths if p]
 
-    def _open_paths(paths): # [Open multiple file or folder paths]
+    def _open_paths(paths, force_new=False): # [Open multiple file or folder paths]
         for path in paths:
             if os.path.isdir(path):
                 open_folder(path)
@@ -4255,7 +4526,7 @@ if __name__ == '__main__': # [Main application execution block]
                 except UnicodeDecodeError:
                     continue
                 t = current_tab()
-                if t and not t.is_modified and not t.get_content():
+                if not force_new and t and not t.is_modified and not t.get_content():
                     t.file_path = path
                     t.is_pinned = os.path.abspath(path) in PINNED_DOCS
                     t.set_content(content)
@@ -4339,18 +4610,39 @@ if __name__ == '__main__': # [Main application execution block]
     def open_tab_in_finder(tab):
         """Reveal a tab's saved file in the native file manager."""
         path = tab.file_path if tab else None
-        if not path or not os.path.isfile(path):
+        if not path:
             return
+        open_path_in_file_manager(path)
 
+    def open_path_in_file_manager(path):
+        if not os.path.exists(path):
+            return
         import subprocess
         try:
             system = platform.system()
             if system == 'Darwin':
-                subprocess.Popen(['open', '-R', path])
+                subprocess.Popen(['open', '-R', path] if os.path.isfile(path) else ['open', path])
             elif system == 'Windows':
-                subprocess.Popen(['explorer', '/select,', os.path.normpath(path)])
+                command = ['explorer', '/select,', os.path.normpath(path)] if os.path.isfile(path) else ['explorer', os.path.normpath(path)]
+                subprocess.Popen(command)
             else:
-                subprocess.Popen(['xdg-open', os.path.dirname(os.path.abspath(path))])
+                folder = os.path.dirname(os.path.abspath(path)) if os.path.isfile(path) else path
+                subprocess.Popen(['xdg-open', folder])
+        except OSError as e:
+            messagebox.showerror(tr('error_title'), tr('open_file_location_error', error=e))
+
+    def open_path_in_default_app(path):
+        if not os.path.isfile(path):
+            return
+        import subprocess
+        try:
+            system = platform.system()
+            if system == 'Darwin':
+                subprocess.Popen(['open', path])
+            elif system == 'Windows':
+                os.startfile(path)
+            else:
+                subprocess.Popen(['xdg-open', path])
         except OSError as e:
             messagebox.showerror(tr('error_title'), tr('open_file_location_error', error=e))
 
@@ -4406,6 +4698,14 @@ if __name__ == '__main__': # [Main application execution block]
             save_pinned_docs()
         if not restored_paths:
             new_tab()
+
+    def restore_pinned_folder():
+        valid_folders = [path for path in PINNED_FOLDERS if os.path.isdir(path)]
+        if valid_folders != PINNED_FOLDERS:
+            PINNED_FOLDERS[:] = valid_folders
+            save_pinned_docs()
+        if valid_folders:
+            open_folder(valid_folders[-1])
 
     def _dialog_unsaved(tab): # [Unsaved changes confirmation dialog]
         result = [None]
@@ -4651,9 +4951,12 @@ if __name__ == '__main__': # [Main application execution block]
             f"{APP_NAME} v{APP_VERSION}\n{APP_COPYRIGHT}\n\n"
         )
 
-    def new_window(event=None): # [Open new window instance shortcut]
+    def new_window(event=None, path=None): # [Open new window instance shortcut]
         import subprocess
-        subprocess.Popen([sys.executable, __file__])
+        command = [sys.executable] if getattr(sys, 'frozen', False) else [sys.executable, os.path.abspath(__file__)]
+        if path:
+            command.append(path)
+        subprocess.Popen(command)
         return 'break'
 
     win.protocol('WM_DELETE_WINDOW', on_quit) # [Bind window close protocol]
@@ -4780,6 +5083,15 @@ if __name__ == '__main__': # [Main application execution block]
         file_menu.add_command(label=tr('menu_save_all'), command=save_all, accelerator=SHORTCUTS['save_all']['disp'])
         file_menu.add_command(label=tr('menu_revert_saved'), command=revert_to_last_saved, accelerator=SHORTCUTS['revert_saved']['disp'])
         file_menu.add_separator()
+        file_menu.add_command(
+            label=tr(
+                'menu_unpin_current_folder'
+                if current_opened_folder and os.path.abspath(current_opened_folder) in PINNED_FOLDERS
+                else 'menu_pin_current_folder'
+            ),
+            command=toggle_current_folder_pin,
+            state='normal' if current_opened_folder else 'disabled',
+        )
         file_menu.add_command(label=tr('menu_toggle_pin'), command=toggle_current_tab_pin, accelerator=SHORTCUTS['pin_tab']['disp'])
         file_menu.add_separator()
         file_menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(), accelerator=SHORTCUTS['close_tab']['disp'])
@@ -4872,7 +5184,6 @@ if __name__ == '__main__': # [Main application execution block]
             # not the proper way of doing it, i moved it to "apply_settings" instead
             dlg.destroy()
 
-        dlg.protocol("WM_DELETE_WINDOW", _on_settings_close)
         dlg.title(tr('settings_title'))
         dlg.geometry("1020x680")
         dlg.resizable(True, True)
@@ -4892,10 +5203,21 @@ if __name__ == '__main__': # [Main application execution block]
 
         theme_var = tk.StringVar(value=theme_preferences)
         theme_var.trace_add("write", on_theme_preference_changed)
+
+        initial_theme_preference = theme_preferences
+
+        def cancel_settings():
+            if theme_var.get() != initial_theme_preference:
+                theme_var.set(initial_theme_preference)
+            _on_settings_close()
+
+        dlg.protocol("WM_DELETE_WINDOW", cancel_settings)
+
         font_fam_var = tk.StringVar(value=SETTINGS['font_family'])
         font_size_var = tk.IntVar(value=SETTINGS['font_size'])
         wrap_var = tk.StringVar(value=SETTINGS['line_wrap'])
         markdown_mode_var = tk.StringVar(value=SETTINGS.get('markdown_mode', 'md'))
+        untitled_markdown_var = tk.BooleanVar(value=SETTINGS.get('untitled_markdown', False))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         status_var = tk.BooleanVar(value=SETTINGS['show_status'])
         wcount_var = tk.BooleanVar(value=SETTINGS['show_wordcount'])
@@ -5049,6 +5371,9 @@ if __name__ == '__main__': # [Main application execution block]
             (tr('markdown_mode_all'), 'all'),
             (tr('markdown_mode_none'), 'none'),
         ], row=9)
+
+        row_label(p_general, tr('settings_untitled_markdown'), 10)
+        make_toggle(p_general, untitled_markdown_var, row=10)
 
         section_label(p_general, tr('section_interface'), 11)
         row_label(p_general, tr('settings_show_status'), 13)
@@ -5558,7 +5883,10 @@ if __name__ == '__main__': # [Main application execution block]
         load_style_controls(ACTIVE_STYLE)
 
         pages = [p_general, p_language, p_styles]
-        show_page(0)
+        initial_page = getattr(win, '_settings_page', 0)
+        show_page(initial_page if 0 <= initial_page < len(pages) else 0)
+        if hasattr(win, '_settings_page'):
+            del win._settings_page
         # Removed the automatic update check in the settings dialog to avoid duplicates
         #dlg.after(200, start_update_check)
 
@@ -5567,14 +5895,9 @@ if __name__ == '__main__': # [Main application execution block]
         btn_bar = tk.Frame(dlg, bg=H_BG, pady=12, padx=16)
         btn_bar.pack(fill='x')
 
-        def apply_settings(close_after=False):
+        def apply_settings():
             global current_language
             if style_dirty[0] and ACTIVE_STYLE_NAME.casefold() != 'default' and not save_current_style():
-                return
-            try:
-                activate_style(ACTIVE_STYLE_NAME)
-            except (ValueError, OSError, json.JSONDecodeError) as error:
-                messagebox.showerror(tr('style_title'), style_error_text(error), parent=dlg)
                 return
             current_language = lang_var.get()
             tab_bar.set_update_status(tab_bar.update_status)
@@ -5582,6 +5905,7 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['font_size'] = font_size_var.get()
             SETTINGS['line_wrap'] = wrap_var.get()
             SETTINGS['markdown_mode'] = markdown_mode_var.get()
+            SETTINGS['untitled_markdown'] = untitled_markdown_var.get()
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['show_status'] = status_var.get()
             SETTINGS['show_wordcount'] = wcount_var.get()
@@ -5618,15 +5942,87 @@ if __name__ == '__main__': # [Main application execution block]
                 t.highlight_markdown()
 
             rebuild_menu()
-            if close_after:
-                _on_settings_close()
+            update_status()
             return True
+
+        def apply_and_close():
+            if apply_settings():
+                _on_settings_close()
+
+        displayed_settings_language = [current_language]
+
+        def refresh_settings_language(*_args, force=False):
+            old_language = displayed_settings_language[0]
+            new_language = lang_var.get()
+            if new_language == old_language and not force:
+                return
+
+            text_map = {}
+            ambiguous_texts = set()
+            for key, fallback_text in TRANSLATIONS['en'].items():
+                old_text = TRANSLATIONS[old_language].get(key, fallback_text)
+                new_text = TRANSLATIONS[new_language].get(key, fallback_text)
+                if old_text in text_map and text_map[old_text] != new_text:
+                    ambiguous_texts.add(old_text)
+                else:
+                    text_map[old_text] = new_text
+            for text in ambiguous_texts:
+                text_map.pop(text, None)
+
+            def translate_widget(widget, visited):
+                if str(widget) in visited:
+                    return
+                visited.add(str(widget))
+
+                if isinstance(widget, tk.Menu):
+                    try:
+                        end = widget.index('end')
+                        if end is not None:
+                            for index in range(end + 1):
+                                label = widget.entrycget(index, 'label')
+                                translated = text_map.get(label)
+                                if translated is not None and translated != label:
+                                    widget.entryconfigure(index, label=translated)
+                    except tk.TclError:
+                        pass
+                else:
+                    try:
+                        label = widget.cget('text')
+                        translated = text_map.get(label)
+                        if translated is not None and translated != label:
+                            widget.configure(text=translated)
+                    except (tk.TclError, TypeError):
+                        pass
+
+                    try:
+                        menu_path = widget.cget('menu')
+                        if menu_path:
+                            translate_widget(widget.nametowidget(menu_path), visited)
+                    except (tk.TclError, KeyError, TypeError):
+                        pass
+
+                try:
+                    for child in widget.winfo_children():
+                        translate_widget(child, visited)
+                except (tk.TclError, AttributeError):
+                    pass
+
+            translate_widget(dlg, set())
+            dlg.title(TRANSLATIONS[new_language].get('settings_title', TRANSLATIONS['en']['settings_title']))
+            if ACTIVE_STYLE_NAME.casefold() in ('default', 'custom'):
+                key = 'style_default' if ACTIVE_STYLE_NAME.casefold() == 'default' else 'style_custom'
+                style_name_var.set(TRANSLATIONS[new_language].get(key, TRANSLATIONS['en'][key]))
+            displayed_settings_language[0] = new_language
+
+            dlg.update_idletasks()
+
+        lang_var.trace_add('write', refresh_settings_language)
 
         button_bg = '#000000' if current_theme == 'dark' else '#ffffff'
         button_fg = '#ffffff' if current_theme == 'dark' else '#202020'
 
         tk.Button(
-            btn_bar, text=tr('settings_ok'), command=lambda: apply_settings(close_after=True),
+            btn_bar, text=tr('settings_ok'), command=apply_and_close,
             bg=button_bg, fg=button_fg, activebackground=button_bg,
             activeforeground=button_fg, font=('Consolas', 10, 'bold'),
             relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
@@ -5634,7 +6030,7 @@ if __name__ == '__main__': # [Main application execution block]
         ).pack(side='right', padx=(8, 0))
 
         tk.Button(
-            btn_bar, text=tr('settings_apply'), command=lambda: apply_settings(close_after=False),
+            btn_bar, text=tr('settings_apply'), command=apply_settings,
             bg=button_bg, fg=button_fg, activebackground=button_bg,
             activeforeground=button_fg, font=('Consolas', 10, 'bold'),
             relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
@@ -5642,7 +6038,7 @@ if __name__ == '__main__': # [Main application execution block]
         ).pack(side='right', padx=(8, 0))
 
         tk.Button(
-            btn_bar, text=tr('settings_cancel'), command=_on_settings_close,
+            btn_bar, text=tr('settings_cancel'), command=cancel_settings,
             bg=button_bg, fg=button_fg, activebackground=button_bg,
             activeforeground=button_fg, font=('Consolas', 10),
             relief='flat', padx=16, pady=4, cursor=HAND_CURSOR,
@@ -5778,6 +6174,14 @@ if __name__ == '__main__': # [Main application execution block]
 
     rebuild_menu() # [Build initial menu bar structure]
     restore_pinned_tabs() # [Reopen saved pinned documents]
+    restore_pinned_folder()
+    startup_paths = [
+        os.path.abspath(os.path.expanduser(path))
+        for path in sys.argv[1:]
+        if os.path.exists(os.path.expanduser(path))
+    ]
+    if startup_paths:
+        _open_paths(startup_paths)
     # Always fetch fresh GitHub release data on startup; never reuse a stale result.
     request_update_check(force=True) # [Fresh update check at startup; notice appears in the tab bar]
     win.mainloop() # [Run main Tkinter event loop]

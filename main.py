@@ -26,7 +26,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.10.0' # [Fallback version for the current v1 release]
+    APP_VERSION = '1.11.0.b1' # [Fallback version for the current v1 beta release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -143,6 +143,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Par caractère", # [Translate char wrap]
         'wrap_none': "Aucun", # [Translate no wrap]
         'settings_padding': "Marges latérales", # [Translate padding label]
+        'settings_scroll_sensitivity': "Sensibilité du défilement",
         'settings_markdown_mode': 'Syntaxe Markdown',
         'markdown_mode_md': 'Fichiers Markdown (.md, .markdown)',
         'markdown_mode_all': 'Tous les fichiers',
@@ -273,6 +274,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "By character", # [Character wrap option]
         'wrap_none': "None", # [No wrap option]
         'settings_padding': "Side margins", # [Padding label]
+        'settings_scroll_sensitivity': "Scroll sensitivity",
         'settings_markdown_mode': 'Markdown syntax',
         'markdown_mode_md': 'Markdown files (.md, .markdown)',
         'markdown_mode_all': 'All files',
@@ -406,6 +408,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Laŭ signoj", # [Character wrap option]
         'wrap_none': "Neniu", # [No wrap option]
         'settings_padding': "Flankaj marĝenoj", # [Padding label]
+        'settings_scroll_sensitivity': "Ruluma sentemo",
         'settings_markdown_mode': 'Markdown-sintakso',
         'markdown_mode_md': 'Markdown-dosieroj (.md, .markdown)',
         'markdown_mode_all': 'Ĉiuj dosieroj',
@@ -537,6 +540,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Por carácter", # [Character wrap option]
         'wrap_none': "Ninguno", # [No wrap option]
         'settings_padding': "Márgenes laterales", # [Padding label]
+        'settings_scroll_sensitivity': "Sensibilidad de desplazamiento",
         'settings_markdown_mode': 'Sintaxis Markdown',
         'markdown_mode_md': 'Archivos Markdown (.md, .markdown)',
         'markdown_mode_all': 'Todos los archivos',
@@ -662,6 +666,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Por caractere",
         'wrap_none': "Nenhuma",
         'settings_padding': "Margens laterais",
+        'settings_scroll_sensitivity': "Sensibilidade de rolagem",
         'settings_markdown_mode': 'Sintaxe Markdown',
         'markdown_mode_md': 'Arquivos Markdown (.md, .markdown)',
         'markdown_mode_all': 'Todos os arquivos',
@@ -787,6 +792,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Nach Zeichen",
         'wrap_none': "Keiner",
         'settings_padding': "Seitenabstände",
+        'settings_scroll_sensitivity': "Scroll-Empfindlichkeit",
         'settings_markdown_mode': 'Markdown-Syntax',
         'markdown_mode_md': 'Markdown-Dateien (.md, .markdown)',
         'markdown_mode_all': 'Alle Dateien',
@@ -911,6 +917,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Per carattere",
         'wrap_none': "Nessuno",
         'settings_padding': "Margini laterali",
+        'settings_scroll_sensitivity': "Sensibilità di scorrimento",
         'settings_markdown_mode': 'Sintassi Markdown',
         'markdown_mode_md': 'File Markdown (.md, .markdown)',
         'markdown_mode_all': 'Tutti i file',
@@ -1035,6 +1042,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "Per teken",
         'wrap_none': "Geen",
         'settings_padding': "Zijmarges",
+        'settings_scroll_sensitivity': "Scrollgevoeligheid",
         'settings_markdown_mode': 'Markdown-syntaxis',
         'markdown_mode_md': 'Markdown-bestanden (.md, .markdown)',
         'markdown_mode_all': 'Alle bestanden',
@@ -1160,6 +1168,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "По символам",
         'wrap_none': "Нет",
         'settings_padding': "Боковые поля",
+        'settings_scroll_sensitivity': "Чувствительность прокрутки",
         'settings_markdown_mode': 'Синтаксис Markdown',
         'markdown_mode_md': 'Файлы Markdown (.md, .markdown)',
         'markdown_mode_all': 'Все файлы',
@@ -1284,6 +1293,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "文字ごと",
         'wrap_none': "なし",
         'settings_padding': "側面の余白",
+        'settings_scroll_sensitivity': "スクロール感度",
         'settings_markdown_mode': 'Markdown 構文',
         'markdown_mode_md': 'Markdown ファイル (.md, .markdown)',
         'markdown_mode_all': 'すべてのファイル',
@@ -1408,6 +1418,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "按字符",
         'wrap_none': "无",
         'settings_padding': "侧边距",
+        'settings_scroll_sensitivity': "滚动灵敏度",
         'settings_markdown_mode': 'Markdown 语法',
         'markdown_mode_md': 'Markdown 文件 (.md, .markdown)',
         'markdown_mode_all': '所有文件',
@@ -1532,6 +1543,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'wrap_char': "문자 단위",
         'wrap_none': "없음",
         'settings_padding': "측면 여백",
+        'settings_scroll_sensitivity': "스크롤 감도",
         'settings_markdown_mode': 'Markdown 구문',
         'markdown_mode_md': 'Markdown 파일 (.md, .markdown)',
         'markdown_mode_all': '모든 파일',
@@ -1666,7 +1678,7 @@ for language, translations in TREE_CONTEXT_TRANSLATIONS.items():
 
 FOLDER_PIN_TRANSLATIONS = {
     'fr': {'menu_pin_folder': 'Épingler le dossier', 'menu_unpin_folder': 'Désépingler le dossier', 'menu_pin_current_folder': 'Épingler le dossier ouvert', 'menu_unpin_current_folder': 'Désépingler le dossier ouvert'},
-    'en': {'menu_pin_folder': 'Pin Folder', 'menu_unpin_folder': 'Unpin Folder', 'menu_pin_current_folder': 'Pin Current Folder', 'menu_unpin_current_folder': 'Unpin Current Folder'},
+    'en': {'menu_pin_folder': 'Pin Folder', 'menu_unpin_folder': 'Unpin Folder', 'menu_pin_current_folder': 'Pin Current Folder', 'menu_unpin_current_folder': 'Unpin Current Folder', 'menu_close_folder': 'Close Folder'},
     'eo': {'menu_pin_folder': 'Alpingli dosierujon', 'menu_unpin_folder': 'Malalpingli dosierujon', 'menu_pin_current_folder': 'Alpingli la nunan dosierujon', 'menu_unpin_current_folder': 'Malalpingli la nunan dosierujon'},
     'es': {'menu_pin_folder': 'Anclar carpeta', 'menu_unpin_folder': 'Desanclar carpeta', 'menu_pin_current_folder': 'Anclar carpeta actual', 'menu_unpin_current_folder': 'Desanclar carpeta actual'},
     'pt': {'menu_pin_folder': 'Fixar pasta', 'menu_unpin_folder': 'Desafixar pasta', 'menu_pin_current_folder': 'Fixar pasta atual', 'menu_unpin_current_folder': 'Desafixar pasta atual'},
@@ -2096,6 +2108,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'markdown_mode': 'md', # [Markdown syntax for .md/.markdown, all files, or none]
     'untitled_markdown': False, # [Enable Markdown formatting in untitled tabs]
     'padding': 40, # [Default text widget padding]
+    'scroll_sensitivity': 2, # [Scroll sensitivity level from 1 to 10]
     'show_status': True, # [Show status bar by default]
     'show_wordcount': True, # [Show word count by default]
     'notify_beta_updates': False, # [Include prerelease/beta releases in update notifications]
@@ -2348,7 +2361,7 @@ def pinned_docs_file_path():
 def load_pinned_items():
     path = pinned_docs_file_path()
     if not os.path.isfile(path):
-        return [], []
+        return [], [], []
     try:
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -2357,20 +2370,21 @@ def load_pinned_items():
                 os.path.abspath(os.path.expanduser(item))
                 for item in data if isinstance(item, str) and item
             ))
-            return documents, []
+            return documents, [], []
         if isinstance(data, dict):
             documents = data.get('documents', [])
             folders = data.get('folders', [])
+            opened = data.get('opened_folders', [])
             normalize_paths = lambda items: list(dict.fromkeys(
                 os.path.abspath(os.path.expanduser(item))
                 for item in items if isinstance(item, str) and item
             )) if isinstance(items, list) else []
-            return normalize_paths(documents), normalize_paths(folders)
+            return normalize_paths(documents), normalize_paths(folders), normalize_paths(opened)
     except Exception as e:
         print(f"[Pins] Error reading {path}: {e}")
-    return [], []
+    return [], [], []
 
-PINNED_DOCS, PINNED_FOLDERS = load_pinned_items()
+PINNED_DOCS, PINNED_FOLDERS, OPENED_FOLDERS = load_pinned_items()
 
 def save_pinned_docs():
     path = pinned_docs_file_path()
@@ -2379,7 +2393,11 @@ def save_pinned_docs():
         tmp = path + '.tmp'
         with open(tmp, 'w', encoding='utf-8') as f:
             json.dump(
-                {'documents': PINNED_DOCS, 'folders': PINNED_FOLDERS},
+                {
+                    'documents': PINNED_DOCS,
+                    'folders': PINNED_FOLDERS,
+                    'opened_folders': OPENED_FOLDERS,
+                },
                 f, indent=2, ensure_ascii=False,
             )
         os.replace(tmp, path)
@@ -2771,6 +2789,7 @@ if __name__ == '__main__': # [Main application execution block]
             self.id = Tab._counter # [Assign unique tab ID]
             self.file_path = file_path # [Store associated file path]
             self.highlight_job = None # [Syntax highlighting timer job]
+            self._wheel_remainder = 0.0
             self._color_matches = [] # [Custom color matches list]
             self._syntax_matches = [] # [Syntax regex matches list]
             self.font_scale = 1.0 # [Font zoom scale factor]
@@ -2796,6 +2815,7 @@ if __name__ == '__main__': # [Main application execution block]
                 bg=BG, fg=FG,
                 insertbackground=CURSOR_CLR,
                 selectbackground=SELECT_BG,
+                cursor='xterm',
                 bd=0, highlightthickness=0, relief='flat',
                 font=self._scaled_font(FONT_BODY),
                 padx=SETTINGS['padding'], pady=30,
@@ -2817,9 +2837,14 @@ if __name__ == '__main__': # [Main application execution block]
             self.text.bind('<Tab>', self._handle_tab) # [Bind tab key handler]
             self.text.bind('<Return>', self._handle_enter) # [Bind enter key handler]
             self.text.bind('<<Paste>>', self._paste)
+            self.text.bind('<<Copy>>', self._copy)
             # fix mouse sensitivity on scrollbars
             self.text.bind('<MouseWheel>', self._on_mousewheel)
+            self.text.bind('<Button-4>', self._on_mousewheel)
+            self.text.bind('<Button-5>', self._on_mousewheel)
             self.sb.bind('<MouseWheel>', self._on_mousewheel)
+            self.sb.bind('<Button-4>', self._on_mousewheel)
+            self.sb.bind('<Button-5>', self._on_mousewheel)
 
             if is_macos: # [macOS specific shortcuts]
                 self.text.bind('<Command-BackSpace>', self._delete_line)
@@ -2848,10 +2873,25 @@ if __name__ == '__main__': # [Main application execution block]
 
         # function to fix the sensitivity on the scrollbar
         def _on_mousewheel(self, event):
-            if platform.system() == 'Windows':
-                # Map delta/120 (1 notch) to 3 units (lines) to match system sensitivity
-                self.text.yview_scroll(int(-1 * (event.delta / 120) * 3), "units")
-                return 'break'
+            sensitivity = max(1, min(10, int(SETTINGS.get('scroll_sensitivity', 2))))
+            sensitivity_factor = (
+                sensitivity / 5
+                if sensitivity <= 5
+                else 1 + (sensitivity - 5) * 0.02
+            )
+            units_per_step = 3 * sensitivity_factor
+            if getattr(event, 'num', None) in (4, 5):
+                delta_units = units_per_step if event.num == 5 else -units_per_step
+            elif platform.system() == 'Windows':
+                delta_units = -event.delta / 120 * units_per_step
+            else:
+                delta_units = -units_per_step if event.delta > 0 else units_per_step
+            self._wheel_remainder += delta_units
+            units = int(self._wheel_remainder)
+            self._wheel_remainder -= units
+            if units:
+                self.text.yview_scroll(units, 'units')
+            return 'break'
         
         def update_theme(self): # [Update tab theme colors]
             self.frame.config(bg=BG)
@@ -2933,6 +2973,18 @@ if __name__ == '__main__': # [Main application execution block]
             self.text.edit_separator()
             self.schedule_highlight()
             update_status()
+            return 'break'
+
+        def _copy(self, event=None):
+            if not self.is_markdown:
+                return None
+            try:
+                content = self.text.get('sel.first', 'sel.last')
+            except tk.TclError:
+                return None
+            content = re.sub(r'(?m)^([ \t]*)-\s+', r'\1• ', content)
+            self.text.clipboard_clear()
+            self.text.clipboard_append(content)
             return 'break'
 
         def _handle_enter(self, event): # [Handle enter key, checkbox & list bullet auto-continuation]
@@ -3643,10 +3695,16 @@ if __name__ == '__main__': # [Main application execution block]
             )
             self.tabs_canvas.bind('<Configure>', self._resize_tab_canvas)
             self.tabs_content.bind('<Configure>', self._update_tabs_scrollregion)
+            self.tabs_canvas.bind('<Double-Button-1>', self._new_tab_on_empty_double_click)
+            self.tabs_content.bind('<Double-Button-1>', self._new_tab_on_empty_double_click)
             for widget in (self.tabs_canvas, self.tabs_content):
                 widget.bind('<MouseWheel>', self._scroll_tabs, add='+')
                 widget.bind('<Button-4>', self._scroll_tabs, add='+')
                 widget.bind('<Button-5>', self._scroll_tabs, add='+')
+
+        def _new_tab_on_empty_double_click(self, event):
+            new_tab()
+            return 'break'
 
         def reorder_tab_frames(self): # [Reorder tab widgets after drag]
             for tab in self.tabs:
@@ -4246,6 +4304,12 @@ if __name__ == '__main__': # [Main application execution block]
         font=('Consolas', 11, 'bold'), cursor=HAND_CURSOR, padx=4,
     )
 
+    sidebar_open_folder_btn = tk.Label(
+        sidebar_header, text=" + ", bg=STATUS_BG, fg=STATUS_FG,
+        font=('Consolas', 11, 'bold'), cursor=HAND_CURSOR, padx=4,
+    )
+    sidebar_open_folder_btn.bind('<Button-1>', lambda event: open_folder())
+
     def open_parent_folder(event=None):
         if not current_opened_folder:
             return 'break'
@@ -4257,14 +4321,26 @@ if __name__ == '__main__': # [Main application execution block]
 
     sidebar_parent_folder_btn.bind('<Button-1>', open_parent_folder)
 
-    def close_folder(event=None): # [Close parent folder action]
+    def close_folder(event=None, folder_path=None):
         global current_opened_folder
-        current_opened_folder = None
-        sidebar_tree.delete(*sidebar_tree.get_children())
-        sidebar_title_lbl.config(text=tr('sidebar_explorer'))
-        sidebar_close_folder_btn.pack_forget()
-        sidebar_parent_folder_btn.pack_forget()
+        if folder_path is None:
+            item = sidebar_tree.focus()
+            root_item = tree_root_item(item) if item else ''
+            values = sidebar_tree.item(root_item, 'values') if root_item else ()
+            folder_path = values[0] if values else current_opened_folder
+        if not folder_path:
+            return 'break'
+        folder_path = os.path.abspath(folder_path)
+        if folder_path in OPENED_FOLDERS:
+            OPENED_FOLDERS.remove(folder_path)
+        if folder_path in PINNED_FOLDERS:
+            PINNED_FOLDERS.remove(folder_path)
+        if current_opened_folder == folder_path:
+            current_opened_folder = None
+        _refresh_opened_folders()
+        save_pinned_docs()
         rebuild_menu()
+        return 'break'
 
     sidebar_close_folder_btn.bind('<Button-1>', close_folder)
 
@@ -4273,6 +4349,7 @@ if __name__ == '__main__': # [Main application execution block]
         font=('Consolas', 12, 'bold'), cursor=HAND_CURSOR, padx=6, pady=8
     )
     sidebar_toggle_btn.pack(side='right', fill='y')
+    sidebar_open_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
 
     # Treeview area
     sidebar_tree_frame = tk.Frame(sidebar_content_frame, bg=STATUS_BG) # [Sidebar treeview container]
@@ -4284,6 +4361,7 @@ if __name__ == '__main__': # [Main application execution block]
         selectmode='browse',
     )
     sidebar_tree.pack(fill='both', expand=True)
+    _folder_root_ids = {}
 
     # Styling for Treeview
     def update_sidebar_theme(): # [Update sidebar ttk treeview theme]
@@ -4314,6 +4392,7 @@ if __name__ == '__main__': # [Main application execution block]
         sidebar_title_lbl.config(bg=bg_col, fg=STATUS_FG)
         sidebar_close_folder_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_parent_folder_btn.config(bg=bg_col, fg=STATUS_FG)
+        sidebar_open_folder_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_toggle_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_collapsed_btn.config(bg=bg_col, fg=STATUS_FG)
         sidebar_tree_frame.config(bg=bg_col)
@@ -4365,6 +4444,77 @@ if __name__ == '__main__': # [Main application execution block]
                     sidebar_tree.insert(parent_node, 'end', text=f"📄 {entry.name}", values=[entry.path])
         except PermissionError:
             pass
+
+    def tree_root_item(item):
+        while item and sidebar_tree.parent(item):
+            item = sidebar_tree.parent(item)
+        return item
+
+    def _refresh_opened_folders(preferred_path=None):
+        global current_opened_folder
+        OPENED_FOLDERS[:] = [path for path in OPENED_FOLDERS if os.path.isdir(path)]
+        open_set = set(OPENED_FOLDERS)
+        for path, item in list(_folder_root_ids.items()):
+            if path not in open_set or not sidebar_tree.exists(item):
+                if sidebar_tree.exists(item):
+                    sidebar_tree.delete(item)
+                del _folder_root_ids[path]
+
+        ordered_paths = sorted(
+            OPENED_FOLDERS,
+            key=lambda path: (path not in PINNED_FOLDERS, -OPENED_FOLDERS.index(path)),
+        )
+        for index, path in enumerate(ordered_paths):
+            item = _folder_root_ids.get(path)
+            folder_name = os.path.basename(path) or path
+            pin_marker = '📌 ' if path in PINNED_FOLDERS else ''
+            if item is None:
+                item = sidebar_tree.insert(
+                    '', 'end', text=f'{pin_marker}📂 {folder_name}',
+                    values=[path], open=True,
+                )
+                _folder_root_ids[path] = item
+                populate_tree_node(item, path)
+            else:
+                sidebar_tree.item(item, text=f'{pin_marker}📂 {folder_name}')
+            sidebar_tree.move(item, '', index)
+
+        if preferred_path in open_set:
+            current_opened_folder = preferred_path
+        elif current_opened_folder not in open_set:
+            current_opened_folder = OPENED_FOLDERS[-1] if OPENED_FOLDERS else None
+
+        if current_opened_folder:
+            root_item = _folder_root_ids.get(current_opened_folder)
+            if root_item:
+                sidebar_tree.selection_set(root_item)
+                sidebar_tree.focus(root_item)
+            folder_name = os.path.basename(current_opened_folder) or current_opened_folder
+            sidebar_title_lbl.config(text=f'📁 {folder_name.upper()}')
+            sidebar_close_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+            if os.path.dirname(current_opened_folder) != current_opened_folder:
+                sidebar_parent_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+            else:
+                sidebar_parent_folder_btn.pack_forget()
+        else:
+            sidebar_title_lbl.config(text=tr('sidebar_explorer'))
+            sidebar_close_folder_btn.pack_forget()
+            sidebar_parent_folder_btn.pack_forget()
+
+    def on_tree_select(event=None):
+        global current_opened_folder
+        item = sidebar_tree.focus()
+        root_item = tree_root_item(item) if item else ''
+        values = sidebar_tree.item(root_item, 'values') if root_item else ()
+        if values and values[0] in OPENED_FOLDERS:
+            current_opened_folder = values[0]
+            folder_name = os.path.basename(current_opened_folder) or current_opened_folder
+            sidebar_title_lbl.config(text=f'📁 {folder_name.upper()}')
+            sidebar_close_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+            if os.path.dirname(current_opened_folder) != current_opened_folder:
+                sidebar_parent_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
+            else:
+                sidebar_parent_folder_btn.pack_forget()
 
     def on_tree_open(event): # [Handle tree node expansion]
         item = sidebar_tree.focus()
@@ -4421,6 +4571,11 @@ if __name__ == '__main__': # [Main application execution block]
                 label=tr('menu_unpin_folder' if os.path.abspath(path) in PINNED_FOLDERS else 'menu_pin_folder'),
                 command=lambda selected_path=path: toggle_pinned_folder(selected_path),
             )
+            if os.path.abspath(path) in OPENED_FOLDERS:
+                menu.add_command(
+                    label=tr('menu_close_folder'),
+                    command=lambda selected_path=path: close_folder(folder_path=selected_path),
+                )
         try:
             menu.tk_popup(event.x_root, event.y_root)
         finally:
@@ -4431,6 +4586,7 @@ if __name__ == '__main__': # [Main application execution block]
         return 'break'
 
     sidebar_tree.bind('<<TreeviewOpen>>', on_tree_open)
+    sidebar_tree.bind('<<TreeviewSelect>>', on_tree_select)
     sidebar_tree.bind('<Double-1>', on_tree_double_click)
     sidebar_tree.bind('<Button-2>' if is_macos else '<Button-3>', show_tree_item_context_menu)
 
@@ -4443,20 +4599,12 @@ if __name__ == '__main__': # [Main application execution block]
         if not folder_path or not os.path.isdir(folder_path):
             return
 
+        if folder_path in OPENED_FOLDERS:
+            OPENED_FOLDERS.remove(folder_path)
+        OPENED_FOLDERS.append(folder_path)
         current_opened_folder = folder_path
-        folder_name = os.path.basename(folder_path) or folder_path
-        sidebar_title_lbl.config(text=f"📁 {folder_name.upper()}")
-        sidebar_close_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
-        parent_path = os.path.dirname(folder_path)
-        if parent_path != folder_path:
-            sidebar_parent_folder_btn.pack(side='right', before=sidebar_toggle_btn, fill='y')
-        else:
-            sidebar_parent_folder_btn.pack_forget()
-
-        sidebar_tree.delete(*sidebar_tree.get_children())
-        pin_marker = '📌 ' if folder_path in PINNED_FOLDERS else ''
-        root_node = sidebar_tree.insert('', 'end', text=f"{pin_marker}📂 {folder_name}", values=[folder_path], open=True)
-        populate_tree_node(root_node, folder_path)
+        _refresh_opened_folders(preferred_path=folder_path)
+        save_pinned_docs()
 
         if sidebar_collapsed:
             toggle_sidebar()
@@ -4466,11 +4614,11 @@ if __name__ == '__main__': # [Main application execution block]
         path = os.path.abspath(os.path.expanduser(folder_path))
         if path in PINNED_FOLDERS:
             PINNED_FOLDERS.remove(path)
-            if current_opened_folder:
-                open_folder(current_opened_folder)
         else:
-            PINNED_FOLDERS[:] = [path]
-            open_folder(path)
+            PINNED_FOLDERS.append(path)
+            if path not in OPENED_FOLDERS and os.path.isdir(path):
+                OPENED_FOLDERS.append(path)
+        _refresh_opened_folders(preferred_path=path if path in OPENED_FOLDERS else current_opened_folder)
         save_pinned_docs()
         rebuild_menu()
 
@@ -4700,12 +4848,14 @@ if __name__ == '__main__': # [Main application execution block]
             new_tab()
 
     def restore_pinned_folder():
-        valid_folders = [path for path in PINNED_FOLDERS if os.path.isdir(path)]
-        if valid_folders != PINNED_FOLDERS:
-            PINNED_FOLDERS[:] = valid_folders
-            save_pinned_docs()
-        if valid_folders:
-            open_folder(valid_folders[-1])
+        valid_pinned = [path for path in PINNED_FOLDERS if os.path.isdir(path)]
+        valid_opened = [path for path in OPENED_FOLDERS if os.path.isdir(path)]
+        PINNED_FOLDERS[:] = list(dict.fromkeys(valid_pinned))
+        OPENED_FOLDERS[:] = list(dict.fromkeys(valid_opened + valid_pinned))
+        _refresh_opened_folders(
+            preferred_path=OPENED_FOLDERS[-1] if OPENED_FOLDERS else None,
+        )
+        save_pinned_docs()
 
     def _dialog_unsaved(tab): # [Unsaved changes confirmation dialog]
         result = [None]
@@ -5219,6 +5369,7 @@ if __name__ == '__main__': # [Main application execution block]
         markdown_mode_var = tk.StringVar(value=SETTINGS.get('markdown_mode', 'md'))
         untitled_markdown_var = tk.BooleanVar(value=SETTINGS.get('untitled_markdown', False))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
+        scroll_sensitivity_var = tk.IntVar(value=SETTINGS.get('scroll_sensitivity', 2))
         status_var = tk.BooleanVar(value=SETTINGS['show_status'])
         wcount_var = tk.BooleanVar(value=SETTINGS['show_wordcount'])
         beta_updates_var = tk.BooleanVar(value=SETTINGS.get('notify_beta_updates', False))
@@ -5365,29 +5516,38 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_padding'), 8)
         make_spinbox(p_general, padding_var, 0, 200, row=8)
 
-        row_label(p_general, tr('settings_markdown_mode'), 9)
+        row_label(p_general, tr('settings_scroll_sensitivity'), 9)
+        tk.Scale(
+            p_general, from_=1, to=10, orient='horizontal',
+            variable=scroll_sensitivity_var, showvalue=True,
+            bg=H_BG, fg=FG, troughcolor=TAB_BG,
+            activebackground=ACCENT, highlightthickness=0,
+            length=240, cursor=HAND_CURSOR,
+        ).grid(row=9, column=1, sticky='w', pady=4)
+
+        row_label(p_general, tr('settings_markdown_mode'), 10)
         make_radiogroup(p_general, markdown_mode_var, [
             (tr('markdown_mode_md'), 'md'),
             (tr('markdown_mode_all'), 'all'),
             (tr('markdown_mode_none'), 'none'),
-        ], row=9)
+        ], row=10)
 
-        row_label(p_general, tr('settings_untitled_markdown'), 10)
-        make_toggle(p_general, untitled_markdown_var, row=10)
+        row_label(p_general, tr('settings_untitled_markdown'), 11)
+        make_toggle(p_general, untitled_markdown_var, row=11)
 
-        section_label(p_general, tr('section_interface'), 11)
-        row_label(p_general, tr('settings_show_status'), 13)
-        make_toggle(p_general, status_var, row=13)
+        section_label(p_general, tr('section_interface'), 12)
+        row_label(p_general, tr('settings_show_status'), 14)
+        make_toggle(p_general, status_var, row=14)
 
-        row_label(p_general, tr('settings_show_wordcount'), 14)
-        make_toggle(p_general, wcount_var, row=14)
+        row_label(p_general, tr('settings_show_wordcount'), 15)
+        make_toggle(p_general, wcount_var, row=15)
 
-        row_label(p_general, tr('settings_beta_updates'), 15)
-        make_toggle(p_general, beta_updates_var, row=15)
+        row_label(p_general, tr('settings_beta_updates'), 16)
+        make_toggle(p_general, beta_updates_var, row=16)
 
-        row_label(p_general, tr('settings_win_size'), 16)
+        row_label(p_general, tr('settings_win_size'), 17)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=16, column=1, sticky='w', pady=4)
+        size_f.grid(row=17, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -5907,6 +6067,7 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['markdown_mode'] = markdown_mode_var.get()
             SETTINGS['untitled_markdown'] = untitled_markdown_var.get()
             SETTINGS['padding'] = padding_var.get()
+            SETTINGS['scroll_sensitivity'] = scroll_sensitivity_var.get()
             SETTINGS['show_status'] = status_var.get()
             SETTINGS['show_wordcount'] = wcount_var.get()
             beta_updates_changed = SETTINGS.get('notify_beta_updates', False) != beta_updates_var.get()

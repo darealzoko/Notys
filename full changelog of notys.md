@@ -1,3 +1,10 @@
+# 1.11.0 Beta 1
+
+### Add:
+- Added the possibility to create a new tab by double clicking on an empty space in the tab bar.
+- Added multi-folder support (being able to open and pin multiple folders at once).
+- Added a scroll sensitivity slider to modify the scroll sensitivity independently from the host system.
+
 # 1.10.0
 
 ### Fix:

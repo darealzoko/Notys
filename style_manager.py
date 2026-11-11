@@ -18,6 +18,7 @@ STYLE_ELEMENTS = (
     ('code_block', 'Code Block', '```', 'theme:C_CODE', False, False, False, False),
     ('quote', 'Blockquote', '>', 'theme:C_QUOTE', False, True, False, False),
     ('link', 'Link', '[', 'theme:C_LINK', False, False, True, False),
+    ('tag', 'Tag', '@', 'theme:C_LINK', False, False, False, False),
     ('list', 'Bullet List', '•', 'theme:C_LIST', False, False, False, False),
     ('underline', 'Underline', '-:', 'theme:C_UNDERLINE', False, False, True, False),
     ('strike', 'Strikethrough', '~~', 'theme:C_STRIKE', False, False, False, True),
@@ -40,6 +41,7 @@ THEME_COLOR_PAIRS = {
     'code_block': ('#ff4500', '#DE7316'),
     'quote': ('#228b22', '#6A9955'),
     'link': ('#006400', '#4ec9b0'),
+    'tag': ('#7541A6', '#B89AE0'),
     # The light palette's C_LIST was white, which is invisible on its white background.
     'list': ('#000000', '#ffffff'),
     'underline': ('#000000', '#ffffff'),

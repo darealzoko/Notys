@@ -18,6 +18,7 @@ import urllib.request
 import webbrowser
 from striprtf.striprtf import rtf_to_text
 from style_manager import STYLE_ELEMENTS, StyleManager
+import version
 
 try: # [Handle missing version module or fallback errors]
     import version # [Ensure version.py exists in build path]
@@ -26,8 +27,8 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.11.0.b1' # [Fallback version for the current v1 beta release]
-    APP_COPYRIGHT = 'Copyright by _zoko © 2026' # [Update copyright year/text]
+    APP_VERSION = '1.11.0.b2.5' # [Fallback version for the current v1 beta release]
+    APP_COPYRIGHT = 'Copyright by _zoko © 2026 - 2026 | Open Source Software | Opened to forks and contributions.' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
 is_macos = platform.system() == 'Darwin' # [Add Linux/Windows specific flags]
@@ -1611,6 +1612,131 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
     },
 }
 
+TAG_SEARCH_TRANSLATIONS = {
+    'fr': {
+        'menu_search_tags': 'Rechercher des tags…',
+        'settings_search_subfolders': 'Rechercher les tags dans les sous-dossiers',
+        'tags_title': 'Recherche de tags', 'tags_search': 'Rechercher',
+        'tags_searching': 'Recherche en cours…',
+        'tags_invalid': 'Saisissez un ou plusieurs tags, par ex. @physics @book.',
+        'tags_no_folders': 'Ouvrez un dossier avant de rechercher des tags.',
+        'tags_no_results': 'Aucun fichier correspondant.',
+        'tags_results': '{count} fichier(s) correspondant(s)',
+    },
+    'en': {
+        'menu_search_tags': 'Search Tags…',
+        'settings_search_subfolders': 'Search tags in subfolders',
+        'tags_title': 'Search Tags', 'tags_search': 'Search',
+        'tags_searching': 'Searching…',
+        'tags_invalid': 'Enter one or more tags, such as @physics @book.',
+        'tags_no_folders': 'Open a folder before searching tags.',
+        'tags_no_results': 'No matching files found.',
+        'tags_results': '{count} matching file(s)',
+    },
+    'eo': {
+        'menu_search_tags': 'Serĉi etikedojn…',
+        'settings_search_subfolders': 'Serĉi etikedojn en subdosierujoj',
+        'tags_title': 'Serĉi etikedojn', 'tags_search': 'Serĉi',
+        'tags_searching': 'Serĉante…',
+        'tags_invalid': 'Enigu unu aŭ plurajn etikedojn, ekzemple @physics @book.',
+        'tags_no_folders': 'Malfermu dosierujon antaŭ ol serĉi etikedojn.',
+        'tags_no_results': 'Neniuj kongruaj dosieroj trovitaj.',
+        'tags_results': '{count} kongruaj dosiero(j)',
+    },
+    'es': {
+        'menu_search_tags': 'Buscar etiquetas…',
+        'settings_search_subfolders': 'Buscar etiquetas en subcarpetas',
+        'tags_title': 'Buscar etiquetas', 'tags_search': 'Buscar',
+        'tags_searching': 'Buscando…',
+        'tags_invalid': 'Introduce una o más etiquetas, por ejemplo @physics @book.',
+        'tags_no_folders': 'Abre una carpeta antes de buscar etiquetas.',
+        'tags_no_results': 'No se encontraron archivos coincidentes.',
+        'tags_results': '{count} archivo(s) coincidente(s)',
+    },
+    'pt': {
+        'menu_search_tags': 'Buscar etiquetas…',
+        'settings_search_subfolders': 'Buscar etiquetas nas subpastas',
+        'tags_title': 'Buscar etiquetas', 'tags_search': 'Buscar',
+        'tags_searching': 'Buscando…',
+        'tags_invalid': 'Digite uma ou mais etiquetas, por exemplo @physics @book.',
+        'tags_no_folders': 'Abra uma pasta antes de buscar etiquetas.',
+        'tags_no_results': 'Nenhum arquivo correspondente encontrado.',
+        'tags_results': '{count} arquivo(s) correspondente(s)',
+    },
+    'de': {
+        'menu_search_tags': 'Tags suchen…',
+        'settings_search_subfolders': 'Tags in Unterordnern suchen',
+        'tags_title': 'Tags suchen', 'tags_search': 'Suchen',
+        'tags_searching': 'Suche läuft…',
+        'tags_invalid': 'Gib ein oder mehrere Tags ein, zum Beispiel @physics @book.',
+        'tags_no_folders': 'Öffne einen Ordner, bevor du nach Tags suchst.',
+        'tags_no_results': 'Keine passenden Dateien gefunden.',
+        'tags_results': '{count} passende Datei(en)',
+    },
+    'it': {
+        'menu_search_tags': 'Cerca tag…',
+        'settings_search_subfolders': 'Cerca tag nelle sottocartelle',
+        'tags_title': 'Cerca tag', 'tags_search': 'Cerca',
+        'tags_searching': 'Ricerca in corso…',
+        'tags_invalid': 'Inserisci uno o più tag, ad esempio @physics @book.',
+        'tags_no_folders': 'Apri una cartella prima di cercare i tag.',
+        'tags_no_results': 'Nessun file corrispondente trovato.',
+        'tags_results': '{count} file corrispondenti',
+    },
+    'nl': {
+        'menu_search_tags': 'Tags zoeken…',
+        'settings_search_subfolders': 'Tags in submappen zoeken',
+        'tags_title': 'Tags zoeken', 'tags_search': 'Zoeken',
+        'tags_searching': 'Zoeken…',
+        'tags_invalid': 'Voer een of meer tags in, bijvoorbeeld @physics @book.',
+        'tags_no_folders': 'Open een map voordat je tags zoekt.',
+        'tags_no_results': 'Geen overeenkomende bestanden gevonden.',
+        'tags_results': '{count} overeenkomende bestand(en)',
+    },
+    'ru': {
+        'menu_search_tags': 'Поиск тегов…',
+        'settings_search_subfolders': 'Искать теги во вложенных папках',
+        'tags_title': 'Поиск тегов', 'tags_search': 'Искать',
+        'tags_searching': 'Идёт поиск…',
+        'tags_invalid': 'Введите один или несколько тегов, например @physics @book.',
+        'tags_no_folders': 'Откройте папку, прежде чем искать теги.',
+        'tags_no_results': 'Подходящие файлы не найдены.',
+        'tags_results': 'Подходящих файлов: {count}',
+    },
+    'ja': {
+        'menu_search_tags': 'タグを検索…',
+        'settings_search_subfolders': 'サブフォルダー内のタグも検索',
+        'tags_title': 'タグを検索', 'tags_search': '検索',
+        'tags_searching': '検索中…',
+        'tags_invalid': '@physics @book のように、1つ以上のタグを入力してください。',
+        'tags_no_folders': 'タグを検索する前にフォルダーを開いてください。',
+        'tags_no_results': '一致するファイルはありません。',
+        'tags_results': '一致するファイル: {count} 件',
+    },
+    'zh': {
+        'menu_search_tags': '搜索标签…',
+        'settings_search_subfolders': '搜索子文件夹中的标签',
+        'tags_title': '搜索标签', 'tags_search': '搜索',
+        'tags_searching': '正在搜索…',
+        'tags_invalid': '请输入一个或多个标签，例如 @physics @book。',
+        'tags_no_folders': '请先打开文件夹，再搜索标签。',
+        'tags_no_results': '未找到匹配的文件。',
+        'tags_results': '匹配文件：{count} 个',
+    },
+    'ko': {
+        'menu_search_tags': '태그 검색…',
+        'settings_search_subfolders': '하위 폴더의 태그 검색',
+        'tags_title': '태그 검색', 'tags_search': '검색',
+        'tags_searching': '검색 중…',
+        'tags_invalid': '@physics @book처럼 태그를 하나 이상 입력하세요.',
+        'tags_no_folders': '태그를 검색하기 전에 폴더를 여세요.',
+        'tags_no_results': '일치하는 파일이 없습니다.',
+        'tags_results': '일치하는 파일 {count}개',
+    },
+}
+for language, translations in TAG_SEARCH_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
 TREE_CONTEXT_TRANSLATIONS = {
     'fr': {
         'tree_open_new_window': 'Ouvrir dans une nouvelle fenêtre',
@@ -1981,6 +2107,14 @@ STYLE_TRANSLATIONS = {
 for language, translations in STYLE_TRANSLATIONS.items():
     TRANSLATIONS[language].update(translations)
 
+STYLE_TAG_TRANSLATIONS = {
+    'fr': 'Étiquette', 'en': 'Tag', 'eo': 'Etikedo', 'es': 'Etiqueta',
+    'pt': 'Etiqueta', 'de': 'Tag', 'it': 'Tag', 'nl': 'Tag',
+    'ru': 'Тег', 'ja': 'タグ', 'zh': '标签', 'ko': '태그',
+}
+for language, label in STYLE_TAG_TRANSLATIONS.items():
+    TRANSLATIONS[language]['style_tag'] = label
+
 # Update-status text is kept separately so every supported language gets the same keys.
 UPDATE_TRANSLATIONS = {
     'en': {
@@ -2109,6 +2243,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'untitled_markdown': False, # [Enable Markdown formatting in untitled tabs]
     'padding': 40, # [Default text widget padding]
     'scroll_sensitivity': 2, # [Scroll sensitivity level from 1 to 10]
+    'search_tags_subfolders': True,
     'show_status': True, # [Show status bar by default]
     'show_wordcount': True, # [Show word count by default]
     'notify_beta_updates': False, # [Include prerelease/beta releases in update notifications]
@@ -2144,6 +2279,52 @@ def _markdown_content_for_file(content, path):
     if _uses_markdown(path):
         return re.sub(r'(?m)^([ \t]*)•(?=\s)', r'\1-', content)
     return content
+
+def find_tagged_files(folder_paths, tags, recursive=True):
+    """Return supported text documents containing every requested @tag."""
+    tag_patterns = [
+        re.compile(r'(?<![\w])' + re.escape(tag) + r'(?![\w-])', re.IGNORECASE)
+        for tag in tags
+    ]
+    if not tag_patterns:
+        return []
+
+    matches = []
+    visited = set()
+    supported_extensions = {'.md', '.markdown', '.txt', '.rtf'}
+
+    def scan_file(path):
+        absolute_path = os.path.abspath(path)
+        if absolute_path in visited:
+            return
+        visited.add(absolute_path)
+        if os.path.splitext(path)[1].lower() not in supported_extensions:
+            return
+        try:
+            with open(path, 'r', encoding='utf-8', errors='replace') as source:
+                content = source.read()
+        except OSError:
+            return
+        if all(pattern.search(content) for pattern in tag_patterns):
+            matches.append(absolute_path)
+
+    for folder_path in dict.fromkeys(os.path.abspath(path) for path in folder_paths):
+        if not os.path.isdir(folder_path):
+            continue
+        if recursive:
+            for root, directories, filenames in os.walk(folder_path):
+                directories[:] = sorted(name for name in directories if not name.startswith('.'))
+                for filename in sorted(filenames):
+                    if not filename.startswith('.'):
+                        scan_file(os.path.join(root, filename))
+        else:
+            try:
+                for entry in os.scandir(folder_path):
+                    if entry.is_file(follow_symlinks=False) and not entry.name.startswith('.'):
+                        scan_file(entry.path)
+            except OSError:
+                continue
+    return sorted(matches, key=str.casefold)
 
 GITHUB_RELEASES_API = 'https://api.github.com/repos/darealzoko/Notys/releases?per_page=100'
 GITHUB_RELEASES_URL = 'https://github.com/darealzoko/Notys/releases/'
@@ -2692,7 +2873,7 @@ COLOR_NAMES = { # [Named color map for custom syntax highlighting]
 
 # MAINTENANCE: syntax_delimiter is separate from content tags so Markdown punctuation
 # stays neutral while the associated text keeps its existing syntax color.
-ALL_TAGS = ('body_style', 'syntax_delimiter', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code', 'code_block', 'bold', 'italic', 'underline', 'strike', 'list', 'quote', 'link', 'hr') # [Tuple of all markdown text tags]
+ALL_TAGS = ('body_style', 'syntax_delimiter', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code', 'code_block', 'bold', 'italic', 'underline', 'strike', 'list', 'quote', 'link', 'tag', 'hr') # [Tuple of all markdown text tags]
 
 def _style_color(element):
     style = ACTIVE_STYLE['elements'][element]
@@ -2921,6 +3102,7 @@ if __name__ == '__main__': # [Main application execution block]
                 'bold': FONT_BOLD, 'italic': FONT_ITALIC,
                 'inline_code': FONT_CODE, 'code_block': FONT_CODE,
                 'quote': ('Andale Mono', 12, 'italic'), 'link': FONT_BODY,
+                'tag': (SETTINGS['font_family'], max(7, int(SETTINGS['font_size'] * 0.85))),
                 'list': FONT_BODY, 'underline': FONT_BODY, 'strike': FONT_BODY,
                 'hr': FONT_BODY,
             }
@@ -2944,6 +3126,7 @@ if __name__ == '__main__': # [Main application execution block]
                 )
             for inline_tag in ('bold', 'italic', 'code', 'underline', 'strike', 'link'):
                 t.tag_raise(inline_tag, 'list')
+            t.tag_raise('tag')
             # Delimiters are neutral grey; hidden-tag priority still controls cursor-aware elision.
             self.text.tag_configure('syntax_delimiter', foreground=('#777777' if current_theme == 'light' else '#888888'), font=self._scaled_font(FONT_BODY))
         def _handle_tab(self, event): # [Handle tab indentation]
@@ -3266,6 +3449,17 @@ if __name__ == '__main__': # [Main application execution block]
 
         def _on_cursor_move(self, event=None): # [Cursor movement event handler]
             self._apply_symbol_visibility()
+            try:
+                self.text.after_idle(self._restore_text_cursor)
+            except tk.TclError:
+                pass
+
+        def _restore_text_cursor(self):
+            try:
+                if self.text.winfo_exists():
+                    self.text.configure(cursor='xterm')
+            except tk.TclError:
+                pass
 
         def schedule_highlight(self): # [Debounce syntax highlighting]
             if self.highlight_job:
@@ -3403,6 +3597,11 @@ if __name__ == '__main__': # [Main application execution block]
                     if cs >= bs and ce <= be:
                         return True
                 return False
+
+            tag_marker = re.escape(ACTIVE_STYLE['elements']['tag']['marker'])
+            for match in re.finditer(r'(?<![\w])' + tag_marker + r'[\w-]+(?![\w-])', content, re.UNICODE):
+                if not in_code_block(match.start(), match.end()):
+                    t.tag_add('tag', f'1.0+{match.start()}c', f'1.0+{match.end()}c')
 
             # code
             inline_marker = re.escape(ACTIVE_STYLE['elements']['inline_code']['marker'])
@@ -4229,6 +4428,102 @@ if __name__ == '__main__': # [Main application execution block]
         target_pos = f"1.0+{target_offset}c"
         t.text.mark_set('insert', target_pos)
         t.text.see(target_pos)
+
+    def show_tag_search(event=None):
+        dlg = tk.Toplevel(win)
+        dlg.title(tr('tags_title'))
+        dlg.geometry('760x460')
+        dlg.minsize(520, 300)
+        dlg.configure(bg=STATUS_BG)
+        dlg.transient(win)
+
+        top = tk.Frame(dlg, bg=STATUS_BG, padx=12, pady=10)
+        top.pack(fill='x')
+        query_var = tk.StringVar()
+        query_entry = tk.Entry(
+            top, textvariable=query_var, bg=TAB_BG, fg=FG,
+            insertbackground=FG, font=('Consolas', 11), relief='flat',
+        )
+        query_entry.pack(side='left', fill='x', expand=True, padx=(0, 8), ipady=5)
+
+        results_frame = tk.Frame(dlg, bg=STATUS_BG, padx=12)
+        results_frame.pack(fill='both', expand=True)
+        results = ttk.Treeview(results_frame, show='tree', selectmode='browse')
+        results_scrollbar = ttk.Scrollbar(results_frame, orient='vertical', command=results.yview)
+        results.configure(yscrollcommand=results_scrollbar.set)
+        results.pack(side='left', fill='both', expand=True)
+        results_scrollbar.pack(side='right', fill='y')
+
+        status = tk.Label(
+            dlg, text='', bg=STATUS_BG, fg=STATUS_FG,
+            font=('Consolas', 10), anchor='w', padx=12, pady=8,
+        )
+        status.pack(fill='x')
+
+        def open_selected_result(event=None):
+            selection = results.selection()
+            if selection:
+                path = results.item(selection[0], 'values')[0]
+                _open_paths([path])
+            return 'break'
+
+        results.bind('<Double-1>', open_selected_result)
+
+        def start_tag_search(event=None):
+            query = query_var.get().strip()
+            tags = re.findall(r'@[\w-]+', query, re.UNICODE)
+            remainder = re.sub(r'@[\w-]+|[\s,;]+', '', query, flags=re.UNICODE)
+            if not tags or remainder:
+                status.config(text=tr('tags_invalid'))
+                return 'break'
+            folders = [path for path in OPENED_FOLDERS if os.path.isdir(path)]
+            if not folders:
+                status.config(text=tr('tags_no_folders'))
+                return 'break'
+
+            for item in results.get_children():
+                results.delete(item)
+            status.config(text=tr('tags_searching'))
+            search_button.config(state='disabled')
+            result_queue = queue.Queue()
+            recursive = bool(SETTINGS.get('search_tags_subfolders', True))
+
+            def worker():
+                result_queue.put(find_tagged_files(folders, tags, recursive=recursive))
+
+            threading.Thread(target=worker, name='NotysTagSearch', daemon=True).start()
+
+            def poll_results():
+                try:
+                    if not dlg.winfo_exists():
+                        return
+                    matches = result_queue.get_nowait()
+                except queue.Empty:
+                    dlg.after(100, poll_results)
+                    return
+                except tk.TclError:
+                    return
+
+                search_button.config(state='normal')
+                for path in matches:
+                    results.insert('', 'end', text=path, values=(path,))
+                status.config(
+                    text=tr('tags_results', count=len(matches)) if matches else tr('tags_no_results')
+                )
+
+            dlg.after(100, poll_results)
+            return 'break'
+
+        search_button = tk.Button(
+            top, text=tr('tags_search'), command=start_tag_search,
+            bg=TAB_BG, fg=FG, activebackground=SELECT_BG,
+            activeforeground=FG, font=('Consolas', 10),
+            relief='flat', padx=12, pady=4, cursor=HAND_CURSOR,
+        )
+        search_button.pack(side='right')
+        query_entry.bind('<Return>', start_tag_search)
+        query_entry.focus_set()
+        return 'break'
 
     # ══════════════════════════════════════════════════════════════════════════════
     # Main Work Area & Folder Sidebar Management
@@ -5098,7 +5393,7 @@ if __name__ == '__main__': # [Main application execution block]
     def show_about(): # [Show about dialog]
         messagebox.showinfo(
             tr('menu_about'),
-            f"{APP_NAME} v{APP_VERSION}\n{APP_COPYRIGHT}\n\n"
+            f"{version.APP_NAME} v{version.SHORT_VERSION} ({version.VERSION})\n{version.COPYRIGHT}\n\n" # changed for a more complete versioning about section for non-darwin systems
         )
 
     def new_window(event=None, path=None): # [Open new window instance shortcut]
@@ -5134,6 +5429,7 @@ if __name__ == '__main__': # [Main application execution block]
         'copy': {'cmd': lambda e=None: current_tab() and current_tab().text.event_generate('<<Copy>>'), 'disp': f"{mod_display}C", 'keys': ['<Command-c>', '<Command-C>'] if is_macos else ['<Control-c>', '<Control-C>']},
         'paste': {'cmd': lambda e=None: current_tab() and current_tab().text.event_generate('<<Paste>>'), 'disp': f"{mod_display}V", 'keys': ['<Command-v>', '<Command-V>'] if is_macos else ['<Control-v>', '<Control-V>']},
         'find': {'cmd': lambda e=None: show_find(), 'disp': f"{mod_display}F", 'keys': ['<Command-f>', '<Command-F>'] if is_macos else ['<Control-f>', '<Control-F>']},
+        'search_tags': {'cmd': lambda e=None: show_tag_search(), 'disp': f"{mod_display}Shift+K", 'keys': ['<Command-Shift-k>', '<Command-Shift-K>'] if is_macos else ['<Control-Shift-k>', '<Control-Shift-K>']},
         'settings': {'cmd': lambda e=None: open_settings(), 'disp': f"{mod_display},", 'keys': ['<Command-comma>'] if is_macos else ['<Control-comma>']},
         'open_in_finder': {'cmd': lambda e=None: open_in_finder(), 'disp': f"{mod_display}Shift+F", 'keys': ['<Command-Shift-F>', '<Command-Shift-f>'] if is_macos else ['<Control-Shift-F>', '<Control-Shift-f>']},
         'toggle_sidebar': {'cmd': lambda e=None: toggle_sidebar(), 'disp': f"{mod_display}Shift+D", 'keys': ['<Command-Shift-D>', '<Command-Shift-d>'] if is_macos else ['<Control-Shift-D>', '<Control-Shift-d>']},
@@ -5260,6 +5556,7 @@ if __name__ == '__main__': # [Main application execution block]
         edit_menu.add_command(label=tr('menu_insert_time'), command=lambda: insert_timestamp('time'), accelerator=SHORTCUTS['insert_time']['disp'])
         edit_menu.add_separator()
         edit_menu.add_command(label=tr('menu_find'), command=show_find, accelerator=SHORTCUTS['find']['disp'])
+        edit_menu.add_command(label=tr('menu_search_tags'), command=show_tag_search, accelerator=SHORTCUTS['search_tags']['disp'])
         menubar.add_cascade(label=tr('menu_edit'), menu=edit_menu)
 
         # Keep formatting commands centralized in SHORTCUTS, like the Edit menu.
@@ -5370,6 +5667,7 @@ if __name__ == '__main__': # [Main application execution block]
         untitled_markdown_var = tk.BooleanVar(value=SETTINGS.get('untitled_markdown', False))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         scroll_sensitivity_var = tk.IntVar(value=SETTINGS.get('scroll_sensitivity', 2))
+        tags_subfolders_var = tk.BooleanVar(value=SETTINGS.get('search_tags_subfolders', True))
         status_var = tk.BooleanVar(value=SETTINGS['show_status'])
         wcount_var = tk.BooleanVar(value=SETTINGS['show_wordcount'])
         beta_updates_var = tk.BooleanVar(value=SETTINGS.get('notify_beta_updates', False))
@@ -5535,19 +5833,22 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_untitled_markdown'), 11)
         make_toggle(p_general, untitled_markdown_var, row=11)
 
-        section_label(p_general, tr('section_interface'), 12)
-        row_label(p_general, tr('settings_show_status'), 14)
-        make_toggle(p_general, status_var, row=14)
+        row_label(p_general, tr('settings_search_subfolders'), 12)
+        make_toggle(p_general, tags_subfolders_var, row=12)
 
-        row_label(p_general, tr('settings_show_wordcount'), 15)
-        make_toggle(p_general, wcount_var, row=15)
+        section_label(p_general, tr('section_interface'), 13)
+        row_label(p_general, tr('settings_show_status'), 15)
+        make_toggle(p_general, status_var, row=15)
 
-        row_label(p_general, tr('settings_beta_updates'), 16)
-        make_toggle(p_general, beta_updates_var, row=16)
+        row_label(p_general, tr('settings_show_wordcount'), 16)
+        make_toggle(p_general, wcount_var, row=16)
 
-        row_label(p_general, tr('settings_win_size'), 17)
+        row_label(p_general, tr('settings_beta_updates'), 17)
+        make_toggle(p_general, beta_updates_var, row=17)
+
+        row_label(p_general, tr('settings_win_size'), 18)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=17, column=1, sticky='w', pady=4)
+        size_f.grid(row=18, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -6068,6 +6369,7 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['untitled_markdown'] = untitled_markdown_var.get()
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['scroll_sensitivity'] = scroll_sensitivity_var.get()
+            SETTINGS['search_tags_subfolders'] = tags_subfolders_var.get()
             SETTINGS['show_status'] = status_var.get()
             SETTINGS['show_wordcount'] = wcount_var.get()
             beta_updates_changed = SETTINGS.get('notify_beta_updates', False) != beta_updates_var.get()

@@ -27,7 +27,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.11.0.b2.5' # [Fallback version for the current v1 beta release]
+    APP_VERSION = '1.11.0.b3.5' # [Fallback version for the current v1 beta release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026 - 2026 | Open Source Software | Opened to forks and contributions.' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -146,6 +146,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Marges latérales", # [Translate padding label]
         'settings_scroll_sensitivity': "Sensibilité du défilement",
         'settings_markdown_mode': 'Syntaxe Markdown',
+        'settings_untitled_markdown': 'Formater les onglets sans titre en Markdown',
+        'settings_create_blank_tab_startup': 'Créer un nouvel onglet vide au démarrage',
         'markdown_mode_md': 'Fichiers Markdown (.md, .markdown)',
         'markdown_mode_all': 'Tous les fichiers',
         'markdown_mode_none': 'Aucun',
@@ -281,6 +283,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'markdown_mode_all': 'All files',
         'markdown_mode_none': 'None',
         'settings_untitled_markdown': 'Format untitled tabs with Markdown',
+        'settings_create_blank_tab_startup': 'Create a blank tab on startup',
         'tree_open_new_window': 'Open in New Window',
         'tree_open_new_tab': 'Open in New Tab',
         'tree_open_default_app': 'Open in Default App',
@@ -411,6 +414,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Flankaj marĝenoj", # [Padding label]
         'settings_scroll_sensitivity': "Ruluma sentemo",
         'settings_markdown_mode': 'Markdown-sintakso',
+        'settings_untitled_markdown': 'Formati sentitolajn langetojn per Markdown',
+        'settings_create_blank_tab_startup': 'Krei novan malplenan langeton ĉe starto',
         'markdown_mode_md': 'Markdown-dosieroj (.md, .markdown)',
         'markdown_mode_all': 'Ĉiuj dosieroj',
         'markdown_mode_none': 'Neniu',
@@ -543,6 +548,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Márgenes laterales", # [Padding label]
         'settings_scroll_sensitivity': "Sensibilidad de desplazamiento",
         'settings_markdown_mode': 'Sintaxis Markdown',
+        'settings_untitled_markdown': 'Formatear pestañas sin título con Markdown',
+        'settings_create_blank_tab_startup': 'Crear una pestaña vacía al iniciar',
         'markdown_mode_md': 'Archivos Markdown (.md, .markdown)',
         'markdown_mode_all': 'Todos los archivos',
         'markdown_mode_none': 'Ninguno',
@@ -669,6 +676,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Margens laterais",
         'settings_scroll_sensitivity': "Sensibilidade de rolagem",
         'settings_markdown_mode': 'Sintaxe Markdown',
+        'settings_untitled_markdown': 'Formatar abas sem título com Markdown',
+        'settings_create_blank_tab_startup': 'Criar uma nova aba em branco ao iniciar',
         'markdown_mode_md': 'Arquivos Markdown (.md, .markdown)',
         'markdown_mode_all': 'Todos os arquivos',
         'markdown_mode_none': 'Nenhum',
@@ -795,6 +804,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Seitenabstände",
         'settings_scroll_sensitivity': "Scroll-Empfindlichkeit",
         'settings_markdown_mode': 'Markdown-Syntax',
+        'settings_untitled_markdown': 'Unbenannte Tabs mit Markdown formatieren',
+        'settings_create_blank_tab_startup': 'Beim Start einen neuen leeren Tab erstellen',
         'markdown_mode_md': 'Markdown-Dateien (.md, .markdown)',
         'markdown_mode_all': 'Alle Dateien',
         'markdown_mode_none': 'Keine',
@@ -920,6 +931,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Margini laterali",
         'settings_scroll_sensitivity': "Sensibilità di scorrimento",
         'settings_markdown_mode': 'Sintassi Markdown',
+        'settings_untitled_markdown': 'Formatta le schede senza titolo con Markdown',
+        'settings_create_blank_tab_startup': 'Crea una nuova scheda vuota all’avvio',
         'markdown_mode_md': 'File Markdown (.md, .markdown)',
         'markdown_mode_all': 'Tutti i file',
         'markdown_mode_none': 'Nessuno',
@@ -1045,6 +1058,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Zijmarges",
         'settings_scroll_sensitivity': "Scrollgevoeligheid",
         'settings_markdown_mode': 'Markdown-syntaxis',
+        'settings_untitled_markdown': 'Naamloze tabbladen opmaken met Markdown',
+        'settings_create_blank_tab_startup': 'Bij het opstarten een nieuw leeg tabblad maken',
         'markdown_mode_md': 'Markdown-bestanden (.md, .markdown)',
         'markdown_mode_all': 'Alle bestanden',
         'markdown_mode_none': 'Geen',
@@ -1171,6 +1186,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "Боковые поля",
         'settings_scroll_sensitivity': "Чувствительность прокрутки",
         'settings_markdown_mode': 'Синтаксис Markdown',
+        'settings_untitled_markdown': 'Форматировать безымянные вкладки в Markdown',
+        'settings_create_blank_tab_startup': 'Создавать новую пустую вкладку при запуске',
         'markdown_mode_md': 'Файлы Markdown (.md, .markdown)',
         'markdown_mode_all': 'Все файлы',
         'markdown_mode_none': 'Нет',
@@ -1296,6 +1313,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "側面の余白",
         'settings_scroll_sensitivity': "スクロール感度",
         'settings_markdown_mode': 'Markdown 構文',
+        'settings_untitled_markdown': '無題のタブを Markdown 形式で表示',
+        'settings_create_blank_tab_startup': '起動時に新しい空のタブを作成',
         'markdown_mode_md': 'Markdown ファイル (.md, .markdown)',
         'markdown_mode_all': 'すべてのファイル',
         'markdown_mode_none': 'なし',
@@ -1421,6 +1440,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "侧边距",
         'settings_scroll_sensitivity': "滚动灵敏度",
         'settings_markdown_mode': 'Markdown 语法',
+        'settings_untitled_markdown': '将未命名标签页格式化为 Markdown',
+        'settings_create_blank_tab_startup': '启动时新建空白标签页',
         'markdown_mode_md': 'Markdown 文件 (.md, .markdown)',
         'markdown_mode_all': '所有文件',
         'markdown_mode_none': '无',
@@ -1546,6 +1567,8 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_padding': "측면 여백",
         'settings_scroll_sensitivity': "스크롤 감도",
         'settings_markdown_mode': 'Markdown 구문',
+        'settings_untitled_markdown': '제목 없는 탭을 Markdown으로 서식 지정',
+        'settings_create_blank_tab_startup': '시작할 때 새 빈 탭 만들기',
         'markdown_mode_md': 'Markdown 파일 (.md, .markdown)',
         'markdown_mode_all': '모든 파일',
         'markdown_mode_none': '없음',
@@ -1802,19 +1825,36 @@ TREE_CONTEXT_TRANSLATIONS = {
 for language, translations in TREE_CONTEXT_TRANSLATIONS.items():
     TRANSLATIONS[language].update(translations)
 
+TAB_CONTEXT_TRANSLATIONS = {
+    'fr': {'tab_new_in_new_window': 'Ouvrir un nouvel onglet dans une nouvelle fenêtre', 'tab_new_in_current_window': 'Ouvrir un nouvel onglet dans la fenêtre actuelle'},
+    'en': {'tab_new_in_new_window': 'Open a new tab in a new window', 'tab_new_in_current_window': 'Open a new tab in current window'},
+    'eo': {'tab_new_in_new_window': 'Malfermi novan langeton en nova fenestro', 'tab_new_in_current_window': 'Malfermi novan langeton en la nuna fenestro'},
+    'es': {'tab_new_in_new_window': 'Abrir una pestaña nueva en una ventana nueva', 'tab_new_in_current_window': 'Abrir una pestaña nueva en la ventana actual'},
+    'pt': {'tab_new_in_new_window': 'Abrir uma nova aba em uma nova janela', 'tab_new_in_current_window': 'Abrir uma nova aba na janela atual'},
+    'de': {'tab_new_in_new_window': 'Neuen Tab in einem neuen Fenster öffnen', 'tab_new_in_current_window': 'Neuen Tab im aktuellen Fenster öffnen'},
+    'it': {'tab_new_in_new_window': 'Apri una nuova scheda in una nuova finestra', 'tab_new_in_current_window': 'Apri una nuova scheda nella finestra attuale'},
+    'nl': {'tab_new_in_new_window': 'Nieuw tabblad openen in een nieuw venster', 'tab_new_in_current_window': 'Nieuw tabblad openen in het huidige venster'},
+    'ru': {'tab_new_in_new_window': 'Открыть новую вкладку в новом окне', 'tab_new_in_current_window': 'Открыть новую вкладку в текущем окне'},
+    'ja': {'tab_new_in_new_window': '新しいウィンドウで新しいタブを開く', 'tab_new_in_current_window': '現在のウィンドウで新しいタブを開く'},
+    'zh': {'tab_new_in_new_window': '在新窗口中打开新标签页', 'tab_new_in_current_window': '在当前窗口中打开新标签页'},
+    'ko': {'tab_new_in_new_window': '새 창에서 새 탭 열기', 'tab_new_in_current_window': '현재 창에서 새 탭 열기'},
+}
+for language, translations in TAB_CONTEXT_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
 FOLDER_PIN_TRANSLATIONS = {
-    'fr': {'menu_pin_folder': 'Épingler le dossier', 'menu_unpin_folder': 'Désépingler le dossier', 'menu_pin_current_folder': 'Épingler le dossier ouvert', 'menu_unpin_current_folder': 'Désépingler le dossier ouvert'},
+    'fr': {'menu_pin_folder': 'Épingler le dossier', 'menu_unpin_folder': 'Désépingler le dossier', 'menu_pin_current_folder': 'Épingler le dossier ouvert', 'menu_unpin_current_folder': 'Désépingler le dossier ouvert', 'menu_close_folder': 'Fermer le dossier'},
     'en': {'menu_pin_folder': 'Pin Folder', 'menu_unpin_folder': 'Unpin Folder', 'menu_pin_current_folder': 'Pin Current Folder', 'menu_unpin_current_folder': 'Unpin Current Folder', 'menu_close_folder': 'Close Folder'},
-    'eo': {'menu_pin_folder': 'Alpingli dosierujon', 'menu_unpin_folder': 'Malalpingli dosierujon', 'menu_pin_current_folder': 'Alpingli la nunan dosierujon', 'menu_unpin_current_folder': 'Malalpingli la nunan dosierujon'},
-    'es': {'menu_pin_folder': 'Anclar carpeta', 'menu_unpin_folder': 'Desanclar carpeta', 'menu_pin_current_folder': 'Anclar carpeta actual', 'menu_unpin_current_folder': 'Desanclar carpeta actual'},
-    'pt': {'menu_pin_folder': 'Fixar pasta', 'menu_unpin_folder': 'Desafixar pasta', 'menu_pin_current_folder': 'Fixar pasta atual', 'menu_unpin_current_folder': 'Desafixar pasta atual'},
-    'de': {'menu_pin_folder': 'Ordner anheften', 'menu_unpin_folder': 'Ordner lösen', 'menu_pin_current_folder': 'Aktuellen Ordner anheften', 'menu_unpin_current_folder': 'Aktuellen Ordner lösen'},
-    'it': {'menu_pin_folder': 'Fissa cartella', 'menu_unpin_folder': 'Rimuovi fissaggio cartella', 'menu_pin_current_folder': 'Fissa cartella attuale', 'menu_unpin_current_folder': 'Rimuovi fissaggio cartella attuale'},
-    'nl': {'menu_pin_folder': 'Map vastzetten', 'menu_unpin_folder': 'Map losmaken', 'menu_pin_current_folder': 'Huidige map vastzetten', 'menu_unpin_current_folder': 'Huidige map losmaken'},
-    'ru': {'menu_pin_folder': 'Закрепить папку', 'menu_unpin_folder': 'Открепить папку', 'menu_pin_current_folder': 'Закрепить текущую папку', 'menu_unpin_current_folder': 'Открепить текущую папку'},
-    'ja': {'menu_pin_folder': 'フォルダーを固定', 'menu_unpin_folder': 'フォルダーの固定を解除', 'menu_pin_current_folder': '現在のフォルダーを固定', 'menu_unpin_current_folder': '現在のフォルダーの固定を解除'},
-    'zh': {'menu_pin_folder': '固定文件夹', 'menu_unpin_folder': '取消固定文件夹', 'menu_pin_current_folder': '固定当前文件夹', 'menu_unpin_current_folder': '取消固定当前文件夹'},
-    'ko': {'menu_pin_folder': '폴더 고정', 'menu_unpin_folder': '폴더 고정 해제', 'menu_pin_current_folder': '현재 폴더 고정', 'menu_unpin_current_folder': '현재 폴더 고정 해제'},
+    'eo': {'menu_pin_folder': 'Alpingli dosierujon', 'menu_unpin_folder': 'Malalpingli dosierujon', 'menu_pin_current_folder': 'Alpingli la nunan dosierujon', 'menu_unpin_current_folder': 'Malalpingli la nunan dosierujon', 'menu_close_folder': 'Fermi dosierujon'},
+    'es': {'menu_pin_folder': 'Anclar carpeta', 'menu_unpin_folder': 'Desanclar carpeta', 'menu_pin_current_folder': 'Anclar carpeta actual', 'menu_unpin_current_folder': 'Desanclar carpeta actual', 'menu_close_folder': 'Cerrar carpeta'},
+    'pt': {'menu_pin_folder': 'Fixar pasta', 'menu_unpin_folder': 'Desafixar pasta', 'menu_pin_current_folder': 'Fixar pasta atual', 'menu_unpin_current_folder': 'Desafixar pasta atual', 'menu_close_folder': 'Fechar pasta'},
+    'de': {'menu_pin_folder': 'Ordner anheften', 'menu_unpin_folder': 'Ordner lösen', 'menu_pin_current_folder': 'Aktuellen Ordner anheften', 'menu_unpin_current_folder': 'Aktuellen Ordner lösen', 'menu_close_folder': 'Ordner schließen'},
+    'it': {'menu_pin_folder': 'Fissa cartella', 'menu_unpin_folder': 'Rimuovi fissaggio cartella', 'menu_pin_current_folder': 'Fissa cartella attuale', 'menu_unpin_current_folder': 'Rimuovi fissaggio cartella attuale', 'menu_close_folder': 'Chiudi cartella'},
+    'nl': {'menu_pin_folder': 'Map vastzetten', 'menu_unpin_folder': 'Map losmaken', 'menu_pin_current_folder': 'Huidige map vastzetten', 'menu_unpin_current_folder': 'Huidige map losmaken', 'menu_close_folder': 'Map sluiten'},
+    'ru': {'menu_pin_folder': 'Закрепить папку', 'menu_unpin_folder': 'Открепить папку', 'menu_pin_current_folder': 'Закрепить текущую папку', 'menu_unpin_current_folder': 'Открепить текущую папку', 'menu_close_folder': 'Закрыть папку'},
+    'ja': {'menu_pin_folder': 'フォルダーを固定', 'menu_unpin_folder': 'フォルダーの固定を解除', 'menu_pin_current_folder': '現在のフォルダーを固定', 'menu_unpin_current_folder': '現在のフォルダーの固定を解除', 'menu_close_folder': 'フォルダーを閉じる'},
+    'zh': {'menu_pin_folder': '固定文件夹', 'menu_unpin_folder': '取消固定文件夹', 'menu_pin_current_folder': '固定当前文件夹', 'menu_unpin_current_folder': '取消固定当前文件夹', 'menu_close_folder': '关闭文件夹'},
+    'ko': {'menu_pin_folder': '폴더 고정', 'menu_unpin_folder': '폴더 고정 해제', 'menu_pin_current_folder': '현재 폴더 고정', 'menu_unpin_current_folder': '현재 폴더 고정 해제', 'menu_close_folder': '폴더 닫기'},
 }
 for language, translations in FOLDER_PIN_TRANSLATIONS.items():
     TRANSLATIONS[language].update(translations)
@@ -2241,6 +2281,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'line_wrap': 'word', # [Default line wrapping mode]
     'markdown_mode': 'md', # [Markdown syntax for .md/.markdown, all files, or none]
     'untitled_markdown': False, # [Enable Markdown formatting in untitled tabs]
+    'create_blank_tab_on_startup': True, # [Create a blank tab after restoring pinned tabs]
     'padding': 40, # [Default text widget padding]
     'scroll_sensitivity': 2, # [Scroll sensitivity level from 1 to 10]
     'search_tags_subfolders': True,
@@ -2628,6 +2669,11 @@ def save_settings_to_disk(): # [Save settings and preferences to disk]
         os.replace(tmp, path) # [Replace target file atomically]
     except Exception as e: # [Catch write exceptions]
         print(f"[Settings] erreur en sauvegardant {path}: {e}") # [Log error]
+
+def _ensure_blank_tab_enabled_without_pins():
+    if not PINNED_DOCS and not SETTINGS.get('create_blank_tab_on_startup', True):
+        SETTINGS['create_blank_tab_on_startup'] = True
+        save_settings_to_disk()
 
 def load_settings_from_disk(): # [Load settings from disk]
     """Loads settings, language, and theme preferences from settings.json."""
@@ -3863,6 +3909,7 @@ if __name__ == '__main__': # [Main application execution block]
                 font=FONT_TAB, cursor=HAND_CURSOR, padx=6
             )
             self.btn_new.bind('<Button-1>', lambda e: new_tab())
+            self.btn_new.bind('<Button-2>' if is_macos else '<Button-3>', self._show_new_tab_context_menu)
 
             self.theme_button = tk.Label(
                 self.controls_frame, image=self.dark_icon, bg=TAB_BG, fg=TAB_FG,
@@ -3903,6 +3950,28 @@ if __name__ == '__main__': # [Main application execution block]
 
         def _new_tab_on_empty_double_click(self, event):
             new_tab()
+            return 'break'
+
+        def _show_new_tab_context_menu(self, event):
+            menu = tk.Menu(
+                win, tearoff=0, bg=STATUS_BG, fg=FG,
+                activebackground=SELECT_BG, activeforeground=FG,
+            )
+            menu.add_command(
+                label=tr('tab_new_in_new_window'),
+                command=lambda: new_window(),
+            )
+            menu.add_command(
+                label=tr('tab_new_in_current_window'),
+                command=lambda: new_tab(),
+            )
+            try:
+                menu.tk_popup(event.x_root, event.y_root)
+            finally:
+                try:
+                    menu.grab_release()
+                except tk.TclError:
+                    pass
             return 'break'
 
         def reorder_tab_frames(self): # [Reorder tab widgets after drag]
@@ -4084,6 +4153,7 @@ if __name__ == '__main__': # [Main application execution block]
                 PINNED_DOCS.append(path)
             elif not tab.is_pinned and path in PINNED_DOCS:
                 PINNED_DOCS.remove(path)
+            _ensure_blank_tab_enabled_without_pins()
             save_pinned_docs()
             self.refresh()
             return 'break'
@@ -5139,7 +5209,8 @@ if __name__ == '__main__': # [Main application execution block]
         if restored_paths != PINNED_DOCS:
             PINNED_DOCS[:] = restored_paths
             save_pinned_docs()
-        if not restored_paths:
+        _ensure_blank_tab_enabled_without_pins()
+        if SETTINGS.get('create_blank_tab_on_startup', True):
             new_tab()
 
     def restore_pinned_folder():
@@ -5622,6 +5693,8 @@ if __name__ == '__main__': # [Main application execution block]
             except Exception:
                 win._settings_dlg = None
 
+        _ensure_blank_tab_enabled_without_pins()
+
         dlg = tk.Toplevel(win)
         win._settings_dlg = dlg
 
@@ -5665,6 +5738,7 @@ if __name__ == '__main__': # [Main application execution block]
         wrap_var = tk.StringVar(value=SETTINGS['line_wrap'])
         markdown_mode_var = tk.StringVar(value=SETTINGS.get('markdown_mode', 'md'))
         untitled_markdown_var = tk.BooleanVar(value=SETTINGS.get('untitled_markdown', False))
+        blank_tab_startup_var = tk.BooleanVar(value=SETTINGS.get('create_blank_tab_on_startup', True))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         scroll_sensitivity_var = tk.IntVar(value=SETTINGS.get('scroll_sensitivity', 2))
         tags_subfolders_var = tk.BooleanVar(value=SETTINGS.get('search_tags_subfolders', True))
@@ -5705,7 +5779,7 @@ if __name__ == '__main__': # [Main application execution block]
                     font=('Consolas', 11), cursor=HAND_CURSOR,
                 ).pack(side='left', padx=(0, 12))
 
-        def make_toggle(parent, var, row, col=1):
+        def make_toggle(parent, var, row, col=1, enabled=True):
             f = tk.Frame(parent, bg=H_BG)
             f.grid(row=row, column=col, sticky='w')
             for label, val in [(tr('on'), True), (tr('off'), False)]:
@@ -5714,6 +5788,7 @@ if __name__ == '__main__': # [Main application execution block]
                     bg=H_BG, fg=FG, selectcolor=TAB_BG,
                     activebackground=H_BG, activeforeground=FG,
                     font=('Consolas', 11), cursor=HAND_CURSOR,
+                    state='normal' if enabled else 'disabled',
                 ).pack(side='left', padx=(0, 12))
 
         def make_spinbox(parent, var, from_, to, row, col=1, width=6):
@@ -5836,19 +5911,22 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_search_subfolders'), 12)
         make_toggle(p_general, tags_subfolders_var, row=12)
 
-        section_label(p_general, tr('section_interface'), 13)
-        row_label(p_general, tr('settings_show_status'), 15)
-        make_toggle(p_general, status_var, row=15)
+        row_label(p_general, tr('settings_create_blank_tab_startup'), 13)
+        make_toggle(p_general, blank_tab_startup_var, row=13, enabled=bool(PINNED_DOCS))
 
-        row_label(p_general, tr('settings_show_wordcount'), 16)
-        make_toggle(p_general, wcount_var, row=16)
+        section_label(p_general, tr('section_interface'), 14)
+        row_label(p_general, tr('settings_show_status'), 16)
+        make_toggle(p_general, status_var, row=16)
 
-        row_label(p_general, tr('settings_beta_updates'), 17)
-        make_toggle(p_general, beta_updates_var, row=17)
+        row_label(p_general, tr('settings_show_wordcount'), 17)
+        make_toggle(p_general, wcount_var, row=17)
 
-        row_label(p_general, tr('settings_win_size'), 18)
+        row_label(p_general, tr('settings_beta_updates'), 18)
+        make_toggle(p_general, beta_updates_var, row=18)
+
+        row_label(p_general, tr('settings_win_size'), 19)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=18, column=1, sticky='w', pady=4)
+        size_f.grid(row=19, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -6367,6 +6445,9 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['line_wrap'] = wrap_var.get()
             SETTINGS['markdown_mode'] = markdown_mode_var.get()
             SETTINGS['untitled_markdown'] = untitled_markdown_var.get()
+            SETTINGS['create_blank_tab_on_startup'] = (
+                blank_tab_startup_var.get() or not PINNED_DOCS
+            )
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['scroll_sensitivity'] = scroll_sensitivity_var.get()
             SETTINGS['search_tags_subfolders'] = tags_subfolders_var.get()

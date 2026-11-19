@@ -1,3 +1,23 @@
+# 1.11.0 Beta 3
+
+### Fixes:
+- Fixed some translations not being applied.
+
+### Changes:
+- When you create a new window/start the app, the pinned tabs are not focused by default. It will instead create a new blank tab and select that one by default.
+
+### Added:
+- Added a contextual menu to the "+" that creates a new tab.
+- Added a setting to toggle the creation of a new tab on startup/new window.
+
+# 1.11.0 Beta 2
+
+### Changed:
+- Changed the versions for non-darwin systems to be more similar to darwin system's about. It now includes dev versionning (for example: 1.11.0.b2.1) AND the user versionning (for example: 1.11.0 Beta 2)
+
+### Added:
+- Added tags similar to how obsidian does it.
+
 # 1.11.0 Beta 1
 
 ### Add:

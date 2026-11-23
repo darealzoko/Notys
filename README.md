@@ -10,8 +10,8 @@ The latest version of Notys (v1.10.0) is currently available for:
 **Linux:**
 
 *While it is technically working on Linux OSs, it is not well integrated and is pretty ugly.*
-- AppImage (Recommended, see "Get started" for more information)
-- .zip and run in the .venv
+- The provided binary (recommended)
+- From my own package manager ([Irun](https://github.com/darealzoko/Irun))
 - Source code (be sure to have downloaded python-tk (arch) or python3-tk (ubuntu) and run `python3 -m pip install --upgrade pip --break-system-packages && python3 -m pip install -r requirements.txt pyinstaller --break-system-packages && python3 -m PyInstaller Notys.spec`)
 
 **Windows:**

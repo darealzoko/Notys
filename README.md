@@ -1,7 +1,7 @@
 # Notys
 
 Notys is an ultra-lightweight scratchpad markdown application designed for speed and simplicity.  
-No bloat, just the essential features you need to get your thoughts down.
+No bloat, just the essential features you need to get your thoughts down, with some goodies.
 *Notys is a personal and small project maintained by only one person (me). There is no release schedule, updates are released whenever the time and circumstances allow it.*
 
 ## Download
@@ -67,15 +67,19 @@ Notys has been built mainly with the help of AI (such as Gemini, Claude, Copilot
 
 README has been through ChatGPT to correct typos as I am not an native English speaker.
 
+Behind the scenes, I am also redesigning and rebuilding from scratch Notys in Rust and SlintUI for better UI integration in every host OS.
+This remake is going to be the 2.0.0, I was originally going with Swift and SwiftUI but I switched to Rust and SlintUI.
+The 2.0.0 Rust is going to be less vibe-coded, still with some help from AI.
+
 ---
 
 ## Getting Started
 
-### For macOS (Intel and now ARM thanks to Rosetta2!)
+### For macOS (Intel and M-series chip)
 1. Go to the **Releases** section on GitHub and navigate to the latest version.
-2. Download the latest `Notys-macOS-x.x.x.zip`.
+2. Download the latest `Notys-macOS-yourbuild-x.x.x.zip`. *the "yourbuild" depends on your computer. If your computer is pre-2020, pick x86_64, if it is post-2020, pick ARM.*
 3. Unzip and move `Notys.app` to your **Applications** folder.
-4. Open the app
+4. Open the app (*If it gives an error saying the app is not trusted, just go in the System Settings -> Privacy & Security -> scroll all the way down and click the "Open anyway" button*)
 5. Have fun!
 
 ### For Linux
@@ -91,17 +95,11 @@ README has been through ChatGPT to correct typos as I am not an native English s
 4. Run the .exe file
 
 ## Work in Progress (Roadmap)
-### Planned for v1.9.0:
-- [ ] Date and time timestamps
-- [ ] "Format" menu in the menu bar
-- [ ] Add a mission-control-ish overview
 ### Planned in the near or far future:
 - [ ] HTML/PDF exporting
-- [X] Liquid glass, maybe for 2.0.0
-- [X] macOS ARM Support, for 2.0.0
-- [X] Switch to SwiftUI+Swift, for 2.0.0. SIKE! I'm going with Rust and Slink for the next Beta.
+- [X] macOS ARM Support, for 2.0.0 (actually added before 2.0.0)
+- [X] Switch to Rust+Slint for 2.0.0
 
 ## Known bugs
 ### Minor Bugs
-- [X] **Keyboard shortcut:** The "Save All" and "Reopen Last Closed" keyboard shortcuts do not work, use the menu bar instead.
 - [ ] **Light/Dark Theme Button**: The dark/light theme button in the tab bar doesn't display the right icon if started in light mode. Still completely usable at 100%. Just a UI bug.

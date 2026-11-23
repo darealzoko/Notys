@@ -1,3 +1,15 @@
+# 1.11.0 Beta 4
+
+### Fixes:
+- Fixed the "Untitled" tab not translating automatically when you change the language.
+- (Finally) Fixed the cancel/apply/ok buttons being f*cked up in dark theme.
+
+### Add:
+- Added a setting to choose whether the drag n drop-ing of a folder replaces the currently opened folder, or opens it as a new one.
+
+### Changed:
+- Changed the "Open in a new tab" button in the right click menu in the sidebar on a file to just "Open", now placed at the very top of the contextual menu. And it also blacklists a bunch of files (like .mp4 or .png) and makes the button non-clickable on these kind of files.
+
 # 1.11.0 Beta 3
 
 ### Fixes:

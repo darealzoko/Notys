@@ -27,7 +27,7 @@ try: # [Handle missing version module or fallback errors]
     APP_COPYRIGHT = version.COPYRIGHT # [Change copyright notice]
 except ImportError: # [Fallback when version module is missing]
     APP_NAME = 'Notys' # [Change default app name here]
-    APP_VERSION = '1.11.0.b3.5' # [Fallback version for the current v1 beta release]
+    APP_VERSION = '1.11.0.b4.3' # [Fallback version for the current v1 beta release]
     APP_COPYRIGHT = 'Copyright by _zoko © 2026 - 2026 | Open Source Software | Opened to forks and contributions.' # [Update copyright year/text]
 
 # ── OS detection & Cursor Configuration ───────────────────────────────────────
@@ -285,7 +285,7 @@ TRANSLATIONS = { # [Add new languages or translation keys here]
         'settings_untitled_markdown': 'Format untitled tabs with Markdown',
         'settings_create_blank_tab_startup': 'Create a blank tab on startup',
         'tree_open_new_window': 'Open in New Window',
-        'tree_open_new_tab': 'Open in New Tab',
+        'tree_open': 'Open',
         'tree_open_default_app': 'Open in Default App',
 
         'settings_show_status': "Status bar", # [Status bar label]
@@ -1763,66 +1763,131 @@ for language, translations in TAG_SEARCH_TRANSLATIONS.items():
 TREE_CONTEXT_TRANSLATIONS = {
     'fr': {
         'tree_open_new_window': 'Ouvrir dans une nouvelle fenêtre',
-        'tree_open_new_tab': 'Ouvrir dans un nouvel onglet',
+        'tree_open': 'Ouvrir',
         'tree_open_default_app': 'Ouvrir avec l’application par défaut',
     },
     'en': {
         'tree_open_new_window': 'Open in New Window',
-        'tree_open_new_tab': 'Open in New Tab',
+        'tree_open': 'Open',
         'tree_open_default_app': 'Open in Default App',
     },
     'eo': {
         'tree_open_new_window': 'Malfermi en nova fenestro',
-        'tree_open_new_tab': 'Malfermi en nova langeto',
+        'tree_open': 'Malfermi',
         'tree_open_default_app': 'Malfermi per defaŭlta aplikaĵo',
     },
     'es': {
         'tree_open_new_window': 'Abrir en una ventana nueva',
-        'tree_open_new_tab': 'Abrir en una pestaña nueva',
+        'tree_open': 'Abrir',
         'tree_open_default_app': 'Abrir con la aplicación predeterminada',
     },
     'pt': {
         'tree_open_new_window': 'Abrir em nova janela',
-        'tree_open_new_tab': 'Abrir em nova aba',
+        'tree_open': 'Abrir',
         'tree_open_default_app': 'Abrir com o aplicativo padrão',
     },
     'de': {
         'tree_open_new_window': 'In neuem Fenster öffnen',
-        'tree_open_new_tab': 'In neuem Tab öffnen',
+        'tree_open': 'Öffnen',
         'tree_open_default_app': 'Mit Standard-App öffnen',
     },
     'it': {
         'tree_open_new_window': 'Apri in una nuova finestra',
-        'tree_open_new_tab': 'Apri in una nuova scheda',
+        'tree_open': 'Apri',
         'tree_open_default_app': 'Apri con l’app predefinita',
     },
     'nl': {
         'tree_open_new_window': 'Openen in nieuw venster',
-        'tree_open_new_tab': 'Openen in nieuw tabblad',
+        'tree_open': 'Openen',
         'tree_open_default_app': 'Openen met standaardapp',
     },
     'ru': {
         'tree_open_new_window': 'Открыть в новом окне',
-        'tree_open_new_tab': 'Открыть в новой вкладке',
+        'tree_open': 'Открыть',
         'tree_open_default_app': 'Открыть в приложении по умолчанию',
     },
     'ja': {
         'tree_open_new_window': '新しいウィンドウで開く',
-        'tree_open_new_tab': '新しいタブで開く',
+        'tree_open': '開く',
         'tree_open_default_app': 'デフォルトのアプリで開く',
     },
     'zh': {
         'tree_open_new_window': '在新窗口中打开',
-        'tree_open_new_tab': '在新标签页中打开',
+        'tree_open': '打开',
         'tree_open_default_app': '使用默认应用打开',
     },
     'ko': {
         'tree_open_new_window': '새 창에서 열기',
-        'tree_open_new_tab': '새 탭에서 열기',
+        'tree_open': '열기',
         'tree_open_default_app': '기본 앱으로 열기',
     },
 }
 for language, translations in TREE_CONTEXT_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(translations)
+
+DND_FOLDER_TRANSLATIONS = {
+    'fr': {
+        'settings_dnd_folder_behavior': 'Lors du dépôt d’un dossier dans Notys',
+        'dnd_folder_add': 'Ajouter aux dossiers déjà ouverts',
+        'dnd_folder_replace': 'Remplacer les dossiers actuellement ouverts',
+    },
+    'en': {
+        'settings_dnd_folder_behavior': 'When dropping a folder into Notys',
+        'dnd_folder_add': 'Add alongside currently opened folders',
+        'dnd_folder_replace': 'Replace currently opened folders',
+    },
+    'eo': {
+        'settings_dnd_folder_behavior': 'Kiam dosierujo estas ŝovita en Notys',
+        'dnd_folder_add': 'Aldoni apud jam malfermitaj dosierujoj',
+        'dnd_folder_replace': 'Anstataŭigi nun malfermitajn dosierujojn',
+    },
+    'es': {
+        'settings_dnd_folder_behavior': 'Al soltar una carpeta en Notys',
+        'dnd_folder_add': 'Añadir junto a las carpetas abiertas',
+        'dnd_folder_replace': 'Reemplazar las carpetas abiertas',
+    },
+    'pt': {
+        'settings_dnd_folder_behavior': 'Ao soltar uma pasta no Notys',
+        'dnd_folder_add': 'Adicionar às pastas já abertas',
+        'dnd_folder_replace': 'Substituir as pastas atualmente abertas',
+    },
+    'de': {
+        'settings_dnd_folder_behavior': 'Wenn ein Ordner auf Notys gezogen wird',
+        'dnd_folder_add': 'Zu den bereits geöffneten Ordnern hinzufügen',
+        'dnd_folder_replace': 'Geöffnete Ordner ersetzen',
+    },
+    'it': {
+        'settings_dnd_folder_behavior': 'Quando si trascina una cartella in Notys',
+        'dnd_folder_add': 'Aggiungi alle cartelle già aperte',
+        'dnd_folder_replace': 'Sostituisci le cartelle attualmente aperte',
+    },
+    'nl': {
+        'settings_dnd_folder_behavior': 'Wanneer je een map naar Notys sleept',
+        'dnd_folder_add': 'Toevoegen naast reeds geopende mappen',
+        'dnd_folder_replace': 'De momenteel geopende mappen vervangen',
+    },
+    'ru': {
+        'settings_dnd_folder_behavior': 'При перетаскивании папки в Notys',
+        'dnd_folder_add': 'Добавить к уже открытым папкам',
+        'dnd_folder_replace': 'Заменить открытые папки',
+    },
+    'ja': {
+        'settings_dnd_folder_behavior': 'フォルダーを Notys にドロップしたとき',
+        'dnd_folder_add': '開いているフォルダーに追加',
+        'dnd_folder_replace': '現在開いているフォルダーを置き換える',
+    },
+    'zh': {
+        'settings_dnd_folder_behavior': '将文件夹拖放到 Notys 时',
+        'dnd_folder_add': '添加到当前已打开的文件夹',
+        'dnd_folder_replace': '替换当前已打开的文件夹',
+    },
+    'ko': {
+        'settings_dnd_folder_behavior': '폴더를 Notys에 놓을 때',
+        'dnd_folder_add': '현재 열린 폴더에 추가',
+        'dnd_folder_replace': '현재 열린 폴더 바꾸기',
+    },
+}
+for language, translations in DND_FOLDER_TRANSLATIONS.items():
     TRANSLATIONS[language].update(translations)
 
 TAB_CONTEXT_TRANSLATIONS = {
@@ -2282,6 +2347,7 @@ SETTINGS = { # [Default user configuration dictionary]
     'markdown_mode': 'md', # [Markdown syntax for .md/.markdown, all files, or none]
     'untitled_markdown': False, # [Enable Markdown formatting in untitled tabs]
     'create_blank_tab_on_startup': True, # [Create a blank tab after restoring pinned tabs]
+    'dnd_folder_behavior': 'add', # [Whether dropped folders are added or replace opened folders]
     'padding': 40, # [Default text widget padding]
     'scroll_sensitivity': 2, # [Scroll sensitivity level from 1 to 10]
     'search_tags_subfolders': True,
@@ -2309,7 +2375,9 @@ def _uses_markdown(path):
         return False
     if mode == 'all':
         return True
-    return bool(path) and os.path.splitext(path)[1].lower() in ('.md', '.markdown')
+    return bool(path) and os.path.splitext(path)[1].lower() in (
+        '.md', '.markdown', '.mdown', '.mkd', '.mkdn', '.mdwn', '.mdx'
+    )
 
 def _markdown_content_for_editor(content, path):
     if _uses_markdown(path):
@@ -4144,8 +4212,9 @@ if __name__ == '__main__': # [Main application execution block]
             self.select(tab)
 
         def toggle_pin(self, tab):
-            if not tab.file_path:
-                messagebox.showinfo(tr('menu_pin_tab'), tr('pin_tab_save_first'))
+            # Untitled tabs cannot be pinned; menu state is only a UI affordance,
+            # so keep this guard here as well for shortcuts and other callers.
+            if not tab or not tab.file_path:
                 return 'break'
             path = os.path.abspath(tab.file_path)
             tab.is_pinned = not tab.is_pinned
@@ -4170,7 +4239,11 @@ if __name__ == '__main__': # [Main application execution block]
             )
             menu.add_separator()
             pin_label = tr('menu_unpin_tab') if tab.is_pinned else tr('menu_pin_tab')
-            menu.add_command(label=pin_label, command=lambda: self.toggle_pin(tab))
+            menu.add_command(
+                label=pin_label,
+                command=lambda: self.toggle_pin(tab),
+                state='normal' if tab.file_path else 'disabled',
+            )
             menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(tab))
             menu.add_separator()
             menu.add_command(
@@ -4281,6 +4354,10 @@ if __name__ == '__main__': # [Main application execution block]
                 elif not t.is_pinned and pin.winfo_manager():
                     pin.pack_forget()
                 close.config(bg=bg_col, fg=fg_col)
+
+            pin_menu_updater = getattr(self, 'update_pin_menu_state', None)
+            if callable(pin_menu_updater):
+                pin_menu_updater()
 
     # ── Layout ────────────────────────────────────────────────────────────────────
     tab_bar = TabBar(win) # [Instantiate tab bar]
@@ -4915,16 +4992,46 @@ if __name__ == '__main__': # [Main application execution block]
             win, tearoff=0, bg=STATUS_BG, fg=FG,
             activebackground=SELECT_BG, activeforeground=FG,
         )
-        menu.add_command(label=tr('menu_open_in_finder'), command=lambda: open_path_in_file_manager(path))
+        # Only block formats that are not meaningfully editable as plain text.
+        # Unknown extensions (including source code and scripts) remain openable.
+        NON_TEXT_EXTENSIONS = {
+            # Images
+            '.png', '.jpg', '.jpeg', '.jpe', '.jfif', '.gif', '.webp', '.bmp',
+            '.dib', '.tif', '.tiff', '.heic', '.heif', '.avif', '.svg', '.ico',
+            '.icns', '.raw', '.cr2', '.nef', '.arw', '.dng',
+            # Video
+            '.mp4', '.m4v', '.mov', '.avi', '.mkv', '.webm', '.wmv', '.flv',
+            '.mpeg', '.mpg', '.3gp', '.ts', '.mts', '.m2ts', '.vob',
+            # Audio
+            '.mp3', '.wav', '.flac', '.aac', '.m4a', '.ogg', '.opus', '.wma',
+            '.aiff', '.aif', '.mid', '.midi', '.amr',
+            # Documents, spreadsheets and presentations
+            '.pdf', '.doc', '.docx', '.docm', '.dot', '.dotx', '.odt', '.ott',
+            '.pages', '.xls', '.xlsx', '.xlsm', '.xlsb', '.ods',
+            '.ots', '.csv', '.ppt', '.pptx', '.pptm', '.odp', '.key',
+            # E-books and other packaged/binary formats
+            '.epub', '.mobi', '.azw', '.azw3', '.djvu',
+            '.zip', '.7z', '.rar', '.tar', '.gz', '.bz2', '.xz', '.zst',
+            '.exe', '.msi', '.dll', '.so', '.dylib', '.app', '.bin', '.msix', '.apk',
+            '.iso', '.dmg', '.pkg', '.deb', '.rpm', '.lnk', '.pdb', '.jar',
+            # Miscellaneous
+            '.psd', '.ai', '.eps', '.indd', '.swf', 'fcproj', '.blend', '.skp', '.3ds', '.stl', '.obj',
+            '.torrent', '.dat', '.bak', '.tmp', '.db', '.r2z',
+        }
+        can_open_in_editor = (
+            not is_directory
+            and os.path.splitext(path)[1].lower() not in NON_TEXT_EXTENSIONS
+        )
+        menu.add_command(
+            label=tr('tree_open'),
+            command=lambda: _open_paths([path]),
+            state='normal' if can_open_in_editor else 'disabled',
+        )
         menu.add_command(
             label=tr('tree_open_new_window'),
             command=lambda: new_window(path=path),
         )
-        menu.add_command(
-            label=tr('tree_open_new_tab'),
-            command=lambda: _open_paths([path], force_new=True),
-            state='disabled' if is_directory else 'normal',
-        )
+        menu.add_command(label=tr('menu_open_in_finder'), command=lambda: open_path_in_file_manager(path))
         menu.add_command(
             label=tr('tree_open_default_app'),
             command=lambda: open_path_in_default_app(path),
@@ -5019,7 +5126,16 @@ if __name__ == '__main__': # [Main application execution block]
                 i = end + 1
         return [p for p in paths if p]
 
-    def _open_paths(paths, force_new=False): # [Open multiple file or folder paths]
+    def _open_paths(paths, force_new=False, dropped=False): # [Open multiple file or folder paths]
+        # In replace mode, clear the previous set once so multiple dropped folders
+        # are all opened together instead of each replacing the previous one.
+        if (
+            dropped
+            and SETTINGS.get('dnd_folder_behavior', 'add') == 'replace'
+            and any(os.path.isdir(path) for path in paths)
+        ):
+            OPENED_FOLDERS.clear()
+
         for path in paths:
             if os.path.isdir(path):
                 open_folder(path)
@@ -5053,7 +5169,7 @@ if __name__ == '__main__': # [Main application execution block]
     def _on_drop(event): # [Handle drag and drop event]
         editor_area.config(bg=BG)
         tab_bar.frame.config(bg=TAB_BG)
-        _open_paths(_parse_dnd_paths(event.data))
+        _open_paths(_parse_dnd_paths(event.data), dropped=True)
 
     def _on_enter(event): # [Handle drag enter visual feedback]
         editor_area.config(bg=SELECT_BG)
@@ -5063,6 +5179,16 @@ if __name__ == '__main__': # [Main application execution block]
         editor_area.config(bg=BG)
         tab_bar.frame.config(bg=TAB_BG)
 
+    def _on_sidebar_drag_init(event):
+        """Start a native file drag for the selected sidebar file."""
+        item = sidebar_tree.identify_row(getattr(event, 'y', 0))
+        if not item:
+            item = sidebar_tree.focus()
+        path = tree_item_path(item) if item else None
+        if not path or not os.path.isfile(path):
+            return None
+        return ('copy', DND_FILES, path)
+
     def _register_dnd_widget(widget): # [Register widget for drag and drop]
         if not dnd_enabled:
             return
@@ -5071,8 +5197,11 @@ if __name__ == '__main__': # [Main application execution block]
             widget.dnd_bind('<<Drop>>', _on_drop)
             widget.dnd_bind('<<DragEnter>>', _on_enter)
             widget.dnd_bind('<<DragLeave>>', _on_leave)
+            if widget is sidebar_tree:
+                widget.drag_source_register(1, DND_FILES)
+                widget.dnd_bind('<<DragInitCmd>>', _on_sidebar_drag_init)
         except Exception as e:
-            print(f"[DND] Erreur enregistrement drop_target sur {widget} : {e}")
+            print(f"[DND] Erreur enregistrement DnD sur {widget} : {e}")
 
     def _setup_dnd(): # [Setup drag and drop across widgets]
         global dnd_enabled
@@ -5609,7 +5738,24 @@ if __name__ == '__main__': # [Main application execution block]
             command=toggle_current_folder_pin,
             state='normal' if current_opened_folder else 'disabled',
         )
-        file_menu.add_command(label=tr('menu_toggle_pin'), command=toggle_current_tab_pin, accelerator=SHORTCUTS['pin_tab']['disp'])
+        file_menu.add_command(
+            label=tr('menu_toggle_pin'),
+            command=toggle_current_tab_pin,
+            accelerator=SHORTCUTS['pin_tab']['disp'],
+            state='normal' if current_tab() and current_tab().file_path else 'disabled',
+        )
+        pin_menu_index = file_menu.index('end')
+
+        def update_pin_menu_state():
+            try:
+                file_menu.entryconfigure(
+                    pin_menu_index,
+                    state='normal' if current_tab() and current_tab().file_path else 'disabled',
+                )
+            except tk.TclError:
+                pass
+
+        tab_bar.update_pin_menu_state = update_pin_menu_state
         file_menu.add_separator()
         file_menu.add_command(label=tr('menu_close_tab'), command=lambda: close_tab(), accelerator=SHORTCUTS['close_tab']['disp'])
         menubar.add_cascade(label=tr('menu_file'), menu=file_menu)
@@ -5739,6 +5885,7 @@ if __name__ == '__main__': # [Main application execution block]
         markdown_mode_var = tk.StringVar(value=SETTINGS.get('markdown_mode', 'md'))
         untitled_markdown_var = tk.BooleanVar(value=SETTINGS.get('untitled_markdown', False))
         blank_tab_startup_var = tk.BooleanVar(value=SETTINGS.get('create_blank_tab_on_startup', True))
+        dnd_folder_behavior_var = tk.StringVar(value=SETTINGS.get('dnd_folder_behavior', 'add'))
         padding_var = tk.IntVar(value=SETTINGS['padding'])
         scroll_sensitivity_var = tk.IntVar(value=SETTINGS.get('scroll_sensitivity', 2))
         tags_subfolders_var = tk.BooleanVar(value=SETTINGS.get('search_tags_subfolders', True))
@@ -5914,19 +6061,25 @@ if __name__ == '__main__': # [Main application execution block]
         row_label(p_general, tr('settings_create_blank_tab_startup'), 13)
         make_toggle(p_general, blank_tab_startup_var, row=13, enabled=bool(PINNED_DOCS))
 
-        section_label(p_general, tr('section_interface'), 14)
-        row_label(p_general, tr('settings_show_status'), 16)
-        make_toggle(p_general, status_var, row=16)
+        row_label(p_general, tr('settings_dnd_folder_behavior'), 14)
+        make_radiogroup(p_general, dnd_folder_behavior_var, [
+            (tr('dnd_folder_add'), 'add'),
+            (tr('dnd_folder_replace'), 'replace'),
+        ], row=14)
 
-        row_label(p_general, tr('settings_show_wordcount'), 17)
-        make_toggle(p_general, wcount_var, row=17)
+        section_label(p_general, tr('section_interface'), 15)
+        row_label(p_general, tr('settings_show_status'), 17)
+        make_toggle(p_general, status_var, row=17)
 
-        row_label(p_general, tr('settings_beta_updates'), 18)
-        make_toggle(p_general, beta_updates_var, row=18)
+        row_label(p_general, tr('settings_show_wordcount'), 18)
+        make_toggle(p_general, wcount_var, row=18)
 
-        row_label(p_general, tr('settings_win_size'), 19)
+        row_label(p_general, tr('settings_beta_updates'), 19)
+        make_toggle(p_general, beta_updates_var, row=19)
+
+        row_label(p_general, tr('settings_win_size'), 20)
         size_f = tk.Frame(p_general, bg=H_BG)
-        size_f.grid(row=19, column=1, sticky='w', pady=4)
+        size_f.grid(row=20, column=1, sticky='w', pady=4)
         tk.Spinbox(size_f, from_=400, to=3840, textvariable=win_w_var,
                    width=6, font=('Consolas', 11), bg=TAB_BG, fg=FG,
                    buttonbackground=TAB_BG, insertbackground=FG, relief='flat',
@@ -6440,6 +6593,9 @@ if __name__ == '__main__': # [Main application execution block]
                 return
             current_language = lang_var.get()
             tab_bar.set_update_status(tab_bar.update_status)
+            # Tab.name uses tr('untitled') dynamically; refresh cached tab labels
+            # immediately after changing the active interface language.
+            tab_bar.refresh()
             SETTINGS['font_family'] = font_fam_var.get()
             SETTINGS['font_size'] = font_size_var.get()
             SETTINGS['line_wrap'] = wrap_var.get()
@@ -6448,6 +6604,7 @@ if __name__ == '__main__': # [Main application execution block]
             SETTINGS['create_blank_tab_on_startup'] = (
                 blank_tab_startup_var.get() or not PINNED_DOCS
             )
+            SETTINGS['dnd_folder_behavior'] = dnd_folder_behavior_var.get()
             SETTINGS['padding'] = padding_var.get()
             SETTINGS['scroll_sensitivity'] = scroll_sensitivity_var.get()
             SETTINGS['search_tags_subfolders'] = tags_subfolders_var.get()
@@ -6486,6 +6643,7 @@ if __name__ == '__main__': # [Main application execution block]
                 t.highlight_markdown()
 
             rebuild_menu()
+            update_title()
             update_status()
             return True
 
@@ -6562,8 +6720,10 @@ if __name__ == '__main__': # [Main application execution block]
 
         lang_var.trace_add('write', refresh_settings_language)
 
-        button_bg = '#000000' if current_theme == 'dark' else '#ffffff'
-        button_fg = '#ffffff' if current_theme == 'dark' else '#202020'
+        # These three action buttons intentionally keep a fixed high-contrast
+        # appearance instead of following the application theme.
+        button_bg = '#ffffff'
+        button_fg = '#000000'
 
         tk.Button(
             btn_bar, text=tr('settings_ok'), command=apply_and_close,
@@ -6595,8 +6755,8 @@ if __name__ == '__main__': # [Main application execution block]
                 'FG': FG, 'TAB_BG': TAB_BG, 'TAB_ACTIVE': TAB_ACTIVE,
                 'TAB_FG': TAB_FG, 'TAB_FG_ACT': TAB_FG_ACT, 'STATUS_FG': STATUS_FG,
                 'SELECT_BG': SELECT_BG, 'STATUS_BG': STATUS_BG,
-                'BTN_BG': ('#000000' if current_theme == 'dark' else '#ffffff'),
-                'BTN_FG': ('#ffffff' if current_theme == 'dark' else '#202020'),
+                'BTN_BG': '#ffffff',
+                'BTN_FG': '#000000',
             }
 
         def _refresh_settings_theme():
